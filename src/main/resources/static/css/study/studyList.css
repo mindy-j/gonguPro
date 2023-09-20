@@ -1,0 +1,87 @@
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+li{
+    list-style: none ;
+    float: left;
+    padding-left: 10px ;
+    color: blue;
+    font-size: 15px;
+
+}
+.fulldiv{
+ 
+    width: 1400px;
+    height: 100%;
+    margin: 0 auto;
+}
+.studyh1{
+    height: 100px;
+    line-height: 100px;
+}
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr ;
+    grid-gap: 10px;
+    padding: 10px;
+    background-color: #ff0;
+    
+}
+
+
+.item {
+    padding: 20px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    background-color: white;
+    height: 400px;
+}
+
+.typeOfStudy{
+    border-radius: 20px;
+    padding: 4px 12px;
+    background: #efefef;
+    color: #656565;
+
+}
+
+.utilldate{
+   
+    height: 50px;
+    line-height: 40px;
+    font-size: 15px;
+    color: gray;
+}
+
+.info3div{
+    display: block;
+    justify-content: space-around;
+}
+.typediv{
+    height: 50px;
+    line-height: 35px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.se-div{
+    height: 50px;
+}
+.aboutWriterdiv{
+    height:50px;
+   margin-top: 20px;
+   display: flex;
+   justify-content:space-between;
+ 
+
+}
+.logoAndUser *{
+    vertical-align: middle;
+}
+
+.chekcAndReply *{
+vertical-align: middle;
+}
+

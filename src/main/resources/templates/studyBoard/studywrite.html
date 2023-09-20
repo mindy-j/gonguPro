@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <title>studywrite</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../static/css/study/studywrite.css">
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  
+  <!-- 서머노트를 위해 추가해야할 부분 -->
+  <script src="summerNote/summernote-lite.js"></script>
+  <script src="summerNote/summernote-ko-KR.js"></script>
+  <link rel="stylesheet" href="summerNote/summernote-lite.css">
+  <!--  -->
+
+  
+</head>
+<body>
+<div class="full-box">
+    <div class="formfull-box">
+    <div class="getherInfo">
+        <h1><span class="number1">1</span>모집 정보를 입력해주세요</h1>
+    </div>
+
+    <form>
+        <div class="section-1">
+        <div class="getherPeople-div">
+            <div class="howTo-div">
+                <span>진행 방식</span><br>
+                <select name="howToProceed" placeholder="온라인/오프라인">
+                    <option value="online" >온라인</option>
+                    <option value="offline" >오프라인</option>
+                </select>
+            </div>
+
+            <div class="gether-div">
+                <span>모집 인원</span><br>
+                <select name="people" placeholder="인원미정~10명이상">
+                    <option value="unsettled-person">인원 미정</option>
+                    <option value="one">1명</option>
+                    <option value="two">2명</option>
+                    <option value="three">3명</option>
+                    <option value="four">4명</option>
+                    <option value="five">5명</option>
+                    <option value="six">6명</option>
+                    <option value="seven">7명</option>
+                    <option value="eight">8명</option>
+                    <option value="nine">9명</option>
+                    <option value="overten">10명 이상</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="study-div">
+            <div>
+                <span>스터디 구분</span><br>
+                <input type="text" name="studyfor" placeholder="000시험준비 스터디">
+            </div>
+
+            <div class="period-div">
+                <span>진행 기간</span><br>
+                <select name="period-time">
+                    <option value="unsettled-period">기간미정</option>
+                    <option value="oneMonth">1개월</option>
+                    <option value="twoMonths">2개월</option>
+                    <option value="threeMonths">3개월</option>
+                    <option value="fourMonths">4개월</option>
+                    <option value="fiveMonths">5개월</option>
+                    <option value="sixMonths">6개월</option>
+                    <option value="oversixMonths">장기</option>
+                </select>
+            </div>
+        </div>
+
+
+        <div class="location-div">
+            <div>
+                <span>지역</span><br>
+                <input type="text" name="location" placeholder="지역을 입력해주세요">
+                
+            </div>
+
+            <div class="deadline-div">
+                <span>모집 마감일</span><br>
+                <input type="date" name="deadline">
+            </div>
+        </div>
+
+        <div class="conntect-div">
+            <div>
+                <span>연락 방법</span><br>
+                    <select name="howToConnect" >
+                        <option value="connect-email">이메일</option>
+                        <option value="connect-kakao">카카오톡 오픈채팅</option>
+                    </select>
+            </div>
+            <div class="kakaoChat-div">
+                <input type="text" name="kakaoChat-url" placeholder="오픈 카카오톡 링크" >
+            </div>
+        </div>
+    </div>
+
+    <div class="section-2">
+            <div class="aboutStudy">
+                <h2><span class="number1">2</span>스터디에 대해 소개해주세요</h2>
+            </div>
+
+            <div>
+                <span>제목</span><br>
+                <input type="text" name="studyTitle" placeholder="글제목을 입력해주세요" style="width: 810px;">
+                
+            </div>
+    </div>
+    </div>
+
+        <div class="container" style="width: 850px;">
+            <textarea class="summernote" name="editordata"></textarea>    
+        </div>
+
+        <div class="button-div">
+            <button type="reset" class="rest-btn" name="cancelBtn">취소</button>
+            <button type="submit" class="registerBtn" name="registerBtn" >글등록</button>
+        </div>
+    </form>
+</div>
+
+</body>
+<script>
+    $('.summernote').summernote({
+          height: 450,
+          lang: "ko-KR"
+        });
+    </script>
+</html>

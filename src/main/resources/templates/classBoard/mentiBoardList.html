@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../../static/css/index.css"/>
+  <style>
+    .container{
+      width:1320px;
+      height:1300px;
+      margin:auto;
+    }
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* 3열로 설정 */
+      grid-template-rows: repeat(4, 1fr); /* 4행으로 설정 */
+      grid-gap: 20px; /* 그리드 간격 설정 */
+      width: 1300px; /* 가로 크기 설정 */
+      height: 1000px; /* 세로 크기 설정 */
+      margin: 0 auto; /* 중앙 정렬을 위해 자동 마진 설정 */
+    }
+    header{
+      margin-bottom:20px;
+    }
+
+    /* 그리드 아이템 스타일 설정 (예: 배경색, 테두리 등) */
+
+  </style>
+</head>
+<body>
+
+<header class="header-container none"> <!--헤더 컨테이너-->
+  <nav class="nav-bar">
+    <div class="nav-left">
+      <a href="#">
+        <img src="./logo.png" alt="logo" class="logo-img">
+      </a>
+    </div>
+    <div class="nav-right">
+      <ul>
+        <li>
+          <input type="text" name="search" value="" class="search-bar" placeholder="제목을 입력해주세요"/>
+        </li>
+        <li class="study">
+          <a href="#"><p class="header-text">스터디 모집</p></a> <!--스터디 목록으로 이동-->
+        </li>
+        <li class="menti">
+          <a href="#"><p class="header-text">멘티 모집</p></a> <!--멘티 모집 목록으로 이동-->
+        </li>
+        <li class="login">
+          <a href="#"><p class="header-text">로그인</p></a> <!--로그인 창으로 이동-->
+        </li>
+      </ul>
+  </nav>
+
+</header>
+<!--로그인 후 헤더-->
+<header class="header-container none"> <!--헤더 컨테이너-->
+  <nav class="nav-bar">
+    <div class="nav-left-login">
+      <a href="#">
+        <img src="logo.jpg" alt="logo" class="logo-img">
+      </a>
+    </div>
+    <div class="nav-right">
+      <ul>
+        <li>
+          <input type="text" name="search" value="" class="search-bar" placeholder="제목을 입력해주세요"/>
+        </li>
+        <li class="study">
+          <a href="#"><p class="header-text">스터디 모집</p></a> <!--스터디 목록으로 이동-->
+        </li>
+        <li class="menti">
+          <a href="#"><p class="header-text">멘티 모집</p></a> <!--멘티 모집 목록으로 이동-->
+        </li>
+        <li class="login">
+          <a href="#"><p class="header-text">쪽지함</p></a> <!--로그인 창으로 이동-->
+        </li>
+
+        <li class="myPage">
+          <a href="#"><p class="header-text">마이페이지</p></a> <!--로그인 창으로 이동-->
+        </li>
+      </ul>
+  </nav>
+</header>
+<!--멘토로 로그인 헤더-->
+<header class="header-container "> <!--헤더 컨테이너-->
+  <nav class="nav-bar">
+    <div class="nav-left-login-mentor">
+      <a href="#">
+        <img src="logo.jpg" alt="logo" class="logo-img">
+      </a>
+    </div>
+    <div class="nav-right">
+      <ul>
+        <li>
+          <input type="text" name="search" value="" class="search-bar" placeholder="제목을 입력해주세요"/>
+        </li>
+        <li class="study">
+          <a href="#"><p class="header-text">스터디 모집</p></a> <!--스터디 목록으로 이동-->
+        </li>
+        <li class="menti">
+          <a href="#"><p class="header-text">멘티 모집</p></a> <!--멘티 모집 목록으로 이동-->
+        </li>
+        <li class="menti">
+          <a href="#"><p class="header-text">멘토 신청</p></a> <!--멘티 모집 목록으로 이동-->
+        </li>
+        <li class="login">
+          <a href="#"><p class="header-text">쪽지함</p></a> <!--로그인 창으로 이동-->
+        </li>
+
+        <li class="myPage">
+          <a href="#"><p class="header-text">마이페이지</p></a> <!--로그인 창으로 이동-->
+        </li>
+      </ul>
+  </nav>
+</header>
+<div class="container">
+
+
+  <h2>멘티 모집</h2>
+  <div class="grid-container">
+    <!-- 그리드 아이템 -->
+    <div class="mento-box">
+      <div class="mento-name-container">
+        <div class="mento-name"><h2>이종민</h2>
+        </div>
+        <a href="asd">
+          <div class="mento-apply">
+            결제
+          </div>
+        </a>
+      </div>
+      <ul class="mento-info-list">
+        <li>
+          <span class="mento-info">경력</span> <span class="mento-career">20년</span>
+        </li>
+        <li>
+          <span class="mento-info">비용</span>  <span class="mento-price">120,000원 (USD115)</span>
+        </li>
+        <li>
+          <span class="mento-info">대상</span>  <span class="mento-career">중등/고등/성인 </span>
+        </li>
+        <li>
+          <span class="mento-info">영역</span>  <span class="mento-career"></span>
+        </li>
+        <br>
+        <li>
+          <span class="mento-info">기간</span>  <span class="mento-career">23.09.16 ~ 23.10.16</span>
+        </li>
+      </ul>
+    </div>
+    <div class="mento-box">
+      <div class="mento-name-container">
+        <div class="mento-name"><h2>이종민</h2>
+        </div>
+        <a href="asd">
+          <div class="mento-apply">
+            결제
+          </div>
+        </a>
+      </div>
+      <ul class="mento-info-list">
+        <li>
+          <span class="mento-info">경력</span> <span class="mento-career">20년</span>
+        </li>
+        <li>
+          <span class="mento-info">비용</span>  <span class="mento-price">120,000원 (USD115)</span>
+        </li>
+        <li>
+          <span class="mento-info">대상</span>  <span class="mento-career">중등/고등/성인 </span>
+        </li>
+        <li>
+          <span class="mento-info">영역</span>  <span class="mento-career"></span>
+        </li>
+        <br>
+        <li>
+          <span class="mento-info">기간</span>  <span class="mento-career">23.09.16 ~ 23.10.16</span>
+        </li>
+      </ul>
+    </div>
+    <div class="mento-box">
+      <div class="mento-name-container">
+        <div class="mento-name"><h2>이종민</h2>
+        </div>
+        <a href="asd">
+          <div class="mento-apply">
+            결제
+          </div>
+        </a>
+      </div>
+      <ul class="mento-info-list">
+        <li>
+          <span class="mento-info">경력</span> <span class="mento-career">20년</span>
+        </li>
+        <li>
+          <span class="mento-info">비용</span>  <span class="mento-price">120,000원 (USD115)</span>
+        </li>
+        <li>
+          <span class="mento-info">대상</span>  <span class="mento-career">중등/고등/성인 </span>
+        </li>
+        <li>
+          <span class="mento-info">영역</span>  <span class="mento-career"></span>
+        </li>
+        <br>
+        <li>
+          <span class="mento-info">기간</span>  <span class="mento-career">23.09.16 ~ 23.10.16</span>
+        </li>
+      </ul>
+    </div>
+    <div class="mento-box">
+      <div class="mento-name-container">
+        <div class="mento-name"><h2>이종민</h2>
+        </div>
+        <a href="asd">
+          <div class="mento-apply">
+            결제
+          </div>
+        </a>
+      </div>
+      <ul class="mento-info-list">
+        <li>
+          <span class="mento-info">경력</span> <span class="mento-career">20년</span>
+        </li>
+        <li>
+          <span class="mento-info">비용</span>  <span class="mento-price">120,000원 (USD115)</span>
+        </li>
+        <li>
+          <span class="mento-info">대상</span>  <span class="mento-career">중등/고등/성인 </span>
+        </li>
+        <li>
+          <span class="mento-info">영역</span>  <span class="mento-career"></span>
+        </li>
+        <br>
+        <li>
+          <span class="mento-info">기간</span>  <span class="mento-career">23.09.16 ~ 23.10.16</span>
+        </li>
+      </ul>
+    </div>
+    <div class="mento-box">
+      <div class="mento-name-container">
+        <div class="mento-name"><h2>이종민</h2>
+        </div>
+        <a href="asd">
+          <div class="mento-apply">
+            결제
+          </div>
+        </a>
+      </div>
+      <ul class="mento-info-list">
+        <li>
+          <span class="mento-info">경력</span> <span class="mento-career">20년</span>
+        </li>
+        <li>
+          <span class="mento-info">비용</span>  <span class="mento-price">120,000원 (USD115)</span>
+        </li>
+        <li>
+          <span class="mento-info">대상</span>  <span class="mento-career">중등/고등/성인 </span>
+        </li>
+        <li>
+          <span class="mento-info">영역</span>  <span class="mento-career"></span>
+        </li>
+        <br>
+        <li>
+          <span class="mento-info">기간</span>  <span class="mento-career">23.09.16 ~ 23.10.16</span>
+        </li>
+      </ul>
+    </div>
+    <div class="mento-box">
+      <div class="mento-name-container">
+        <div class="mento-name"><h2>이종민</h2>
+        </div>
+        <a href="asd">
+          <div class="mento-apply">
+            결제
+          </div>
+        </a>
+      </div>
+      <ul class="mento-info-list">
+        <li>
+          <span class="mento-info">경력</span> <span class="mento-career">20년</span>
+        </li>
+        <li>
+          <span class="mento-info">비용</span>  <span class="mento-price">120,000원 (USD115)</span>
+        </li>
+        <li>
+          <span class="mento-info">대상</span>  <span class="mento-career">중등/고등/성인 </span>
+        </li>
+        <li>
+          <span class="mento-info">영역</span>  <span class="mento-career"></span>
+        </li>
+        <br>
+        <li>
+          <span class="mento-info">기간</span>  <span class="mento-career">23.09.16 ~ 23.10.16</span>
+        </li>
+      </ul>
+    </div>
+    <div class="mento-box">
+      <div class="mento-name-container">
+        <div class="mento-name"><h2>이종민</h2>
+        </div>
+        <a href="asd">
+          <div class="mento-apply">
+            결제
+          </div>
+        </a>
+      </div>
+      <ul class="mento-info-list">
+        <li>
+          <span class="mento-info">경력</span> <span class="mento-career">20년</span>
+        </li>
+        <li>
+          <span class="mento-info">비용</span>  <span class="mento-price">120,000원 (USD115)</span>
+        </li>
+        <li>
+          <span class="mento-info">대상</span>  <span class="mento-career">중등/고등/성인 </span>
+        </li>
+        <li>
+          <span class="mento-info">영역</span>  <span class="mento-career"></span>
+        </li>
+        <br>
+        <li>
+          <span class="mento-info">기간</span>  <span class="mento-career">23.09.16 ~ 23.10.16</span>
+        </li>
+      </ul>
+    </div>
+    <div class="mento-box">
+      <div class="mento-name-container">
+        <div class="mento-name"><h2>이종민</h2>
+        </div>
+        <a href="asd">
+          <div class="mento-apply">
+            결제
+          </div>
+        </a>
+      </div>
+      <ul class="mento-info-list">
+        <li>
+          <span class="mento-info">경력</span> <span class="mento-career">20년</span>
+        </li>
+        <li>
+          <span class="mento-info">비용</span>  <span class="mento-price">120,000원 (USD115)</span>
+        </li>
+        <li>
+          <span class="mento-info">대상</span>  <span class="mento-career">중등/고등/성인 </span>
+        </li>
+        <li>
+          <span class="mento-info">영역</span>  <span class="mento-career"></span>
+        </li>
+        <br>
+        <li>
+          <span class="mento-info">기간</span>  <span class="mento-career">23.09.16 ~ 23.10.16</span>
+        </li>
+      </ul>
+    </div>
+    <div class="mento-box">
+      <div class="mento-name-container">
+        <div class="mento-name"><h2>이종민</h2>
+        </div>
+        <a href="asd">
+          <div class="mento-apply">
+            결제
+          </div>
+        </a>
+      </div>
+      <ul class="mento-info-list">
+        <li>
+          <span class="mento-info">경력</span> <span class="mento-career">20년</span>
+        </li>
+        <li>
+          <span class="mento-info">비용</span>  <span class="mento-price">120,000원 (USD115)</span>
+        </li>
+        <li>
+          <span class="mento-info">대상</span>  <span class="mento-career">중등/고등/성인 </span>
+        </li>
+        <li>
+          <span class="mento-info">영역</span>  <span class="mento-career"></span>
+        </li>
+        <br>
+        <li>
+          <span class="mento-info">기간</span>  <span class="mento-career">23.09.16 ~ 23.10.16</span>
+        </li>
+      </ul>
+    </div>
+    <div class="mento-box">
+      <div class="mento-name-container">
+        <div class="mento-name"><h2>이종민</h2>
+        </div>
+        <a href="asd">
+          <div class="mento-apply">
+            결제
+          </div>
+        </a>
+      </div>
+      <ul class="mento-info-list">
+        <li>
+          <span class="mento-info">경력</span> <span class="mento-career">20년</span>
+        </li>
+        <li>
+          <span class="mento-info">비용</span>  <span class="mento-price">120,000원 (USD115)</span>
+        </li>
+        <li>
+          <span class="mento-info">대상</span>  <span class="mento-career">중등/고등/성인 </span>
+        </li>
+        <li>
+          <span class="mento-info">영역</span>  <span class="mento-career"></span>
+        </li>
+        <br>
+        <li>
+          <span class="mento-info">기간</span>  <span class="mento-career">23.09.16 ~ 23.10.16</span>
+        </li>
+      </ul>
+    </div>
+    <div class="mento-box">
+      <div class="mento-name-container">
+        <div class="mento-name"><h2>이종민</h2>
+        </div>
+        <a href="asd">
+          <div class="mento-apply">
+            결제
+          </div>
+        </a>
+      </div>
+      <ul class="mento-info-list">
+        <li>
+          <span class="mento-info">경력</span> <span class="mento-career">20년</span>
+        </li>
+        <li>
+          <span class="mento-info">비용</span>  <span class="mento-price">120,000원 (USD115)</span>
+        </li>
+        <li>
+          <span class="mento-info">대상</span>  <span class="mento-career">중등/고등/성인 </span>
+        </li>
+        <li>
+          <span class="mento-info">영역</span>  <span class="mento-career"></span>
+        </li>
+        <br>
+        <li>
+          <span class="mento-info">기간</span>  <span class="mento-career">23.09.16 ~ 23.10.16</span>
+        </li>
+      </ul>
+    </div>
+    <div class="mento-box">
+      <div class="mento-name-container">
+        <div class="mento-name"><h2>이종민</h2>
+        </div>
+        <a href="asd">
+          <div class="mento-apply">
+            결제
+          </div>
+        </a>
+      </div>
+      <ul class="mento-info-list">
+        <li>
+          <span class="mento-info">경력</span> <span class="mento-career">20년</span>
+        </li>
+        <li>
+          <span class="mento-info">비용</span>  <span class="mento-price">120,000원 (USD115)</span>
+        </li>
+        <li>
+          <span class="mento-info">대상</span>  <span class="mento-career">중등/고등/성인 </span>
+        </li>
+        <li>
+          <span class="mento-info">영역</span>  <span class="mento-career"></span>
+        </li>
+        <br>
+        <li>
+          <span class="mento-info">기간</span>  <span class="mento-career">23.09.16 ~ 23.10.16</span>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

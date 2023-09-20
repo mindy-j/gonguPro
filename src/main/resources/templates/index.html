@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>메인 페이지</title>
+  <link rel="stylesheet" href="../../static/css/index.css"/>
+  <style>
+
+  </style>
+</head>
+<body>
+<div class="container"> <!--전체를 감싸는 컨테이너-->
+  <header class="header-container"> <!--헤더 컨테이너-->
+    <nav class="nav-bar">
+      <div class="nav-left">
+        <a href="">
+          <img src="./logo.png" alt="logo" class="logo-img">
+        </a>
+      </div>
+      <div class="nav-right">
+        <ul>
+          <li>
+            <input type="text" name="search" value="" class="search-bar" placeholder="제목을 입력해주세요"/>
+          </li>
+          <li class="study">
+            <a href="#"><p class="header-text">스터디 모집</p></a> <!--스터디 목록으로 이동-->
+          </li>
+          <li class="menti">
+            <a href="#"><p class="header-text">멘티 모집</p></a> <!--멘티 모집 목록으로 이동-->
+          </li>
+          <li class="login">
+            <a href="login.html"><p class="header-text">로그인</p></a> <!--로그인 창으로 이동-->
+          </li>
+        </ul>
+    </nav>
+  </header>
+  <!--로그인 후 헤더-->
+  <header class="header-container none"> <!--헤더 컨테이너-->
+    <nav class="nav-bar">
+      <div class="nav-left-login">
+        <a href="#">
+          <img src="logo.jpg" alt="logo" class="logo-img">
+        </a>
+      </div>
+      <div class="nav-right">
+        <ul>
+          <li>
+            <input type="text" name="search" value="" class="search-bar" placeholder="제목을 입력해주세요"/>
+          </li>
+          <li class="study">
+            <a href="#"><p class="header-text">스터디 모집</p></a> <!--스터디 목록으로 이동-->
+          </li>
+          <li class="menti">
+            <a href="#"><p class="header-text">멘티 모집</p></a> <!--멘티 모집 목록으로 이동-->
+          </li>
+          <li class="login">
+            <a href="#"><p class="header-text">쪽지함</p></a> <!--로그인 창으로 이동-->
+          </li>
+
+          <li class="myPage">
+            <a href="#"><p class="header-text">마이페이지</p></a> <!--로그인 창으로 이동-->
+          </li>
+        </ul>
+    </nav>
+  </header>
+  <!--멘토로 로그인 헤더-->
+  <header class="header-container none"> <!--헤더 컨테이너-->
+    <nav class="nav-bar">
+      <div class="nav-left-login-mentor">
+        <a href="#">
+          <img src="logo.jpg" alt="logo" class="logo-img">
+        </a>
+      </div>
+      <div class="nav-right">
+        <ul>
+          <li>
+            <input type="text" name="search" value="" class="search-bar" placeholder="제목을 입력해주세요"/>
+          </li>
+          <li class="study">
+            <a href="#"><p class="header-text">스터디 모집</p></a> <!--스터디 목록으로 이동-->
+          </li>
+          <li class="menti">
+            <a href="#"><p class="header-text">멘티 모집</p></a> <!--멘티 모집 목록으로 이동-->
+          </li>
+          <li class="menti">
+            <a href="#"><p class="header-text">멘토 신청</p></a> <!--멘티 모집 목록으로 이동-->
+          </li>
+          <li class="login">
+            <a href="#"><p class="header-text">쪽지함</p></a> <!--로그인 창으로 이동-->
+          </li>
+
+          <li class="myPage">
+            <a href="#"><p class="header-text">마이페이지</p></a> <!--로그인 창으로 이동-->
+          </li>
+        </ul>
+    </nav>
+  </header>
+  <section class="section-banner">
+    <div class="slides">
+      <img src="../../static/image/banner1.png" class="banner" />
+      <img src="../../static/image/banner2.png" class="banner" />
+      <img src="../../static/image/banner3.png" class="banner" />
+    </div>
+    <button class="prev" onclick="moveSlides(-1)">&#10094;</button>
+    <button class="next" onclick="moveSlides(1)">&#10095;</button>
+  </section>
+  <div class="board-container">
+    <div class="board-box">
+      <section class="section-good-board">
+        <div class="section-title">
+          <h1>🔥 이번주 공유 인기글</h1>
+        </div>
+
+        <div class="good-board-container">
+          <ul>
+            <li>
+              <a href="#">
+                <div class="good-board">
+                  <div class="category-img-box" >
+                    <img src="asd" name="카테고리이미지" class="category-img"/>
+                  </div>
+                  <div class="deadline-box" >
+                    <p class="deadline" name="마감일">마감일 | 2023.09.20 </p>
+                  </div>
+                  <div class="content-box" name="내용">
+                    <p class="content">투자자산 운용사 자격증 스터디 모집 합니다</p>
+                  </div>
+                  <div class="category-box" name="category">
+                    <p class="category" name="카테고리">경영,회계</p>
+                  </div>
+                  <div class="address-box">
+                    <p class="address" name="주소">서울시 노원구 중계동</p>
+                  </div>
+                  <div class="user-box">
+                    <span class="user-nickname">영차~</span>
+                    <span class="read-count">121</span>
+                    <span class="commend-count">0</span>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a>
+                <div class="good-board">
+                  <div class="category-img-box" >
+                    <img src="asd" name="카테고리이미지"/>
+                  </div>
+                  <div class="deadline-box" >
+                    <p class="deadline" name="마감일">마감일 | 2023.09.20 </p>
+                  </div>
+                  <div class="content-box" name="내용">
+                    <p class="content">투자자산 운용사 자격증 스터디 모집 합니다</p>
+                  </div>
+                  <div class="category-box" name="category">
+                    <p class="category" name="카테고리">경영,회계</p>
+                  </div>
+                  <div class="address-box">
+                    <p class="address" name="주소">서울시 노원구 중계동</p>
+                  </div>
+                  <div class="user-box">
+                    <span class="user-nickname">영차~</span>
+                    <span class="read-count">121</span>
+                    <span class="commend-count">0</span>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a>
+                <div class="good-board">
+                  <div class="category-img-box" >
+                    <img src="asd" name="카테고리이미지"/>
+                  </div>
+                  <div class="deadline-box" >
+                    <p class="deadline" name="마감일">마감일 | 2023.09.20 </p>
+                  </div>
+                  <div class="content-box" name="내용">
+                    <p class="content">투자자산 운용사 자격증 스터디 모집 합니다</p>
+                  </div>
+                  <div class="category-box" name="category">
+                    <p class="category" name="카테고리">경영,회계</p>
+                  </div>
+                  <div class="address-box">
+                    <p class="address" name="주소">서울시 노원구 중계동</p>
+                  </div>
+                  <div class="user-box">
+                    <span class="user-nickname">영차~</span>
+                    <span class="read-count">121</span>
+                    <span class="commend-count">0</span>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a>
+                <div class="good-board">
+                  <div class="category-img-box" >
+                    <img src="asd" name="카테고리이미지"/>
+                  </div>
+                  <div class="deadline-box" >
+                    <p class="deadline" name="마감일">마감일 | 2023.09.20 </p>
+                  </div>
+                  <div class="content-box" name="내용">
+                    <p class="content">투자자산 운용사 자격증 스터디 모집 합니다</p>
+                  </div>
+                  <div class="category-box" name="category">
+                    <p class="category" name="카테고리">경영,회계</p>
+                  </div>
+                  <div class="address-box">
+                    <p class="address" name="주소">서울시 노원구 중계동</p>
+                  </div>
+                  <div class="user-box">
+                    <span class="user-nickname">영차~</span>
+                    <span class="read-count">121</span>
+                    <span class="commend-count">0</span>
+                  </div>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section-good-board">
+        <div class="section-title">
+          <h1>🔥 스터디 모집</h1>
+        </div>
+
+        <div class="good-board-container">
+          <ul>
+            <li>
+              <a>
+                <div class="good-board">
+                  <div class="category-img-box" >
+                    <img src="asd" name="카테고리이미지"/>
+                  </div>
+                  <div class="deadline-box" >
+                    <p class="deadline" name="마감일">마감일 | 2023.09.20 </p>
+                  </div>
+                  <div class="content-box" name="내용">
+                    <p class="content">투자자산 운용사 자격증 스터디 모집 합니다</p>
+                  </div>
+                  <div class="category-box" name="category">
+                    <p class="category" name="카테고리">경영,회계</p>
+                  </div>
+                  <div class="address-box">
+                    <p class="address" name="주소">서울시 노원구 중계동</p>
+                  </div>
+                  <div class="user-box">
+                    <span class="user-nickname">영차~</span>
+                    <span class="read-count">121</span>
+                    <span class="commend-count">0</span>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a>
+                <div class="good-board">
+                  <div class="category-img-box" >
+                    <img src="asd" name="카테고리이미지"/>
+                  </div>
+                  <div class="deadline-box" >
+                    <p class="deadline" name="마감일">마감일 | 2023.09.20 </p>
+                  </div>
+                  <div class="content-box" name="내용">
+                    <p class="content">투자자산 운용사 자격증 스터디 모집 합니다</p>
+                  </div>
+                  <div class="category-box" name="category">
+                    <p class="category" name="카테고리">경영,회계</p>
+                  </div>
+                  <div class="address-box">
+                    <p class="address" name="주소">서울시 노원구 중계동</p>
+                  </div>
+                  <div class="user-box">
+                    <span class="user-nickname">영차~</span>
+                    <span class="read-count">121</span>
+                    <span class="commend-count">0</span>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a>
+                <div class="good-board">
+                  <div class="category-img-box" >
+                    <img src="asd" name="카테고리이미지"/>
+                  </div>
+                  <div class="deadline-box" >
+                    <p class="deadline" name="마감일">마감일 | 2023.09.20 </p>
+                  </div>
+                  <div class="content-box" name="내용">
+                    <p class="content">투자자산 운용사 자격증 스터디 모집 합니다</p>
+                  </div>
+                  <div class="category-box" name="category">
+                    <p class="category" name="카테고리">경영,회계</p>
+                  </div>
+                  <div class="address-box">
+                    <p class="address" name="주소">서울시 노원구 중계동</p>
+                  </div>
+                  <div class="user-box">
+                    <span class="user-nickname">영차~</span>
+                    <span class="read-count">121</span>
+                    <span class="commend-count">0</span>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a>
+                <div class="good-board">
+                  <div class="category-img-box" >
+                    <img src="asd" name="카테고리이미지"/>
+                  </div>
+                  <div class="deadline-box" >
+                    <p class="deadline" name="마감일">마감일 | 2023.09.20 </p>
+                  </div>
+                  <div class="content-box" name="내용">
+                    <p class="content">투자자산 운용사 자격증 스터디 모집 합니다</p>
+                  </div>
+                  <div class="category-box" name="category">
+                    <p class="category" name="카테고리">경영,회계</p>
+                  </div>
+                  <div class="address-box">
+                    <p class="address" name="주소">서울시 노원구 중계동</p>
+                  </div>
+                  <div class="user-box">
+                    <span class="user-nickname">영차~</span>
+                    <span class="read-count">121</span>
+                    <span class="commend-count">0</span>
+                  </div>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section-good-board">
+        <div class="section-title">
+          <h1>🔥 멘티 모집</h1>
+        </div>
+
+        <div class="good-board-container">
+          <ul>
+            <li>
+
+              <div class="mento-box">
+                <div class="mento-name-container">
+                  <div class="mento-name"><h2>이종민</h2>
+                  </div>
+                  <a href="asd">
+                    <div class="mento-apply">
+                      결제
+                    </div>
+                  </a>
+                </div>
+                <ul class="mento-info-list">
+                  <li>
+                    <span class="mento-info">경력</span> <span class="mento-career">20년</span>
+                  </li>
+                  <li>
+                    <span class="mento-info">비용</span>  <span class="mento-price">120,000원 (USD115)</span>
+                  </li>
+                  <li>
+                    <span class="mento-info">대상</span>  <span class="mento-career">중등/고등/성인 </span>
+                  </li>
+                  <li>
+                    <span class="mento-info">영역</span>  <span class="mento-career"></span>
+                  </li>
+                  <br>
+                  <li>
+                    <span class="mento-info">기간</span>  <span class="mento-career">23.09.16 ~ 23.10.16</span>
+                  </li>
+                </ul>
+              </div>
+            </li>
+
+            <li>
+              <div class="mento-box">
+                <div class="mento-name-container">
+                  <div class="mento-name"><h2>이종민</h2>
+                  </div>
+                  <a href="asd">
+                    <div class="mento-apply">
+                      결제
+                    </div>
+                  </a>
+                </div>
+                <ul class="mento-info-list">
+                  <li>
+                    <span class="mento-info">경력</span> <span class="mento-career">20년</span>
+                  </li>
+                  <li>
+                    <span class="mento-info">비용</span>  <span class="mento-price">120,000원 (USD115)</span>
+                  </li>
+                  <li>
+                    <span class="mento-info">대상</span>  <span class="mento-career">중등/고등/성인 </span>
+                  </li>
+                  <li>
+                    <span class="mento-info">영역</span>  <span class="mento-career"></span>
+                  </li>
+                  <br>
+                  <li>
+                    <span class="mento-info">기간</span>  <span class="mento-career">23.09.16 ~ 23.10.16</span>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <div class="mento-box">
+                <div class="mento-name-container">
+                  <div class="mento-name"><h2>이종민</h2>
+                  </div>
+                  <a href="asd">
+                    <div class="mento-apply">
+                      결제
+                    </div>
+                  </a>
+                </div>
+                <ul class="mento-info-list">
+                  <li>
+                    <span class="mento-info">경력</span> <span class="mento-career">20년</span>
+                  </li>
+                  <li>
+                    <span class="mento-info">비용</span>  <span class="mento-price">120,000원 (USD115)</span>
+                  </li>
+                  <li>
+                    <span class="mento-info">대상</span>  <span class="mento-career">중등/고등/성인 </span>
+                  </li>
+                  <li>
+                    <span class="mento-info">영역</span>  <span class="mento-career"></span>
+                  </li>
+                  <br>
+                  <li>
+                    <span class="mento-info">기간</span>  <span class="mento-career">23.09.16 ~ 23.10.16</span>
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
+  </div>
+
+
+
+</div><!--컨테이너-->
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-box1">
+      <img src="la.jpg" class="footer-logo"/>
+      <br>
+      <br>
+      <br>
+      <p class="footer-info">
+        Contact team.GongU.official@gmail.com
+      </p>
+      <p class="footer-info">
+        Copyright GongU.All rights reserved
+      </p>
+    </div>
+    <div class="footer-box2">
+      <ul>
+        <li><a href="#">이용약관</a></li>
+        <li><a>개인정보 처리방침</a></li>
+        <li><a>서비스소개</a></li>
+        <li><a>광고상품소개</a></li>
+      </ul>
+    </div>
+  </div>
+
+</footer>
+
+
+
+
+
+
+<script src="../../static/js/index.js">
+</script>
+</body>
+</html>

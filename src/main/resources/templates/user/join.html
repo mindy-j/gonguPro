@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../../static/css/index.css"/>
+  <link rel="stylesheet" href="../../static/css/user/join.css"/>
+</head>
+<body>
+
+
+
+<section class="login-form">
+  <form action="">
+    <div class="int-area">
+      <input type="text" name="id" id="id" autocomplete="off" required>
+      <label for="id">아이디  <button class="id-btn" type="button">중복확인</button></label>
+    </div>
+    <div class="int-area">
+      <input type="password" name="pw" id="pw" autocomplete="off" required>
+      <label for="pw">비밀번호</label>
+    </div>
+    <div class="int-area">
+      <input type="password" name="confirm-password" id="confirm-password" autocomplete="off" required>
+      <label for="confirm-password">비밀번호 확인</label> <span class="confirm-password-ok none">비밀번호가 일치합니다!</span> <span class="confirm-password-no none ">비밀번호가 일치하지 않습니다!</span>
+    </div>
+    <div class="int-area">
+      <input type="password" name="pw" id="pw" autocomplete="off" required>
+      <label for="pw">닉네임</label>
+    </div>
+    <div class="int-area">
+      <input type="email" name="email" id="email" autocomplete="off" required>
+      <label for="pw">이메일</label>
+    </div>
+    <div class="int-area">
+      <input type="text" name="phone" id="phone" autocomplete="off" required>
+      <label for="pw">전화번호</label>
+    </div>
+
+
+    <div class="int-area">
+      <label for="category">
+        전공분야
+      </label>
+      <select id="category" name="category">
+        <option value="">-- 선택하세요 --</option>
+        <optgroup label="수학">
+          <option value="">산술학</option>
+          <option value="">대수학</option>
+          <option value="">기하학</option>
+          <option value="">위상수학</option>
+          <option value="">해석학</option>
+        </optgroup>
+        <optgroup label="과학">
+          <option value="">생명과학</option>
+          <option value="">기초과학</option>
+          <option value="">자연과학</option>
+          <option value="">과학기술</option>
+        </optgroup>
+        <optgroup label="국어">
+          <option value="">국어학</option>
+          <option value="">고전문학</option>
+          <option value="">현대문학</option>
+          <option value="">국어국문</option>
+        </optgroup>
+        <optgroup label="언어">
+          <option value="">영어</option>
+          <option value="">중국어</option>
+          <option value="">프랑스어</option>
+          <option value="">일본어</option>
+          <option value="">독일어</option>
+        </optgroup>
+        <optgroup label="기타">
+          <option value="etc">기타</option>
+        </optgroup>
+      </select>
+
+    </div>
+    <div class="int-area">
+      <div class="info" id="info__birth">
+        <select class="box" id="birth-year">
+          <option disabled selected>출생 연도</option>
+        </select>
+        <select class="box" id="birth-month">
+          <option disabled selected>월</option>
+        </select>
+        <select class="box" id="birth-day">
+          <option disabled selected>일</option>
+        </select>
+      </div>
+    </div>
+    <div class="btn-area">
+      <button type="submit" id="btn">회원가입</button>
+    </div>
+  </form>
+</section>
+<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+<script src="../../static/js/join.js">
+
+
+
+
+
+</script>
+</body>
+</html>
