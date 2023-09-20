@@ -1,0 +1,194 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+.note-wrap{
+    position: relative;
+    width: 100vw;
+    min-width: 800px;
+}
+
+/* 쪽지 헤더 */
+.note-header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 50px;
+    background-color: orange;
+    color: white;
+    border-bottom: 1px solid gray;
+    padding: 15px;
+    justify-content: space-between;
+    position: relative;
+    z-index: 100;
+}
+
+/* 로고 */
+.note-main-box{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.gongu-main{
+    font-size: 15px;
+    font-weight: bold;
+    margin-right: 5px;
+    color: white;
+}
+
+.note-main{
+    font-size: 20px;
+    color: white;
+}
+.logout{
+    font-size: 15px;
+}
+
+.note-body{
+    height: 100vh;
+    width: 100vw;
+    margin-top: -50px;
+    padding-top: 50px;
+    display: flex;
+    flex-direction: row;
+}
+
+/* 메뉴 상자 */
+.menu-container{
+    width: 150px;
+    height: 100%;
+    border-right: 1px solid gray;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btn-note-write{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 120px;
+    font-size: 15px;
+    margin: 15px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    background-color: orange;
+    color: white;
+}
+
+.receive, .send{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    width: 100%;
+    background-color: gainsboro;
+    border-top: 1px solid gray;
+}
+.send{
+    background-color: white;
+    border-bottom: 1px solid gray;
+}
+
+/* 쪽지 내용 상자 */
+.note-container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.note-send{
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 23px;
+    margin-left: 50px;
+}
+
+.note-table{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 20px 0;
+    padding: 0 50px;
+}
+.th{
+    background-color: gainsboro;
+    border-top: 1px solid gray;
+    width: 100%;
+}
+.th, .tr{
+    display: flex;
+    flex-direction: row;
+    border-left: 1px solid gray;
+    min-width: 550px;
+}
+.tr{
+    background-color: ghostwhite;
+}
+.td{
+    font-size: 15px;
+    padding: 5px 10px;
+    border-right: 1px solid gray;
+    border-bottom: 1px solid gray;
+}
+
+.note-user{
+    height: 30px;
+    min-width: 150px;
+    width: 0%;
+}
+
+.note-title{
+    height: 30px;
+    min-width: 250px;
+    width: 100%;
+}
+
+.note-date{
+    height: 30px;
+    min-width: 100px;
+    width: 0%;
+}
+
+.note-delete{
+    height: 30px;
+    min-width: 50px;
+    width: 0%;
+    padding-left: 9px;
+    display: flex;
+    justify-content: center;
+}
+
+.btn-delete{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    background-color: red;
+    color: white;
+    border-radius: 5px;
+}
+
+.del{
+    height: 30px;
+    min-width: 50px;
+    width: 0%;
+    border-right: 1px solid gray;
+    border-bottom: 1px solid gray;
+}
+
+.note-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

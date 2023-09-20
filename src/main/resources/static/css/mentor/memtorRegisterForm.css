@@ -1,0 +1,95 @@
+
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    width:100%;
+    height:100%;
+    background-color: antiquewhite;
+    display: flex;
+    margin-top: 20px;
+}
+p{
+    margin-top: 10px;
+    font-weight: bold;
+}
+.full-box{
+    width: 900px;
+    height: 100%;
+    margin: 0 auto;
+    background-color: white;
+}
+.form-full{
+    margin-left: 100px;
+    margin-top: 50px;
+}
+.ment{
+    margin-bottom: 50px;
+}
+.ed-letter, .ed-ca-letter, .ed-certi-letter, .ed-file-letter{
+    margin-bottom: 5px;
+}
+.education,.career,.Certificate,.Certificate-file {
+    font-size: 20px;
+    font-weight: bold;
+}
+.memo{
+    color: red;
+}
+.edu{
+    height: 30px;
+}
+option{
+    text-align: center;
+}
+.file-small-div{
+    height: 50px; 
+    width: 600px;
+    border: 1px solid gray;
+}
+.file-small-div label{
+    display: inline-block;
+    padding: .5em .75em;
+    background-color: #fdfdfd;
+    color: black;
+    cursor: pointer;
+    border: 1px solid #ebebeb;
+    border-radius: .25em;
+    margin-top: 5px;
+}
+
+#input_file{
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    border: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+ 
+}
+
+.btn-div{
+    margin-top: 20px;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+}
+button{
+    border-radius: 10px;
+    width: 200px;
+    height: 50px;
+   
+}
+.btn1{
+    margin-right: 10px;
+    background-color: #166cea;
+    color: white;
+}
+.btn2{
+   
+    background-color: red;
+    color: white;
+}

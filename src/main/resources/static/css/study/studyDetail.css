@@ -1,0 +1,102 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.fulldiv{
+    width: 900px;
+    height: 100%;
+    margin: 0 auto;
+}
+.goback{
+    width : 30px; 
+    height: 30;
+    cursor: pointer;
+}
+.studyTitle{
+   
+    height: 100px;
+    line-height: 100px;
+}
+
+.userAndUpload *{
+    vertical-align: bottom;
+}
+
+.writerUser{
+    font-weight: bold;
+}
+
+th, td{
+   
+    width: 100px;
+    height: 40px;
+ 
+ }
+ .secdiv{
+  
+    border-radius: 5px;  
+    margin-top: 50px;
+    display: flex;
+ }
+
+ .tablediv1{
+    margin-right: 50px;
+ }
+ .one{
+    color: #717171;
+ }
+ .se{
+    width: 150px;
+    font-weight: bold;
+ }
+
+
+.ourStudtTitle{
+height: 150px;
+line-height: 150px;
+}
+.ourStudtIs{
+font-weight: bold;
+}
+
+.checkDiv{
+display: flex;
+justify-content: end;
+width: 800px;
+}
+
+.replyFulldiv{
+height: 100px;
+margin-top: 70px;
+
+}
+.replyContent{
+font-family: inherit;
+border: 2px solid rgb(225, 225, 225);
+border-radius: 16px;
+width: 800px;
+}
+
+.replyinnerfull{
+display: flex;
+vertical-align: middle;
+}
+input{
+height: 50px;
+}
+.replyRegiter, .replyRegiterUp, .replyRegiterDel{
+color: #fff;
+font-size: 12px;
+background-color: #333;
+padding: 7px 10px;
+border-radius: 20px;
+cursor: pointer;
+width: 90px;
+height: 30px;
+margin-top: 10px;
+
+}
+.buttonDiv{
+display: flex;
+justify-content: end;
+}

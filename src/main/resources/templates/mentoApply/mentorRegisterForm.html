@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../static/css/mentor/memtorRegisterForm.css">
+ 
+</head>
+<body>
+    <div class="full-box"><!--완전 큰박스-->
+        <div class="form-full"><!--신청을 위한 박스-->
+            <div class="ment">
+                <h1>멘토 신청</h1>
+                <p>멘토가 되어 가르침을 공유해주세요!</p>
+            </div>
+
+        <form action="" method=""> <!--백작업부분의 시작 폼-->
+
+            <div class="education-div"> <!--학력을 담는 총 부분-->
+                <div class="ed-letter"> <!--글자만 담은 상자-->
+                    <span class="education">학력</span> 
+                    <span class="memo">거짓으로 입력한 학력은 멘토승인이 거부 될 수 있습니다</span>
+                </div>
+
+                <div class="ed-input-div"><!--input을 담은 상자-->
+                    <input type="text" name="edu" placeholder="  00대학교 " style="height: 30px; width: 300px;">
+                        <select class="s" id="" name="" style="height: 33px; width: 300px;">
+                            <option value="" >졸 업</option>
+                            <option value="" >중 퇴</option>
+                            <option value="" >재학중</option>
+                            <option value="" >휴 학</option>
+                        </select>
+                </div> <!--임시용-->  
+            </div><!--학력을 담는 총 부분 끝-->
+            <br>
+
+
+            <!--경력을 쓰는 부분-->
+            <div class="career-div">
+                <div class="ed-ca-letter"><!--경력 안내 글자를 담은 상자-->
+                    <span class="career">경력</span> 
+                    <span class="memo">거짓으로 입력한 학력은 멘토승인이 거부 될 수 있습니다</span>
+                </div>
+                <div>
+                    <input type="text" name="careerform" placeholder="     경력사항 입력 자세히 적어주세요  " style="height: 200px; width: 600px;">
+                </div>
+            </div><!--경력 입력부분 끝-->
+            <br>
+
+
+            <!--자격증 쓰는 부분-->
+            <div class="Certificate-div">
+                <div class="ed-certi-letter">  <!--자격증 글자 담은 상자-->
+                    <span class="Certificate">자격증</span> 
+                    <span class="memo">자격증 입력 후 첨부파일에 증명서를 등록해주세요</span>
+                </div>
+                <div>
+                    <input type="text" name="ca" placeholder="     보유 자격증을 입력해주세요" style="height: 100px; width: 600px;">
+                </div>
+            </div><!--자격증 쓰는 부분 끝-->
+            <br>
+
+            <!--파일 첨부 부분-->
+            <div class="Certificate-file-div">
+                <div class="ed-file-letter"><!--첨부파일 글자 담은 상자-->
+                    <span class="Certificate-file">첨부파일</span> 
+                    <span class="memo">파일은 최대 5개까지 등록이 가능합니다</span>
+                </div>
+                <div class="file-small-div">
+                    <label for="input_file">업로드</label>
+                    <input type="file" id="input_file" name="Certificatefile">
+                </div>
+            </div> <!--파일 첨부 부분 끝-->
+            <br>
+            <div class="btn-div">
+                <button class="btn1" type="submit">신청 하기</button>
+                <button class="btn2" type="reset">신청 취소</button>
+            </div>
+
+        </form><!--백작업부분의 폼-->
+        </div><!--신청을 위한 박스-->
+    </div><!--완전 큰박스-->
+</body>
+</html>

@@ -1,0 +1,44 @@
+
+.form-group{
+    margin-bottom: 15px;
+}
+
+#recipient{
+    width: 1000px;
+    height: 30px;
+    padding-left: 10px;
+}
+#summernote{
+    width: 1100px;
+    min-height: 300px;
+    margin-left: 15px;
+    padding:5px 0 0 10px;
+    resize: none;
+}
+#summernote::placeholder{
+    line-height: 450px;
+}
+
+label{
+    display: block;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+button{
+    float: right;
+    width: 100px;
+    height: 30px;
+    background-color:lightskyblue;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.note-img{
+    width: 30px;
+    margin-right: 5px;
+}
+.note-codable{
+    resize: none;
+}
