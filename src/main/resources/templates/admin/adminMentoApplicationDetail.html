@@ -4,98 +4,100 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>멘토 신청함 상세</title>
-    <link rel="stylesheet" href="../../static/css/admin/adminMain.css">
-    <link rel="stylesheet" href="../../static/css/admin/adminHeader.css">
-    <link rel="stylesheet" href="../../static/css/admin/adminMentoApplicationDetail.css">
+    <link rel="stylesheet" href="adminMain.css">
+    <link rel="stylesheet" href="adminHeader.css">
+    <link rel="stylesheet" href="adminMentoApplicationDetail.css">
 </head>
 <body>
-    <header class="header">
-        <span class="logo">GongU</span>
-        <div class="header-container">
-            
-            <nav class="header-nav">
-                <a href="adminMain.html">회원 관리</a>
-                <a href="adminStudy.html">게시글 관리</a>
-                <a href="adminMentoApplication.html">신청함 관리</a>
-                <a href="adminNote.html">관리자 쪽지함</a>
-            </nav>
-            
+<header class="header">
+    <span class="logo">GongU</span>
+    <div class="header-container">
+
+        <nav class="header-nav">
+            <a href="adminMain.html">회원 관리</a>
+            <a href="adminStudy.html">게시글 관리</a>
+            <a href="adminMentoApplication.html">신청함 관리</a>
+            <a href="adminNote.html">관리자 쪽지함</a>
+        </nav>
+
+    </div>
+    <a href="">Logout</a>
+</header>
+<div class="main-container">
+    <div class="left-container">
+        <div class="left-list check"><a href="adminMentoApplication.html">멘토 신청함</a></div>
+        <div class="left-list"><a href="adminClassApplication.html">수업계획 신청함</a></div>
+    </div>
+    <div class="right-container">
+        <div class="right-title">
+            <div class="right-title-sub">멘토 상세페이지</div>
         </div>
-        <a href="">Logout</a>
-    </header>
-    <div class="main-container">
-        <div class="left-container">
-            <div class="left-list check"><a href="adminMentoApplication.html">멘토 신청함</a></div>
-            <div class="left-list"><a href="adminClassApplication.html">수업계획 신청함</a></div>
-        </div>
-        <div class="right-container">
-            <div class="right-title">멘토 상세페이지</div>
- 
-            <div class="category-box">
-                <div class="category-container">
-                    <div class="category">
-                        <div class="category-title">아이디</div>
-                        <div class="category-content">test</div>
-                    </div>                    
-                    <div>
-                        <div class="category-title">전화번호</div>
-                        <div class="category-content">010-1234-5678</div>
-                    </div>
-                </div>
-                <div class="category-container">
-                    <div class="category">
-                        <div class="category-title">이름</div>
-                        <div class="category-content">이종민</div>
-                    </div>                    
-                    <div>
-                        <div class="category-title">생년월일</div>
-                        <div class="category-content">1900년 09월 17일</div>
-                    </div>
-                </div>
 
-                <div class="category-container">
-                    <div class="category">
-                        <div class="category-title">전공 분야</div>
-                        <div class="category-content">고등수학</div>
-                    </div>                  
-                    <div>
-                        <div class="category-title">학력</div>
-                        <div class="category-content">
-                            <div>서울대학교</div>&nbsp;
-                            <div>(졸업)</div>
-                        </div>
-                    </div>
-                    
+        <div class="category-box">
+            <div class="category-container">
+                <div class="category">
+                    <div class="category-title">아이디</div>
+                    <div class="category-content">test</div>
                 </div>
-
                 <div>
-                    <div class="category-title">경력</div>
-                    <div class="category-content-long">서울 코리아아카데이미 노원점 2023.05.26 ~ 2023.09.15</div>
-                </div>
-
-                <div>
-                    <div class="category-title">자격증</div>
-                    <div class="category-content-long">맛집탐방 한식 자격증1급, 맛집탐방 중식 자격증 1급, 맛집탐방 일식 자격증 1급</div>
-                </div>
-
-                <div>
-                    <div class="category-title file">첨부 파일</div>
-                    <div class="category-container">
-                        <div class="img-box"><img src="https://sw.tta.or.kr/assets/img/content/CSTS_certificate_sample.jpg" alt="" class="img"></div>
-                        <div class="img-box"><img src="https://sw.tta.or.kr/assets/img/content/CSTS_certificate_sample.jpg" alt="" class="img"></div>
-                        <div class="img-box"><img src="https://sw.tta.or.kr/assets/img/content/CSTS_certificate_sample.jpg" alt="" class="img"></div>
-                        <div class="img-box"><img src="https://sw.tta.or.kr/assets/img/content/CSTS_certificate_sample.jpg" alt="" class="img"></div>
-                        <div class="img-box"><img src="https://sw.tta.or.kr/assets/img/content/CSTS_certificate_sample.jpg" alt="" class="img"></div>
-                    </div>
-                </div> 
-                <div class="btn-box">
-                    <button class="approval-btn">승 인</button>
-                    <button class="refusal-btn">거 부</button>
-                    <a href="adminMentoApplication.html"><button class="back-btn">뒤로가기</button></a>
+                    <div class="category-title">전화번호</div>
+                    <div class="category-content">010-1234-5678</div>
                 </div>
             </div>
-        </div><!--"right-container" 끝-->            
-    </div><!--"main-container" 끝-->
-    
+            <div class="category-container">
+                <div class="category">
+                    <div class="category-title">이름</div>
+                    <div class="category-content">이종민</div>
+                </div>
+                <div>
+                    <div class="category-title">생년월일</div>
+                    <div class="category-content">1900년 09월 17일</div>
+                </div>
+            </div>
+
+            <div class="category-container">
+                <div class="category">
+                    <div class="category-title">전공 분야</div>
+                    <div class="category-content">고등수학</div>
+                </div>
+                <div>
+                    <div class="category-title">학력</div>
+                    <div class="category-content">
+                        <div>서울대학교</div>&nbsp;
+                        <div>(졸업)</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div>
+                <div class="category-title">경력</div>
+                <div class="category-content-long">서울 코리아아카데이미 노원점 2023.05.26 ~ 2023.09.15</div>
+            </div>
+
+            <div>
+                <div class="category-title">자격증</div>
+                <div class="category-content-long">맛집탐방 한식 자격증1급, 맛집탐방 중식 자격증 1급, 맛집탐방 일식 자격증 1급</div>
+            </div>
+
+            <div>
+                <div class="category-title file">첨부 파일</div>
+                <div class="category-container">
+                    <div class="img-box"><img src="https://sw.tta.or.kr/assets/img/content/CSTS_certificate_sample.jpg" alt="" class="img"></div>
+                    <div class="img-box"><img src="https://sw.tta.or.kr/assets/img/content/CSTS_certificate_sample.jpg" alt="" class="img"></div>
+                    <div class="img-box"><img src="https://sw.tta.or.kr/assets/img/content/CSTS_certificate_sample.jpg" alt="" class="img"></div>
+                    <div class="img-box"><img src="https://sw.tta.or.kr/assets/img/content/CSTS_certificate_sample.jpg" alt="" class="img"></div>
+                    <div class="img-box"><img src="https://sw.tta.or.kr/assets/img/content/CSTS_certificate_sample.jpg" alt="" class="img"></div>
+                </div>
+            </div>
+            <div class="btn-box">
+                <button class="approval-btn">승 인</button>
+                <button class="refusal-btn">거 부</button>
+                <a href="adminMentoApplication.html"><button class="back-btn">뒤로가기</button></a>
+            </div>
+        </div>
+    </div><!--"right-container" 끝-->
+</div><!--"main-container" 끝-->
+
 </body>
 </html>
