@@ -2,7 +2,7 @@
     width: 600px;
     overflow: hidden;
     white-space: nowrap;
-    text-overflow: ellipsis;    
+    text-overflow: ellipsis;
 }
 .date{
     width: 200px;
@@ -34,7 +34,7 @@
     border-radius: 5px;
     position: fixed;
     top: 50%;
-    left: 52%;
+    left: 54%;
     transform: translate(-50%, -50%);
     background-color: white;
     display: none; /* 초기에는 숨겨진 상태 */
@@ -86,4 +86,9 @@
 .note-img{
     width: 30px;
     margin-right: 5px;
+}
+
+.right-title-sub{
+    width: 175px;
+    padding-left: 40px !important;
 }
