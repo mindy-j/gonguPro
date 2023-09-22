@@ -1,108 +1,97 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>수업계획 신청함 상세</title>
-    <link rel="stylesheet" href="../../static/css/admin/adminMain.css">
-    <link rel="stylesheet" href="../../static/css/admin/adminHeader.css">
-    <link rel="stylesheet" href="../../static/css/admin/adminMentoApplicationDetail.css">
+    <link rel="stylesheet" href="/css/admin/adminMain.css">
+    <link rel="stylesheet" href="/css/admin/adminHeader.css">
+    <link rel="stylesheet" href="/css/admin/adminMentoApplicationDetail.css">
 </head>
 <body>
-    <header class="header">
-        <span class="logo">GongU</span>
-        <div class="header-container">
-            
-            <nav class="header-nav">
-                <a href="adminMain.html">회원 관리</a>
-                <a href="adminStudy.html">게시글 관리</a>
-                <a href="adminMentoApplication.html">신청함 관리</a>
-                <a href="adminNote.html">관리자 쪽지함</a>
-            </nav>
-            
+<header th:replace="fragments/adminHeader :: adminHeader"></header>
+<div class="main-container">
+    <div class="left-container">
+        <div class="left-list"><a href="/admin/application">멘토 신청함</a></div>
+        <div class="left-list check"><a href="/admin/classApplication">수업계획 신청함</a></div>
+    </div>
+    <div class="right-container">
+        <div class="right-title">
+            <div class="right-title-sub">수업계획 상세</div>
         </div>
-        <a href="">Logout</a>
-    </header>
-    <div class="main-container">
-        <div class="left-container">
-            <div class="left-list"><a href="adminMentoApplication.html">멘토 신청함</a></div>
-            <div class="left-list check"><a href="adminClassApplication.html">수업계획 신청함</a></div>
-        </div>
-        <div class="right-container">
-            <div class="right-title">수업계획 상세</div>
- 
-            <div class="category-box">
-                <div class="category-container">
-                    <div class="category">
-                        <div class="category-title">아이디</div>
-                        <div class="category-content">test</div>
-                    </div>                    
-                    <div>
-                        <div class="category-title">전화번호</div>
-                        <div class="category-content">010-1234-5678</div>
-                    </div>
-                </div>
-                <div class="category-container">
-                    <div class="category">
-                        <div class="category-title">이름</div>
-                        <div class="category-content">이종민</div>
-                    </div>                    
-                    <div>
-                        <div class="category-title">생년월일</div>
-                        <div class="category-content">1900년 09월 17일</div>
-                    </div>
-                </div>
 
-                <div class="category-container">
-                    <div class="category">
-                        <div class="category-title">전공 분야</div>
-                        <div class="category-content">고등수학</div>
-                    </div>                  
-                    <div>
-                        <div class="category-title">학력</div>
-                        <div class="category-content">
-                            <div>서울대학교</div>&nbsp;
-                            <div>(졸업)</div>
-                        </div>
-                    </div>
-                    
+        <div class="category-box">
+            <div class="category-container">
+                <div class="category">
+                    <div class="category-title">아이디</div>
+                    <div class="category-content">test</div>
                 </div>
-
                 <div>
-                    <div class="category-title">강사 소개</div>
-                    <div class="category-content-long">                        
-                        잘 가르치는 강사가 짱입니다~람쥐!!!!잘 가르치는 강사가 짱입니다~람쥐!!!!잘 가르치는 강사가 짱입니다~람쥐!!!!잘 가르치는 강사가 짱입니다~람쥐!!!!잘 가르치는 강사가 짱입니다~람쥐!!!!<br>
-                        잘 가르치는 강사가 짱입니다~람쥐!!!!<br>
-                        잘 가르치는 강사가 짱입니다~람쥐!!!!
-                    </div>
-                </div>
-
-                <div>
-                    <div class="category-title div-hr">수업 커리큘럼</div>
-                    <div class="category-content-long">
-                        재밌는 수업을 할 예정입니다~시다!!!!재밌는 수업을 할 예정입니다~시다!!!!<br>
-                        재밌는 수업을 할 예정입니다~시다!!!!<br>
-                        재밌는 수업을 할 예정입니다~시다!!!!<br>
-                        재밌는 수업을 할 예정입니다~시다!!!!<br>
-                        재밌는 수업을 할 예정입니다~시다!!!!<br>
-                        재밌는 수업을 할 예정입니다~시다!!!!<br>
-                        재밌는 수업을 할 예정입니다~시다!!!!<br>
-                        재밌는 수업을 할 예정입니다~시다!!!!<br>
-                        재밌는 수업을 할 예정입니다~시다!!!!<br>
-                        재밌는 수업을 할 예정입니다~시다!!!!<br>
-                        재밌는 수업을 할 예정입니다~시다!!!!<br>
-                        재밌는 수업을 할 예정입니다~시다!!!!
-                    </div>
-                </div>
-
-                <div class="btn-box">
-                    <button class="approval-btn">승 인</button>
-                    <button class="refusal-btn">거 부</button>
-                    <a href="adminClassApplication.html"><button class="back-btn">뒤로가기</button></a>
+                    <div class="category-title">전화번호</div>
+                    <div class="category-content">010-1234-5678</div>
                 </div>
             </div>
-        </div><!--"right-container" 끝-->            
-    </div><!--"main-container" 끝-->
-    
+            <div class="category-container">
+                <div class="category">
+                    <div class="category-title">이름</div>
+                    <div class="category-content">이종민</div>
+                </div>
+                <div>
+                    <div class="category-title">생년월일</div>
+                    <div class="category-content">1900년 09월 17일</div>
+                </div>
+            </div>
+
+            <div class="category-container">
+                <div class="category">
+                    <div class="category-title">전공 분야</div>
+                    <div class="category-content">고등수학</div>
+                </div>
+                <div>
+                    <div class="category-title">학력</div>
+                    <div class="category-content">
+                        <div>서울대학교</div>&nbsp;
+                        <div>(졸업)</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div>
+                <div class="category-title">강사 소개</div>
+                <div class="category-content-long">
+                    잘 가르치는 강사가 짱입니다~람쥐!!!!잘 가르치는 강사가 짱입니다~람쥐!!!!잘 가르치는 강사가 짱입니다~람쥐!!!!잘 가르치는 강사가 짱입니다~람쥐!!!!잘 가르치는 강사가 짱입니다~람쥐!!!!<br>
+                    잘 가르치는 강사가 짱입니다~람쥐!!!!<br>
+                    잘 가르치는 강사가 짱입니다~람쥐!!!!
+                </div>
+            </div>
+
+            <div>
+                <div class="category-title div-hr">수업 커리큘럼</div>
+                <div class="category-content-long">
+                    재밌는 수업을 할 예정입니다~시다!!!!재밌는 수업을 할 예정입니다~시다!!!!<br>
+                    재밌는 수업을 할 예정입니다~시다!!!!<br>
+                    재밌는 수업을 할 예정입니다~시다!!!!<br>
+                    재밌는 수업을 할 예정입니다~시다!!!!<br>
+                    재밌는 수업을 할 예정입니다~시다!!!!<br>
+                    재밌는 수업을 할 예정입니다~시다!!!!<br>
+                    재밌는 수업을 할 예정입니다~시다!!!!<br>
+                    재밌는 수업을 할 예정입니다~시다!!!!<br>
+                    재밌는 수업을 할 예정입니다~시다!!!!<br>
+                    재밌는 수업을 할 예정입니다~시다!!!!<br>
+                    재밌는 수업을 할 예정입니다~시다!!!!<br>
+                    재밌는 수업을 할 예정입니다~시다!!!!
+                </div>
+            </div>
+
+            <div class="btn-box">
+                <button class="approval-btn">승 인</button>
+                <button class="refusal-btn">거 부</button>
+                <a href="adminClassApplication.html"><button class="back-btn">뒤로가기</button></a>
+            </div>
+        </div>
+    </div><!--"right-container" 끝-->
+</div><!--"main-container" 끝-->
+
 </body>
 </html>

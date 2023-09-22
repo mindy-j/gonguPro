@@ -18,5 +18,6 @@
         <typeAlias type="com.example.gongu.domain.vo.StudyReplyVo" alias="studyReplyVo"/>
 
         <typeAlias type="com.example.gongu.domain.vo.Criteria" alias="criteria"/>
+        <typeAlias type="com.example.gongu.domain.vo.SearchVo" alias="searchVo"/>
     </typeAliases>
 </configuration>

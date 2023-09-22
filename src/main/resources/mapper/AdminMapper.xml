@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.gongu.mapper.AdminMapper">
+    <select id="selectLogin" resultType="long">
+        SELECT USER_NUMBER FROM TBL_USERS WHERE USER_ID = #{userId} AND USER_PASSWORD = #{userPassword} AND USER_LEVEL = '3'
+    </select>
+
+    <select id="selectUser" resultType="userDto">
+        SELECT USER_NUMBER, USER_ID, USER_PASSWORD, USER_NAME, USER_NICKNAME, USER_EMAIL, USER_PHONE,
+               USER_MAJOR, TO_CHAR(USER_BIRTH, 'YYYY"년 "MM"월 "DD"일"') as USER_BIRTH, USER_LEVEL
+        FROM TBL_USERS
+        <choose>
+            <when test="'name'.equals(cate)">
+                WHERE USER_NAME LIKE '%' || #{keyword} || '%' AND USER_LEVEL = '1'
+            </when>
+            <when test="'id'.equals(cate)">
+                WHERE USER_ID LIKE '%' || #{keyword} || '%' AND USER_LEVEL = '1'
+            </when>
+            <when test="'email'.equals(cate)">
+                WHERE USER_EMAIL LIKE '%' || #{keyword} || '%' AND USER_LEVEL = '1'
+            </when>
+            <otherwise>
+            WHERE USER_LEVEL = '1'
+            </otherwise>
+        </choose>
+    </select>
+
+    <select id="selectMento" resultType="userDto">
+        SELECT USER_NUMBER, USER_ID, USER_PASSWORD, USER_NAME, USER_NICKNAME, USER_EMAIL, USER_PHONE,
+               USER_MAJOR, TO_CHAR(USER_BIRTH, 'YYYY"년 "MM"월 "DD"일"') as USER_BIRTH, USER_LEVEL
+        FROM TBL_USERS
+        <choose>
+            <when test="'name'.equals(cate)">
+                WHERE USER_NAME LIKE '%' || #{keyword} || '%' AND USER_LEVEL = '2'
+            </when>
+            <when test="'id'.equals(cate)">
+                WHERE USER_ID LIKE '%' || #{keyword} || '%' AND USER_LEVEL = '2'
+            </when>
+            <when test="'email'.equals(cate)">
+                WHERE USER_EMAIL LIKE '%' || #{keyword} || '%' AND USER_LEVEL = '2'
+            </when>
+            <otherwise>
+                WHERE USER_LEVEL = '2'
+            </otherwise>
+        </choose>
+    </select>
+
+
+</mapper>

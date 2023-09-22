@@ -1,322 +1,325 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>관리자 메인(유저관리)</title>
-    <link rel="stylesheet" href="../../static/css/admin/adminMain.css">
-    <link rel="stylesheet" href="../../static/css/admin/adminHeader.css">
-    <link rel="stylesheet" href="../../static/css/admin/adminMentoApplication.css">
+    <link rel="stylesheet" href="/css/admin/adminMain.css">
+    <link rel="stylesheet" href="/css/admin/adminHeader.css">
+    <link rel="stylesheet" href="/css/admin/adminMentoApplication.css">
 </head>
 <body>
-    <header class="header">
-        <span class="logo">GongU</span>
-        <div class="header-container">
-            
-            <nav class="header-nav">
-                <a href="adminMain.html">회원 관리</a>
-                <a href="adminStudy.html">게시글 관리</a>
-                <a href="adminMentoApplication.html">신청함 관리</a>
-                <a href="adminNote.html">관리자 쪽지함</a>
-            </nav>
-            
+<header th:replace="fragments/adminHeader :: adminHeader"></header>
+<div class="main-container">
+    <div class="left-container">
+        <div class="left-list check"><a href="/admin/application">멘토 신청함</a></div>
+        <div class="left-list"><a href="/admin/classApplication">수업계획 신청함</a></div>
+    </div>
+    <div class="right-container">
+        <div class="right-title">
+            <div class="right-title-sub">멘토 신청 목록</div>
+            <div>
+                <form action="" method="get">
+                    <fieldset class="field">
+                        <legend>신청회원 검색</legend>
+                        <select name="cate" id="">
+                            <option value="name">이름</option>
+                            <option value="email">이메일</option>
+                            <option value="id">아이디</option>
+                        </select>
+                        <input type="text" name="keyword">
+                        <button class="search-btn">검색</button>
+                    </fieldset>
+                </form>
+            </div>
         </div>
-        <a href="">Logout</a>
-    </header>
-    <div class="main-container">
-        <div class="left-container">
-            <div class="left-list check"><a href="adminMentoApplication.html">멘토 신청함</a></div>
-            <div class="left-list"><a href="adminClassApplication.html">수업계획 신청함</a></div>
-        </div>
-        <div class="right-container">
-            <div class="right-title">멘토 신청 목록</div>
-            <div class="member-container"> 
-                <div class="member-list thead">                    
-                    <div class="number">번호</div>
-                    <div class="id">아이디</div>
-                    <div class="name">이름</div>
-                    <div class="birth">생년월일</div>                    
-                    <div class="phone">전화번호</div>
-                    <div class="academic">학력</div>
-                    <div class="sortation-mento">구분</div>                    
-                </div> 
-                <!-- 데이터가 들어오는 영역 -->
-                <div class="member-list">                    
-                    <div class="number">1</div>
-                    <div class="id">test</div>
-                    <div class="name">테스트</div>
-                    <div class="birth">1990-09-15</div>                    
-                    <div class="phone">010-1234-5678</div>
-                    <div class="academic">서울대학교</div>
-                    <div class="sortation-mento">
-                        <button class="detail-btn"><a href="adminMentoApplicationDetail.html">상세</a></button>
-                        <button class="approval-btn">승인</button>
-                        <button class="refusal-btn">거부</button>
-                    </div>                    
-                </div> 
-                <div class="member-list">                    
-                    <div class="number">1</div>
-                    <div class="id">test</div>
-                    <div class="name">테스트</div>
-                    <div class="birth">1990-09-15</div>                    
-                    <div class="phone">010-1234-5678</div>
-                    <div class="academic">서울대학교</div>
-                    <div class="sortation-mento">
-                        <button class="detail-btn">상세</button>
-                        <button class="approval-btn">승인</button>
-                        <button class="refusal-btn">거부</button>
-                    </div>                    
-                </div> 
-                <div class="member-list">                    
-                    <div class="number">1</div>
-                    <div class="id">test</div>
-                    <div class="name">테스트</div>
-                    <div class="birth">1990-09-15</div>                    
-                    <div class="phone">010-1234-5678</div>
-                    <div class="academic">서울대학교</div>
-                    <div class="sortation-mento">
-                        <button class="detail-btn">상세</button>
-                        <button class="approval-btn">승인</button>
-                        <button class="refusal-btn">거부</button>
-                    </div>                    
-                </div> 
-                <div class="member-list">                    
-                    <div class="number">1</div>
-                    <div class="id">test</div>
-                    <div class="name">테스트</div>
-                    <div class="birth">1990-09-15</div>                    
-                    <div class="phone">010-1234-5678</div>
-                    <div class="academic">서울대학교</div>
-                    <div class="sortation-mento">
-                        <button class="detail-btn">상세</button>
-                        <button class="approval-btn">승인</button>
-                        <button class="refusal-btn">거부</button>
-                    </div>                    
-                </div> 
-                <div class="member-list">                    
-                    <div class="number">1</div>
-                    <div class="id">test</div>
-                    <div class="name">테스트</div>
-                    <div class="birth">1990-09-15</div>                    
-                    <div class="phone">010-1234-5678</div>
-                    <div class="academic">서울대학교</div>
-                    <div class="sortation-mento">
-                        <button class="detail-btn">상세</button>
-                        <button class="approval-btn">승인</button>
-                        <button class="refusal-btn">거부</button>
-                    </div>                    
-                </div> 
-                <div class="member-list">                    
-                    <div class="number">1</div>
-                    <div class="id">test</div>
-                    <div class="name">테스트</div>
-                    <div class="birth">1990-09-15</div>                    
-                    <div class="phone">010-1234-5678</div>
-                    <div class="academic">서울대학교</div>
-                    <div class="sortation-mento">
-                        <button class="detail-btn">상세</button>
-                        <button class="approval-btn">승인</button>
-                        <button class="refusal-btn">거부</button>
-                    </div>                    
-                </div> 
-                <div class="member-list">                    
-                    <div class="number">1</div>
-                    <div class="id">test</div>
-                    <div class="name">테스트</div>
-                    <div class="birth">1990-09-15</div>                    
-                    <div class="phone">010-1234-5678</div>
-                    <div class="academic">서울대학교</div>
-                    <div class="sortation-mento">
-                        <button class="detail-btn">상세</button>
-                        <button class="approval-btn">승인</button>
-                        <button class="refusal-btn">거부</button>
-                    </div>                    
-                </div> 
-                <div class="member-list">                    
-                    <div class="number">1</div>
-                    <div class="id">test</div>
-                    <div class="name">테스트</div>
-                    <div class="birth">1990-09-15</div>                    
-                    <div class="phone">010-1234-5678</div>
-                    <div class="academic">서울대학교</div>
-                    <div class="sortation-mento">
-                        <button class="detail-btn">상세</button>
-                        <button class="approval-btn">승인</button>
-                        <button class="refusal-btn">거부</button>
-                    </div>                    
-                </div> 
-                <div class="member-list">                    
-                    <div class="number">1</div>
-                    <div class="id">test</div>
-                    <div class="name">테스트</div>
-                    <div class="birth">1990-09-15</div>                    
-                    <div class="phone">010-1234-5678</div>
-                    <div class="academic">서울대학교</div>
-                    <div class="sortation-mento">
-                        <button class="detail-btn">상세</button>
-                        <button class="approval-btn">승인</button>
-                        <button class="refusal-btn">거부</button>
-                    </div>                    
-                </div> 
-                <div class="member-list">                    
-                    <div class="number">1</div>
-                    <div class="id">test</div>
-                    <div class="name">테스트</div>
-                    <div class="birth">1990-09-15</div>                    
-                    <div class="phone">010-1234-5678</div>
-                    <div class="academic">서울대학교</div>
-                    <div class="sortation-mento">
-                        <button class="detail-btn">상세</button>
-                        <button class="approval-btn">승인</button>
-                        <button class="refusal-btn">거부</button>
-                    </div>                    
-                </div> 
-                <div class="member-list">                    
-                    <div class="number">1</div>
-                    <div class="id">test</div>
-                    <div class="name">테스트</div>
-                    <div class="birth">1990-09-15</div>                    
-                    <div class="phone">010-1234-5678</div>
-                    <div class="academic">서울대학교</div>
-                    <div class="sortation-mento">
-                        <button class="detail-btn">상세</button>
-                        <button class="approval-btn">승인</button>
-                        <button class="refusal-btn">거부</button>
-                    </div>                    
-                </div> 
-                <div class="member-list">                    
-                    <div class="number">1</div>
-                    <div class="id">test</div>
-                    <div class="name">테스트</div>
-                    <div class="birth">1990-09-15</div>                    
-                    <div class="phone">010-1234-5678</div>
-                    <div class="academic">서울대학교</div>
-                    <div class="sortation-mento">
-                        <button class="detail-btn">상세</button>
-                        <button class="approval-btn">승인</button>
-                        <button class="refusal-btn">거부</button>
-                    </div>                    
-                </div> 
-                <div class="member-list">                    
-                    <div class="number">1</div>
-                    <div class="id">test</div>
-                    <div class="name">테스트</div>
-                    <div class="birth">1990-09-15</div>                    
-                    <div class="phone">010-1234-5678</div>
-                    <div class="academic">서울대학교</div>
-                    <div class="sortation-mento">
-                        <button class="detail-btn">상세</button>
-                        <button class="approval-btn">승인</button>
-                        <button class="refusal-btn">거부</button>
-                    </div>                    
-                </div> 
-                <div class="member-list">                    
-                    <div class="number">1</div>
-                    <div class="id">test</div>
-                    <div class="name">테스트</div>
-                    <div class="birth">1990-09-15</div>                    
-                    <div class="phone">010-1234-5678</div>
-                    <div class="academic">서울대학교</div>
-                    <div class="sortation-mento">
-                        <button class="detail-btn">상세</button>
-                        <button class="approval-btn">승인</button>
-                        <button class="refusal-btn">거부</button>
-                    </div>                    
-                </div> 
-                <div class="member-list">                    
-                    <div class="number">1</div>
-                    <div class="id">test</div>
-                    <div class="name">테스트</div>
-                    <div class="birth">1990-09-15</div>                    
-                    <div class="phone">010-1234-5678</div>
-                    <div class="academic">서울대학교</div>
-                    <div class="sortation-mento">
-                        <button class="detail-btn">상세</button>
-                        <button class="approval-btn">승인</button>
-                        <button class="refusal-btn">거부</button>
-                    </div>                    
-                </div> 
-                <div class="member-list">                    
-                    <div class="number">1</div>
-                    <div class="id">test</div>
-                    <div class="name">테스트</div>
-                    <div class="birth">1990-09-15</div>                    
-                    <div class="phone">010-1234-5678</div>
-                    <div class="academic">서울대학교</div>
-                    <div class="sortation-mento">
-                        <button class="detail-btn">상세</button>
-                        <button class="approval-btn">승인</button>
-                        <button class="refusal-btn">거부</button>
-                    </div>                    
-                </div> 
-                <div class="member-list">                    
-                    <div class="number">1</div>
-                    <div class="id">test</div>
-                    <div class="name">테스트</div>
-                    <div class="birth">1990-09-15</div>                    
-                    <div class="phone">010-1234-5678</div>
-                    <div class="academic">서울대학교</div>
-                    <div class="sortation-mento">
-                        <button class="detail-btn">상세</button>
-                        <button class="approval-btn">승인</button>
-                        <button class="refusal-btn">거부</button>
-                    </div>                    
-                </div> 
-                <div class="member-list">                    
-                    <div class="number">1</div>
-                    <div class="id">test</div>
-                    <div class="name">테스트</div>
-                    <div class="birth">1990-09-15</div>                    
-                    <div class="phone">010-1234-5678</div>
-                    <div class="academic">서울대학교</div>
-                    <div class="sortation-mento">
-                        <button class="detail-btn">상세</button>
-                        <button class="approval-btn">승인</button>
-                        <button class="refusal-btn">거부</button>
-                    </div>                    
-                </div> 
-                <div class="member-list">                    
-                    <div class="number">1</div>
-                    <div class="id">test</div>
-                    <div class="name">테스트</div>
-                    <div class="birth">1990-09-15</div>                    
-                    <div class="phone">010-1234-5678</div>
-                    <div class="academic">서울대학교</div>
-                    <div class="sortation-mento">
-                        <button class="detail-btn">상세</button>
-                        <button class="approval-btn">승인</button>
-                        <button class="refusal-btn">거부</button>
-                    </div>                    
-                </div> 
-                <div class="member-list">                    
-                    <div class="number">1</div>
-                    <div class="id">test</div>
-                    <div class="name">테스트</div>
-                    <div class="birth">1990-09-15</div>                    
-                    <div class="phone">010-1234-5678</div>
-                    <div class="academic">서울대학교</div>
-                    <div class="sortation-mento">
-                        <button class="detail-btn">상세</button>
-                        <button class="approval-btn">승인</button>
-                        <button class="refusal-btn">거부</button>
-                    </div>                    
-                </div> 
-                <!-- 데이터가 끝나는 영역-->
-                <div class="page-container">
-                    <ul class="page-ul">
-                        <li>&lt</li>
-                        <li>1</li>
-                        <li>2</li>
-                        <li>3</li>
-                        <li>4</li>
-                        <li>5</li>
-                        <li>&gt</li>
-                    </ul>
-                    
+        <div class="member-container">
+            <div class="member-list thead">
+                <div class="number">번호</div>
+                <div class="id">아이디</div>
+                <div class="name">이름</div>
+                <div class="birth">생년월일</div>
+                <div class="phone">전화번호</div>
+                <div class="academic">학력</div>
+                <div class="sortation-mento">구분</div>
+            </div>
+            <!-- 데이터가 들어오는 영역 -->
+            <div class="member-list">
+                <div class="number">1</div>
+                <div class="id">test</div>
+                <div class="name">테스트</div>
+                <div class="birth">1990-09-15</div>
+                <div class="phone">010-1234-5678</div>
+                <div class="academic">서울대학교</div>
+                <div class="sortation-mento">
+                    <button class="detail-btn"><a href="adminMentoApplicationDetail.html">상세</a></button>
+                    <button class="approval-btn">승인</button>
+                    <button class="refusal-btn">거부</button>
                 </div>
+            </div>
+            <div class="member-list">
+                <div class="number">1</div>
+                <div class="id">test</div>
+                <div class="name">테스트</div>
+                <div class="birth">1990-09-15</div>
+                <div class="phone">010-1234-5678</div>
+                <div class="academic">서울대학교</div>
+                <div class="sortation-mento">
+                    <button class="detail-btn">상세</button>
+                    <button class="approval-btn">승인</button>
+                    <button class="refusal-btn">거부</button>
+                </div>
+            </div>
+            <div class="member-list">
+                <div class="number">1</div>
+                <div class="id">test</div>
+                <div class="name">테스트</div>
+                <div class="birth">1990-09-15</div>
+                <div class="phone">010-1234-5678</div>
+                <div class="academic">서울대학교</div>
+                <div class="sortation-mento">
+                    <button class="detail-btn">상세</button>
+                    <button class="approval-btn">승인</button>
+                    <button class="refusal-btn">거부</button>
+                </div>
+            </div>
+            <div class="member-list">
+                <div class="number">1</div>
+                <div class="id">test</div>
+                <div class="name">테스트</div>
+                <div class="birth">1990-09-15</div>
+                <div class="phone">010-1234-5678</div>
+                <div class="academic">서울대학교</div>
+                <div class="sortation-mento">
+                    <button class="detail-btn">상세</button>
+                    <button class="approval-btn">승인</button>
+                    <button class="refusal-btn">거부</button>
+                </div>
+            </div>
+            <div class="member-list">
+                <div class="number">1</div>
+                <div class="id">test</div>
+                <div class="name">테스트</div>
+                <div class="birth">1990-09-15</div>
+                <div class="phone">010-1234-5678</div>
+                <div class="academic">서울대학교</div>
+                <div class="sortation-mento">
+                    <button class="detail-btn">상세</button>
+                    <button class="approval-btn">승인</button>
+                    <button class="refusal-btn">거부</button>
+                </div>
+            </div>
+            <div class="member-list">
+                <div class="number">1</div>
+                <div class="id">test</div>
+                <div class="name">테스트</div>
+                <div class="birth">1990-09-15</div>
+                <div class="phone">010-1234-5678</div>
+                <div class="academic">서울대학교</div>
+                <div class="sortation-mento">
+                    <button class="detail-btn">상세</button>
+                    <button class="approval-btn">승인</button>
+                    <button class="refusal-btn">거부</button>
+                </div>
+            </div>
+            <div class="member-list">
+                <div class="number">1</div>
+                <div class="id">test</div>
+                <div class="name">테스트</div>
+                <div class="birth">1990-09-15</div>
+                <div class="phone">010-1234-5678</div>
+                <div class="academic">서울대학교</div>
+                <div class="sortation-mento">
+                    <button class="detail-btn">상세</button>
+                    <button class="approval-btn">승인</button>
+                    <button class="refusal-btn">거부</button>
+                </div>
+            </div>
+            <div class="member-list">
+                <div class="number">1</div>
+                <div class="id">test</div>
+                <div class="name">테스트</div>
+                <div class="birth">1990-09-15</div>
+                <div class="phone">010-1234-5678</div>
+                <div class="academic">서울대학교</div>
+                <div class="sortation-mento">
+                    <button class="detail-btn">상세</button>
+                    <button class="approval-btn">승인</button>
+                    <button class="refusal-btn">거부</button>
+                </div>
+            </div>
+            <div class="member-list">
+                <div class="number">1</div>
+                <div class="id">test</div>
+                <div class="name">테스트</div>
+                <div class="birth">1990-09-15</div>
+                <div class="phone">010-1234-5678</div>
+                <div class="academic">서울대학교</div>
+                <div class="sortation-mento">
+                    <button class="detail-btn">상세</button>
+                    <button class="approval-btn">승인</button>
+                    <button class="refusal-btn">거부</button>
+                </div>
+            </div>
+            <div class="member-list">
+                <div class="number">1</div>
+                <div class="id">test</div>
+                <div class="name">테스트</div>
+                <div class="birth">1990-09-15</div>
+                <div class="phone">010-1234-5678</div>
+                <div class="academic">서울대학교</div>
+                <div class="sortation-mento">
+                    <button class="detail-btn">상세</button>
+                    <button class="approval-btn">승인</button>
+                    <button class="refusal-btn">거부</button>
+                </div>
+            </div>
+            <div class="member-list">
+                <div class="number">1</div>
+                <div class="id">test</div>
+                <div class="name">테스트</div>
+                <div class="birth">1990-09-15</div>
+                <div class="phone">010-1234-5678</div>
+                <div class="academic">서울대학교</div>
+                <div class="sortation-mento">
+                    <button class="detail-btn">상세</button>
+                    <button class="approval-btn">승인</button>
+                    <button class="refusal-btn">거부</button>
+                </div>
+            </div>
+            <div class="member-list">
+                <div class="number">1</div>
+                <div class="id">test</div>
+                <div class="name">테스트</div>
+                <div class="birth">1990-09-15</div>
+                <div class="phone">010-1234-5678</div>
+                <div class="academic">서울대학교</div>
+                <div class="sortation-mento">
+                    <button class="detail-btn">상세</button>
+                    <button class="approval-btn">승인</button>
+                    <button class="refusal-btn">거부</button>
+                </div>
+            </div>
+            <div class="member-list">
+                <div class="number">1</div>
+                <div class="id">test</div>
+                <div class="name">테스트</div>
+                <div class="birth">1990-09-15</div>
+                <div class="phone">010-1234-5678</div>
+                <div class="academic">서울대학교</div>
+                <div class="sortation-mento">
+                    <button class="detail-btn">상세</button>
+                    <button class="approval-btn">승인</button>
+                    <button class="refusal-btn">거부</button>
+                </div>
+            </div>
+            <div class="member-list">
+                <div class="number">1</div>
+                <div class="id">test</div>
+                <div class="name">테스트</div>
+                <div class="birth">1990-09-15</div>
+                <div class="phone">010-1234-5678</div>
+                <div class="academic">서울대학교</div>
+                <div class="sortation-mento">
+                    <button class="detail-btn">상세</button>
+                    <button class="approval-btn">승인</button>
+                    <button class="refusal-btn">거부</button>
+                </div>
+            </div>
+            <div class="member-list">
+                <div class="number">1</div>
+                <div class="id">test</div>
+                <div class="name">테스트</div>
+                <div class="birth">1990-09-15</div>
+                <div class="phone">010-1234-5678</div>
+                <div class="academic">서울대학교</div>
+                <div class="sortation-mento">
+                    <button class="detail-btn">상세</button>
+                    <button class="approval-btn">승인</button>
+                    <button class="refusal-btn">거부</button>
+                </div>
+            </div>
+            <div class="member-list">
+                <div class="number">1</div>
+                <div class="id">test</div>
+                <div class="name">테스트</div>
+                <div class="birth">1990-09-15</div>
+                <div class="phone">010-1234-5678</div>
+                <div class="academic">서울대학교</div>
+                <div class="sortation-mento">
+                    <button class="detail-btn">상세</button>
+                    <button class="approval-btn">승인</button>
+                    <button class="refusal-btn">거부</button>
+                </div>
+            </div>
+            <div class="member-list">
+                <div class="number">1</div>
+                <div class="id">test</div>
+                <div class="name">테스트</div>
+                <div class="birth">1990-09-15</div>
+                <div class="phone">010-1234-5678</div>
+                <div class="academic">서울대학교</div>
+                <div class="sortation-mento">
+                    <button class="detail-btn">상세</button>
+                    <button class="approval-btn">승인</button>
+                    <button class="refusal-btn">거부</button>
+                </div>
+            </div>
+            <div class="member-list">
+                <div class="number">1</div>
+                <div class="id">test</div>
+                <div class="name">테스트</div>
+                <div class="birth">1990-09-15</div>
+                <div class="phone">010-1234-5678</div>
+                <div class="academic">서울대학교</div>
+                <div class="sortation-mento">
+                    <button class="detail-btn">상세</button>
+                    <button class="approval-btn">승인</button>
+                    <button class="refusal-btn">거부</button>
+                </div>
+            </div>
+            <div class="member-list">
+                <div class="number">1</div>
+                <div class="id">test</div>
+                <div class="name">테스트</div>
+                <div class="birth">1990-09-15</div>
+                <div class="phone">010-1234-5678</div>
+                <div class="academic">서울대학교</div>
+                <div class="sortation-mento">
+                    <button class="detail-btn">상세</button>
+                    <button class="approval-btn">승인</button>
+                    <button class="refusal-btn">거부</button>
+                </div>
+            </div>
+            <div class="member-list">
+                <div class="number">1</div>
+                <div class="id">test</div>
+                <div class="name">테스트</div>
+                <div class="birth">1990-09-15</div>
+                <div class="phone">010-1234-5678</div>
+                <div class="academic">서울대학교</div>
+                <div class="sortation-mento">
+                    <button class="detail-btn">상세</button>
+                    <button class="approval-btn">승인</button>
+                    <button class="refusal-btn">거부</button>
+                </div>
+            </div>
+            <!-- 데이터가 끝나는 영역-->
+            <div class="page-container">
+                <ul class="page-ul">
+                    <li>&lt</li>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                    <li>5</li>
+                    <li>&gt</li>
+                </ul>
+
             </div>
         </div>
     </div>
-    
+</div>
+
 </body>
 </html>
