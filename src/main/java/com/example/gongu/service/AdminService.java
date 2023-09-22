@@ -3,7 +3,6 @@ package com.example.gongu.service;
 import com.example.gongu.domain.dto.UserDto;
 import com.example.gongu.domain.vo.SearchVo;
 import com.example.gongu.mapper.AdminMapper;
-import com.example.gongu.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -21,8 +20,8 @@ public class AdminService {
                     throw new IllegalArgumentException("회원번호가 일치하지 않습니다");
                 });
     }
-    public List<UserDto> findUser(SearchVo searchVo){
-        return adminMapper.selectUser(searchVo);
+    public List<UserDto> findUser(SearchVo searchVo, Criteria criteria){
+        return adminMapper.selectUser(searchVo, criteria);
     }
     public List<UserDto> findMento(SearchVo searchVo){
         return adminMapper.selectMento(searchVo);

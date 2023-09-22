@@ -11,6 +11,6 @@ import java.util.List;
 public interface AdminMapper {
     public Long selectLogin(@Param("userId") String userId, @Param("userPassword") String userPassword);
 
-    public List<UserDto> selectUser(SearchVo searchVo);
+    public List<UserDto> selectUser(@Param("searchVo") SearchVo searchVo, @Param("criteria") Criteria criteria);
     public List<UserDto> selectMento(SearchVo searchVo);
 }
