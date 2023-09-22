@@ -2,7 +2,6 @@ package com.example.gongu.controller;
 
 import com.example.gongu.domain.vo.SearchVo;
 import com.example.gongu.service.AdminService;
-import com.example.gongu.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/admin/*")
@@ -31,8 +29,8 @@ public class AdminController {
     }
 // =====헤더 부분 매핑=========
     @GetMapping("/main")
-    public String adminMain(Model model, SearchVo searchVo){
-        model.addAttribute("userList", adminService.findUser(searchVo));
+    public String adminMain(Model model, SearchVo searchVo, Criteria criteria){
+        model.addAttribute("userList", adminService.findUser(searchVo, criteria));
         return "/admin/adminMain";
     }
     @GetMapping("/board")
