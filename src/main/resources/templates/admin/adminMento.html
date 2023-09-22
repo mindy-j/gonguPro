@@ -1,31 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>멘토 관리</title>
-    <link rel="stylesheet" href="adminMain.css">
-    <link rel="stylesheet" href="adminHeader.css">
+    <link rel="stylesheet" href="/css/admin/adminMain.css">
+    <link rel="stylesheet" href="/css/admin/adminHeader.css">
 </head>
 <body>
-<header class="header">
-    <span class="logo">GongU</span>
-    <div class="header-container">
-
-        <nav class="header-nav">
-            <a href="adminMain.html">회원 관리</a>
-            <a href="adminStudy.html">게시글 관리</a>
-            <a href="adminMentoApplication.html">신청함 관리</a>
-            <a href="adminNote.html">관리자 쪽지함</a>
-        </nav>
-
-    </div>
-    <a href="">Logout</a>
-</header>
+<header th:replace="fragments/adminHeader :: adminHeader"></header>
 <div class="main-container">
     <div class="left-container">
-        <div class="left-list"><a href="adminMain.html">일반 회원</a></div>
-        <div class="left-list check"><a href="adminMento.html">멘토 회원</a></div>
+        <div class="left-list"><a href="/admin/main">일반 회원</a></div>
+        <div class="left-list check"><a href="/admin/mento">멘토 회원</a></div>
     </div>
     <div class="right-container">
         <div class="right-title">
@@ -57,222 +44,13 @@
                 <div class="sortation">구분</div>
             </div>
             <!-- 데이터가 들어오는 부분 -->
-            <div class="member-list">
+            <div class="member-list" th:each="mento : ${mentoList}">
                 <div class="number">1</div>
-                <div class="id">bbagym</div>
-                <div class="name">테스트</div>
-                <div class="birth">1988-08-15</div>
-                <div class="phone">010-1234-5678</div>
-                <div class="email">test@naver.com</div>
-                <div class="sortation">
-                    <div>멘토<button type="button" class="remove-btn">삭제</button></div>
-                </div>
-            </div>
-            <div class="member-list">
-                <div class="number">1</div>
-                <div class="id">bbagym</div>
-                <div class="name">테스트</div>
-                <div class="birth">1988-08-15</div>
-                <div class="phone">010-1234-5678</div>
-                <div class="email">test@naver.com</div>
-                <div class="sortation">
-                    <div>멘토<button type="button" class="remove-btn">삭제</button></div>
-                </div>
-            </div>
-            <div class="member-list">
-                <div class="number">1</div>
-                <div class="id">bbagym</div>
-                <div class="name">테스트</div>
-                <div class="birth">1988-08-15</div>
-                <div class="phone">010-1234-5678</div>
-                <div class="email">test@naver.com</div>
-                <div class="sortation">
-                    <div>멘토<button type="button" class="remove-btn">삭제</button></div>
-                </div>
-            </div>
-            <div class="member-list">
-                <div class="number">1</div>
-                <div class="id">bbagym</div>
-                <div class="name">테스트</div>
-                <div class="birth">1988-08-15</div>
-                <div class="phone">010-1234-5678</div>
-                <div class="email">test@naver.com</div>
-                <div class="sortation">
-                    <div>멘토<button type="button" class="remove-btn">삭제</button></div>
-                </div>
-            </div>
-            <div class="member-list">
-                <div class="number">1</div>
-                <div class="id">bbagym</div>
-                <div class="name">테스트</div>
-                <div class="birth">1988-08-15</div>
-                <div class="phone">010-1234-5678</div>
-                <div class="email">test@naver.com</div>
-                <div class="sortation">
-                    <div>멘토<button type="button" class="remove-btn">삭제</button></div>
-                </div>
-            </div>
-            <div class="member-list">
-                <div class="number">1</div>
-                <div class="id">bbagym</div>
-                <div class="name">테스트</div>
-                <div class="birth">1988-08-15</div>
-                <div class="phone">010-1234-5678</div>
-                <div class="email">test@naver.com</div>
-                <div class="sortation">
-                    <div>멘토<button type="button" class="remove-btn">삭제</button></div>
-                </div>
-            </div>
-            <div class="member-list">
-                <div class="number">1</div>
-                <div class="id">bbagym</div>
-                <div class="name">테스트</div>
-                <div class="birth">1988-08-15</div>
-                <div class="phone">010-1234-5678</div>
-                <div class="email">test@naver.com</div>
-                <div class="sortation">
-                    <div>멘토<button type="button" class="remove-btn">삭제</button></div>
-                </div>
-            </div>
-            <div class="member-list">
-                <div class="number">1</div>
-                <div class="id">bbagym</div>
-                <div class="name">테스트</div>
-                <div class="birth">1988-08-15</div>
-                <div class="phone">010-1234-5678</div>
-                <div class="email">test@naver.com</div>
-                <div class="sortation">
-                    <div>멘토<button type="button" class="remove-btn">삭제</button></div>
-                </div>
-            </div>
-            <div class="member-list">
-                <div class="number">1</div>
-                <div class="id">bbagym</div>
-                <div class="name">테스트</div>
-                <div class="birth">1988-08-15</div>
-                <div class="phone">010-1234-5678</div>
-                <div class="email">test@naver.com</div>
-                <div class="sortation">
-                    <div>멘토<button type="button" class="remove-btn">삭제</button></div>
-                </div>
-            </div>
-            <div class="member-list">
-                <div class="number">1</div>
-                <div class="id">bbagym</div>
-                <div class="name">테스트</div>
-                <div class="birth">1988-08-15</div>
-                <div class="phone">010-1234-5678</div>
-                <div class="email">test@naver.com</div>
-                <div class="sortation">
-                    <div>멘토<button type="button" class="remove-btn">삭제</button></div>
-                </div>
-            </div>
-            <div class="member-list">
-                <div class="number">1</div>
-                <div class="id">bbagym</div>
-                <div class="name">테스트</div>
-                <div class="birth">1988-08-15</div>
-                <div class="phone">010-1234-5678</div>
-                <div class="email">test@naver.com</div>
-                <div class="sortation">
-                    <div>멘토<button type="button" class="remove-btn">삭제</button></div>
-                </div>
-            </div>
-            <div class="member-list">
-                <div class="number">1</div>
-                <div class="id">bbagym</div>
-                <div class="name">테스트</div>
-                <div class="birth">1988-08-15</div>
-                <div class="phone">010-1234-5678</div>
-                <div class="email">test@naver.com</div>
-                <div class="sortation">
-                    <div>멘토<button type="button" class="remove-btn">삭제</button></div>
-                </div>
-            </div>
-            <div class="member-list">
-                <div class="number">1</div>
-                <div class="id">bbagym</div>
-                <div class="name">테스트</div>
-                <div class="birth">1988-08-15</div>
-                <div class="phone">010-1234-5678</div>
-                <div class="email">test@naver.com</div>
-                <div class="sortation">
-                    <div>멘토<button type="button" class="remove-btn">삭제</button></div>
-                </div>
-            </div>
-            <div class="member-list">
-                <div class="number">1</div>
-                <div class="id">bbagym</div>
-                <div class="name">테스트</div>
-                <div class="birth">1988-08-15</div>
-                <div class="phone">010-1234-5678</div>
-                <div class="email">test@naver.com</div>
-                <div class="sortation">
-                    <div>멘토<button type="button" class="remove-btn">삭제</button></div>
-                </div>
-            </div>
-            <div class="member-list">
-                <div class="number">1</div>
-                <div class="id">bbagym</div>
-                <div class="name">테스트</div>
-                <div class="birth">1988-08-15</div>
-                <div class="phone">010-1234-5678</div>
-                <div class="email">test@naver.com</div>
-                <div class="sortation">
-                    <div>멘토<button type="button" class="remove-btn">삭제</button></div>
-                </div>
-            </div>
-            <div class="member-list">
-                <div class="number">1</div>
-                <div class="id">bbagym</div>
-                <div class="name">테스트</div>
-                <div class="birth">1988-08-15</div>
-                <div class="phone">010-1234-5678</div>
-                <div class="email">test@naver.com</div>
-                <div class="sortation">
-                    <div>멘토<button type="button" class="remove-btn">삭제</button></div>
-                </div>
-            </div>
-            <div class="member-list">
-                <div class="number">1</div>
-                <div class="id">bbagym</div>
-                <div class="name">테스트</div>
-                <div class="birth">1988-08-15</div>
-                <div class="phone">010-1234-5678</div>
-                <div class="email">test@naver.com</div>
-                <div class="sortation">
-                    <div>멘토<button type="button" class="remove-btn">삭제</button></div>
-                </div>
-            </div>
-            <div class="member-list">
-                <div class="number">1</div>
-                <div class="id">bbagym</div>
-                <div class="name">테스트</div>
-                <div class="birth">1988-08-15</div>
-                <div class="phone">010-1234-5678</div>
-                <div class="email">test@naver.com</div>
-                <div class="sortation">
-                    <div>멘토<button type="button" class="remove-btn">삭제</button></div>
-                </div>
-            </div>
-            <div class="member-list">
-                <div class="number">1</div>
-                <div class="id">bbagym</div>
-                <div class="name">테스트</div>
-                <div class="birth">1988-08-15</div>
-                <div class="phone">010-1234-5678</div>
-                <div class="email">test@naver.com</div>
-                <div class="sortation">
-                    <div>멘토<button type="button" class="remove-btn">삭제</button></div>
-                </div>
-            </div>
-            <div class="member-list">
-                <div class="number">1</div>
-                <div class="id">bbagym</div>
-                <div class="name">테스트</div>
-                <div class="birth">1988-08-15</div>
-                <div class="phone">010-1234-5678</div>
-                <div class="email">test@naver.com</div>
+                <div class="id" th:text="${mento.userId}">bbagym</div>
+                <div class="name" th:text="${mento.userName}">테스트</div>
+                <div class="birth" th:text="${mento.userBirth}">1988-08-15</div>
+                <div class="phone" th:text="${mento.userPhone}">010-1234-5678</div>
+                <div class="email" th:text="${mento.userEmail}">test@naver.com</div>
                 <div class="sortation">
                     <div>멘토<button type="button" class="remove-btn">삭제</button></div>
                 </div>

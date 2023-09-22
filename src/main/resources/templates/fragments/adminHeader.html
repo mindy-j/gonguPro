@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!-- fragment(조각)로 등록 fragment의 이름을 header로 설정-->
+<header class="header" th:fragment="adminHeader">
+  <span class="logo">GongU</span>
+  <div class="header-container">
+    <nav class="header-nav">
+      <a href="/admin/main">회원 관리</a>
+      <a href="/admin/board">게시글 관리</a>
+      <a href="/admin/application">신청함 관리</a>
+      <a href="/admin/note">관리자 쪽지함</a>
+    </nav>
+  </div>
+  <a href="/admin/logout">Logout</a>
+</header>
+</body>
+</html>
