@@ -3,6 +3,20 @@
 
 <configuration>
     <typeAliases>
+        <typeAlias type="com.example.gongu.domain.dto.ClassDto" alias="classDto"/>
+        <typeAlias type="com.example.gongu.domain.dto.UserDto" alias="userDto"/>
+        <typeAlias type="com.example.gongu.domain.dto.ClassReplyDto" alias="classReplyDto"/>
+        <typeAlias type="com.example.gongu.domain.dto.ImageDto" alias="imageDto"/>
+        <typeAlias type="com.example.gongu.domain.dto.LikeDto" alias="likeDto"/>
+        <typeAlias type="com.example.gongu.domain.dto.MentoApplyDto" alias="mentoApplyDto"/>
+        <typeAlias type="com.example.gongu.domain.dto.NoteDto" alias="noteDto"/>
+        <typeAlias type="com.example.gongu.domain.dto.StudyDto" alias="studyDto"/>
+        <typeAlias type="com.example.gongu.domain.dto.StudyReplyDto" alias="studyReplyDto"/>
 
+        <typeAlias type="com.example.gongu.domain.vo.StudyVo" alias="studyVo"/>
+        <typeAlias type="com.example.gongu.domain.vo.PageVo" alias="pageVo"/>
+        <typeAlias type="com.example.gongu.domain.vo.StudyReplyVo" alias="studyReplyVo"/>
+
+        <typeAlias type="com.example.gongu.domain.vo.Criteria" alias="criteria"/>
     </typeAliases>
 </configuration>
