@@ -1,274 +1,160 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../../static/css/study/studyList.css">
+    <link rel="stylesheet" href="/css/index.css"/>
+    <style>
+        .container{
+            width:1320px;
+            height:1300px;
+            margin:auto;
+
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 3열로 설정 */
+            grid-template-rows: repeat(3, 1fr); /* 4행으로 설정 */
+            grid-gap: 10px; /* 그리드 간격 설정 */
+            width: 1300px; /* 가로 크기 설정 */
+            height: 1000px; /* 세로 크기 설정 */
+            margin: 0 auto; /* 중앙 정렬을 위해 자동 마진 설정 */
+        }
+        header{
+            margin-bottom:20px;
+        }
+
+        /* 그리드 아이템 스타일 설정 (예: 배경색, 테두리 등) */
+
+    </style>
 </head>
 <body>
-    
-    <div class="fulldiv">
-        <div class="studyh1">
-            <h1>스터디 모집</h1>
-        
+
+<header class="header-container none"> <!--헤더 컨테이너-->
+    <nav class="nav-bar">
+        <div class="nav-left">
+            <a href="#">
+                <img src="./logo.png" alt="logo" class="logo-img">
+            </a>
         </div>
-        <div class="container">
-            <div class="item">
-                <div class="typeOfStudy">🗂 스터디 모집</div>
-                <div class="utilldate">
-                    <span>마감일 |</span>
-                    <span name="deadline">2023.09.30</span>
-                </div>
-                <h3 name="studyTitle">[영어문법] 
-                     오프라인 온라인 다 가능합니다.
-                </h3>
-                    <div class="info3div">
+        <div class="nav-right">
+            <ul>
+                <li>
+                    <input type="text" name="search" value="" class="search-bar" placeholder="제목을 입력해주세요"/>
+                </li>
+                <li class="study">
+                    <a href="#"><p class="header-text">스터디 모집</p></a> <!--스터디 목록으로 이동-->
+                </li>
+                <li class="menti">
+                    <a href="#"><p class="header-text">멘티 모집</p></a> <!--멘티 모집 목록으로 이동-->
+                </li>
+                <li class="login">
+                    <a href="#"><p class="header-text">로그인</p></a> <!--로그인 창으로 이동-->
+                </li>
+            </ul>
+    </nav>
 
-                        <div class="typediv">
-                            <ul>
-                                <li>디자이너 </li>
-                                <li>프론트헨드</li>
-                            </ul>
-                        </div>
-
-                        <div class="se-div">
-                            <!--이미지를 넣을 예정이라면 
-                            여기에 쓰는게 좋을것같은데...-->
-                        </div>
-
-                        <!--작성자에 관한 것-->
-                            <div class="aboutWriterdiv">
-                                <div class="logoAndUser">
-                                    <img class="logoimg" src="https://hola-post-image.s3.ap-northeast-2.amazonaws.com/default.PNG" width="30px" height="25px">
-                                    <span class="listUserName">작성자야</span>
-                                </div>
-                               
-                                <div class="chekcAndReply">
-                                    <img src="https://previews.123rf.com/images/maximsamos/maximsamos1310/maximsamos131000001/22593239-%EB%88%88-%EC%95%84%EC%9D%B4%EC%BD%98.jpg" width="30px" height="30px">
-                                    <span>12</span>
-                                    <img src="https://us.123rf.com/450wm/draganae/draganae1612/draganae161200293/71426677-%EB%8C%93%EA%B8%80-%EC%95%84%EC%9D%B4%EC%BD%98-%EB%B2%A1%ED%84%B0.jpg" width="30px" height="30px">
-                                </div>
-
-
-                            </div>
-                    </div>
-            </div>
-
-
-
-<!---------------예시를 위해 넣으둔거임 나중에 지우고 위에 부분 foreach 처리?----------------------------------->
-            <div class="item">
-                <div class="typeOfStudy">🗂 프로젝트</div>
-                <div class="utilldate">
-                    <span>마감일 |</span>
-                    <span>2023.09.30</span>
-                </div>
-                <h3>[혼자하는 요리] 1인가구 요리 플랫폼을 같이 만들 디자이너 구합니다.
-                     오프라인 온라인 다 가능합니다.
-                </h3>
-
-                <div class="info3div">
-
-                    <div class="typediv">
-                        <ul>
-                            <li>디자이너</li>
-                            <li>백앤드</li>
-                            <li>풀스택</li>
-                        </ul>
-                    </div>
-
-                    <div class="se-div">
-                        <!--이미지를 넣을 예정이라면 
-                        여기에 쓰는게 좋을것같은데...-->
-                    </div>
-                      <!--작성자에 관한 것-->
-                      <div class="aboutWriterdiv">
-                        <div class="logoAndUser">
-                            <img class="logoimg" src="https://hola-post-image.s3.ap-northeast-2.amazonaws.com/default.PNG" width="30px" height="25px">
-                            <span class="listUserName">작성자야</span>
-                        </div>
-                   
-                        <div class="chekcAndReply">
-                            <img src="https://previews.123rf.com/images/maximsamos/maximsamos1310/maximsamos131000001/22593239-%EB%88%88-%EC%95%84%EC%9D%B4%EC%BD%98.jpg" width="30px" height="30px">
-                            <span>12</span>
-                            <img src="https://us.123rf.com/450wm/draganae/draganae1612/draganae161200293/71426677-%EB%8C%93%EA%B8%80-%EC%95%84%EC%9D%B4%EC%BD%98-%EB%B2%A1%ED%84%B0.jpg" width="30px" height="30px">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="item">
-                <div class="typeOfStudy">🗂 프로젝트</div>
-                <div class="utilldate">
-                    <span>마감일 |</span>
-                    <span>2023.09.30</span>
-                </div>
-                <h3>[혼자하는 여행자] 여행플랫폼을 같이 만들 디자이너 구합니다.
-                     오프라인 온라인 다 가능합니다.
-                </h3>
-
-                <div class="info3div">
-
-                    <div class="typediv">
-                        <ul>
-                            <li>디자이너</li>
-                            <li>프론트헨드</li>
-                        </ul>
-                    </div>
-
-                    <div class="se-div">
-                        <!--이미지를 넣을 예정이라면 
-                        여기에 쓰는게 좋을것같은데...-->
-                    </div>
-                      <!--작성자에 관한 것-->
-                      <div class="aboutWriterdiv">
-                        <div class="logoAndUser">
-                            <img class="logoimg" src="https://hola-post-image.s3.ap-northeast-2.amazonaws.com/default.PNG" width="30px" height="25px">
-                            <span class="listUserName">작성자야</span>
-                        </div>
-                     
-                        <div class="chekcAndReply">
-                            <img src="https://previews.123rf.com/images/maximsamos/maximsamos1310/maximsamos131000001/22593239-%EB%88%88-%EC%95%84%EC%9D%B4%EC%BD%98.jpg" width="30px" height="30px">
-                            <span>12</span>
-                            <img src="https://us.123rf.com/450wm/draganae/draganae1612/draganae161200293/71426677-%EB%8C%93%EA%B8%80-%EC%95%84%EC%9D%B4%EC%BD%98-%EB%B2%A1%ED%84%B0.jpg" width="30px" height="30px">
-                        </div>
-                    </div>
-                </div>
-
-
-
-
-            </div>
-            <div class="item">
-                <div class="typeOfStudy">🗂 프로젝트</div>
-                <div class="utilldate">
-                    <span>마감일 |</span>
-                    <span>2023.09.30</span>
-                </div>
-                <h3>[혼자하는 여행자] 여행플랫폼을 같이 만들 디자이너 구합니다.
-                     오프라인 온라인 다 가능합니다.
-                </h3>
-
-                <div class="info3div">
-
-                    <div class="typediv">
-                        <ul>
-                            <li>디자이너</li>
-                            <li>프론트헨드</li>
-                        </ul>
-                    </div>
-
-                    <div class="se-div">
-                        <!--이미지를 넣을 예정이라면 
-                        여기에 쓰는게 좋을것같은데...-->
-                    </div>
-                      <!--작성자에 관한 것-->
-                      <div class="aboutWriterdiv">
-                        <div class="logoAndUser">
-                            <img class="logoimg" src="https://hola-post-image.s3.ap-northeast-2.amazonaws.com/default.PNG" width="30px" height="25px">
-                            <span class="listUserName">작성자야</span>
-                        </div>
-                      
-                        <div class="chekcAndReply">
-                            <img src="https://previews.123rf.com/images/maximsamos/maximsamos1310/maximsamos131000001/22593239-%EB%88%88-%EC%95%84%EC%9D%B4%EC%BD%98.jpg" width="30px" height="30px">
-                            <span>12</span>
-                            <img src="https://us.123rf.com/450wm/draganae/draganae1612/draganae161200293/71426677-%EB%8C%93%EA%B8%80-%EC%95%84%EC%9D%B4%EC%BD%98-%EB%B2%A1%ED%84%B0.jpg" width="30px" height="30px">
-                        </div>
-                    </div>
-                </div>
-
-
-
-            </div>
-            <div class="item">
-                <div class="typeOfStudy">🗂 프로젝트</div>
-                <div class="utilldate">
-                    <span>마감일 |</span>
-                    <span>2023.09.30</span>
-                </div>
-                <h3>[혼자하는 여행자] 여행플랫폼을 같이 만들 디자이너 구합니다.
-                     오프라인 온라인 다 가능합니다.
-                </h3>
-
-                <div class="info3div">
-
-                    <div class="typediv">
-                        <ul>
-                            <li>디자이너</li>
-                            <li>백앤드2명</li>
-                        </ul>
-                    </div>
-
-                    <div class="se-div">
-                        <!--이미지를 넣을 예정이라면 
-                        여기에 쓰는게 좋을것같은데...-->
-                    </div>
-                      <!--작성자에 관한 것-->
-                      <div class="aboutWriterdiv">
-                        <div class="logoAndUser">
-                            <img class="logoimg" src="https://hola-post-image.s3.ap-northeast-2.amazonaws.com/default.PNG" width="30px" height="25px">
-                            <span class="listUserName">작성자야</span>
-                        </div>
-                     
-                        <div class="chekcAndReply">
-                            <img src="https://previews.123rf.com/images/maximsamos/maximsamos1310/maximsamos131000001/22593239-%EB%88%88-%EC%95%84%EC%9D%B4%EC%BD%98.jpg" width="30px" height="30px">
-                            <span>12</span>
-                            <img src="https://us.123rf.com/450wm/draganae/draganae1612/draganae161200293/71426677-%EB%8C%93%EA%B8%80-%EC%95%84%EC%9D%B4%EC%BD%98-%EB%B2%A1%ED%84%B0.jpg" width="30px" height="30px">
-                        </div>
-                    </div>
-                </div>
-
-
-
-
-            </div>
-            <div class="item">
-                <div class="typeOfStudy">🗂 프로젝트</div>
-                <div class="utilldate">
-                    <span>마감일 |</span>
-                    <span>2023.09.30</span>
-                </div>
-                <h3>[혼자하는 여행자] 여행플랫폼을 같이 만들 디자이너 구합니다.
-                     오프라인 온라인 다 가능합니다.
-                </h3>
-
-                <div class="info3div">
-
-                    <div class="typediv">
-                        <ul>
-                            <li>디자이너</li>
-                            <li>프론트헨드</li>
-                        </ul>
-                    </div>
-
-                    <div class="se-div">
-                        <!--이미지를 넣을 예정이라면 
-                        여기에 쓰는게 좋을것같은데...-->
-                    </div>
-                      <!--작성자에 관한 것-->
-                      <div class="aboutWriterdiv">
-                        <div class="logoAndUser">
-                            <img class="logoimg" src="https://hola-post-image.s3.ap-northeast-2.amazonaws.com/default.PNG" width="30px" height="25px">
-                            <span class="listUserName">작성자야</span>
-                        </div>
-                     
-                        <div class="chekcAndReply">
-                            <img src="https://previews.123rf.com/images/maximsamos/maximsamos1310/maximsamos131000001/22593239-%EB%88%88-%EC%95%84%EC%9D%B4%EC%BD%98.jpg" width="30px" height="30px">
-                            <span>12</span>
-                            <img src="https://us.123rf.com/450wm/draganae/draganae1612/draganae161200293/71426677-%EB%8C%93%EA%B8%80-%EC%95%84%EC%9D%B4%EC%BD%98-%EB%B2%A1%ED%84%B0.jpg" width="30px" height="30px">
-                        </div>
-                    </div>
-
-                </div>
-<!--------------------------------6번까지의 예시를 위한 작성글 끝------------------------------->
-
-
-
-
-            </div>
+</header>
+<!--로그인 후 헤더-->
+<header class="header-container none"> <!--헤더 컨테이너-->
+    <nav class="nav-bar">
+        <div class="nav-left-login">
+            <a href="#">
+                <img src="logo.jpg" alt="logo" class="logo-img">
+            </a>
         </div>
+        <div class="nav-right">
+            <ul>
+                <li>
+                    <input type="text" name="search" value="" class="search-bar" placeholder="제목을 입력해주세요"/>
+                </li>
+                <li class="study">
+                    <a href="#"><p class="header-text">스터디 모집</p></a> <!--스터디 목록으로 이동-->
+                </li>
+                <li class="menti">
+                    <a href="#"><p class="header-text">멘티 모집</p></a> <!--멘티 모집 목록으로 이동-->
+                </li>
+                <li class="login">
+                    <a href="#"><p class="header-text">쪽지함</p></a> <!--로그인 창으로 이동-->
+                </li>
+
+                <li class="myPage">
+                    <a href="#"><p class="header-text">마이페이지</p></a> <!--로그인 창으로 이동-->
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<!--멘토로 로그인 헤더-->
+<header class="header-container "> <!--헤더 컨테이너-->
+    <nav class="nav-bar">
+        <div class="nav-left-login-mentor">
+            <a href="#">
+                <img src="logo.jpg" alt="logo" class="logo-img">
+            </a>
+        </div>
+        <div class="nav-right">
+            <ul>
+                <li>
+                    <input type="text" name="search" value="" class="search-bar" placeholder="제목을 입력해주세요"/>
+                </li>
+                <li class="study">
+                    <a href="#"><p class="header-text">스터디 모집</p></a> <!--스터디 목록으로 이동-->
+                </li>
+                <li class="menti">
+                    <a href="#"><p class="header-text">멘티 모집</p></a> <!--멘티 모집 목록으로 이동-->
+                </li>
+                <li class="menti">
+                    <a href="#"><p class="header-text">멘토 신청</p></a> <!--멘티 모집 목록으로 이동-->
+                </li>
+                <li class="login">
+                    <a href="#"><p class="header-text">쪽지함</p></a> <!--로그인 창으로 이동-->
+                </li>
+
+                <li class="myPage">
+                    <a href="#"><p class="header-text">마이페이지</p></a> <!--로그인 창으로 이동-->
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container">
+    <h2>스터디 모집</h2>
+    <div class="grid-container">
+        <!-- 그리드 아이템 -->
+
+        <div th:each="study : ${studyList}">
+        <a th:href="@{/study/detail(studyNumber=${study.studyNumber})}" >
+            <div class="good-board">
+                <div class="category-img-box" >
+                    <img src="asd" name="카테고리이미지"/>
+                </div>
+                <div class="deadline-box" >
+                    <p class="deadline" name="마감일" th:text="'마감일  |  '+${study.studyStartDate}"> </p>
+                </div>
+                <div class="content-box" name="제목">
+                    <p class="content" th:text="${study.studyTitle}"></p>
+                </div>
+                <div class="category-box" name="category">
+                    <p class="category" name="카테고리" th:text="${study.studyMajor}"></p>
+                </div>
+                <div class="address-box">
+                    <p class="address" name="주소" th:text="${study.studyAddress}"></p>
+                </div>
+                <div class="user-box">
+                    <span class="user-nickname" th:text="${study.userId}"></span>
+                    <span class="commend-count">0</span>
+                </div>
+            </div>
+        </a>
+        </div>
+
+
+
+        <a href="/study/write">글작성버튼</a>
     </div>
+</div>
+
 </body>
 </html>

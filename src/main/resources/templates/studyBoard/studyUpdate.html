@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>studywrite</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/study/studywrite.css">
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <!-- 서머노트를 위해 추가해야할 부분 -->
+  <script src="summerNote/summernote-lite.js"></script>
+  <script src="summerNote/summernote-ko-KR.js"></script>
+  <link rel="stylesheet" href="summerNote/summernote-lite.css">
+  <!--  -->
+</head>
+<body>
+<div class="full-box">
+  <div class="formfull-box">
+    <div class="getherInfo">
+      <h1><span class="number1">1</span>모집 정보를 입력해주세요</h1>
+    </div>
+
+    <form action="/study/update" method="post">
+      <input type="hidden" th:value="${study.studyNumber}" name="studyNumber"/>
+      <div class="section-1">
+        <div class="getherPeople-div">
+          <div class="howTo-div">
+            <span>진행 방식</span><br>
+            <select name="studyProcess" placeholder="온라인/오프라인">
+              <option value="online" >온라인</option>
+              <option value="offline" >오프라인</option>
+            </select>
+          </div>
+
+          <div class="gether-div">
+            <span>모집 인원</span><br>
+            <select name="studyStudentCount" placeholder="인원미정~10명이상">
+              <option value="인원 미정">인원 미정</option>
+              <option value="1명">1명</option>
+              <option value="2명">2명</option>
+              <option value="3명">3명</option>
+              <option value="4명">4명</option>
+              <option value="5명">5명</option>
+              <option value="6명">6명</option>
+              <option value="7명">7명</option>
+              <option value="8명">8명</option>
+              <option value="9명">9명</option>
+              <option value="10명 이상">10명 이상</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="study-div">
+          <div>
+            <span>스터디 구분</span><br>
+            <input type="text" name="studyMajor" placeholder="000시험준비 스터디" th:value="${study.studyMajor}">
+          </div>
+
+          <div class="period-div">
+            <span>진행 기간</span><br>
+            <select name="studyDate">
+              <option value="기간 미정">기간미정</option>
+              <option value="1개월">1개월</option>
+              <option value="2개월">2개월</option>
+              <option value="3개월">3개월</option>
+              <option value="4개월">4개월</option>
+              <option value="5개월">5개월</option>
+              <option value="6개월">6개월</option>
+              <option value="장기">장기</option>
+            </select>
+          </div>
+        </div>
+
+
+        <div class="location-div">
+          <div>
+            <span>지역</span><br>
+            <input type="text" name="studyAddress" placeholder="지역을 입력해주세요" th:value="${study.studyAddress}">
+
+          </div>
+
+          <div class="deadline-div">
+            <span>모집 마감일</span><br>
+            <input type="date" name="studyStartDate" th:value="${study.studyStartDate}"><!--얘 DB 마감일로 바꿔야함-->
+          </div>
+        </div>
+
+        <div class="conntect-div">
+          <div>
+            <span>연락 방법</span><br>
+            <select name="howToConnect" >
+              <option value="connect-email">이메일</option>
+              <option value="connect-kakao">카카오톡 오픈채팅</option>
+            </select>
+          </div>
+          <div class="kakaoChat-div">
+            <input type="text" name="kakaoChat-url" placeholder="오픈 카카오톡 링크" >
+          </div>
+        </div>
+      </div>
+
+      <div class="section-2">
+        <div class="aboutStudy">
+          <h2><span class="number1">2</span>스터디에 대해 소개해주세요</h2>
+        </div>
+
+        <div>
+          <span>제목</span><br>
+          <input type="text" name="studyTitle" placeholder="글제목을 입력해주세요" style="width: 810px;" th:value="${study.studyTitle}">
+
+        </div>
+      </div>
+
+
+      <div class="container" style="width: 850px;">   <!--editordata-->
+        <textarea class="summernote" name="studyContent" th:text="${study.studyContent}"></textarea>
+      </div>
+
+      <div class="button-div">
+        <button type="reset" class="rest-btn" name="cancelBtn">취소</button>
+        <button type="submit" class="registerBtn" name="registerBtn" >수정</button>
+      </div>
+    </form>
+  </div>
+
+</body>
+<script>
+  $('.summernote').summernote({
+    height: 450,
+    lang: "ko-KR"
+  });
+</script>
+</html>
