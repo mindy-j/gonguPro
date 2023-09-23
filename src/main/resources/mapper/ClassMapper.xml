@@ -1,4 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.gongu.mapper.ClassMapper">
+    <insert id="insert">
+        insert into TBL_CLASS_BOARD (CLASS_NUMBER, CLASS_TITLE, CLASS_START_DATE, CLASS_END_DATE, CLASS_PROCESS, CLASS_PRICE,
+                                     CLASS_ADDRESS, CLASS_MAJOR, CLASS_INTRODUCE, CLASS_PLAN, CLASS_REGISTER_DATE, CLASS_LEVEL,
+                                     CLASS_UPDATE_DATE, USER_NUMBER)
+        values (SEQ_CLASS_NUMBER.NEXTVAL,#{classTitle},#{classStartDate},#{classEndDate},#{classProcess},#{classPrice},
+                #{classAddress},#{classMajor},#{classIntroduce},#{classPlan},sysdate,0,sysdate,6)
+    </insert>
+
+    <select id="selectList" resultType="classVo">
+        SELECT
+            CB.CLASS_NUMBER,
+            CB.CLASS_TITLE,
+            CB.CLASS_START_DATE,
+            CB.CLASS_END_DATE,
+            CB.CLASS_PROCESS,
+            CB.CLASS_PRICE,
+            CB.CLASS_ADDRESS,
+            CB.CLASS_MAJOR,
+            CB.CLASS_INTRODUCE,
+            CB.CLASS_PLAN,
+            CB.CLASS_REGISTER_DATE,
+            CB.CLASS_LEVEL,
+            CB.CLASS_UPDATE_DATE,
+            CB.USER_NUMBER,
+            U.USER_NAME,
+            U.USER_LEVEL,
+            MA.APPLY_EDUCATION
+        FROM
+            TBL_CLASS_BOARD CB
+                JOIN
+            TBL_USERS U
+            ON
+                CB.USER_NUMBER = U.USER_NUMBER
+                LEFT JOIN
+            TBL_MEMTO_APPLY MA
+            ON
+                U.USER_NUMBER = MA.USER_NUMBER
+    </select>
 </mapper>

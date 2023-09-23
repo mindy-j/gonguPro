@@ -19,5 +19,6 @@
 
         <typeAlias type="com.example.gongu.domain.vo.Criteria" alias="criteria"/>
         <typeAlias type="com.example.gongu.domain.vo.SearchVo" alias="searchVo"/>
+        <typeAlias type="com.example.gongu.domain.vo.ClassVo" alias="classVo"/>
     </typeAliases>
 </configuration>

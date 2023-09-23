@@ -4,7 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../../static/css/mentor/mentorStudyPlan.css">
+    <link rel="stylesheet" href="/css/mentor/mentorStudyPlan.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- 서머노트를 위해 추가해야할 부분 -->
+    <script src="/summerNote/summernote-lite.js"></script>
+    <script src="/summerNote/summernote-ko-KR.js"></script>
+    <link rel="stylesheet" href="/summerNote/summernote-lite.css">
 </head>
 <body>
     <div class="full-box"><!--전체 총 박스-->
@@ -15,13 +21,13 @@
                 <p>나의 수업계획을 공유해주세요!</p>
             </div>
 
-            <form action="" method=""> <!--백단은 위한 폼 부분-->
+            <form action="/class/writeOk" method="post"> <!--백단은 위한 폼 부분-->
             <div>
                 <div>
                     <span class="edu-title">글 제목</span>
                 </div>
                 <div class="edu-title-div">
-                    <input type="text" name="title" style="width: 600px;" placeholder="제목을 입력해주세요">
+                    <input type="text" name="classTitle" placeholder="제목을 입력해주세요">
                 </div>
             </div>
 
@@ -30,7 +36,9 @@
             <div class="edu-plan-div"><!--수업계획 부분시작 -->
                 <span class="edu-plan">수업계획</span> 
                 <div class="planFrom-div">
-                    <input type="text" name="edu-plan" placeholder="  수업 계획을 자세히 적어주세요 " style="height: 500px; width: 600px;">
+                    <div class="container" style="width: 850px;">   <!--editordata-->
+                        <textarea class="summernote" name="classPlan"></textarea>
+                    </div>
                 </div>
             </div><!--수업계획 부분 끝 -->
             <br><br>
@@ -40,13 +48,13 @@
                 <div class="plan_data">
                     <div class="plan_data_div1">
                         <!--수업시작일 input-->
-                        <input type="date" name="stduyStart">
+                        <input type="date" name="classStartDate">
                         <br>
                         시작일
                     </div>
                     <div class="plan_data_div2">
                         <!--수업종료일 input-->
-                        <input type="date" name="stduyEnd">
+                        <input type="date" name="classEndDate">
                         <br>
                         종료일
                     </div>
@@ -62,9 +70,9 @@
                         <span class="class-howto">진행 방식</span>
                     </div>
                     <div>
-                        <select class="howto-second" name="">
-                            <option value="">온라인</option>
-                            <option value="">오프라인</option>
+                        <select class="classProcess" name="classProcess">
+                            <option value="온라인">온라인</option>
+                            <option value="오프라인">오프라인</option>
                         </select>
                     </div>
                     </div>
@@ -73,33 +81,33 @@
                                 <span class="class-howto2">수업 구분</span>
                             </div>
                             <div class="howto-second2">
-                                <select id="category" name="category">
+                                <select id="classMajor" name="classMajor">
                                     <option value="">-- 선택하세요 --</option>
                                     <optgroup label="수학">
-                                      <option value="">산술학</option>
-                                      <option value="">대수학</option>
-                                      <option value="">기하학</option>
-                                      <option value="">위상수학</option>
-                                      <option value="">해석학</option>
+                                      <option value="산술학">산술학</option>
+                                      <option value="대수학">대수학</option>
+                                      <option value="기하학">기하학</option>
+                                      <option value="위상수학">위상수학</option>
+                                      <option value="해석학">해석학</option>
                                     </optgroup>
                                     <optgroup label="과학">
-                                      <option value="">생명과학</option>
-                                      <option value="">기초과학</option>
-                                      <option value="">자연과학</option>
-                                      <option value="">과학기술</option>
+                                      <option value="생명과학">생명과학</option>
+                                      <option value="기초과학">기초과학</option>
+                                      <option value="자연과학">자연과학</option>
+                                      <option value="과학기술">과학기술</option>
                                     </optgroup>
                                     <optgroup label="국어">
-                                      <option value="">국어학</option>
-                                      <option value="">고전문학</option>
-                                      <option value="">현대문학</option>
-                                      <option value="">국어국문</option>
+                                      <option value="국어학">국어학</option>
+                                      <option value="고전문학">고전문학</option>
+                                      <option value="현대문학">현대문학</option>
+                                      <option value="국어국문">국어국문</option>
                                     </optgroup>
                                     <optgroup label="언어">
-                                      <option value="">영어</option>
-                                      <option value="">중국어</option>
-                                      <option value="">프랑스어</option>
-                                      <option value="">일본어</option>
-                                      <option value="">독일어</option>
+                                      <option value="영어">영어</option>
+                                      <option value="중국어">중국어</option>
+                                      <option value="프랑스어">프랑스어</option>
+                                      <option value="일본어">일본어</option>
+                                      <option value="독일어">독일어</option>
                                     </optgroup> 
                                     <optgroup label="기타">
                                         <option value="etc">기타</option>
@@ -124,7 +132,7 @@
                     </div>
                     <div>
                         <div class="location-second">
-                            <input type="text" name="location"  placeholder="지역을 입력해주세요">
+                            <input type="text" name="classAddress"  placeholder="지역을 입력해주세요">
                         </div>
                     </div>
                     </div>
@@ -133,7 +141,7 @@
                                 <span class="class-price">가격</span>
                             </div>
                             <div class="price-second">
-                                <input type="text" name="price"  placeholder="가격을 입력해주세요">
+                                <input type="text" name="classPrice"  placeholder="가격을 입력해주세요">
                             </div>
                         <div>
                     </div>
@@ -152,7 +160,9 @@
                 <span class="memtor-introduction">멘토 소개</span>
                 <div class="aboutMentor-div">
                     <!--멘소 소개 input-->
-                    <input type="text" name="introduceMentor" placeholder="  자유롭게 나를 표현해주세요" style="height: 400px; width: 600px;">
+                    <div class="container" style="width: 850px;">   <!--editordata-->
+                        <textarea class="summernote" name="classIntroduce"></textarea>
+                    </div>
                 </div>
             </div><!--멘토 소개부분 끝-->
             <br>
@@ -168,4 +178,10 @@
         </div>
     </div>
 </body>
+<script>
+    $('.summernote').summernote({
+        height: 450,
+        lang: "ko-KR"
+    });
+</script>
 </html>

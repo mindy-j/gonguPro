@@ -1,26 +1,24 @@
-import * as reply from 'static/js/module/reply.js';
+import * as reply from '../module/reply.js';
 //모듈 경로는 상대경로로 접근해야한다.
 // 파일명 뒤에 반드시 확장자를 작성한다!!!!!!!!!
-let studyNumber = $('.board-num').val();
-
+let studyNumber = $('.study-num').val();
 
 //리플 작성 완료 처리
 $('.btn-reply').on('click', function () {
     let content = $('#reply-content').val();
 
-    if(!(content && loginNumber)){
-        alert('로그인을 하세요!');
-        return;
-    }
-
+    // if(!(content && loginNumber)){
+    //     alert('로그인을 하세요!');
+    //     return;
+    // }
     let replyObj = {
-        replyContent : content,
-        boardNumber : studyNumber,
+        studyReplyContent : content,
+        studyNumber : studyNumber,
         userNumber : loginNumber
     };
 
     reply.add(replyObj, function(){
-        reply.getList(studyNumber, showReply);
+        reply.getListPage({studyNumber:studyNumber, page : page}, appendReply);
     });
 
     $('#reply-content').val('');
@@ -41,14 +39,14 @@ function appendReply(map){
 
     map.replyList.forEach( r => {
         text += `
-            <div class="reply" data-num="${r.replyNumber}">
+            <div class="reply" data-num="${r.studyReplyNumber}">
               <div class="reply-box">
-                <div class="reply-box__writer">${r.userId}</div>
-                <div class="reply-box__content">${r.replyContent}</div>
+                <div class="reply-box__writer">${r.userNickname}</div>
+                <div class="reply-box__content">${r.studyReplyContent}</div>
               </div>
               
               <div class="reply-time">
-                ${reply.timeForToday(r.replyUpdateDate) + (r.replyRegisterDate == r.replyUpdateDate ? ' 작성' : ' 수정')}
+                ${reply.timeForToday(r.studyReplyUpdateDate) + (r.studyReplyRegisterDate == r.studyReplyUpdateDate ? ' 작성' : ' 수정')}
               </div>      
               
               <div class="reply-btn-box">
@@ -71,21 +69,21 @@ function appendReply(map){
 
 
 //무한 스크롤 페이징
-$(window).on('scroll', function (){
-
-    // 현재 브라우저의 스크롤 위치를 의미함
-    console.log(`scrollTop : ${ $(window).scrollTop() }`);
-    // 문서 전체의 높이를 구함
-    console.log(`document : ${ $(document).height() }`);
-    //브라우저 화면의 높이를 구함
-    console.log(`window : ${ $(window).height() }`);
-
-    if(Math.round($(window).scrollTop()) == $(document).height() - $(window).height()){
-        console.log(++page);
-        reply.getListPage({boardNumber:boardNumber, page : page}, appendReply);
-    }
-
-});
+// $(window).on('scroll', function (){
+//
+//     // 현재 브라우저의 스크롤 위치를 의미함
+//     console.log(`scrollTop : ${ $(window).scrollTop() }`);
+//     // 문서 전체의 높이를 구함
+//     console.log(`document : ${ $(document).height() }`);
+//     //브라우저 화면의 높이를 구함
+//     console.log(`window : ${ $(window).height() }`);
+//
+//     if(Math.round($(window).scrollTop()) == $(document).height() - $(window).height()){
+//         console.log(++page);
+//         reply.getListPage({studyNumber:studyNumber, page : page}, appendReply);
+//     }
+//
+// });
 
 
 
@@ -162,25 +160,25 @@ $('.btn-remove').on('click', function (){
     let studyNumber = $(this).data('number');
     window.location.href = '/study/remove?studyNumber=' + studyNumber;
 
-    // let f = document.createElement('form');
-    // f.setAttribute("method", 'post');
-    // f.setAttribute('action', '/board/remove');
-    //
-    // let input = document.createElement('input');
-    // input.setAttribute('name', 'boardNumber');
-    // input.setAttribute('value', boardNumber);
-    // input.setAttribute('type', 'hidden');
-    //
-    // f.appendChild(input);
-    //
-    // document.body.appendChild(f);
-    // f.submit();
+    let f = document.createElement('form');
+    f.setAttribute("method", 'post');
+    f.setAttribute('action', '/board/remove');
+
+    let input = document.createElement('input');
+    input.setAttribute('name', 'boardNumber');
+    input.setAttribute('value', boardNumber);
+    input.setAttribute('type', 'hidden');
+
+    f.appendChild(input);
+
+    document.body.appendChild(f);
+    f.submit();
 });
 
 // 수정 버튼
 $('.btn-modify').on('click', function (){
-    let boardNumber = $(this).data('number');
-    window.location.href = '/board/modify?boardNumber=' + boardNumber;
+    let studyNumber = $(this).data('number');
+    window.location.href = '/study/modify?studyNumber=' + studyNumber;
 });
 
 // 리플 작성 완료 처리
@@ -195,7 +193,7 @@ $('.reply-list-wrap').on('click', '.reply-remove-btn', function () {
     let studyReplyNumber = $(this).closest('.reply').data('num');
 
     reply.remove(studyReplyNumber, function (){
-        reply.getList(studyNumber, showReply);
+        reply.getListPage({studyNumber:studyNumber, page : page}, appendReply);
     });
 });
 
@@ -218,10 +216,12 @@ $('.reply-list-wrap').on('click', '.modify-content-btn', function () {
     let studyReplyContent = $(this).closest('.modify-box').find('.modify-content').val();
     // console.log(replyContent);
     let studyReplyObj = {studyReplyContent : studyReplyContent};
+    console.log('modify!!!2');
 
     reply.modify(studyReplyNumber, studyReplyObj, function (){
-        reply.getList(studyNumber, showReply);
+        reply.getListPage({studyNumber:studyNumber, page : page}, appendReply);
     });
+    console.log('modify!!!3');
 });
 
 
