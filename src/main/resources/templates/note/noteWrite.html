@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>쪽지쓰기</title>
+    <link rel="stylesheet" href="/css/noteWrite.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+</head>
+<body>
+    <div class="note-wrap">
+        <!-- 쪽지함 전용 헤더 -->
+        <div class="note-header">
+            <div class="note-main-box">
+                <a href="" class="gongu-main">GONGU</a>
+                <a href="receiveNote.html" class="note-main">쪽지</a>
+            </div>
+            <div class="logout">
+                <span>로그아웃</span>
+            </div>
+        </div>
+        <!-- 쪽지함 바디 -->
+        <div class="note-body">
+            <!-- 쪽지함 기능들 -->
+            <div class="menu-container">
+                <a href="noteWrite.html" class="btn-note-write">
+                    <span>쪽지쓰기</span>
+                </a>
+                <div class="receive">
+                    <a href="receiveNote.html">받은쪽지함</a>
+                </div>
+                <div class="send">
+                    <a href="sendNote.html">보낸쪽지함</a>
+                </div>
+            </div>
+            <!-- 쪽지함 기능 내용(비동기 처리?) -->
+            <div class="note-container">
+                <div class="note-send">
+                    쪽지쓰기
+                </div>
+                <div class="note-box">
+                    <!-- 쪽지 -->
+                    <div class="note-write-container">
+                        <form action="">
+                            <div class="receiver-box">
+                                <div class="receiver-word">받는사람</div>
+                                <input type="text" class="note-sender">
+                            </div>
+                            <div class="title-box">
+                                <div class="title-word">제목</div>
+                                <input type="text" class="note-title">
+                            </div>
+                            <div class="content-box">
+                                <div class="content-word">내용</div>
+                                <div id="summernote"></div>
+                            </div>
+                            <div class="btn-box">
+                                <button class="btn-note-send">보내기</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $('#summernote').summernote({
+            placeholder: '쪽지 내용을 입력해주세요',
+            tabsize: 2,
+            height: 400,                 // set editor height
+            minHeight: 400,             // set minimum height of editor
+            maxHeight: 400,             // set maximum height of editor
+            focus: true,
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'underline', 'clear']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['view', ['help']]
+            ]
+        });
+    </script>
+</body>
+</html>
