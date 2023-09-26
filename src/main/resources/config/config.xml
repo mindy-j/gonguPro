@@ -3,6 +3,8 @@
 
 <configuration>
     <typeAliases>
+        <typeAlias type="com.example.gongu.domain.dto.NoteDto" alias="noteDto"/>
 
+        <typeAlias type="com.example.gongu.domain.vo.NoteVo" alias="noteVo"/>
     </typeAliases>
 </configuration>
