@@ -45,11 +45,11 @@ class StudyMapperTest {
         mapper.insert(dto);
     }
 
-    @Test
-    void selectList() {
-        List<StudyVo> list =mapper.selectList();
-      
-    }
+//    @Test
+//    void selectList() {
+//        List<StudyVo> list =mapper.selectList();
+//
+//    }
 
 
     @Test

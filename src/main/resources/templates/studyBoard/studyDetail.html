@@ -125,7 +125,7 @@
             <h3>댓글 작성</h3>
             <div class="reply-wrap__box">
                 <div class="reply-content__box">
-                    <div class="reply-writer">홍길동</div>
+                    <div class="reply-writer" th:text="${study.userId}"></div>
                     <textarea name="replyContent" id="reply-content" cols="30" rows="10"></textarea>
                 </div>
                 <div class="reply-btn-wrap">
@@ -153,11 +153,13 @@
     </div> <!--fulldiv 끝나는 지점 길이100%-->
 
 
-    <input type="hidden" th:value="${study.studyNumber}" name="study-number"/>
+    <input type="hidden" th:value="${study.studyNumber}" class="study-num"/>
     <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
 
     <script th:inline="javascript"> // 타임리프 문법을 자바스크립트에서 사용하기 위한 설정
     let loginNumber = [[${session.userNumber}]]; // 타임리프 문법은 [] 2개로 감싸줘야 한다.
+    loginNumber = 5;
+
     </script>
 
     <script type="module" src="/js/study/studyReply.js"></script>

@@ -1,6 +1,8 @@
 package com.example.gongu.controller;
 
 import com.example.gongu.domain.dto.StudyDto;
+import com.example.gongu.domain.vo.Criteria;
+import com.example.gongu.domain.vo.PageVo;
 import com.example.gongu.domain.vo.StudyVo;
 import com.example.gongu.service.StudyService;
 import lombok.RequiredArgsConstructor;
@@ -19,8 +21,9 @@ public class StudyController {
     private final StudyService studyService;
 
     @GetMapping("/list")
-    public String showListPage(Model model){
-        model.addAttribute("studyList",studyService.findList());
+    public String showListPage(Criteria criteria,Model model){
+        model.addAttribute("studyList",studyService.findList(criteria));
+        model.addAttribute("pageInfo", new PageVo(studyService.getTotal(),criteria));
         return "studyBoard/studyList";
     }
 
@@ -36,15 +39,15 @@ public class StudyController {
     }
 
     @GetMapping("/detail")
-    public String detailPage(Long boardNumber,Model model){
-        StudyVo studyVo =studyService.find(30L);
+    public String detailPage(Long studyNumber,Model model){
+        StudyVo studyVo =studyService.find(studyNumber);
         model.addAttribute("study",studyVo);
         return "studyBoard/studyDetail";
     }
 
     @GetMapping("/update")
-    public String updatePage(Long boardNumber,Model model){
-        StudyVo studyVo = studyService.find(30L);
+    public String updatePage(Long studyNumber,Model model){
+        StudyVo studyVo = studyService.find(studyNumber);
         model.addAttribute("study",studyVo);
         return "studyBoard/studyUpdate";
     }

@@ -8,9 +8,13 @@
     </insert>
 
     <select id="selectList" resultType="studyVo">
-        select STUDY_NUMBER, STUDY_TITLE, STUDY_PROCESS, STUDY_START_DATE, STUDY_DATE,STUDY_STUDENT_COUNT, STUDY_MAJOR, STUDY_ADDRESS, STUDY_CONTENT, S.USER_NUMBER,STUDY_REGISTER_DATE,STUDY_UPDATE_DATE,U.USER_ID
-        FROM TBL_STUDY_BOARD S JOIN TBL_USERS U ON S.USER_NUMBER = U.USER_NUMBER
-         ORDER BY study_number DESC
+        SELECT RNUM,STUDY_NUMBER, STUDY_TITLE, STUDY_PROCESS, STUDY_START_DATE, STUDY_DATE,STUDY_STUDENT_COUNT, STUDY_MAJOR, STUDY_ADDRESS, STUDY_CONTENT, USER_NUMBER,STUDY_REGISTER_DATE,STUDY_UPDATE_DATE,USER_ID
+        FROM (select ROWNUM AS RNUM,STUDY_NUMBER, STUDY_TITLE, STUDY_PROCESS, STUDY_START_DATE, STUDY_DATE,STUDY_STUDENT_COUNT, STUDY_MAJOR, STUDY_ADDRESS, STUDY_CONTENT, S.USER_NUMBER,STUDY_REGISTER_DATE,STUDY_UPDATE_DATE,U.USER_ID
+              FROM TBL_STUDY_BOARD S JOIN TBL_USERS U
+                                          ON S.USER_NUMBER = U.USER_NUMBER
+        <![CDATA[WHERE ROWNUM <= #{page} * #{amount}]]>
+             )
+        WHERE RNUM > (#{page} - 1) * #{amount}
     </select>
 
     <select id="select" resultType="studyVo">
@@ -29,4 +33,9 @@
         delete from tbl_study_board
         where study_number = #{studyNumber}
     </delete>
+
+    <select id="selectTotal" resultType="_int">
+        SELECT COUNT(STUDY_NUMBER)
+        FROM TBL_STUDY_BOARD
+    </select>
 </mapper>

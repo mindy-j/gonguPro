@@ -19,7 +19,7 @@
 
 export function add(reply, callback){
     $.ajax({
-        url: "/replies",
+        url: "/classReplies",
         type : "post",
         data : JSON.stringify(reply),
         contentType : 'application/json; charset=utf-8',
@@ -36,7 +36,7 @@ export function add(reply, callback){
 
 export function getList(boardNumber, callback){
     $.ajax({
-        url : `/replies/list/${boardNumber}`,
+        url : `/classReplies/list/${boardNumber}`,
         type : 'get',
         dataType : 'json',
         success : function (result) {
@@ -52,7 +52,7 @@ export function getList(boardNumber, callback){
 
 export function getDetails(replyNumber, callback){
     $.ajax({
-        url : `/replies/${replyNumber}`,
+        url : `/classReplies/${replyNumber}`,
         type : 'get',
         dataType : 'json',
         success : function (result){
@@ -68,7 +68,7 @@ export function getDetails(replyNumber, callback){
 
 export function modify(replyNumber, reply, callback){
     $.ajax({
-        url : `/replies/${replyNumber}`,
+        url : `/classReplies/${replyNumber}`,
         type : 'patch',
         data : JSON.stringify(reply),
         contentType : 'application/json; charset=utf-8',
@@ -84,7 +84,7 @@ export function modify(replyNumber, reply, callback){
 }
 export function remove(replyNumber, callback){
     $.ajax({
-        url : `/replies/${replyNumber}`,
+        url : `/classReplies/${replyNumber}`,
         type : 'delete',
         success : function (){
             if(callback){
@@ -100,7 +100,7 @@ export function remove(replyNumber, callback){
 
 export function getListPage(pageInfo, callback){
     $.ajax({
-        url: `/replies/list/${pageInfo.studyNumber}/${pageInfo.page}`,
+        url: `/classReplies/list/${pageInfo.classNumber}/${pageInfo.page}`,
         type : 'get',
         dataType : 'json',
         success : function (result){
@@ -136,42 +136,3 @@ export function timeForToday(value){
 
     return `${Math.floor(betweenTimeDay / 365)}년 전`;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
