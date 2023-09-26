@@ -9,13 +9,12 @@ import java.util.Date;
 @Component
 @Data
 @NoArgsConstructor
-public class StudyReplyVo {
-    private Long studyReplyNumber;
-    private String studyReplyContent;
-    private Date studyReplyRegisterDate;
-    private Date studyReplyUpdateDate;
+public class ClassReplyVo {
+    private Long classReplyNumber;
+    private String classReplyContent;
+    private Date classReplyRegisterDate;
+    private Date classReplyUpdateDate;
     private Long userNumber;
-    private Long studyNumber;
+    private Long classNumber;
     private String userNickname;
-
 }

@@ -1,6 +1,7 @@
 package com.example.gongu.service;
 
 import com.example.gongu.domain.dto.StudyDto;
+import com.example.gongu.domain.vo.Criteria;
 import com.example.gongu.domain.vo.StudyVo;
 import com.example.gongu.mapper.StudyMapper;
 import lombok.RequiredArgsConstructor;
@@ -17,13 +18,17 @@ public class StudyService {
         studyMapper.insert(studyDto);
     }
 
-    public List<StudyVo> findList(){
-        List<StudyVo> findAll = studyMapper.selectList();
+    public List<StudyVo> findList(Criteria criteria){
+        List<StudyVo> findAll = studyMapper.selectList(criteria);
         return findAll;
     }
 
+    public int getTotal(){
+        return studyMapper.selectTotal();
+    }
+
     public StudyVo find(Long studyNumber){
-        StudyVo selectStudy = studyMapper.select(30L);
+        StudyVo selectStudy = studyMapper.select(studyNumber);
         return selectStudy;
     }
 

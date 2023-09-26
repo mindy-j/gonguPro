@@ -1,7 +1,7 @@
-import * as reply from '../module/reply.js';
+import * as reply from '../module/classReplyModule.js';
 //모듈 경로는 상대경로로 접근해야한다.
 // 파일명 뒤에 반드시 확장자를 작성한다!!!!!!!!!
-let studyNumber = $('.study-num').val();
+let classNumber = $('.class-num').val();
 
 //리플 작성 완료 처리
 $('.btn-reply').on('click', function () {
@@ -12,13 +12,13 @@ $('.btn-reply').on('click', function () {
     //     return;
     // }
     let replyObj = {
-        studyReplyContent : content,
-        studyNumber : studyNumber,
+        classReplyContent : content,
+        classNumber : classNumber,
         userNumber : loginNumber
     };
 
     reply.add(replyObj, function(){
-        reply.getListPage({studyNumber:studyNumber, page : page}, appendReply);
+        reply.getListPage({classNumber:classNumber, page : page}, appendReply);
     });
 
     $('#reply-content').val('');
@@ -29,7 +29,7 @@ $('.btn-reply').on('click', function () {
 // reply.getList(boardNumber, showReply);
 let page = 1;
 
-reply.getListPage({studyNumber:studyNumber, page : page}, appendReply);
+reply.getListPage({classNumber:classNumber, page : page}, appendReply);
 
 
 function appendReply(map){
@@ -39,14 +39,14 @@ function appendReply(map){
 
     map.replyList.forEach( r => {
         text += `
-            <div class="reply" data-num="${r.studyReplyNumber}">
+            <div class="reply" data-num="${r.classReplyNumber}">
               <div class="reply-box">
                 <div class="reply-box__writer">${r.userNickname}</div>
-                <div class="reply-box__content">${r.studyReplyContent}</div>
+                <div class="reply-box__content">${r.classReplyContent}</div>
               </div>
               
               <div class="reply-time">
-                ${reply.timeForToday(r.studyReplyUpdateDate) + (r.studyReplyRegisterDate == r.studyReplyUpdateDate ? ' 작성' : ' 수정')}
+                ${reply.timeForToday(r.classReplyUpdateDate) + (r.classReplyRegisterDate == r.classReplyUpdateDate ? ' 작성' : ' 수정')}
               </div>      
               
               <div class="reply-btn-box">
@@ -102,14 +102,14 @@ function showReply(result){
 
     result.forEach( r => {
         text += `
-            <div class="reply" data-num="${r.studyReplyNumber}">
+            <div class="reply" data-num="${r.classReplyNumber}">
               <div class="reply-box">
                 <div class="reply-box__writer">${r.userId}</div>
-                <div class="reply-box__content">${r.studyReplyContent}</div>
+                <div class="reply-box__content">${r.classReplyContent}</div>
               </div>
               
               <div class="reply-time">
-                ${reply.timeForToday(r.studyReplyUpdateDate) + (r.studyReplyRegisterDate == r.studyReplyUpdateDate ? ' 작성' : ' 수정')}
+                ${reply.timeForToday(r.classReplyUpdateDate) + (r.classReplyRegisterDate == r.classReplyUpdateDate ? ' 작성' : ' 수정')}
               </div>      
               
               <div class="reply-btn-box">
@@ -152,21 +152,21 @@ $('body').click(function (e) {
 
 // 뒤로가기 버튼
 $('.btn-back').on('click', function (){
-    window.location.href = '/board/list';
+    window.location.href = '/class/list';
 })
 
 //삭제 버튼
 $('.btn-remove').on('click', function (){
-    let studyNumber = $(this).data('number');
-    window.location.href = '/study/remove?studyNumber=' + studyNumber;
+    let classNumber = $(this).data('number');
+    window.location.href = '/class/delete?classNumber=' + classNumber; //remove? delete?
 
     let f = document.createElement('form');
     f.setAttribute("method", 'post');
-    f.setAttribute('action', '/board/remove');
+    f.setAttribute('action', '/class/delete');
 
     let input = document.createElement('input');
-    input.setAttribute('name', 'boardNumber');
-    input.setAttribute('value', boardNumber);
+    input.setAttribute('name', 'classNumber');
+    input.setAttribute('value', classNumber);
     input.setAttribute('type', 'hidden');
 
     f.appendChild(input);
@@ -177,8 +177,8 @@ $('.btn-remove').on('click', function (){
 
 // 수정 버튼
 $('.btn-modify').on('click', function (){
-    let studyNumber = $(this).data('number');
-    window.location.href = '/study/modify?studyNumber=' + studyNumber;
+    let classNumber = $(this).data('number');
+    window.location.href = '/class/modify?classNumber=' + classNumber;
 });
 
 // 리플 작성 완료 처리
@@ -190,13 +190,13 @@ $('.btn-reply').on('click', function (){
 $('.reply-list-wrap').on('click', '.reply-remove-btn', function () {
     $('.reply-btns__box').addClass('none');
 
-    let studyReplyNumber = $(this).closest('.reply').data('num');
+    let classReplyNumber = $(this).closest('.reply').data('num');
 
-    reply.remove(studyReplyNumber, function (){
-        reply.getListPage({studyNumber:studyNumber, page : page}, appendReply);
+    reply.remove(classReplyNumber, function (){
+        reply.getListPage({classNumber:classNumber, page : page}, appendReply);
     });
 });
-
+/////////여기까지
 // 리플 수정 버튼 처리
 $('.reply-list-wrap').on('click', '.reply-modify-btn', function () {
     let $content = $(this).closest('.reply').find('.reply-box__content');
@@ -212,14 +212,14 @@ $('.reply-list-wrap').on('click', '.reply-modify-btn', function () {
 // 리플 수정 완료 처리
 $('.reply-list-wrap').on('click', '.modify-content-btn', function () {
     console.log('modify!!!');
-    let studyReplyNumber = $(this).closest('.reply').data('num');
-    let studyReplyContent = $(this).closest('.modify-box').find('.modify-content').val();
+    let classReplyNumber = $(this).closest('.reply').data('num');
+    let classReplyContent = $(this).closest('.modify-box').find('.modify-content').val();
     // console.log(replyContent);
-    let studyReplyObj = {studyReplyContent : studyReplyContent};
+    let classReplyObj = {classReplyContent : classReplyContent};
     console.log('modify!!!2');
 
-    reply.modify(studyReplyNumber, studyReplyObj, function (){
-        reply.getListPage({studyNumber:studyNumber, page : page}, appendReply);
+    reply.modify(classReplyNumber, classReplyObj, function (){
+        reply.getListPage({classNumber:classNumber, page : page}, appendReply);
     });
     console.log('modify!!!3');
 });

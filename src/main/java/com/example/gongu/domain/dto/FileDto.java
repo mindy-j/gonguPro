@@ -7,10 +7,10 @@ import org.springframework.stereotype.Component;
 @Component
 @Data
 @NoArgsConstructor
-public class MentoApplyDto {
+public class FileDto {
+    private Long fileNumber;
+   private String fileName;
+   private String fileUploadPath;
+   private String fileUuid;
    private Long applyNumber;
-   private String applyEducation; //학력
-   private String applyCareer; //경력
-   private String applyCerti; //자격증
-   private Long userNumber;
 }
