@@ -162,8 +162,8 @@
 </div>
 
 <div class="page-container">
-    <ul class="page-box">
-        <a th:href="@{/board/list(page=${pageInfo.startPage-1})}" class="page-a" th:if="${pageInfo.prev}">
+    <ul class="page-box"><!--study? board?-->
+        <a th:href="@{/study/list(page=${pageInfo.startPage-1})}" class="page-a" th:if="${pageInfo.prev}">
             <li class="page-num prev">&lt</li>
         </a>
 

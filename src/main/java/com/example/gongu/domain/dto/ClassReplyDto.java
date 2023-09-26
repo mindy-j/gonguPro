@@ -13,6 +13,7 @@ public class ClassReplyDto {
    private Long classReplyNumber;
    private String classReplyContent;
    private Date classReplyRegisterDate;
+   private Date classReplyUpdateDate;
    private Long userNumber;
    private Long classNumber;
 }

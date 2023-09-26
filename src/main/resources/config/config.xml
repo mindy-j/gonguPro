@@ -12,13 +12,16 @@
         <typeAlias type="com.example.gongu.domain.dto.NoteDto" alias="noteDto"/>
         <typeAlias type="com.example.gongu.domain.dto.StudyDto" alias="studyDto"/>
         <typeAlias type="com.example.gongu.domain.dto.StudyReplyDto" alias="studyReplyDto"/>
+        <typeAlias type="com.example.gongu.domain.dto.FileDto" alias="fileDto"/>
 
         <typeAlias type="com.example.gongu.domain.vo.StudyVo" alias="studyVo"/>
         <typeAlias type="com.example.gongu.domain.vo.PageVo" alias="pageVo"/>
         <typeAlias type="com.example.gongu.domain.vo.StudyReplyVo" alias="studyReplyVo"/>
+        <typeAlias type="com.example.gongu.domain.vo.ClassReplyVo" alias="classReplyVo"/>
 
         <typeAlias type="com.example.gongu.domain.vo.Criteria" alias="criteria"/>
         <typeAlias type="com.example.gongu.domain.vo.SearchVo" alias="searchVo"/>
         <typeAlias type="com.example.gongu.domain.vo.ClassVo" alias="classVo"/>
+        <typeAlias type="com.example.gongu.domain.vo.ApplyVo" alias="applyVo"/>
     </typeAliases>
 </configuration>
