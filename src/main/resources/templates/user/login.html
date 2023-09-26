@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="../../static/css/index.css"/>
-  <link rel="stylesheet" href="../../static/css/user/login.css"/>
+  <link rel="stylesheet" href="/css/user/login.css"/>
   <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
 
 </head>
@@ -14,14 +14,14 @@
 
 
 <section class="login-form">
-  <form action="">
+  <form action="/user/login" method="post">
     <div class="int-area">
-      <input type="text" name="id" id="id" autocomplete="off" required>
-      <label for="id">아이디</label>
+      <input type="text" name="userId" id="userId" autocomplete="off" required>
+      <label for="userId">아이디</label>
     </div>
     <div class="int-area">
-      <input type="password" name="pw" id="pw" autocomplete="off" required>
-      <label for="pw">비밀번호</label>
+      <input type="password" name="userPassword" id="userPassword" autocomplete="off" required>
+      <label for="userPassword">비밀번호</label>
     </div>
     <div class="btn-area">
       <button type="submit" id="btn">로그인</button>

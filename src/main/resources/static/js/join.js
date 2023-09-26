@@ -80,3 +80,31 @@ function checkPasswordMatch() {
 // 비밀번호 확인 필드 값이 변경될 때마다 확인 함수 호출
 const confirmPasswordInput = document.getElementById("confirm-password");
 confirmPasswordInput.addEventListener("input", checkPasswordMatch);
+
+
+
+
+
+$('.id_input').on("chage", function (){
+    //console.log("keyup 테스트");
+    var userId = $('.id_input').val(); //id_input에 입력되는 값
+    var data = {userId : userId}    //컨트롤에 넘길 데이터 이름 : id_input에 입력되는 값
+    $.ajax({
+        type : "post",
+        url : "/user/userIdChk/userId",
+        data : data,
+        success : function (result){
+            console.log("성공여부 : " + result);
+            if(result===null){
+                $('.id_input_re_1').css("display", "inline-block");
+                $('.id_input_re_2').css("display", "none");
+            }else{
+                $('.id_input_re_2').css("display", "inline-block");
+                $('.id_input_re_1').css("display", "none");
+            }
+
+        }
+    });
+});
+
+

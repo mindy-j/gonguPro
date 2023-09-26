@@ -210,3 +210,12 @@ label {
     border:2px solid rgba(163, 163, 163,0.5);
     cursor:pointer;
 }
+/*아이디 중복체크 부분*/
+.id_input_re_1{
+    color: green;
+    display: none;
+}
+.id_input_re_2{
+    color: red;
+    display: none;
+}
