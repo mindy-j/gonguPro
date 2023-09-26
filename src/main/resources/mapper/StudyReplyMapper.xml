@@ -1,5 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.gongu.mapper.StudyReplyMapper">
+    <insert id="insert">
+        <selectKey keyProperty="studyReplyNumber" resultType="long" order="BEFORE">
+            SELECT SEQ_STUDY_REPLY_NUMBER.NEXTVAL FROM DUAL
+        </selectKey>
+        insert into TBL_STUDY_REPLY (STUDY_REPLY_NUMBER, STUDY_REPLY_CONTENT, STUDY_NUMBER, USER_NUMBER)
+        values (#{studyReplyNumber}, #{studyReplyContent}, #{studyNumber}, #{userNumber})
+    </insert>
 
+    <select id="selectList" resultType="studyReplyVo">
+        SELECT STUDY_REPLY_NUMBER, STUDY_REPLY_CONTENT, STUDY_REPLY_REGISTER_DATE, STUDY_REPLY_UPDATE_DATE, STUDY_NUMBER, R.USER_NUMBER,
+               USER_NICKNAME
+        FROM TBL_STUDY_REPLY R JOIN TBL_USERS U
+                                    ON STUDY_NUMBER = #{studyNumber} AND R.USER_NUMBER = U.USER_NUMBER
+        ORDER BY STUDY_REPLY_NUMBER DESC
+    </select>
+
+    <select id="select" resultType="studyReplyVo">
+        SELECT STUDY_REPLY_NUMBER, STUDY_REPLY_CONTENT, STUDY_REPLY_REGISTER_DATE, STUDY_REPLY_UPDATE_DATE, STUDY_NUMBER, R.USER_NUMBER,
+               USER_NICKNAME
+        FROM TBL_STUDY_REPLY R JOIN TBL_USERS U
+                                    ON REPLY_NUMBER = #{replyNumber} AND R.USER_NUMBER = U.USER_NUMBER
+    </select>
+
+    <update id="update">
+        UPDATE TBL_STUDY_REPLY
+        SET STUDY_REPLY_CONTENT = #{studyReplyContent}, STUDY_REPLY_UPDATE_DATE = SYSDATE
+        WHERE STUDY_REPLY_NUMBER = #{studyReplyNumber}
+    </update>
+
+    <delete id="delete">
+        DELETE FROM TBL_STUDY_REPLY
+        WHERE STUDY_REPLY_NUMBER = #{studyReplyNumber}
+    </delete>
+
+    <select id="selectListPage" resultType="studyReplyVo">
+        SELECT STUDY_REPLY_NUMBER, STUDY_REPLY_CONTENT, STUDY_REPLY_REGISTER_DATE, STUDY_REPLY_UPDATE_DATE, STUDY_NUMBER, USER_NUMBER,
+               USER_NICKNAME
+        FROM (
+                 SELECT ROWNUM RNUM, STUDY_REPLY_NUMBER, STUDY_REPLY_CONTENT, STUDY_REPLY_REGISTER_DATE, STUDY_REPLY_UPDATE_DATE, STUDY_NUMBER, USER_NUMBER,
+                        USER_NICKNAME
+                 FROM (
+                          SELECT STUDY_REPLY_NUMBER, STUDY_REPLY_CONTENT, STUDY_REPLY_REGISTER_DATE, STUDY_REPLY_UPDATE_DATE, STUDY_NUMBER, R.USER_NUMBER,
+                                 USER_NICKNAME
+                          FROM TBL_STUDY_REPLY R JOIN TBL_USERS U
+                                                      ON STUDY_NUMBER = #{studyNumber} AND R.USER_NUMBER = U.USER_NUMBER
+                          ORDER BY STUDY_REPLY_NUMBER DESC
+                      )
+            <![CDATA[
+                 WHERE ROWNUM <= #{criteria.page} * #{criteria.amount}
+            ]]>
+        )
+        WHERE RNUM > (#{criteria.page} - 1) * #{criteria.amount}
+    </select>
+
+    <select id="selectTotal" resultType="_int">
+        SELECT COUNT(STUDY_REPLY_NUMBER) FROM TBL_STUDY_REPLY
+        WHERE STUDY_NUMBER = #{studyNumber}
+    </select>
 </mapper>

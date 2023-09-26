@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
 @NoArgsConstructor
 public class MentoApplyDto {
    private Long applyNumber;
-   private String applyEducation;
-   private String applyCareer;
-   private String applyCerti;
+   private String applyEducation; //학력
+   private String applyCareer; //경력
+   private String applyCerti; //자격증
    private Long userNumber;
 }

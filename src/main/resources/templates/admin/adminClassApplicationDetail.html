@@ -1,32 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>수업계획 신청함 상세</title>
-    <link rel="stylesheet" href="adminMain.css">
-    <link rel="stylesheet" href="adminHeader.css">
-    <link rel="stylesheet" href="adminMentoApplicationDetail.css">
+    <link rel="stylesheet" href="/css/admin/adminMain.css">
+    <link rel="stylesheet" href="/css/admin/adminHeader.css">
+    <link rel="stylesheet" href="/css/admin/adminMentoApplicationDetail.css">
 </head>
 <body>
-<header class="header">
-    <span class="logo">GongU</span>
-    <div class="header-container">
-
-        <nav class="header-nav">
-            <a href="adminMain.html">회원 관리</a>
-            <a href="adminStudy.html">게시글 관리</a>
-            <a href="adminMentoApplication.html">신청함 관리</a>
-            <a href="adminNote.html">관리자 쪽지함</a>
-        </nav>
-
-    </div>
-    <a href="">Logout</a>
-</header>
+<header th:replace="fragments/adminHeader :: adminHeader"></header>
 <div class="main-container">
     <div class="left-container">
-        <div class="left-list"><a href="adminMentoApplication.html">멘토 신청함</a></div>
-        <div class="left-list check"><a href="adminClassApplication.html">수업계획 신청함</a></div>
+        <div class="left-list"><a href="/admin/application">멘토 신청함</a></div>
+        <div class="left-list check"><a href="/admin/classApplication">수업계획 신청함</a></div>
     </div>
     <div class="right-container">
         <div class="right-title">
