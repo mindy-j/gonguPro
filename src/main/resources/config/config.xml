@@ -19,5 +19,12 @@
 
         <typeAlias type="com.example.gongu.domain.vo.Criteria" alias="criteria"/>
         <typeAlias type="com.example.gongu.domain.vo.SearchVo" alias="searchVo"/>
+
+        <typeAlias type="com.example.gongu.domain.vo.admin.AdminCriteria" alias="adminCriteria"/>
+        <typeAlias type="com.example.gongu.domain.vo.admin.AminUserVo" alias="adminUserVo"/>
+        <typeAlias type="com.example.gongu.domain.vo.admin.AdminStudyVo" alias="adminStudyVo"/>
+        <typeAlias type="com.example.gongu.domain.vo.admin.AdminClassVo" alias="adminClassVo"/>
+        <typeAlias type="com.example.gongu.domain.vo.admin.AdminMentoApplyVo" alias="adminMentoVo"/>
+        <typeAlias type="com.example.gongu.domain.vo.admin.AdminNoteVo" alias="adminNoteVo"/>
     </typeAliases>
 </configuration>

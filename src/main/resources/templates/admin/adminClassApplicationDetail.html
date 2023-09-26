@@ -6,7 +6,7 @@
     <title>수업계획 신청함 상세</title>
     <link rel="stylesheet" href="/css/admin/adminMain.css">
     <link rel="stylesheet" href="/css/admin/adminHeader.css">
-    <link rel="stylesheet" href="/css/admin/adminMentoApplicationDetail.css">
+    <link rel="stylesheet" href="/css/admin/adminStudyDetail.css">
 </head>
 <body>
 <header th:replace="fragments/adminHeader :: adminHeader"></header>
@@ -20,75 +20,55 @@
             <div class="right-title-sub">수업계획 상세</div>
         </div>
 
-        <div class="category-box">
-            <div class="category-container">
-                <div class="category">
-                    <div class="category-title">아이디</div>
-                    <div class="category-content">test</div>
+        <div class="content-box">
+            <h2 th:text="${class.classTitle}">이종민 멘토와 함께 갈 할 학생 모집합니다</h2><br>
+            <div class="sub">
+                <div th:text="${class.userId}"><b>이종민</b></div>&nbsp;|&nbsp;
+                <div th:text="${class.classRegisterDate}"> 2023. 10. 12</div>
+            </div><br>
+            <div class="sub">
+                <div class="sub-box">
+                    <div class="sub-category">진행 방식</div>
+                    <div class="sub-content" th:text="${class.classProcess}">오프 라인</div>
                 </div>
-                <div>
-                    <div class="category-title">전화번호</div>
-                    <div class="category-content">010-1234-5678</div>
-                </div>
-            </div>
-            <div class="category-container">
-                <div class="category">
-                    <div class="category-title">이름</div>
-                    <div class="category-content">이종민</div>
-                </div>
-                <div>
-                    <div class="category-title">생년월일</div>
-                    <div class="category-content">1900년 09월 17일</div>
+                <div class="sub-box">
+                    <div class="sub-category">수업 일정</div>
+                    <div class="sub-content" th:text="${class.classStartDate}+' ~ '+${class.classEndDate}">2023. 09. 27 ~ 2023.10. 27</div>
                 </div>
             </div>
-
-            <div class="category-container">
-                <div class="category">
-                    <div class="category-title">전공 분야</div>
-                    <div class="category-content">고등수학</div>
+            <div class="sub">
+                <div class="sub-box">
+                    <div class="sub-category">가격</div>
+                    <div class="sub-content" th:text="${class.classPrice}+' 원'">120,000 원</div>
                 </div>
-                <div>
-                    <div class="category-title">학력</div>
-                    <div class="category-content">
-                        <div>서울대학교</div>&nbsp;
-                        <div>(졸업)</div>
-                    </div>
-                </div>
-
-            </div>
-
-            <div>
-                <div class="category-title">강사 소개</div>
-                <div class="category-content-long">
-                    잘 가르치는 강사가 짱입니다~람쥐!!!!잘 가르치는 강사가 짱입니다~람쥐!!!!잘 가르치는 강사가 짱입니다~람쥐!!!!잘 가르치는 강사가 짱입니다~람쥐!!!!잘 가르치는 강사가 짱입니다~람쥐!!!!<br>
-                    잘 가르치는 강사가 짱입니다~람쥐!!!!<br>
-                    잘 가르치는 강사가 짱입니다~람쥐!!!!
+                <div class="sub-box">
+                    <div class="sub-category">수업 구분</div>
+                    <div class="sub-content" th:text="${class.classMajor}">Java 프로그래밍 언어</div>
                 </div>
             </div>
-
-            <div>
-                <div class="category-title div-hr">수업 커리큘럼</div>
-                <div class="category-content-long">
-                    재밌는 수업을 할 예정입니다~시다!!!!재밌는 수업을 할 예정입니다~시다!!!!<br>
-                    재밌는 수업을 할 예정입니다~시다!!!!<br>
-                    재밌는 수업을 할 예정입니다~시다!!!!<br>
-                    재밌는 수업을 할 예정입니다~시다!!!!<br>
-                    재밌는 수업을 할 예정입니다~시다!!!!<br>
-                    재밌는 수업을 할 예정입니다~시다!!!!<br>
-                    재밌는 수업을 할 예정입니다~시다!!!!<br>
-                    재밌는 수업을 할 예정입니다~시다!!!!<br>
-                    재밌는 수업을 할 예정입니다~시다!!!!<br>
-                    재밌는 수업을 할 예정입니다~시다!!!!<br>
-                    재밌는 수업을 할 예정입니다~시다!!!!<br>
-                    재밌는 수업을 할 예정입니다~시다!!!!
+            <div class="sub">
+                <div class="sub-box">
+                    <div class="sub-category">지역</div>
+                    <div class="sub-content" th:text="${class.classAddress}">서울시 노원구</div>
                 </div>
+                <div class="sub-box">
+                    <div class="sub-category">멘토 학력</div>
+                    <div class="sub-content" th:text="${class.applyEducation}">서울대학교 맛집탐방학과</div>
+                </div>
+            </div><br>
+            <div class="content-title">&lt;강사 소개&gt;</div>
+            <div class="content" th:utext="${class.classIntroduce}">
+            </div>
+            <div class="content-title">&lt;수업 커리큘럼&gt;</div>
+            <div class="content" th:text="${class.classPlan}">
             </div>
 
             <div class="btn-box">
                 <button class="approval-btn">승 인</button>
-                <button class="refusal-btn">거 부</button>
-                <a href="adminClassApplication.html"><button class="back-btn">뒤로가기</button></a>
+                <button class="refusal-btn">삭 제</button>
+                <a th:href="@{/admin/classApplication}"><button class="back-btn">뒤로가기</button></a>
             </div>
+
         </div>
     </div><!--"right-container" 끝-->
 </div><!--"main-container" 끝-->

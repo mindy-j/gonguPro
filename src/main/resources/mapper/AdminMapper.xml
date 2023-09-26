@@ -1,43 +1,398 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.gongu.mapper.AdminMapper">
+<!--    로그인-->
     <select id="selectLogin" resultType="long">
         SELECT USER_NUMBER FROM TBL_USERS WHERE USER_ID = #{userId} AND USER_PASSWORD = #{userPassword} AND USER_LEVEL = '3'
     </select>
-
-    <select id="selectUser" resultType="userDto">
+<!--    일반유저 리스트-->
+    <select id="selectUser" resultType="adminUserVo">
         SELECT RNUM, USER_NUMBER, USER_ID, USER_PASSWORD, USER_NAME, USER_NICKNAME, USER_EMAIL, USER_PHONE,
         USER_MAJOR, TO_CHAR(USER_BIRTH, 'YYYY"년 "MM"월 "DD"일"') as USER_BIRTH, USER_LEVEL
         FROM (SELECT ROWNUM AS RNUM, USER_NUMBER, USER_ID, USER_PASSWORD, USER_NAME, USER_NICKNAME, USER_EMAIL, USER_PHONE,
-        USER_MAJOR, USER_BIRTH, USER_LEVEL
-        FROM (SELECT USER_NUMBER, USER_ID, USER_PASSWORD, USER_NAME, USER_NICKNAME, USER_EMAIL, USER_PHONE,
-        USER_MAJOR, USER_BIRTH, USER_LEVEL FROM TBL_USERS ORDER BY USER_NUMBER DESC) X
+            USER_MAJOR, USER_BIRTH, USER_LEVEL
+            FROM (SELECT USER_NUMBER, USER_ID, USER_PASSWORD, USER_NAME, USER_NICKNAME, USER_EMAIL, USER_PHONE,
+                USER_MAJOR, USER_BIRTH, USER_LEVEL FROM TBL_USERS WHERE USER_LEVEL = '1'
+        <choose>
+        <when test="'name'.equals(cate)">
+            AND USER_NAME LIKE '%' || #{keyword} || '%'
+        </when>
+        <when test="'id'.equals(cate)">
+            AND USER_ID LIKE '%' || #{keyword} || '%'
+        </when>
+        <when test="'email'.equals(cate)">
+            AND USER_EMAIL LIKE '%' || #{keyword} || '%'
+        </when>
+        </choose>
+        ORDER BY USER_NUMBER DESC ) X
         <![CDATA[
             WHERE ROWNUM <= #{page} * #{amount}
             ]]>
         ) Y
         WHERE RNUM > (#{page} - 1) * #{amount}
     </select>
-
-    <select id="selectMento" resultType="userDto">
-        SELECT USER_NUMBER, USER_ID, USER_PASSWORD, USER_NAME, USER_NICKNAME, USER_EMAIL, USER_PHONE,
-               USER_MAJOR, TO_CHAR(USER_BIRTH, 'YYYY"년 "MM"월 "DD"일"') as USER_BIRTH, USER_LEVEL
+<!--    일반 유저 인원 조회-->
+    <select id="selectUserTotal" resultType="_int">
+        SELECT COUNT(USER_NUMBER)
         FROM TBL_USERS
+        WHERE USER_LEVEL = '1'
         <choose>
             <when test="'name'.equals(cate)">
-                WHERE USER_NAME LIKE '%' || #{keyword} || '%' AND USER_LEVEL = '2'
+                AND USER_NAME LIKE '%' || #{keyword} || '%'
             </when>
             <when test="'id'.equals(cate)">
-                WHERE USER_ID LIKE '%' || #{keyword} || '%' AND USER_LEVEL = '2'
+                AND USER_ID LIKE '%' || #{keyword} || '%'
             </when>
             <when test="'email'.equals(cate)">
-                WHERE USER_EMAIL LIKE '%' || #{keyword} || '%' AND USER_LEVEL = '2'
+                AND USER_EMAIL LIKE '%' || #{keyword} || '%'
             </when>
-            <otherwise>
-                WHERE USER_LEVEL = '2'
-            </otherwise>
         </choose>
     </select>
 
+<!--    멘토 유저 조회-->
+    <select id="selectMento" resultType="adminUserVo">
+        SELECT RNUM, USER_NUMBER, USER_ID, USER_PASSWORD, USER_NAME, USER_NICKNAME, USER_EMAIL, USER_PHONE,
+        USER_MAJOR, TO_CHAR(USER_BIRTH, 'YYYY"년 "MM"월 "DD"일"') as USER_BIRTH, USER_LEVEL
+        FROM (SELECT ROWNUM AS RNUM, USER_NUMBER, USER_ID, USER_PASSWORD, USER_NAME, USER_NICKNAME, USER_EMAIL, USER_PHONE,
+        USER_MAJOR, USER_BIRTH, USER_LEVEL
+        FROM (SELECT USER_NUMBER, USER_ID, USER_PASSWORD, USER_NAME, USER_NICKNAME, USER_EMAIL, USER_PHONE,
+        USER_MAJOR, USER_BIRTH, USER_LEVEL FROM TBL_USERS WHERE USER_LEVEL = '2'
+        <choose>
+            <when test="'name'.equals(cate)">
+                AND USER_NAME LIKE '%' || #{keyword} || '%'
+            </when>
+            <when test="'id'.equals(cate)">
+                AND USER_ID LIKE '%' || #{keyword} || '%'
+            </when>
+            <when test="'email'.equals(cate)">
+                AND USER_EMAIL LIKE '%' || #{keyword} || '%'
+            </when>
+        </choose>
+        ORDER BY USER_NUMBER DESC ) X
+        <![CDATA[
+            WHERE ROWNUM <= #{page} * #{amount}
+            ]]>
+        ) Y
+        WHERE RNUM > (#{page} - 1) * #{amount}
+    </select>
+<!--    멘토 인원 조회-->
+    <select id="selectMentoTotal" resultType="_int">
+        SELECT COUNT(USER_NUMBER)
+        FROM TBL_USERS
+        WHERE USER_LEVEL = '2'
+        <choose>
+            <when test="'name'.equals(cate)">
+                AND USER_NAME LIKE '%' || #{keyword} || '%'
+            </when>
+            <when test="'id'.equals(cate)">
+                AND USER_ID LIKE '%' || #{keyword} || '%'
+            </when>
+            <when test="'email'.equals(cate)">
+                AND USER_EMAIL LIKE '%' || #{keyword} || '%'
+            </when>
+        </choose>
+    </select>
+<!--    유저, 멘토 삭제-->
+    <delete id="deleteUser">
+        DELETE FROM TBL_USERS
+        WHERE USER_NUMBER = #{userNumber}
+    </delete>
+
+
+<!--    스터디 게시판 리스트 조회-->
+    <select id="selectStudy" resultType="adminStudyVo">
+        SELECT RNUM, STUDY_NUMBER, STUDY_TITLE, TO_CHAR(STUDY_REGISTER_DATE, 'YYYY"년 "MM"월 "DD"일"') AS STUDY_REGISTER_DATE, USER_ID
+        FROM (SELECT ROWNUM AS RNUM, STUDY_NUMBER, STUDY_TITLE, STUDY_REGISTER_DATE, USER_ID
+            FROM (SELECT S.STUDY_NUMBER, S.STUDY_TITLE, S.STUDY_REGISTER_DATE, U.USER_ID
+                    FROM TBL_USERS U
+                    JOIN TBL_STUDY_BOARD S ON U.USER_NUMBER = S.USER_NUMBER
+        <choose>
+            <when test="'id'.equals(cate)">
+                WHERE USER_ID LIKE '%' || #{keyword} || '%'
+            </when>
+            <when test="'title'.equals(cate)">
+                WHERE STUDY_TITLE LIKE '%' || #{keyword} || '%'
+            </when>
+            <when test="'date'.equals(cate)">
+                WHERE STUDY_REGISTER_DATE LIKE '%' || #{keyword} || '%'
+            </when>
+        </choose>
+        ORDER BY S.STUDY_NUMBER DESC ) X
+        <![CDATA[
+            WHERE ROWNUM <= #{page} * #{amount}
+            ]]>
+        ) Y
+        WHERE RNUM > (#{page} - 1) * #{amount}
+    </select>
+<!--    스터디 상세-->
+    <select id="selectStudyDetail" resultType="adminStudyVo">
+        SELECT STUDY_NUMBER, STUDY_TITLE, STUDY_PROCESS, TO_CHAR(STUDY_START_DATE, 'YYYY". "MM". "DD') AS STUDY_START_DATE, STUDY_DATE,
+               STUDY_STUDENT_COUNT, STUDY_MAJOR, STUDY_ADDRESS, STUDY_CONTENT,
+               TO_CHAR(STUDY_REGISTER_DATE, 'YYYY". "MM". "DD') AS STUDY_REGISTER_DATE, STUDY_UPDATE_DATE, U.USER_ID
+        FROM TBL_USERS U
+        JOIN TBL_STUDY_BOARD S ON U.USER_NUMBER = S.USER_NUMBER
+        WHERE S.STUDY_NUMBER = #{studyNumber}
+    </select>
+<!--    스터디 게시수 조회-->
+    <select id="selectStudyTotal" resultType="_int">
+        SELECT COUNT(STUDY_NUMBER)
+        FROM TBL_USERS u JOIN TBL_STUDY_BOARD s
+        ON u.USER_NUMBER = s.USER_NUMBER
+        <choose>
+            <when test="'id'.equals(cate)">
+                WHERE USER_ID LIKE '%' || #{keyword} || '%'
+            </when>
+            <when test="'title'.equals(cate)">
+                WHERE STUDY_TITLE LIKE '%' || #{keyword} || '%'
+            </when>
+        </choose>
+    </select>
+
+<!--    수업게시 조회-->
+    <select id="selectClass" resultType="adminClassVo">
+        SELECT RNUM, CLASS_NUMBER, CLASS_TITLE, TO_CHAR(CLASS_REGISTER_DATE, 'YYYY"년 "MM"월 "DD"일"') AS CLASS_REGISTER_DATE, USER_ID
+        FROM (SELECT ROWNUM AS RNUM, CLASS_NUMBER, CLASS_TITLE, CLASS_REGISTER_DATE, USER_ID
+        FROM (SELECT S.CLASS_NUMBER, S.CLASS_TITLE, S.CLASS_REGISTER_DATE, U.USER_ID
+        FROM TBL_USERS U
+        JOIN TBL_CLASS_BOARD S ON U.USER_NUMBER = S.USER_NUMBER WHERE CLASS_LEVEL = '2'
+        <choose>
+            <when test="'id'.equals(cate)">
+                AND USER_ID LIKE '%' || #{keyword} || '%'
+            </when>
+            <when test="'title'.equals(cate)">
+                AND CLASS_TITLE LIKE '%' || #{keyword} || '%'
+            </when>
+        </choose>
+        ORDER BY S.CLASS_NUMBER DESC ) X
+        <![CDATA[
+            WHERE ROWNUM <= #{page} * #{amount}
+            ]]>
+        ) Y
+        WHERE RNUM > (#{page} - 1) * #{amount}
+    </select>
+    <!--    수업 상세게시-->
+    <select id="selectClassDetail" resultType="adminClassVo">
+        SELECT
+            CB.CLASS_NUMBER, CB.CLASS_TITLE, TO_CHAR(CB.CLASS_START_DATE, 'YYYY". "MM". "DD') AS CLASS_START_DATE,
+            TO_CHAR(CB.CLASS_END_DATE, 'YYYY". "MM". "DD') AS CLASS_END_DATE, CB.CLASS_PROCESS, CB.CLASS_PRICE,
+            CB.CLASS_ADDRESS, CB.CLASS_MAJOR, CB.CLASS_INTRODUCE, CB.CLASS_PLAN,
+            TO_CHAR(CB.CLASS_REGISTER_DATE, 'YYYY". "MM". "DD') AS CLASS_REGISTER_DATE,
+            TO_CHAR(CB.CLASS_UPDATE_DATE, 'YYYY". "MM". "DD') AS CLASS_UPDATE_DATE, U.USER_ID,
+            MA.APPLY_EDUCATION
+        FROM
+            TBL_CLASS_BOARD CB
+                JOIN
+            TBL_USERS U ON CB.USER_NUMBER = U.USER_NUMBER
+                LEFT JOIN
+            TBL_MEMTO_APPLY MA ON CB.USER_NUMBER = MA.USER_NUMBER
+        WHERE CB.CLASS_NUMBER = #{classNumber}
+    </select>
+    <!--    수업 게시수 조회-->
+    <select id="selectClassTotal" resultType="_int">
+        SELECT COUNT(CLASS_NUMBER)
+        FROM TBL_USERS u JOIN TBL_CLASS_BOARD s
+        ON u.USER_NUMBER = s.USER_NUMBER WHERE CLASS_LEVEL = '2'
+        <choose>
+            <when test="'id'.equals(cate)">
+                AND USER_ID LIKE '%' || #{keyword} || '%'
+            </when>
+            <when test="'title'.equals(cate)">
+                AND CLASS_TITLE LIKE '%' || #{keyword} || '%'
+            </when>
+        </choose>
+    </select>
+
+<!--    멘토신청 리스트-->
+    <select id="selectMentoApply" resultType="adminMentoVo">
+        SELECT RNUM, APPLY_NUMBER, USER_MAJOR, USER_NAME,TO_CHAR(USER_BIRTH, 'YYYY"년 "MM"월 "DD"일"') AS USER_BIRTH,USER_PHONE, USER_NUMBER,USER_ID
+        FROM (SELECT ROWNUM AS RNUM, APPLY_NUMBER, USER_MAJOR, USER_NAME, USER_BIRTH,USER_PHONE, USER_NUMBER,USER_ID
+        FROM (SELECT tma.APPLY_NUMBER, tu.USER_MAJOR, tu.USER_NAME, tu.USER_BIRTH, tu.USER_PHONE, tu.USER_NUMBER, tu.USER_ID
+        FROM TBL_MEMTO_APPLY tma JOIN TBL_USERS tu ON tma.USER_NUMBER = tu.USER_NUMBER  WHERE USER_LEVEL = '1'
+        <choose>
+            <when test="'name'.equals(cate)">
+                AND USER_NAME LIKE '%' || #{keyword} || '%'
+            </when>
+            <when test="'id'.equals(cate)">
+                AND USER_ID LIKE '%' || #{keyword} || '%'
+            </when>
+        </choose>
+        ORDER BY APPLY_NUMBER DESC ) X
+        <![CDATA[
+            WHERE ROWNUM <= #{page} * #{amount}
+            ]]>
+        ) Y
+        WHERE RNUM > (#{page} - 1) * #{amount}
+    </select>
+    <!--    멘토신청수 조회-->
+    <select id="selectMentoApplyTotal" resultType="_int">
+        SELECT COUNT(APPLY_NUMBER)
+        FROM TBL_MEMTO_APPLY u JOIN TBL_USERS s
+        ON u.USER_NUMBER = s.USER_NUMBER WHERE USER_LEVEL = '1'
+        <choose>
+            <when test="'id'.equals(cate)">
+                AND USER_ID LIKE '%' || #{keyword} || '%'
+            </when>
+            <when test="'name'.equals(cate)">
+                AND USER_NAME LIKE '%' || #{keyword} || '%'
+            </when>
+        </choose>
+    </select>
+<!--    멘토승인-->
+    <update id="updateMento">
+        UPDATE TBL_USERS
+        SET USER_LEVEL = '2'
+        WHERE USER_NUMBER = (
+                  SELECT USER_NUMBER
+                  FROM TBL_MEMTO_APPLY
+                  WHERE APPLY_NUMBER = ${applyNumber}
+                  )
+    </update>
+<!--    멘토거부-->
+    <delete id="deleteMento">
+        DELETE FROM TBL_MEMTO_APPLY
+        WHERE APPLY_NUMBER = ${applyNumber}
+    </delete>
+
+    <!--    수업신청 조회-->
+    <select id="selectClassApply" resultType="adminClassVo">
+        SELECT RNUM, CLASS_NUMBER, USER_MAJOR, USER_NAME,TO_CHAR(USER_BIRTH, 'YYYY"년 "MM"월 "DD"일"') AS USER_BIRTH,USER_PHONE, USER_NUMBER,USER_ID
+        FROM (SELECT ROWNUM AS RNUM, CLASS_NUMBER, USER_MAJOR, USER_NAME,USER_BIRTH,USER_PHONE, USER_NUMBER,USER_ID
+        FROM (SELECT S.CLASS_NUMBER, U.USER_MAJOR, U.USER_NAME,U.USER_BIRTH,U.USER_PHONE, U.USER_NUMBER,U.USER_ID
+        FROM TBL_USERS U
+        JOIN TBL_CLASS_BOARD S ON U.USER_NUMBER = S.USER_NUMBER WHERE CLASS_LEVEL = '1'
+        <choose>
+            <when test="'id'.equals(cate)">
+                AND USER_ID LIKE '%' || #{keyword} || '%'
+            </when>
+            <when test="'name'.equals(cate)">
+                AND USER_NAME LIKE '%' || #{keyword} || '%'
+            </when>
+        </choose>
+        ORDER BY S.CLASS_NUMBER DESC ) X
+        <![CDATA[
+            WHERE ROWNUM <= #{page} * #{amount}
+            ]]>
+        ) Y
+        WHERE RNUM > (#{page} - 1) * #{amount}
+    </select>
+    <!--    수업 신청수 조회-->
+    <select id="selectClassApplyTotal" resultType="_int">
+        SELECT COUNT(CLASS_NUMBER)
+        FROM TBL_USERS u JOIN TBL_CLASS_BOARD s
+        ON u.USER_NUMBER = s.USER_NUMBER WHERE CLASS_LEVEL = '1'
+        <choose>
+            <when test="'id'.equals(cate)">
+                AND USER_ID LIKE '%' || #{keyword} || '%'
+            </when>
+            <when test="'title'.equals(cate)">
+                AND CLASS_TITLE LIKE '%' || #{keyword} || '%'
+            </when>
+        </choose>
+    </select>
+    <!--    수업승인-->
+    <update id="updateClass">
+        UPDATE TBL_CLASS_BOARD
+        SET CLASS_LEVEL = '2'
+        WHERE CLASS_NUMBER = #{classNumber}
+    </update>
+    <!--    수업거부-->
+    <delete id="deleteClass">
+        DELETE FROM TBL_CLASS_BOARD
+        WHERE CLASS_NUMBER = #{classNumber}
+    </delete>
+
+
+<!--    ===========================================-->
+<!--    쪽지 보내기-->
+    <insert id="insertNote">
+        INSERT INTO TBL_NOTE (NOTE_NUMBER, NOTE_TITLE, NOTE_CONTENT, NOTE_REGISTER_DATE, RECIEVER_NUMBER, SENDER_NUMBER)
+        VALUES (SEQ_NOTE_NUMBER.NEXTVAL, #{noteTitle}, #{noteContent}, SYSDATE,
+                (SELECT USER_NUMBER FROM TBL_USERS WHERE USER_ID = #{userId}), #{senderNumber})
+    </insert>
+<!--    보낸 쪽지함-->
+    <select id="selectSender"  resultType="adminNoteVo">
+        SELECT RNUM, NOTE_NUMBER, NOTE_TITLE, NOTE_CONTENT,TO_CHAR(NOTE_REGISTER_DATE, 'YYYY"년 "MM"월 "DD"일"') AS NOTE_REGISTER_DATE, RECIEVER_NUMBER, SENDER_NUMBER, USER_ID
+        FROM (SELECT ROWNUM AS RNUM, NOTE_NUMBER, NOTE_TITLE, NOTE_CONTENT, NOTE_REGISTER_DATE, RECIEVER_NUMBER, SENDER_NUMBER, USER_ID
+        FROM (SELECT NOTE_NUMBER, NOTE_TITLE, NOTE_CONTENT, NOTE_REGISTER_DATE, RECIEVER_NUMBER, SENDER_NUMBER, U.USER_ID
+        FROM TBL_NOTE N JOIN TBL_USERS U ON N.RECIEVER_NUMBER = U.USER_NUMBER
+        WHERE SENDER_NUMBER = 2
+        <choose>
+            <when test="'id'.equals(cate)">
+                AND USER_ID LIKE '%' || #{keyword} || '%'
+            </when>
+            <when test="'title'.equals(cate)">
+                AND NOTE_TITLE LIKE '%' || #{keyword} || '%'
+            </when>
+        </choose>
+        ORDER BY NOTE_NUMBER DESC ) X
+        <![CDATA[
+            WHERE ROWNUM <= #{page} * #{amount}
+            ]]>
+        ) Y
+        WHERE RNUM > (#{page} - 1) * #{amount}
+    </select>
+<!--    보낸쪽지 수-->
+    <select id="selectSendNoteTotal" resultType="_int">
+        SELECT COUNT(NOTE_NUMBER)
+        FROM TBL_NOTE N JOIN TBL_USERS U ON N.RECIEVER_NUMBER  = U.USER_NUMBER
+        WHERE SENDER_NUMBER = 2
+        <choose>
+            <when test="'id'.equals(cate)">
+                AND USER_ID LIKE '%' || #{keyword} || '%'
+            </when>
+            <when test="'title'.equals(cate)">
+                AND NOTE_TITLE LIKE '%' || #{keyword} || '%'
+            </when>
+        </choose>
+    </select>
+<!--    보낸쪽지 상세-->
+    <select id="selectSend" resultType="adminNoteVo">
+        SELECT NOTE_NUMBER, NOTE_TITLE, NOTE_CONTENT, RECIEVER_NUMBER, SENDER_NUMBER, U.USER_ID
+        FROM TBL_NOTE N JOIN TBL_USERS U ON N.RECIEVER_NUMBER = U.USER_NUMBER
+        WHERE NOTE_NUMBER = #{noteNumber}
+    </select>
+
+    <!--    받은 쪽지함-->
+    <select id="selectReceived"  resultType="adminNoteVo">
+        SELECT RNUM, NOTE_NUMBER, NOTE_TITLE, NOTE_CONTENT,TO_CHAR(NOTE_REGISTER_DATE, 'YYYY"년 "MM"월 "DD"일"') AS NOTE_REGISTER_DATE, RECIEVER_NUMBER, SENDER_NUMBER, USER_ID
+        FROM (SELECT ROWNUM AS RNUM, NOTE_NUMBER, NOTE_TITLE, NOTE_CONTENT, NOTE_REGISTER_DATE, RECIEVER_NUMBER, SENDER_NUMBER, USER_ID
+        FROM (SELECT NOTE_NUMBER, NOTE_TITLE, NOTE_CONTENT, NOTE_REGISTER_DATE, RECIEVER_NUMBER, SENDER_NUMBER, U.USER_ID
+        FROM TBL_NOTE N JOIN TBL_USERS U ON N.SENDER_NUMBER = U.USER_NUMBER
+        WHERE RECIEVER_NUMBER = 2
+        <choose>
+            <when test="'id'.equals(cate)">
+                AND USER_ID LIKE '%' || #{keyword} || '%'
+            </when>
+            <when test="'title'.equals(cate)">
+                AND NOTE_TITLE LIKE '%' || #{keyword} || '%'
+            </when>
+        </choose>
+        ORDER BY NOTE_NUMBER DESC ) X
+        <![CDATA[
+            WHERE ROWNUM <= #{page} * #{amount}
+            ]]>
+        ) Y
+        WHERE RNUM > (#{page} - 1) * #{amount}
+    </select>
+    <!--    받은쪽지 수-->
+    <select id="selectReceivedTotal" resultType="_int">
+        SELECT COUNT(NOTE_NUMBER)
+        FROM TBL_NOTE N JOIN TBL_USERS U ON N.SENDER_NUMBER  = U.USER_NUMBER
+        WHERE RECIEVER_NUMBER = 2
+        <choose>
+            <when test="'id'.equals(cate)">
+                AND USER_ID LIKE '%' || #{keyword} || '%'
+            </when>
+            <when test="'title'.equals(cate)">
+                AND NOTE_TITLE LIKE '%' || #{keyword} || '%'
+            </when>
+        </choose>
+    </select>
+<!--    받은 쪽지 상세-->
+    <select id="selectRece" resultType="adminNoteVo">
+        SELECT NOTE_NUMBER, NOTE_TITLE, NOTE_CONTENT, RECIEVER_NUMBER, SENDER_NUMBER, U.USER_ID
+        FROM TBL_NOTE N JOIN TBL_USERS U ON N.SENDER_NUMBER = U.USER_NUMBER
+        WHERE NOTE_NUMBER = #{noteNumber}
+    </select>
 
 </mapper>
