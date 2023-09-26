@@ -6,6 +6,41 @@
     <title>Document</title>
     <link rel="stylesheet" href="/css/study/studyDetail.css">
     <link rel="stylesheet" href="/css/study/studyReply.css"/>
+    <style>
+        .btn-container{
+            width:100%;
+            display: flex;
+            justify-content: end;
+            margin-top:50px;
+        }
+        .update-btn{
+            width:100px;
+            height:30px;
+            background-color: #00c7ae;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 20px;
+            margin-right:20px;
+        }
+        .delete-btn{
+            width:100px;
+            height:30px;
+            background-color: #00bfff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 20px;
+        }
+        a{
+            text-decoration: none;
+            color:white;
+        }
+    </style>
 </head>
 <body>
 
@@ -53,15 +88,7 @@
                                 이러게 처리했음(studyWrite.html참조)
                          -->
                     </tr>
-                    <tr>
-                        <td class="one" name="howToConnect">연락 방법</td>
-                        <td class="se" name="connect-kakao">오픈톡 : 링크 걸기</td>
-                        <!--
-                                <option value="connect-email">이메일
-                                <option value="connect-kakao">카카오톡 오픈채팅
-                                 이러게 처리했음(studyWrite.html참조)
-                        -->
-                    </tr>
+
                     <tr>
                         <td class="one" >지역</td>
                         <td class="se" name="location" th:text="${study.studyAddress}"></td>
@@ -74,7 +101,7 @@
                 <table>
                     <tr>
                         <td class="one" name="" >시작 예정</td>
-                        <td class="se" name="">2023.09.27</td>
+                        <td class="se" name="" th:text="${study.studyStartDate}"></td>
                     </tr>
                     <tr>
                         <td class="one" name="period-time">예상 기간</td>
@@ -119,10 +146,14 @@
             </div>
 
         </div><!--세번쨰 박스 스터디 소개부분 끝 -->
+        <div class="btn-container">
+            <a th:href="@{/study/update(studyNumber=${study.studyNumber})}"><div class="update-btn">수정</div></a>
+            <a th:href="@{/study/remove(studyNumber=${study.studyNumber})}"><div class="delete-btn">삭제</div></a>
+        </div>
+
 
         <!--댓글 상자 -->
         <div class="reply-wrap">
-            <h3>댓글 작성</h3>
             <div class="reply-wrap__box">
                 <div class="reply-content__box">
                     <div class="reply-writer" th:text="${study.userId}"></div>
@@ -142,8 +173,7 @@
         </div>
 
 
-        <a th:href="@{/study/update(studyNumber=${study.studyNumber})}">수정</a>
-        <a th:href="@{/study/remove(studyNumber=${study.studyNumber})}">삭제</a>
+
 
 
 
