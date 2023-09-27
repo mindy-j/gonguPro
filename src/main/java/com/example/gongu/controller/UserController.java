@@ -4,17 +4,18 @@ import com.example.gongu.domain.dto.UserDto;
 import com.example.gongu.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+
+import org.apache.catalina.User;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
-import java.util.Optional;
+
 
 @Controller
 @RequestMapping("/user/*")
@@ -23,58 +24,86 @@ import java.util.Optional;
 public class UserController {
     private final UserService userService;
 
-    @GetMapping("/index")
-    public String showIndex(){
-        return "index";
-    }
-
-    @GetMapping("/join")
-    public String showJoinPage(){
-        return "user/join";
-    }
 
 
-
-    @PostMapping("/userIdChk/{userId}")
-    @ResponseBody
-    public boolean userIdChk(@PathVariable String userId) throws Exception{
-        // log.info("userIdChk() 진입");
-        boolean falseOrTrue;
-        log.info("request UserId : "+userId);
-        log.info(userId);
-        String result = userService.idCheck(userId);
-
-        log.info("결과값 : " + result );
-
-
-        if(result != null){
-            falseOrTrue = true;
-            return falseOrTrue;
-        }else {
-            falseOrTrue = false;
-            return falseOrTrue;
-        }
-    }
-
-
+    //로그인 부분
     @GetMapping("/login")
     public String login(){
         return "user/login";
     }
 
-    //로그인하는 부분?
-    @PostMapping("/login")
+
+    @PostMapping("login")
     public RedirectView login(String userId, String userPassword, HttpServletRequest req){
-      UserDto userDto = userService.find(userId, userPassword);
-      req.getSession().setAttribute("userNumber", userDto.getUserNumber());
+        UserDto userDto = userService.find(userId, userPassword);
+        req.getSession().setAttribute("userNumber", userDto.getUserNumber());
 
-      return new RedirectView("/user/index");
+        return new RedirectView("index");
+    }
 
+    //인덱스로 가는 컨트롤러
+    @GetMapping("/index")
+    public String index(){
+        return "index";
+    }
+
+
+    //회원가입 부분 화면전달
+    @GetMapping("/join")
+    public String join(){ return "user/join"; }
+
+
+    @PostMapping("/join")
+    public String join(UserDto userDto){
+        userService.register(userDto);
+        return "user/joinOk";
+    }
+
+
+    @PostMapping("/userIdChk")
+    @ResponseBody
+    public String userIdChkPOST(String userId) throws Exception{
+        // log.info("userIdChk 진입!!!!!");
+        int result = userService.idCheck(userId);
+        log.info("결과 : " + result);
+
+        if(result !=0){
+            return "fail"; //중복아이디
+        } else {
+            return "success"; //중복 아이디 없음
+        }
+
+    }
+
+    @GetMapping("/joinOk")
+    public String joinOk(){
+        return "user/login";
+    }
+
+
+    //단순 페이지 이동
+    @GetMapping("/findId")
+    public String findId(){
+        return "user/findId";
+    }
+
+    //번호가 디비에 있는지
+    @PostMapping("/verify-phone")
+    public ResponseEntity <String> verifyPhoneNumber(@RequestBody Map<String, String> requestBody){
+        String userPhone = requestBody.get("userPhone");
+        String result = userService.verifyPhoneNumber(userPhone);
+        return ResponseEntity.ok(result);
     }
 
 
 
 
+    //로그아웃
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest req){
+        req.getSession().invalidate();
+        return "user/login";
+    }
 
 }
 
