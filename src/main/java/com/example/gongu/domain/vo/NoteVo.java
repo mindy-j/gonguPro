@@ -16,6 +16,7 @@ public class NoteVo {
     private Date noteRegisterDate;
     private Long recieverNumber;
     private Long senderNumber;
-    private String noteLevel;
+    private String sendLevel;
+    private String receiveLevel;
     private String userId;
 }
