@@ -60,10 +60,10 @@ birthDayEl.addEventListener('focus', function () {
 confirmPasswordOk = document.getElementsByClassName('confirm-password-ok');
 confirmPasswordNo = document.getElementsByClassName('confirm-password-no');
 confirmPassword = document.getElementsByClassName('confirm-password')
-password = document.getElementsByClassName('pw');
+password = document.getElementsByClassName('userPassword');
 
 function checkPasswordMatch() {
-    const passwordInput = document.getElementById("pw");
+    const passwordInput = document.getElementById("userPassword");
     const confirmPasswordInput = document.getElementById("confirm-password");
     const confirmPasswordOk = document.querySelector(".confirm-password-ok");
     const confirmPasswordNo = document.querySelector(".confirm-password-no");
@@ -80,3 +80,61 @@ function checkPasswordMatch() {
 // 비밀번호 확인 필드 값이 변경될 때마다 확인 함수 호출
 const confirmPasswordInput = document.getElementById("confirm-password");
 confirmPasswordInput.addEventListener("input", checkPasswordMatch);
+
+
+//생년원일 처리
+const birthYearSelect = document.getElementById('birth-year');
+const birthMonthSelect = document.getElementById('birth-month');
+const birthDaySelect = document.getElementById('birth-day');
+const userBirthDayInput = document.getElementById('userBirth');
+
+//선택한 값을 가져와서 userBirth input필드에 설정
+function insertUserBirthday(){
+    const selectedYear = birthYearSelect.value;
+    let selectedMonth = birthMonthSelect.value;
+    let selectedDay = birthDaySelect.value;
+
+//월과 일이 한자릿수일 결루 앞에 0을 추가
+    if(selectedMonth.length ===1){
+        selectedMonth = '0' + selectedMonth;
+    }
+    if(selectedDay.length ===1){
+        selectedDay ='0' + selectedDay;
+    }
+
+    userBirthDayInput.value = selectedYear + '-' + selectedMonth +'-'+selectedDay;
+
+}
+
+//값이 변경될때마다 insertUserBirthday()함수 호출
+birthYearSelect.addEventListener('change', insertUserBirthday);
+birthMonthSelect.addEventListener('change',insertUserBirthday);
+birthDaySelect.addEventListener('change', insertUserBirthday);
+
+//초기화시에도 실행
+insertUserBirthday();
+
+
+//아이디 중복검사
+$('.id_input').on("propertychange change keyup paste input", function (){
+    //console.log("*****테스트*****");
+    var userId = $('.id_input').val();
+    var data = {userId : userId}
+
+    $.ajax({
+        type : "post",
+        url :"/user/userIdChk",
+        data : data,
+        success : function (result){
+            // console.log("성공여부 : " + result);
+            if(result != 'fail'){
+                $('.id_input_re_1').css("display","inline-block");
+                $('.id_input_re_2').css("display","none");
+            } else {
+                $('.id_input_re_2').css("display","inline-block");
+                $('.id_input_re_1').css("display","none");
+            }
+        }
+    });
+});
+
