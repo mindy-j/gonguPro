@@ -3,6 +3,6 @@
 
 <configuration>
     <typeAliases>
-
+        <typeAlias type="com.example.gongu.domain.dto.UserDto" alias="userDto"/>
     </typeAliases>
 </configuration>
