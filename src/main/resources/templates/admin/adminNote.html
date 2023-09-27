@@ -1,37 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>쪽지 보내기</title>
-    <link rel="stylesheet" href="adminMain.css">
-    <link rel="stylesheet" href="adminHeader.css">
-    <link rel="stylesheet" href="adminNote.css">
+    <link rel="stylesheet" href="/css/admin/adminMain.css">
+    <link rel="stylesheet" href="/css/admin/adminHeader.css">
+    <link rel="stylesheet" href="/css/admin/adminNote.css">
     <!-- 서머노트 -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 </head>
 <body>
-<header class="header">
-    <span class="logo">GongU</span>
-    <div class="header-container">
-
-        <nav class="header-nav">
-            <a href="adminMain.html">회원 관리</a>
-            <a href="adminStudy.html">게시글 관리</a>
-            <a href="adminMentoApplication.html">신청함 관리</a>
-            <a href="adminNote.html">관리자 쪽지함</a>
-        </nav>
-
-    </div>
-    <a href="">Logout</a>
-</header>
+<header th:replace="fragments/adminHeader :: adminHeader"></header>
 <div class="main-container">
     <div class="left-container">
-        <div class="left-list check"><a href="adminNote.html">쪽지 보내기</a></div>
-        <div class="left-list"><a href="adminReceivedNote.html">받은 쪽지함</a></div>
-        <div class="left-list"><a href="adminSendNote.html">보낸 쪽지함</a></div>
+        <div class="left-list check"><a href="/admin/note">쪽지 보내기</a></div>
+        <div class="left-list"><a href="/admin/receivedNote">받은 쪽지함</a></div>
+        <div class="left-list"><a href="/admin/sendNote">보낸 쪽지함</a></div>
     </div>
     <div class="right-container">
         <div class="right-title">
