@@ -54,11 +54,17 @@ public class AdminService {
     public List<AdminStudyVo> findStudy(AdminCriteria adminCriteria) {
         return adminMapper.selectStudy(adminCriteria);
     }
-
     //    스터디게시수 조회
     public int getStudyTotal(AdminCriteria adminCriteria) {
         return adminMapper.selectStudyTotal(adminCriteria);
     }
+//    스터디 삭제
+    public void removeStudy(Long studyNumber){
+        adminMapper.deleteStudy(studyNumber);
+    }
+
+
+
     //   수업게시 상세
     public AdminStudyVo findStudyDetail(Long studyNumber){
         return adminMapper.selectStudyDetail(studyNumber);
@@ -81,6 +87,10 @@ public class AdminService {
 //    멘토신청 조회
     public List<AdminMentoApplyVo> findMentoApply(AdminCriteria adminCriteria) {
         return adminMapper.selectMentoApply(adminCriteria);
+    }
+//    멘토신청 상세
+    public AdminMentoApplyVo findMentoApplyDetail(Long applyNumber){
+        return adminMapper.selectMentoApplyDetail(applyNumber);
     }
 //    멘토신청수 조회
     public int getMentoApplyTotal(AdminCriteria adminCriteria) {

@@ -46,7 +46,10 @@
                 <div class="id" th:text="${class.userId}">wlqrkwk</div>
                 <div class="title" th:text="${class.classTitle}">같이 스피킹 영어 공부 하실 분??</div>
                 <div class="date" th:text="${class.classRegisterDate}">2023년 09월 15일</div>
-                <div class="sortation"><a th:href="@{/admin/classDetail(classNumber = ${class.classNumber})}"><button class="show-btn">보기</button></a><button class="remove-btn">삭제</button></div>
+                <div class="sortation">
+                    <a th:href="@{/admin/classDetail(classNumber = ${class.classNumber})}"><button class="show-btn">보기</button></a>
+                    <button class="remove-btn" th:data-number="${class.classNumber}">삭제</button>
+                </div>
             </div>
             <!-- 데이터가 끝나는 영역-->
             <!-- 페이징 처리 -->
@@ -70,6 +73,7 @@
         </div>
     </div>
 </div>
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script th:src="@{/js/admin/adminClass.js}"></script>
 </body>
 </html>

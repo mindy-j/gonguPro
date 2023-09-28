@@ -187,6 +187,7 @@
             TBL_MEMTO_APPLY MA ON CB.USER_NUMBER = MA.USER_NUMBER
         WHERE CB.CLASS_NUMBER = #{classNumber}
     </select>
+
     <!--    수업 게시수 조회-->
     <select id="selectClassTotal" resultType="_int">
         SELECT COUNT(CLASS_NUMBER)
@@ -201,6 +202,12 @@
             </when>
         </choose>
     </select>
+<!--    수업게시 삭제-->
+    <delete id="deleteStudy">
+        DELETE FROM TBL_STUDY_BOARD
+        WHERE STUDY_NUMBER = #{studyNumber}
+    </delete>
+
 
 <!--    멘토신청 리스트-->
     <select id="selectMentoApply" resultType="adminMentoVo">
@@ -393,6 +400,20 @@
         SELECT NOTE_NUMBER, NOTE_TITLE, NOTE_CONTENT, RECIEVER_NUMBER, SENDER_NUMBER, U.USER_ID
         FROM TBL_NOTE N JOIN TBL_USERS U ON N.SENDER_NUMBER = U.USER_NUMBER
         WHERE NOTE_NUMBER = #{noteNumber}
+    </select>
+
+<!--    이미지 파일 불러오기-->
+    <select id="selectFileList" resultType="adminFileVo">
+        SELECT FILE_NUMBER, FILE_NAME, FILE_UPLOAD_PATH, FILE_UUID, APPLY_NUMBER
+        FROM TBL_FILES
+        WHERE APPLY_NUMBER = #{applyNumber}
+    </select>
+
+<!--    멘토신청 상세-->
+    <select id="selectMentoApplyDetail" resultType="adminMentoVo">
+        SELECT APPLY_NUMBER, APPLY_EDUCATION, APPLY_CAREER, APPLY_CERTI
+        FROM TBL_MEMTO_APPLY
+        WHERE APPLY_NUMBER = #{applyNumber}
     </select>
 
 </mapper>

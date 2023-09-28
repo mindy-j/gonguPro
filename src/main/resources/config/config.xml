@@ -26,5 +26,6 @@
         <typeAlias type="com.example.gongu.domain.vo.admin.AdminClassVo" alias="adminClassVo"/>
         <typeAlias type="com.example.gongu.domain.vo.admin.AdminMentoApplyVo" alias="adminMentoVo"/>
         <typeAlias type="com.example.gongu.domain.vo.admin.AdminNoteVo" alias="adminNoteVo"/>
+        <typeAlias type="com.example.gongu.domain.vo.admin.AdminFileVo" alias="adminFileVo"/>
     </typeAliases>
 </configuration>

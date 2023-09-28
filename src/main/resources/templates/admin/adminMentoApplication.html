@@ -51,7 +51,7 @@
                 <div class="phone" th:text="${mento.userPhone}">010-1234-5678</div>
                 <div class="academic" th:text="${mento.userMajor}">서울대학교</div>
                 <div class="sortation-mento">
-                    <button class="detail-btn"><a href="adminMentoApplicationDetail.html">상세</a></button>
+                    <button class="detail-btn"><a th:href="@{/admin/mentoApplyDetail(applyNumber = ${mento.applyNumber})}">상세</a></button>
                     <button class="approval-btn" th:data-number="${mento.applyNumber}">승인</button>
                     <button class="refusal-btn " th:data-number="${mento.applyNumber}">거부</button>
                 </div>

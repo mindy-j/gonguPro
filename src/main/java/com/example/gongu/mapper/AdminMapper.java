@@ -28,6 +28,10 @@ public interface AdminMapper {
     public List<AdminStudyVo> selectStudy(AdminCriteria adminCriteria);
 //    스터디게시수 조회
     public int selectStudyTotal(AdminCriteria adminCriteria);
+//    스터디게시 삭제
+    public void deleteStudy(Long studyNumber);
+
+
 //    보낸 쪽지상세
     public AdminStudyVo selectStudyDetail(Long studyNumber);
 
@@ -40,6 +44,8 @@ public interface AdminMapper {
 
 //    멘토신청 조회
     public List<AdminMentoApplyVo> selectMentoApply(AdminCriteria adminCriteria);
+    //    멘토신청 상세
+    public AdminMentoApplyVo selectMentoApplyDetail(Long applyNumber);
 //        멘토신청수 조회
     public int selectMentoApplyTotal(AdminCriteria adminCriteria);
 //    멘토승인

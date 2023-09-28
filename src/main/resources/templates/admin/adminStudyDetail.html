@@ -59,7 +59,7 @@
             <div class="content" th:utext="${study.studyContent}">
             </div>
             <div class="btn-box">
-                <button class="refusal-btn">삭 제</button>
+                <button class="rm" th:data-number="${study.studyNumber}">삭제</button>
                 <a th:href="@{/admin/board}"><button class="back-btn">뒤로가기</button></a>
             </div>
 
@@ -68,6 +68,7 @@
         </div>
     </div><!--"right-container" 끝-->
 </div><!--"main-container" 끝-->
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script th:src="@{/js/admin/adminStudy.js}"></script>
 </body>
 </html>

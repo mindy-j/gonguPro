@@ -64,13 +64,14 @@
             </div>
 
             <div class="btn-box">
-                <button class="refusal-btn">삭 제</button>
+                <button class="refusal-btn" th:data-number="${class.classNumber}">삭 제</button>
                 <a th:href="@{/admin/classPlan}"><button class="back-btn">뒤로가기</button></a>
             </div>
 
         </div>
     </div><!--"right-container" 끝-->
 </div><!--"main-container" 끝-->
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script th:src="@{/js/admin/adminClass.js}"></script>
 </body>
 </html>

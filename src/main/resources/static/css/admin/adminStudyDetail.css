@@ -26,6 +26,7 @@
 }
 .btn-box{
     float: right;
+    width: 200px;
 }
 .approval-btn{
     width: 80px;
@@ -54,6 +55,25 @@
     cursor: pointer;
     font-weight: bold;
 }
+.remove-btn{
+    width: 80px;
+    height: 30px;
+    background-color:lightcoral;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.rm{
+    width: 80px;
+    height: 30px;
+    background-color:lightcoral;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
 
 /* classPlanDetail */
 .content-title{

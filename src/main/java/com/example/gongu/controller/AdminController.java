@@ -39,14 +39,23 @@ public class AdminController {
     public String adminBoard(Model model, AdminCriteria adminCriteria){
         model.addAttribute("studyList", adminService.findStudy(adminCriteria));
         model.addAttribute("pageInfo", new AdminPageVo(adminService.getStudyTotal(adminCriteria), adminCriteria));
-        return "/admin/adminStudy";}
+        return "admin/adminStudy";}
 //    스터디 상세
     @GetMapping("/studyDetail")
     public String studyDetail(Long studyNumber, AdminCriteria adminCriteria,Model model){
         AdminStudyVo adminStudyVo = adminService.findStudyDetail(studyNumber);
         model.addAttribute("study", adminStudyVo);
-        return "/admin/adminStudyDetail";
+        return "admin/adminStudyDetail";
     }
+    //    스터디 삭제
+    @GetMapping("/removeStudy")
+    public RedirectView removeStudy(Long studyNumber){
+        adminService.removeStudy(studyNumber);
+        return new RedirectView("/admin/board");
+    }
+
+
+
     @GetMapping("/application")
     public String adminApplication(Model model, AdminCriteria adminCriteria){
         model.addAttribute("mentoList", adminService.findMentoApply(adminCriteria));
@@ -115,9 +124,15 @@ public class AdminController {
     }
     //    수업 거절
     @GetMapping("/refusalClass")
-    public RedirectView removeClass(Long classNumber){
+    public RedirectView refusalClass(Long classNumber){
         adminService.removeClass(classNumber);
         return new RedirectView("/admin/classApplication");
+    }
+//    수업 삭제
+    @GetMapping("/removeClass")
+    public RedirectView removeClass(Long classNumber){
+        adminService.removeClass(classNumber);
+        return new RedirectView("/admin/classPlan");
     }
 
 //    =============
@@ -156,14 +171,17 @@ public class AdminController {
     }
 
     @GetMapping("classApplyDetail")
-    public String classApplyDetail(Long classNumber, AdminCriteria adminCriteria,Model model){
+    public String classApplyDetail(Long classNumber,Model model){
         AdminClassVo adminClassVo = adminService.findClassDetail(classNumber);
         model.addAttribute("class", adminClassVo);
         return "admin/adminClassApplicationDetail";
     }
 
     @GetMapping("mentoApplyDetail")
-    public String mentoApplyDetail(){
+    public String mentoApplyDetail(Long applyNumber, Model model){
+        AdminMentoApplyVo adminMentoApplyVo = adminService.findMentoApplyDetail(applyNumber);
+        model.addAttribute("mento", adminMentoApplyVo);
         return "admin/adminMentoApplicationDetail";
     }
+
 }
