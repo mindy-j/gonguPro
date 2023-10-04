@@ -10,7 +10,7 @@ body{
     height:100%;
     background-color: antiquewhite;
     display: flex;
-    margin-top: 20px;
+
 }
 .full-box{
 
@@ -48,7 +48,9 @@ body{
     margin-left: 20px;
     
 }
-
+.section-1 > div{
+    margin-left:30px;
+}
 input[type='text']{
     height: 33px; 
     width: 300px;
