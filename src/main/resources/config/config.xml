@@ -6,7 +6,7 @@
         <typeAlias type="com.example.gongu.domain.dto.NoteDto" alias="noteDto"/>
 
         <typeAlias type="com.example.gongu.domain.vo.NoteVo" alias="noteVo"/>
-        <typeAlias type="com.example.gongu.domain.vo.PageVo" alias="pageVo"/>
+        <typeAlias type="com.example.gongu.domain.vo.NotePageVo" alias="pageVo"/>
 
         <typeAlias type="com.example.gongu.domain.vo.NoteCriteria" alias="noteCriteria"/>
     </typeAliases>

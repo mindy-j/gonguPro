@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Data
-public class PageVo {
+public class NotePageVo {
     //    페이지 세트당 표시될 수
     private int pageCount;
     //    페이지 세트의 시작 숫자
@@ -23,13 +23,13 @@ public class PageVo {
     //    화면에서 전달받은 page, amount를 저장하는 객체
     private NoteCriteria noteCriteria;
 
-    public PageVo() {}
+    public NotePageVo() {}
 
-    public PageVo(int total, NoteCriteria noteCriteria) {
+    public NotePageVo(int total, NoteCriteria noteCriteria) {
         this(5, total, noteCriteria);
     }
 
-    public PageVo(int pageCount, int total, NoteCriteria noteCriteria) {
+    public NotePageVo(int pageCount, int total, NoteCriteria noteCriteria) {
         this.pageCount = pageCount;
         this.total = total;
         this.noteCriteria = noteCriteria;
