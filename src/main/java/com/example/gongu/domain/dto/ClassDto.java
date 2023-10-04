@@ -13,14 +13,14 @@ import java.util.Date;
 public class ClassDto {
    private Long classNumber;
    private String classTitle;
-   private Date classStartDate;
-   private Date classEndDate;
+   private String classStartDate;
+   private String classEndDate;
    private String classProcess;
    private int classPrice;
    private String classAddress;
    private String classMajor;
-   private Clob classIntroduce;
-   private Clob classPlan;
+   private String classIntroduce;
+   private String classPlan;
    private Date classRegisterDate;
    private String classLevel;
    private Date classUpdateDate;

@@ -4,23 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="../../static/css/index.css"/>
-  <link rel="stylesheet" href="../../static/css/user/findId.css"/>
-
-
-  <style>
-
-  </style>
+  <link rel="stylesheet" href="/css/index.css"/>
+  <link rel="stylesheet" href="/css/user/findId.css"/>
 </head>
 <body>
-
-
-
 <section class="login-form">
-  <form action="">
+  <form action="/user/findId" method="post">
     <div class="int-area">
-      <input type="text" name="phone" id="phone" autocomplete="off" required>
-      <label for="phone">전화번호 입력</label> <button id="sendSmsAuth" class="id-btn certificationIssue sendSmsAuth btnStroke" type="button">인증번호 발송</button></label>
+      <input type="text" name="userPhone" id="userPhone" autocomplete="off" pattern="^[0-9]+$" required>
+      <label for="userPhone">전화번호 : 번호만 입력하세요</label>
+      <button id="sendSmsAuth" class="id-btn certificationIssue sendSmsAuth btnStroke" type="button">인증번호 발송</button></label>
     </div>
     <div class="int-area none">
       <input type="text" name="cerNumber" id="cerNumber" autocomplete="off" required>
@@ -46,6 +39,6 @@
 </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
-<script src="../../static/js/findId.js">
+<script src="/js/findId.js">
 </script>
 </html>

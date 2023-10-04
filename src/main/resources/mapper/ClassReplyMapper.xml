@@ -1,5 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.gongu.mapper.StudyReplyMapper">
+<mapper namespace="com.example.gongu.mapper.ClassReplyMapper">
+    <insert id="insert">
+        <selectKey keyProperty="classReplyNumber" resultType="long" order="BEFORE">
+            SELECT SEQ_CLASS_REPLY_NUMBER.NEXTVAL FROM DUAL
+        </selectKey>
+        insert into TBL_CLASS_REPLY (CLASS_REPLY_NUMBER, CLASS_REPLY_CONTENT, CLASS_NUMBER, USER_NUMBER)
+        values (#{classReplyNumber}, #{classReplyContent}, #{classNumber}, #{userNumber})
+    </insert>
+
+    <select id="selectList" resultType="classReplyVo">
+        SELECT CLASS_REPLY_NUMBER, CLASS_REPLY_CONTENT, CLASS_REPLY_REGISTER_DATE, CLASS_REPLY_UPDATE_DATE, CLASS_NUMBER, R.USER_NUMBER,
+               USER_NICKNAME
+        FROM TBL_CLASS_REPLY R JOIN TBL_USERS U
+                                    ON CLASS_NUMBER = #{classNumber} AND R.USER_NUMBER = U.USER_NUMBER
+        ORDER BY CLASS_REPLY_NUMBER DESC
+    </select>
+
+    <select id="select" resultType="classReplyVo">
+        SELECT CLASS_REPLY_NUMBER, CLASS_REPLY_CONTENT, CLASS_REPLY_REGISTER_DATE, CLASS_REPLY_UPDATE_DATE, CLASS_NUMBER, R.USER_NUMBER,
+               USER_NICKNAME
+        FROM TBL_CLASS_REPLY R JOIN TBL_USERS U
+                                    ON CLASS_REPLY_NUMBER = #{classReplyNumber} AND R.USER_NUMBER = U.USER_NUMBER
+    </select>
+
+    <update id="update">
+        UPDATE TBL_CLASS_REPLY
+        SET CLASS_REPLY_CONTENT = #{classReplyContent}, CLASS_REPLY_UPDATE_DATE = SYSDATE
+        WHERE CLASS_REPLY_NUMBER = #{classReplyNumber}
+    </update>
+
+    <delete id="delete">
+        DELETE FROM TBL_CLASS_REPLY
+        WHERE CLASS_REPLY_NUMBER = #{classReplyNumber}
+    </delete>
+
+    <select id="selectListPage" resultType="classReplyVo">
+        SELECT CLASS_REPLY_NUMBER, CLASS_REPLY_CONTENT, CLASS_REPLY_REGISTER_DATE, CLASS_REPLY_UPDATE_DATE, CLASS_NUMBER, USER_NUMBER,
+               USER_NICKNAME
+        FROM (
+                 SELECT ROWNUM RNUM, CLASS_REPLY_NUMBER, CLASS_REPLY_CONTENT, CLASS_REPLY_REGISTER_DATE, CLASS_REPLY_UPDATE_DATE, CLASS_NUMBER, USER_NUMBER,
+                        USER_NICKNAME
+                 FROM (
+                          SELECT CLASS_REPLY_NUMBER, CLASS_REPLY_CONTENT, CLASS_REPLY_REGISTER_DATE, CLASS_REPLY_UPDATE_DATE, CLASS_NUMBER, U.USER_NUMBER,
+                                 U.USER_NICKNAME
+                          FROM TBL_CLASS_REPLY R JOIN TBL_USERS U
+                                                      ON CLASS_NUMBER = #{classNumber} AND R.USER_NUMBER = U.USER_NUMBER
+                          ORDER BY CLASS_REPLY_NUMBER DESC
+                      )
+            <![CDATA[
+                 WHERE ROWNUM <= #{criteria.page} * #{criteria.amount}
+            ]]>
+        )
+        WHERE RNUM > (#{criteria.page} - 1) * #{criteria.amount}
+    </select>
+
+    <select id="selectTotal" resultType="_int">
+        SELECT COUNT(CLASS_REPLY_NUMBER) FROM TBL_CLASS_REPLY
+        WHERE CLASS_NUMBER = #{classNumber}
+    </select>
+
+
 
 </mapper>

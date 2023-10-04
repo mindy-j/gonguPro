@@ -1,28 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>관리자 메인(유저관리)</title>
-    <link rel="stylesheet" href="adminMain.css">
-    <link rel="stylesheet" href="adminHeader.css">
-    <link rel="stylesheet" href="adminReceivedNote.css">
+    <link rel="stylesheet" href="/css/admin/adminMain.css">
+    <link rel="stylesheet" href="/css/admin/adminHeader.css">
+    <link rel="stylesheet" href="/css/admin/adminReceivedNote.css">
 </head>
 <body>
-<header class="header">
-    <span class="logo">GongU</span>
-    <div class="header-container">
-
-        <nav class="header-nav">
-            <a href="adminMain.html">회원 관리</a>
-            <a href="adminStudy.html">게시글 관리</a>
-            <a href="adminMentoApplication.html">신청함 관리</a>
-            <a href="adminNote.html">관리자 쪽지함</a>
-        </nav>
-
-    </div>
-    <a href="">Logout</a>
-</header>
+<header th:replace="fragments/adminHeader :: adminHeader"></header>
 <div class="main-container">
     <!-- 모달로 숨겨져 있는 영역 -->
     <div class="form-note">
@@ -41,9 +28,9 @@
     </div>
     <!-- ===================== -->
     <div class="left-container">
-        <div class="left-list"><a href="adminNote.html">쪽지 보내기</a></div>
-        <div class="left-list check"><a href="adminReceivedNote.html">받은 쪽지함</a></div>
-        <div class="left-list"><a href="adminSendNote.html">보낸 쪽지함</a></div>
+        <div class="left-list"><a href="/admin/note">쪽지 보내기</a></div>
+        <div class="left-list check"><a href="/admin/receivedNote">받은 쪽지함</a></div>
+        <div class="left-list"><a href="/admin/sendNote">보낸 쪽지함</a></div>
     </div>
     <div class="right-container">
         <div class="right-title">

@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="../../static/css/mentor/mentiDetail.css">
+  <link rel="stylesheet" href="/css/mentor/mentiDetail.css">
+  <link rel="stylesheet" href="/css/study/studyReply.css">
 
 </head>
 <body>
@@ -12,13 +13,13 @@
 <div class="fulldiv">
   <img class="goback" src="https://www.holaworld.io/images/info/arrowLeft.png" alt="뒤로가기사진">
   <div class="studyTitle">
-    <h1 name="studyTitle">최욱진 멘토와 함께 갈 학생 모집합니다</h1><!--스터디 구분들어갈 자리-->
+    <h1 name="studyTitle" th:text="${class.classTitle}">최욱진 멘토와 함께 갈 학생 모집합니다</h1><!--스터디 구분들어갈 자리-->
   </div>
   <div class="userAndUpload">
-            <span class="writerUser" name="userId"><!--스터디 모집 작성자-->
+            <span class="writerUser" name="userId" th:text="${class.userName}"><!--스터디 모집 작성자-->
               <!--작성자앞에 로고 사진-->
                 <img class="logoimg" src="https://hola-post-image.s3.ap-northeast-2.amazonaws.com/default.PNG" width="30px" height="25px">작성자 |</span>
-    <span name="registerDate">2023.10.12</span><!--스터디모집글등록날짜-->
+    <span name="registerDate" th:text="${class.classRegisterDate}">2023.10.12</span><!--스터디모집글등록날짜-->
   </div>
 
 
@@ -27,7 +28,7 @@
       <table>
         <tr>
           <td class="one" name="howToProceed">진행 방식</td>
-          <td class="se" name="??">온/오프라인</td>
+          <td class="se" name="??" th:text="${class.classProcess}">온/오프라인</td>
           <!--
               온라인이면 value :online
               오프라인이면 value : offline
@@ -36,7 +37,7 @@
         </tr>
         <tr>
           <td class="one" name="people">가격</td>
-          <td class="se" name="??">120,000</td>
+          <td class="se" name="??" th:text="${class.classPrice}">120,000</td>
           <!--
                  <option value="unsettled-person">인원 미정
                   <option value="one">1명
@@ -56,7 +57,7 @@
 
         <tr>
           <td class="one" >지역</td>
-          <td class="se" name="location">서울시 노원구</td>
+          <td class="se" name="location" th:text="${class.classAddress}">서울시 노원구</td>
         </tr>
       </table>
     </div>
@@ -66,16 +67,16 @@
       <table>
         <tr>
           <td class="one" name="">수업일정</td>
-          <td class="se" name="">2023.09.27 ~ 2023.10.27</td>
+          <td class="se" name="" th:text="${class.classStartDate}">2023.09.27 ~ 2023.10.27</td>
         </tr>
 
         <tr>
           <td class="one" name="">수업 구분</td>
-          <td class="se" name="studyfor">Java 프로그래밍 언어</td>
+          <td class="se" name="studyfor" th:text="${class.classMajor}">Java 프로그래밍 언어</td>
         </tr>
         <tr>
           <td class="one" name="">멘토 학력</td> <!--경력?-->
-          <td class="se" name="studyfor">서울대학교 OO과</td>
+          <td class="se" name="studyfor" th:text="${class.applyEducation}">서울대학교 OO과</td>
         </tr>
       </table>
     </div>
@@ -86,12 +87,8 @@
       <h2>강사 소개</h2>
     </div>
     <div>
-      <div class="ourStudtIs">  <!--pre태그로 변경예정-->
-        짱 잘가르치는 강사입니다짱
-        잘가르치는 강사입니다짱
-        잘가르치는 강사입니다짱
-        잘가르치는 강사입니다짱
-        잘가르치는 강사입니다
+      <div class="ourStudtIs" th:text="${class.classIntroduce}">  <!--pre태그로 변경예정-->
+
 
       </div>
 
@@ -99,11 +96,7 @@
         <h2>수업 커리큘럼</h2>
       </div>
       <div>
-        <div class="ourStudtIs"> <!--pre태그로 변경예정-->
-          재밌는 수업 할겁니다재밌는 수업 할겁니다재밌는 수업 할겁니다재밌는 수업 할겁니다재밌는 수업 할겁니다
-          재밌는 수업 할겁니다재밌는 수업 할겁니다재밌는 수업 할겁니다재밌는 수업 할겁니다재밌는 수업 할겁니다재밌는 수업 할겁니다
-          재밌는 수업 할겁니다재밌는 수업 할겁니다재밌는 수업 할겁니다재밌는 수업 할겁니다재밌는 수업 할겁니다재밌는 수업 할겁니다
-          재밌는 수업 할겁니다재밌는 수업 할겁니다재밌는 수업 할겁니다
+        <div class="ourStudtIs" th:text="${class.classPlan}"> <!--pre태그로 변경예정-->
 
         </div>
 
@@ -111,10 +104,6 @@
 
 
         <div class="checkDiv"><!--조회수랑 하이? 담는 총 상자-->
-          <div>
-            <img src="https://www.holaworld.io/images/info/eye.png" width="20px" height="15px">
-            <span>50</span><!--조회수-->
-          </div>
           <div>
             <img src="https://www.holaworld.io/images/info/bookmark.svg" width="20px" height="18px">
             <span>0</span><!--찜하기인가?-->
@@ -124,49 +113,36 @@
 
     </div><!--세번쨰 박스 스터디 소개부분 끝 -->
 
-    <!--댓글 상자 -->
-    <div class="replyFulldiv">
-      <div>댓글</div>
-      <div class="replyinnerfull">
-        <div>
-          <img src="	https://hola-post-image.s3.ap-northeast-2.amazonaws.com/default.PNG" width="44px" height="44px">
-        </div>
-        <form action="">
-          <div>
-            <input type="text" class="replyContent"name="replyContent"  id="replyContent" placeholder="댓글을 입력하세요" >
-          </div>
-          <div class="buttonDiv">
-            <button type="submit" class="replyRegiter" name="replyRegiter" id="replyRegiter">댓글등록</button>
-          </div>
-        </form>
-      </div>
-    </div><!--댓글끝-->
 
-    <!--댓글 상자 -->
-    <div class="rereplyFulldiv">
-      <div>댓글</div>
-      <div class="replyinnerfull">
-        <div>
-          <img src="	https://hola-post-image.s3.ap-northeast-2.amazonaws.com/default.PNG" width="44px" height="44px">
-        </div>
-        <form action="">
-          <div>
-            <input type="text" class="replyContent"name="replyContent" placeholder="댓글을 입력하세요" >
-          </div>
-          <div class="buttonDiv">
-            <button type="submit" class="replyRegiterUp" name="replyRegiterUp">수정</button>
-          </div>
-          <div class="buttonDiv">
-            <button type="submit" class="replyRegiterDel" name="replyRegiterDel">삭제</button>
-          </div>
-        </form>
-      </div>
-    </div><!--댓글끝-->
     <div class="payment-button">
       <button class="payment">
         결제
       </button>
     </div>
+    <a th:href="@{/class/update(classNumber=${class.classNumber})}">수정</a>
+    <a th:href="@{/class/delete(classNumber=${class.classNumber})}">삭제</a>
+    <!--댓글 상자 -->
+    <div class="reply-wrap">
+      <h3>댓글 작성</h3>
+      <div class="reply-wrap__box">
+        <div class="reply-content__box">
+          <div class="reply-writer" th:text="${class.userName}"></div>
+          <textarea name="replyContent" id="reply-content" cols="30" rows="10"></textarea>
+        </div>
+        <div class="reply-btn-wrap">
+          <button type="button" class="btn-reply">작성 완료</button>
+        </div>
+      </div>
+
+      <!-- 댓글 리스트 -->
+      <div class="reply-list-wrap">
+        <!-- 리플 예시 -->
+
+        <!-- /리플 예시 -->
+      </div>
+    </div>
+
+
 
 
 
@@ -176,17 +152,17 @@
   </div> <!--fulldiv 끝나는 지점 길이100%-->
 
 
+</div>
+<input type="hidden" th:value="${class.classNumber}" class="class-num"/>
+<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
 
-</body>
-<script>
-  document.querySelector('.replyRegiter').addEventListener('click', function(e){
-    if(document.querySelector('#replyContent').value== ''){
-      e.preventDefault() //전송을 막아준다.
-      alert('댓글을 입력해주세요')
-    }
-  })
-
+<script th:inline="javascript"> // 타임리프 문법을 자바스크립트에서 사용하기 위한 설정
+let loginNumber = [[${session.userNumber}]]; // 타임리프 문법은 [] 2개로 감싸줘야 한다.
+loginNumber = 6;
 
 </script>
+
+<script type="module" src="/js/study/classReply.js"></script>
+</body>
 
 </html>

@@ -1,32 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>스터디 게시글 상세</title>
-    <link rel="stylesheet" href="adminMain.css">
-    <link rel="stylesheet" href="adminHeader.css">
-    <link rel="stylesheet" href="adminStudyDetail.css">
+    <link rel="stylesheet" href="/css/admin/adminMain.css">
+    <link rel="stylesheet" href="/css/admin/adminHeader.css">
+    <link rel="stylesheet" href="/css/admin/adminStudyDetail.css">
 </head>
 <body>
-<header class="header">
-    <span class="logo">GongU</span>
-    <div class="header-container">
-
-        <nav class="header-nav">
-            <a href="adminMain.html">회원 관리</a>
-            <a href="adminStudy.html">게시글 관리</a>
-            <a href="adminMentoApplication.html">신청함 관리</a>
-            <a href="adminNote.html">관리자 쪽지함</a>
-        </nav>
-
-    </div>
-    <a href="">Logout</a>
-</header>
+<header th:replace="fragments/adminHeader :: adminHeader"></header>
 <div class="main-container">
     <div class="left-container">
-        <div class="left-list check"><a href="adminStudy.html">스터디 게시글 관리</a></div>
-        <div class="left-list"><a href="adminClassPlan.html">수업계획 게시글 관리</a></div>
+        <div class="left-list check"><a href="/admin/board">스터디 게시글 관리</a></div>
+        <div class="left-list"><a href="/admin/classPlan">수업계획 게시글 관리</a></div>
     </div>
     <div class="right-container">
         <div class="right-title">
