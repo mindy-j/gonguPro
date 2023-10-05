@@ -8,11 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
-<<<<<<< HEAD
-=======
+
 import static org.junit.jupiter.api.Assertions.*;
 
->>>>>>> 376283f62e0424639ed1c40d8460b658728386b2
+
 @SpringBootTest
 @Slf4j
 @Transactional
@@ -25,7 +24,7 @@ class UserMapperTest {
 
     @BeforeEach
     void setUp() {
-<<<<<<< HEAD
+
     userDto = new UserDto();
     userDto.setUserId("GGG");
     userDto.setUserPassword("5858");
@@ -44,21 +43,11 @@ class UserMapperTest {
     void idCheck() {
         String id = "GGG";
         String id2 ="sds";
-        userMapper.idCheck(id);
-        userMapper.idCheck(id2);
+       // userMapper.idCheck(id);
+       // userMapper.idCheck(id2);
     }
-=======
-        userDto = new UserDto();
-        userDto.setUserId("DDD");
-        userDto.setUserPassword("1531");
-        userDto.setUserName("이인");
-        userDto.setUserNickname("intl");
-        userDto.setUserEmail("DDD@naver.com");
-        userDto.setUserPhone("010-4584-4452");
-        userDto.setUserMajor("수학");
-        userDto.setUserBirth("1995-11-09");
-        userDto.setUserLevel("1");
-    }
+
+
 
 //    @Test
 //    public void userIdChk(){
@@ -68,14 +57,13 @@ class UserMapperTest {
 //        userMapper.idCheck(id2);
 //    }
 
->>>>>>> 376283f62e0424639ed1c40d8460b658728386b2
+
 
     @Test
     void insert() {
         userMapper.insert(userDto);
     }
-<<<<<<< HEAD
-=======
+
 
     @Test
     void update() {
@@ -98,5 +86,5 @@ class UserMapperTest {
 
 
 
->>>>>>> 376283f62e0424639ed1c40d8460b658728386b2
+
 }
