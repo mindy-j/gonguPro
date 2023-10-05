@@ -24,6 +24,41 @@
     header{
       margin-bottom:20px;
     }
+    .write-btn-container{
+      width:85%;
+      display: flex;
+      justify-content: end;
+
+    }
+
+    .write-btn{
+      width:100px;
+      height:30px;
+      background-color: #d9edf7;
+      border-radius: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color:white;
+      font-size: 18px;
+      font-weight: bold;
+    }
+    .study-logo{
+      width:100px;
+      height:25px;
+      background-color: #d9edf7;
+      color:white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 15px;
+      font-weight: bold;
+    }
+
+    .content-title{
+      margin-left: 20px;
+
+    }
 
     /* 그리드 아이템 스타일 설정 (예: 배경색, 테두리 등) */
 
@@ -83,7 +118,9 @@
           <a href="#"><p class="header-text">마이페이지</p></a> <!--로그인 창으로 이동-->
         </li>
       </ul>
+    </div>
   </nav>
+
 </header>
 <!--멘토로 로그인 헤더-->
 <header class="header-container "> <!--헤더 컨테이너-->
@@ -125,10 +162,10 @@
   <h2>멘티 모집</h2>
   <div class="grid-container">
     <!-- 그리드 아이템 -->
-
-    <div class="mento-box" th:each="class : ${classList}">
+  <th:block  th:each="class : ${classList}">
+    <div class="mento-box" th:if="${class.classLevel.equals('2')}">
       <div class="mento-name-container">
-        <div class="mento-name" th:text="${class.userName}"><h2>이종민</h2>
+        <div class="mento-name"><h2  th:text="${class.userName}+' 멘토'"></h2>
         </div>
         <a th:href="@{/class/detail(classNumber=${class.classNumber})}">
           <div class="mento-apply">
@@ -138,25 +175,39 @@
       </div>
       <ul class="mento-info-list">
         <li>
-          <span class="mento-info">경력</span> <span class="mento-career" th:text="${class.applyEducation}"></span>
+          <span class="mento-info">멘토 학력</span> <span class="mento-career" th:text="${class.applyEducation}"></span>
         </li>
         <li>
-          <span class="mento-info">비용</span>  <span class="mento-price" th:text="${class.classPrice}"></span>
+          <span class="mento-info">수업 비용</span>  <span class="mento-price" th:text="${class.classPrice}"></span>
+        </li>
+        <li>
+          <span class="mento-info">지역</span>  <span class="mento-price" th:text="${class.classAddress}"></span>
         </li>
 
 
         <br>
         <li>
-          <span class="mento-info">기간</span>  <span class="mento-career" th:text="${class.classStartDate}">23.09.16 ~ 23.10.16</span>
+          <span class="mento-info">기간</span>  <span class="mento-career" th:text="${class.classStartDate}+' ~ '+${class.classEndDate}"></span>
         </li>
       </ul>
+
     </div>
+  </th:block>
 
 
-    <a href="/class/write">글작성</a>
+
 
 
 </div>
+  <!-- th:if="${session.userLevel.equals('2')}" -->
+  <div class="write-btn-container">
+    <a href="/class/write">
+      <div class="write-btn">
+        글작성
+      </div>
+    </a>
+  </div>
+
   <div class="page-container">
     <ul class="page-box"><!--study? board?-->
       <a th:href="@{/class/list(page=${pageInfo.startPage-1})}" class="page-a" th:if="${pageInfo.prev}">
