@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/class/*")
@@ -37,7 +39,9 @@ public class ClassController {
     }
 
     @PostMapping("/writeOk")
-    public RedirectView writeOkPage(ClassDto classDto){
+    public RedirectView writeOkPage(ClassDto classDto, HttpServletRequest req){
+        Long userNumber = (Long)req.getSession().getAttribute("userNumber");
+        classDto.setUserNumber(userNumber);
         classService.register(classDto);
         return new RedirectView("/class/list");
     }
