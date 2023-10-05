@@ -24,24 +24,22 @@ import java.util.Map;
 public class UserController {
     private final UserService userService;
 
-
-
-    //로그인 부분
+    //로그인 화면전환
     @GetMapping("/login")
     public String login(){
         return "user/login";
     }
 
-
+    //아이디와 비번을 받아서 로그인 처리후 메인으로 화면전환
     @PostMapping("login")
     public RedirectView login(String userId, String userPassword, HttpServletRequest req){
         UserDto userDto = userService.find(userId, userPassword);
         req.getSession().setAttribute("userNumber", userDto.getUserNumber());
-
+        req.getSession().setAttribute("userLevel", userDto.getUserLevel());
         return new RedirectView("index");
     }
 
-    //인덱스로 가는 컨트롤러
+    //메인화면으로가는 컨트롤러
     @GetMapping("/index")
     public String index(){
         return "index";
@@ -59,7 +57,7 @@ public class UserController {
         return "user/joinOk";
     }
 
-
+    //아이디 중복체크
     @PostMapping("/userIdChk")
     @ResponseBody
     public String userIdChkPOST(String userId) throws Exception{
@@ -81,19 +79,18 @@ public class UserController {
     }
 
 
-    //단순 페이지 이동
+    //단순 페이지 이동-아이디찾기
     @GetMapping("/findId")
     public String findId(){
         return "user/findId";
     }
 
-    //번호가 디비에 있는지
-    @PostMapping("/verify-phone")
-    public ResponseEntity <String> verifyPhoneNumber(@RequestBody Map<String, String> requestBody){
-        String userPhone = requestBody.get("userPhone");
-        String result = userService.verifyPhoneNumber(userPhone);
-        return ResponseEntity.ok(result);
+    //단순 페이지 이동 - 비밀번호 찾기
+    @GetMapping("/findPassword")
+    public String findPassword(){
+        return "user/findPassword";
     }
+
 
 
 
