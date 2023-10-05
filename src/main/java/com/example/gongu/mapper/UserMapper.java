@@ -1,13 +1,15 @@
 package com.example.gongu.mapper;
 
-import org.apache.ibatis.annotations.Mapper;
 import com.example.gongu.domain.dto.UserDto;
-import org.apache.catalina.User;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+
+import javax.swing.plaf.PanelUI;
 
 
 @Mapper
 public interface UserMapper {
+
 
     // 회원가입 아이디 중복검사
     public int idCheck(String userId) throws Exception;
@@ -23,6 +25,10 @@ public interface UserMapper {
 
     //번호로 아이디 찾기
     public String verifyPhoneNumber(String userPhone);
+
+    //아이디와 번호로 비밀번호 찾기
+    public String verifyPhoneNumberPw(String userPhone, String userId);
+
 
     //아이디로 회원 삭제
     public void deleteId(String userId);

@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
+
 import static org.junit.jupiter.api.Assertions.*;
+
 
 @SpringBootTest
 @Slf4j
@@ -22,17 +24,30 @@ class UserMapperTest {
 
     @BeforeEach
     void setUp() {
-        userDto = new UserDto();
-        userDto.setUserId("DDD");
-        userDto.setUserPassword("1531");
-        userDto.setUserName("이인");
-        userDto.setUserNickname("intl");
-        userDto.setUserEmail("DDD@naver.com");
-        userDto.setUserPhone("010-4584-4452");
-        userDto.setUserMajor("수학");
-        userDto.setUserBirth("1995-11-09");
-        userDto.setUserLevel("1");
+
+    userDto = new UserDto();
+    userDto.setUserId("GGG");
+    userDto.setUserPassword("5858");
+    userDto.setUserName("홍홍옹");
+    userDto.setUserNickname("hoho");
+    userDto.setUserEmail("ggg@naver.com");
+    userDto.setUserPhone("010-8975-4747");
+    userDto.setUserMajor("영어");
+    userDto.setUserBirth("1995-08-05");
+    userDto.setUserLevel("1");
+
+
     }
+
+    @Test
+    void idCheck() {
+        String id = "GGG";
+        String id2 ="sds";
+       // userMapper.idCheck(id);
+       // userMapper.idCheck(id2);
+    }
+
+
 
 //    @Test
 //    public void userIdChk(){
@@ -43,10 +58,12 @@ class UserMapperTest {
 //    }
 
 
+
     @Test
     void insert() {
         userMapper.insert(userDto);
     }
+
 
     @Test
     void update() {
@@ -65,6 +82,7 @@ class UserMapperTest {
     void deleteId() {
         userMapper.deleteId("DDD");
     }
+
 
 
 

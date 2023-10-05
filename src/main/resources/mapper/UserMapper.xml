@@ -2,11 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.gongu.mapper.UserMapper">
 
+
     <select id="idCheck"  resultType="int">
         SELECT count(*)
         FROM TBL_USERS
         WHERE USER_ID = #{userId}
     </select>
+
 
     <insert id="insert">
         INSERT INTO TBL_USERS (USER_NUMBER, USER_ID, USER_PASSWORD,  USER_NICKNAME, USER_EMAIL, USER_PHONE,
@@ -21,6 +23,7 @@
     </select>
 
 
+
     <update id="update" parameterType="userDto">
         UPDATE TBL_USERS
         SET USER_PASSWORD = #{userPassword}, USER_NICKNAME = #{userNickname}, USER_EMAIL = #{userEmail}, USER_PHONE = #{userPhone}, USER_MAJOR = #{userMajor}
@@ -33,10 +36,17 @@
         WHERE USER_PHONE = #{userPhone}
     </select>
 
+    <select id="verifyPhoneNumberPw" resultType="string">
+        SELECT USER_PASSWORD
+        FROM TBL_USERS
+        WHERE USER_PHONE = #{userPhone} AND USER_ID =#{userId}
+    </select>
+
     <delete id="deleteId" parameterType="string">
         DELETE FROM TBL_USERS
         WHERE USER_ID = #{userId}
     </delete>
+
 
 
 </mapper>

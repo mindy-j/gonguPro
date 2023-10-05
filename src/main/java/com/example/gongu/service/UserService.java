@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.catalina.User;
 import org.springframework.stereotype.Service;
 
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -17,6 +18,7 @@ import java.util.Optional;
 @Slf4j
 public class UserService {
     private final UserMapper userMapper;
+
 
     //아이디 중복검사 : 성공
     public int idCheck(String userId) throws Exception{
@@ -42,27 +44,41 @@ public class UserService {
                 });
     }
 
-
     //회원정보수정
     public void modify(UserDto userDto) {
         userMapper.update(userDto);
     }
-
 
     //아이디로 회원 삭제
     public void remove(String userId) {
         userMapper.deleteId(userId);
     }
 
-
     //번호로 아이디 찾기
     public String verifyPhoneNumber(String userPhone){
-        String user = userMapper.verifyPhoneNumber(userPhone);
-        if(user != null && !user.isEmpty()){
-            return "번호 일치";
+        String userId = userMapper.verifyPhoneNumber(userPhone);
+        if(userId != null && !userId.isEmpty()){
+            log.info("******일치하는 번호가 있음*******");
+            return userId;
         }else {
-            return "번호 불일치";
+            log.info("***----일치하는 번호 없음----***");
+            return null;
         }
     }
+
+    //아이디와 번호로 비밀번호 찾기
+    public String verifyPhoneNumberPw(String userPhone, String userId){
+        String userPassword = userMapper.verifyPhoneNumberPw(userPhone, userId);
+        if(userPassword != null && !userPassword.isEmpty()){
+            log.info("=====일치하는 번호와 아이디가 있음=====");
+            return userPassword;
+        }else{
+            log.info("===---일치하는 번호와 아이디가 없음---===");
+            return null;
+        }
+    }
+
+
+
 }
 
