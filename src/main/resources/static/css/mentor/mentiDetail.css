@@ -9,7 +9,7 @@
 }
 .goback{
     width : 30px;
-    height: 30;
+    height: 30px;
     cursor: pointer;
 }
 .studyTitle{
@@ -52,11 +52,14 @@ th, td{
 
 
 .ourStudtTitle{
-    height: 150px;
+    height: 110px;
     line-height: 150px;
 }
 .ourStudtIs{
     font-weight: bold;
+    height:400px;
+    border:1px solid lightgrey;
+    padding:10px;
 }
 
 .checkDiv{

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/css/index.css"/>
+    <link rel="stylesheet" href="/css/paging.css"/>
     <style>
         .container{
             width:1320px;
@@ -27,6 +28,41 @@
 
         /* 그리드 아이템 스타일 설정 (예: 배경색, 테두리 등) */
 
+        .write-btn-container{
+            width:85%;
+            display: flex;
+            justify-content: end;
+
+        }
+
+        .write-btn{
+            width:100px;
+            height:30px;
+            background-color: #d9edf7;
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color:white;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .study-logo{
+            width:100px;
+            height:25px;
+            background-color: #d9edf7;
+            color:white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 15px;
+            font-weight: bold;
+        }
+
+        .content-title{
+            margin-left: 20px;
+
+        }
     </style>
 </head>
 <body>
@@ -53,6 +89,7 @@
                     <a href="#"><p class="header-text">로그인</p></a> <!--로그인 창으로 이동-->
                 </li>
             </ul>
+        </div>
     </nav>
 
 </header>
@@ -120,7 +157,9 @@
     </nav>
 </header>
 <div class="container">
-    <h2>스터디 모집</h2>
+    <div class="content-title">
+        <h2>🔥스터디 모집</h2>
+    </div>
     <div class="grid-container">
         <!-- 그리드 아이템 -->
 
@@ -128,10 +167,12 @@
         <a th:href="@{/study/detail(studyNumber=${study.studyNumber})}" >
             <div class="good-board">
                 <div class="category-img-box" >
-                    <img src="asd" name="카테고리이미지"/>
+                    <div class="study-logo">
+                         ✏️스터디
+                    </div>
                 </div>
                 <div class="deadline-box" >
-                    <p class="deadline" name="마감일" th:text="'마감일  |  '+${study.studyStartDate}"> </p>
+                    <p class="deadline" name="시작일" th:text="'시작일  |  '+${study.studyStartDate}"> </p>
                 </div>
                 <div class="content-box" name="제목">
                     <p class="content" th:text="${study.studyTitle}"></p>
@@ -143,7 +184,7 @@
                     <p class="address" name="주소" th:text="${study.studyAddress}"></p>
                 </div>
                 <div class="user-box">
-                    <span class="user-nickname" th:text="${study.userId}"></span>
+                    <span class="user-nickname" th:text="${study.userNickname}"></span>
                     <span class="commend-count">0</span>
                 </div>
             </div>
@@ -152,9 +193,44 @@
 
 
 
-        <a href="/study/write">글작성버튼</a>
+
     </div>
+    <!--페이징처리-->
+
+    <!--페이징처리 끝-->
+</div>
+<div class="write-btn-container">
+
+    <a href="/study/write" class="write-btn">
+        <div class="write-btn">
+        글작성
+        </div>
+    </a>
 </div>
 
+
+<div class="page-container">
+    <ul class="page-box"><!--study? board?-->
+        <a th:href="@{/study/list(page=${pageInfo.startPage-1})}" class="page-a" th:if="${pageInfo.prev}">
+            <li class="page-num prev">&lt</li>
+        </a>
+
+        <!--
+            페이징 처리는 시작번호~끝번호까지 반복을 돌려야 하므로 빠른 for문으로만 처리할 수 없다.
+            그렇기 때문에 타임리프에서 제공해주는 객체를 사용하여 처리한다. #을 붙이면 타임리프에서 제공해주는 객체를 사용한다.
+            numbers라는 객체가 제공하는 sequence(시작값, 끝값)라는 메소드를 이용한다. 1, 5 -> 1,2,3,4,5
+        -->
+        <th:block th:each="i : ${#numbers.sequence(pageInfo.startPage, pageInfo.endPage)}">
+            <a th:href="@{/study/list(page=${i})}" class="page-a">
+                <li class="page-num" th:text="${i}" th:if="${i != pageInfo.criteria.page}"></li>
+                <li class="page-num active" th:text="${i}" th:unless="${i != pageInfo.criteria.page}"></li>
+            </a>
+        </th:block>
+
+        <a th:href="@{/study/list(page=${pageInfo.endPage+1})}" class="page-a" th:if="${pageInfo.next}">
+            <li class="page-num next">&gt</li>
+        </a>
+    </ul>
+</div>
 </body>
 </html>

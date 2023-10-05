@@ -100,7 +100,7 @@ export function remove(replyNumber, callback){
 
 export function getListPage(pageInfo, callback){
     $.ajax({
-        url: `/replies/list/${pageInfo.boardNumber}/${pageInfo.page}`,
+        url: `/replies/list/${pageInfo.studyNumber}/${pageInfo.page}`,
         type : 'get',
         dataType : 'json',
         success : function (result){

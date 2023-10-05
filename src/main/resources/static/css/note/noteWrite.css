@@ -1,0 +1,193 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+.note-wrap{
+    position: relative;
+    width: 100vw;
+    min-width: 800px;
+}
+
+/* 쪽지 헤더 */
+.note-header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 50px;
+    background-color: orange;
+    color: white;
+    border-bottom: 1px solid gray;
+    padding: 15px;
+    justify-content: space-between;
+    position: relative;
+    z-index: 100;
+}
+
+/* 로고 */
+.note-main-box{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.gongu-main{
+    font-size: 15px;
+    font-weight: bold;
+    margin-right: 5px;
+    color: white;
+}
+
+.note-main{
+    font-size: 20px;
+    color: white;
+}
+.logout{
+    font-size: 15px;
+}
+
+.note-body{
+    height: 100vh;
+    width: 100vw;
+    margin-top: -50px;
+    padding-top: 50px;
+    display: flex;
+    flex-direction: row;
+}
+
+/* 메뉴 상자 */
+.menu-container{
+    width: 150px;
+    height: 100%;
+    border-right: 1px solid gray;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btn-note-write{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 120px;
+    font-size: 15px;
+    font-weight: bold;
+    margin: 15px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    background-color: orange;
+    color: white;
+}
+
+.receive, .send{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    width: 100%;
+    background-color: white;
+    border-top: 1px solid gray;
+}
+.send{
+    background-color: white;
+    border-bottom: 1px solid gray;
+}
+
+/* 쪽지 내용 상자 */
+.note-container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.note-send{
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 23px;
+    margin-left: 50px;
+}
+
+.note-box{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.note-write-container{
+    width: 100%;
+}
+
+/* 공통 */
+.receiver-box, .title-box{
+    display: flex;
+    flex-direction: row;
+    padding: 0 50px;
+    width: 100%;
+    min-width: 650px;
+    max-width: 100%;
+}
+
+.content-box, .btn-box{
+    display: flex;
+    flex-direction: column;
+    padding: 0 50px;
+    width: 100%;
+    min-width: 650px;
+    max-width: 100%;
+}
+
+.receiver-box{
+    padding-top: 20px;
+}
+/* 받는사람 */
+.note-sender, .note-title{
+    height: 30px;
+    width: 100%;
+    font-size: 15px;
+    padding: 0 10px;
+    border-style: none;
+    border-bottom: 1px solid gray;
+}
+/* 제목 */
+
+
+/* 내용 */
+
+/* 보내기 */
+.btn-box{
+    align-items: end;
+    margin-top: 5px;
+}
+
+.btn-note-send{
+    width: 100px;
+    height: 40px;
+    background-color: orange;
+    border: 1px solid gray;
+    color: white;
+    font-size: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.receiver-word, .title-word{
+    display: flex;
+    align-items: center;
+    height: 30px;
+    width: 70px;
+    min-width: 70px;
+    font-weight: bold;
+}
+.content-word{
+    display: flex;
+    align-items: center;
+    height: 30px;
+    font-weight: bold;
+}

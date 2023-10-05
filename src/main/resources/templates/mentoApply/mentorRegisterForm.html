@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../../static/css/mentor/memtorRegisterForm.css">
+    <link rel="stylesheet" href="/css/mentor/memtorRegisterForm.css">
+
  
 </head>
 <body>
@@ -15,7 +16,7 @@
                 <p>멘토가 되어 가르침을 공유해주세요!</p>
             </div>
 
-        <form action="" method=""> <!--백작업부분의 시작 폼-->
+        <form action="/apply/write" method="post" enctype="multipart/form-data"> <!--백작업부분의 시작 폼-->
 
             <div class="education-div"> <!--학력을 담는 총 부분-->
                 <div class="ed-letter"> <!--글자만 담은 상자-->
@@ -24,12 +25,12 @@
                 </div>
 
                 <div class="ed-input-div"><!--input을 담은 상자-->
-                    <input type="text" name="edu" placeholder="  00대학교 " style="height: 30px; width: 300px;">
+                    <input type="text" name="applyEducation" placeholder="  00대학교 ">
                         <select class="s" id="" name="" style="height: 33px; width: 300px;">
-                            <option value="" >졸 업</option>
-                            <option value="" >중 퇴</option>
-                            <option value="" >재학중</option>
-                            <option value="" >휴 학</option>
+                            <option value="졸업" >졸업</option>
+                            <option value="중퇴" >중퇴</option>
+                            <option value="재학중" >재학중</option>
+                            <option value="휴학" >휴학</option>
                         </select>
                 </div> <!--임시용-->  
             </div><!--학력을 담는 총 부분 끝-->
@@ -42,8 +43,8 @@
                     <span class="career">경력</span> 
                     <span class="memo">거짓으로 입력한 학력은 멘토승인이 거부 될 수 있습니다</span>
                 </div>
-                <div>
-                    <input type="text" name="careerform" placeholder="     경력사항 입력 자세히 적어주세요  " style="height: 200px; width: 600px;">
+                <div> <!--textarea로 수정-->
+                    <input type="text" name="applyCareer" placeholder="     경력사항 입력 자세히 적어주세요  " style="height: 200px; width: 600px;">
                 </div>
             </div><!--경력 입력부분 끝-->
             <br>
@@ -55,23 +56,24 @@
                     <span class="Certificate">자격증</span> 
                     <span class="memo">자격증 입력 후 첨부파일에 증명서를 등록해주세요</span>
                 </div>
-                <div>
-                    <input type="text" name="ca" placeholder="     보유 자격증을 입력해주세요" style="height: 100px; width: 600px;">
+                <div> <!--textarea로 수정-->
+                    <input type="text" name="applyCerti" placeholder="     보유 자격증을 입력해주세요" style="height: 100px; width: 600px;">
                 </div>
             </div><!--자격증 쓰는 부분 끝-->
             <br>
 
             <!--파일 첨부 부분-->
-            <div class="Certificate-file-div">
-                <div class="ed-file-letter"><!--첨부파일 글자 담은 상자-->
-                    <span class="Certificate-file">첨부파일</span> 
-                    <span class="memo">파일은 최대 5개까지 등록이 가능합니다</span>
-                </div>
-                <div class="file-small-div">
-                    <label for="input_file">업로드</label>
-                    <input type="file" id="input_file" name="Certificatefile">
-                </div>
-            </div> <!--파일 첨부 부분 끝-->
+            <div class="form-group">
+                <ul class="file-wrap">
+                    <li>
+                        <input type="file" id="post-image" name="applyFile" accept="image/*" multiple />
+                    </li>
+                    <li class="img-list"></li>
+                    <li class="img-list"></li>
+                    <li class="img-list"></li>
+                    <li class="img-list"></li>
+                </ul>
+            </div>
             <br>
             <div class="btn-div">
                 <button class="btn1" type="submit">신청 하기</button>
@@ -81,5 +83,76 @@
         </form><!--백작업부분의 폼-->
         </div><!--신청을 위한 박스-->
     </div><!--완전 큰박스-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    let $input = $('#post-image');
+    let $imgList = $('.img-list');
+    // console.log($input);
+
+    // file change이벤트로 미리보기 갱신하기
+    $input.on('change', function () {
+        let files = this.files;
+        //   console.log(files);
+
+        // 길이 체크함수 (files, 원하는 길이)
+        let newFiles = checkLength(files, 4);
+
+        appendImg(newFiles);
+    });
+
+    // 클릭 이벤트로 이미지 지우고 미리보기 갱신하기
+    $imgList.on('click', function (e) {
+        let name = $(e.target).data('name');
+        removeImg(name);
+        appendImg($input[0].files);
+    });
+
+    //미리보기 삭제 함수
+    function removeImg(name) {
+        let dt = new DataTransfer();
+
+        let files = $input[0].files;
+
+        for (let i = 0; i < files.length; i++) {
+            if (files[i].name !== name) {
+                dt.items.add(files[i]);
+            }
+        }
+        $input[0].files = dt.files;
+    }
+
+    //파일 길이 체크 함수(체크할 files객체, 제한할 길이)
+    function checkLength(files, num) {
+        if (files.length > num) {
+            alert(`파일은 최대 ${num}개까지만 첨부 가능합니다.`);
+            // 최대 수를 넘으면 비어있는 files객체 반환
+            return new DataTransfer().files;
+        }
+        return files;
+    }
+
+    // 이미지 미리보기 처리 함수
+    // 이미지 수가 4개보다 적으면 기본이미지로 대체함
+    function appendImg(files) {
+        for (let i = 0; i < 4; i++) {
+            if (i < files.length) {
+                let src = URL.createObjectURL(files[i]);
+
+                $imgList.eq(i).css('background-image', `url(${src})`).css('background-size', 'cover').data('name', `${files[i].name}`);
+
+                $imgList.eq(i).addClass('x-box');
+            } else {
+                $imgList
+                    .eq(i)
+                    .css(
+                        'background',
+                        'url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNiIgaGVpZ2h0PSIzNiI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48ZyBzdHJva2U9IiNCNUI1QjUiIHN0cm9rZS13aWR0aD0iMS41IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0IDQpIj48cmVjdCB3aWR0aD0iMjgiIGhlaWdodD0iMjgiIHJ4PSIzLjUiLz48Y2lyY2xlIGN4PSI4LjU1NiIgY3k9IjguNTU2IiByPSIyLjMzMyIvPjxwYXRoIGQ9Ik0yOCAxOC42NjdsLTcuNzc3LTcuNzc4TDMuMTExIDI4Ii8+PC9nPjxwYXRoIGQ9Ik0wIDBoMzZ2MzZIMHoiLz48L2c+PC9zdmc+) no-repeat 50% #f2f2f2'
+                    )
+                    .data('name', null);
+                $imgList.eq(i).removeClass('x-box');
+            }
+        }
+    }
+</script>
 </body>
 </html>
