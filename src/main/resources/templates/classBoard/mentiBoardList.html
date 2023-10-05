@@ -118,7 +118,9 @@
           <a href="#"><p class="header-text">마이페이지</p></a> <!--로그인 창으로 이동-->
         </li>
       </ul>
+    </div>
   </nav>
+
 </header>
 <!--멘토로 로그인 헤더-->
 <header class="header-container "> <!--헤더 컨테이너-->
@@ -160,10 +162,10 @@
   <h2>멘티 모집</h2>
   <div class="grid-container">
     <!-- 그리드 아이템 -->
-
-    <div class="mento-box" th:each="class : ${classList}">
+  <th:block  th:each="class : ${classList}">
+    <div class="mento-box" th:if="${class.classLevel.equals('2')}">
       <div class="mento-name-container">
-        <div class="mento-name"><h2  th:text="${class.userName}+' 멘토'">이종민</h2>
+        <div class="mento-name"><h2  th:text="${class.userName}+' 멘토'"></h2>
         </div>
         <a th:href="@{/class/detail(classNumber=${class.classNumber})}">
           <div class="mento-apply">
@@ -188,13 +190,16 @@
           <span class="mento-info">기간</span>  <span class="mento-career" th:text="${class.classStartDate}+' ~ '+${class.classEndDate}"></span>
         </li>
       </ul>
+
     </div>
+  </th:block>
 
 
 
 
 
 </div>
+  <!-- th:if="${session.userLevel.equals('2')}" -->
   <div class="write-btn-container">
     <a href="/class/write">
       <div class="write-btn">

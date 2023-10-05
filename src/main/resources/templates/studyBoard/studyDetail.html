@@ -53,7 +53,7 @@
             <span class="writerUser" name="userId" th:text="${study.userId}"><!--스터디 모집 작성자-->
                 <!--작성자앞에 로고 사진-->
                 <img class="logoimg" src="https://hola-post-image.s3.ap-northeast-2.amazonaws.com/default.PNG" width="30px" height="25px">작성자 |</span>
-                <span name="registerDate" th:text="${study.studyRegisterDate}"></span><!--스터디모집글등록날짜-->
+                <span name="registerDate"></span><!--스터디모집글등록날짜-->
         </div>
 
 
@@ -106,8 +106,8 @@
                     <tr>
                         <td class="one" name="period-time">예상 기간</td>
                         <td class="se" name="" th:text="${study.studyDate}"></td>
-                        <!--
 
+                        <!--
                     <option value="unsettled-period">기간미정
                     <option value="oneMonth">1개월
                     <option value="twoMonths">2개월
@@ -132,9 +132,7 @@
                     <h2>스터디 소개</h2>
                 </div>
             <div>
-                <div class="ourStudtIs" th:text="${study.studyContent}">
-
-
+                <div class="ourStudtIs" th:utext="${study.studyContent}">
                 </div>
 
                 <div class="checkDiv"><!--조회수랑 하이? 담는 총 상자-->
@@ -146,10 +144,12 @@
             </div>
 
         </div><!--세번쨰 박스 스터디 소개부분 끝 -->
-        <div class="btn-container">
-            <a th:href="@{/study/update(studyNumber=${study.studyNumber})}"><div class="update-btn">수정</div></a>
-            <a th:href="@{/study/remove(studyNumber=${study.studyNumber})}"><div class="delete-btn">삭제</div></a>
-        </div>
+        <th:block th:if="${study.studyNumber == session.userNumber}">
+            <div class="btn-container">
+                <a th:href="@{/study/update(studyNumber=${study.studyNumber})}"><div class="update-btn">수정</div></a>
+                <a th:href="@{/study/remove(studyNumber=${study.studyNumber})}"><div class="delete-btn">삭제</div></a>
+            </div>
+        </th:block>
 
 
         <!--댓글 상자 -->
@@ -188,8 +188,6 @@
 
     <script th:inline="javascript"> // 타임리프 문법을 자바스크립트에서 사용하기 위한 설정
     let loginNumber = [[${session.userNumber}]]; // 타임리프 문법은 [] 2개로 감싸줘야 한다.
-    loginNumber = 5;
-
     </script>
 
     <script type="module" src="/js/study/studyReply.js"></script>
