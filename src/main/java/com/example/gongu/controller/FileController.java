@@ -1,10 +1,11 @@
 package com.example.gongu.controller;
 
-import com.example.gongu.domain.dto.FileDto;
-import com.example.gongu.service.FileService;
+
+import com.example.gongu.domain.vo.admin.AdminFileVo;
+import com.example.gongu.service.AdminService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Controller;
+
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,22 +15,24 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-@RestController
+@RestController //비동기통신컨트롤러를 만들때  사용
 @RequiredArgsConstructor
 @RequestMapping("/files/*")
 public class FileController {
-    private final FileService fileService;
+    private final AdminService adminService;
 
     @Value("${file.dir}")
     private String fileDir;
 
     @GetMapping("/imgList")
-    public List<FileDto> imgList(Long applyNumber){
-        return fileService.findList(applyNumber);
+    public List<AdminFileVo> fileList(Long applyNumber){
+        return adminService.findFile(applyNumber);
+
     }
 
     @GetMapping("/display")
     public byte[] display(String fileName) throws IOException {
         return FileCopyUtils.copyToByteArray(new File(fileDir, fileName));
     }
+
 }

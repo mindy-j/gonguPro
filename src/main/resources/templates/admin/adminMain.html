@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>관리자 메인(유저관리)</title>
+    <title>관리자 일반 유저관리</title>
+    <link rel="icon" href="/image/adminLogo.png">
     <link rel="stylesheet" href="/css/admin/adminMain.css">
     <link rel="stylesheet" href="/css/admin/adminHeader.css">
 </head>
@@ -18,7 +19,7 @@
         <div class="right-title">
             <div class="right-title-sub">일반회원</div>
             <div>
-                <form action="" method="get">
+                <form action="/admin/main" method="get">
                     <fieldset class="field">
                         <legend>회원 검색</legend>
                         <select name="cate" id="">
@@ -45,32 +46,40 @@
             </div>
             <!-- 데이터가 들어오는 부분 -->
             <div class="member-list" th:each="user : ${userList}">
-                <div class="number">1</div>
+                <div class="number" th:text="${user.rnum}"></div>
                 <div class="id" th:text="${user.userId}"></div>
                 <div class="name" th:text="${user.userName}"></div>
                 <div class="birth" th:text="${user.userBirth}"></div>
                 <div class="phone" th:text="${user.userPhone}"></div>
                 <div class="email" th:text="${user.userEmail}"></div>
                 <div class="sortation">
-                    <div>일반<button type="button" class="remove-btn">삭제</button></div>
+                    <div>일반<button type="button" class="remove-btn" th:data-number="${user.userNumber}">삭제</button></div>
                 </div>
             </div>
             <!-- 20개의 데이터가 들어왔다 -->
+            <!-- 페이징 처리 -->
             <div class="page-container">
                 <ul class="page-ul">
-                    <li>&lt</li>
-                    <li>1</li>
-                    <li>2</li>
-                    <li>3</li>
-                    <li>4</li>
-                    <li>5</li>
-                    <li>&gt</li>
+                    <a th:href="@{/admin/main(page=${pageInfo.startPage-1})}" th:if="${pageInfo.prev}">
+                        <li class="page-btn">&lt</li>
+                    </a>
+                    <th:block th:each="i : ${#numbers.sequence(pageInfo.startPage, pageInfo.endPage)}">
+                        <a th:href="@{/admin/main(page=${i})}">
+                            <li class="page-btn" th:text="${i}" th:if="${i != pageInfo.adminCriteria.page}"></li>
+                            <li class="page-btn active" th:text="${i}" th:unless="${i != pageInfo.adminCriteria.page}"></li>
+                        </a>
+                    </th:block>
+                    <a th:href="@{/admin/main(page=${pageInfo.endPage+1})}" class="page-a" th:if="${pageInfo.next}">
+                        <li class="page-btn">&gt</li>
+                    </a>
                 </ul>
             </div>
+            <!-- /페이징 처리 -->
 
         </div>
     </div>
 </div>
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script th:src="@{/js/admin/adminMain.js}"></script>
 </body>
 </html>
