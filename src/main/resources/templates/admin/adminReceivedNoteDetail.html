@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>관리자 받은 쪽지 상세</title>
+    <link rel="icon" href="/image/adminLogo.png">
+    <link rel="stylesheet" href="/css/admin/adminMain.css">
+    <link rel="stylesheet" href="/css/admin/adminHeader.css">
+    <link rel="stylesheet" href="/css/admin/adminReceivedNote.css">
+</head>
+<body>
+<header th:replace="fragments/adminHeader :: adminHeader"></header>
+<div class="main-container">
+    <div class="left-container">
+        <div class="left-list"><a href="/admin/note">쪽지 보내기</a></div>
+        <div class="left-list check"><a href="/admin/receivedNote">받은 쪽지함</a></div>
+        <div class="left-list"><a href="/admin/sendNote">보낸 쪽지함</a></div>
+    </div>
+    <div class="right-container">
+        <div class="right-title">
+            <div class="right-title-sub">
+                <img class="note-img" src="https://cdn.poomang.com/img/welcomemangd1/result/icon_letter.png" alt="">받은 쪽지함
+            </div>
+        </div>
+        <div class="member-container">
+            <div class="showNumber">
+                <div class="form-group">
+                    <div class="note-text">보낸 사람</div>
+                    <div class="recipient" th:text="${received.userId}">bbagym</div>
+                </div>
+                <div class="form-group">
+                    <div class="note-text">쪽지 제목</div>
+                    <div class="recipient" th:text="${received.noteTitle}">관리자는 보아라!!!!!</div>
+                </div>
+                <div class="form-group">
+                    <div class="note-text">쪽지 내용</div>
+                    <div id="msg-content" th:utext="${received.noteContent}">관리자 관리자 관리자</div>
+                </div>
+
+                <div class="btn-box">
+                    <button class="refusal-btn" th:data-number="${received.noteNumber}">삭 제</button>
+                    <button class="back-btn">뒤로가기</button>
+                </div>
+            </div>
+            <!-- 데이터가 끝나는 영역-->
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script th:src="@{/js/admin/adminReceivedNote.js}"></script>
+</body>
+</html>

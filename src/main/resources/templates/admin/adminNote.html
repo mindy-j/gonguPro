@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>쪽지 보내기</title>
+    <title>관리자 쪽지 보내기</title>
+    <link rel="icon" href="/image/adminLogo.png">
     <link rel="stylesheet" href="/css/admin/adminMain.css">
     <link rel="stylesheet" href="/css/admin/adminHeader.css">
     <link rel="stylesheet" href="/css/admin/adminNote.css">
@@ -27,18 +28,18 @@
             </div>
         </div>
         <div class="member-container">
-            <form action="" class="form-note">
+            <form action="/admin/noteWrite" class="form-note">
                 <div class="form-group">
                     <label for="recipient">받는 사람</label>
-                    <input type="text" id="recipient" placeholder="아이디로 입력하세요">
+                    <input type="text" class="recipient" placeholder="아이디로 입력하세요" id="recipient" name="userId">
                 </div>
                 <div class="form-group">
-                    <label for="recipient">쪽지 제목</label>
-                    <input type="text" id="recipient" placeholder="제목을 입력하세요">
+                    <label for="recipients">쪽지 제목</label>
+                    <input type="text" class="recipient" id="recipients" placeholder="제목을 입력하세요" name="noteTitle">
                 </div>
                 <div class="form-group">
-                    <label for="msg-content">쪽지 내용</label>
-                    <textarea name="" id="summernote" cols="30" rows="10" placeholder="내용을 입력하세요"></textarea>
+                    <label for="summernote">쪽지 내용</label>
+                    <textarea name="noteContent" id="summernote" cols="30" rows="10" placeholder="내용을 입력하세요"></textarea>
                 </div>
                 <button>보내기</button>
             </form>
@@ -58,6 +59,9 @@
             ['view', ['help']]
         ]
     });
+</script>
+<script th:if="${param.noteError}">
+    alert("쪽지 보내기 실패하였습니다. \n받는사람 아이디를 다시 확인해주세요.");
 </script>
 </body>
 </html>
