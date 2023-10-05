@@ -179,8 +179,11 @@ a{
     height: 100%;
     width: 100%;
     background-color: red;
+    border: none;
+    outline: none;
     color: white;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .del{
