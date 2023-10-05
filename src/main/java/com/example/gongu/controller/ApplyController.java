@@ -33,7 +33,7 @@ public class ApplyController {
                                 @RequestParam("applyFile") List<MultipartFile> files){
         Long userNumber = (Long)req.getSession().getAttribute("userNumber");
 
-        mentoApplyDto.setUserNumber(6L); //userNumber로 변경
+        mentoApplyDto.setUserNumber(userNumber); //userNumber로 변경
         applyService.registerAndFileProc(mentoApplyDto, files);
 
         Long applyNumber = mentoApplyDto.getApplyNumber();
