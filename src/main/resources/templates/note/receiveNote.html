@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>받은쪽지함</title>
-    <link rel="stylesheet" href="receiveNote.css">
+    <link rel="stylesheet" href="/css/note/receiveNote.css">
 </head>
 <body>
     <div class="note-wrap">
@@ -12,7 +12,7 @@
         <div class="note-header">
             <div class="note-main-box">
                 <a href="" class="gongu-main">GONGU</a>
-                <a href="receiveNote.html" class="note-main">쪽지</a>
+                <a href="/note/receiveList" class="note-main">쪽지</a>
             </div>
             <div class="logout">
                 <span>로그아웃</span>
@@ -26,10 +26,10 @@
                     <span>쪽지쓰기</span>
                 </a>
                 <div class="receive">
-                    <a href="receiveNote.html">받은쪽지함</a>
+                    <a href="/note/receiveList">받은쪽지함</a>
                 </div>
                 <div class="send">
-                    <a href="sendNote.html">보낸쪽지함</a>
+                    <a href="/note/sendList">보낸쪽지함</a>
                 </div>
             </div>
             <!-- 쪽지함 기능 내용(비동기 처리?) -->
@@ -47,197 +47,45 @@
                             <div class="note-delete td">삭제</div>
                         </div>
                         <!-- 반복출력 시작 -->
-                        <div class="tr">
+                        <div class="tr" th:each="note : ${receiveNote}">
                             <div class="note-user td">
-                                <a href="noteWrite.html">아이디</a>
+                                <a href="noteWrite.html" th:text="${note.userId}">아이디</a>
                             </div>
                             <div class="note-title td">
-                                <a href="">쪽지 제목입니다</a>
+                                <a href="receiveNoteDetail.html" th:text="${note.noteTitle}">쪽지 제목입니다</a>
                             </div>
-                            <div class="note-date td">2023.09.16</div>
+                            <div class="note-date td" th:text="${note.noteRegisterDate}">2023.09.16</div>
                             <div class="del">
-                                <a href="" class="btn-delete">삭제</a>
+                                <a href="/note/receiveRemove" class="btn-delete" th:value="${note.noteNumber}">삭제</a>
                             </div>
                         </div>
                         <!-- 반복출력 끝 -->
-                        <div class="tr">
-                            <div class="note-user td">
-                                <a href="">누르면</a>
-                            </div>
-                            <div class="note-title td">
-                                <a href="">누르면 내용 확인 가능</a>
-                            </div>
-                            <div class="note-date td">2023.09.16</div>
-                            <div class="del">
-                                <a href="" class="btn-delete">삭제</a>
-                            </div>
-                        </div>
-                        <div class="tr">
-                            <div class="note-user td">
-                                <a href="">쪽지쓰기창</a>
-                            </div>
-                            <div class="note-title td">
-                                <a href="">현재 구현 준비 중</a>
-                            </div>
-                            <div class="note-date td">2023.09.16</div>
-                            <div class="del">
-                                <a href="" class="btn-delete">삭제</a>
-                            </div>
-                        </div>
-                        <div class="tr">
-                            <div class="note-user td">
-                                <a href="">가는걸로</a>
-                            </div>
-                            <div class="note-title td">
-                                <a href="">언젠간 가능</a>
-                            </div>
-                            <div class="note-date td">2023.09.16</div>
-                            <div class="del">
-                                <a href="" class="btn-delete">삭제</a>
-                            </div>
-                        </div>
-                        <div class="tr">
-                            <div class="note-user td">
-                                <a href="">아이디</a>
-                            </div>
-                            <div class="note-title td">
-                                <a href="">쪽지 제목입니다</a>
-                            </div>
-                            <div class="note-date td">2023.09.16</div>
-                            <div class="del">
-                                <a href="" class="btn-delete">삭제</a>
-                            </div>
-                        </div>
-                        <div class="tr">
-                            <div class="note-user td">
-                                <a href="">아이디</a>
-                            </div>
-                            <div class="note-title td">
-                                <a href="">쪽지 제목입니다</a>
-                            </div>
-                            <div class="note-date td">2023.09.16</div>
-                            <div class="del">
-                                <a href="" class="btn-delete">삭제</a>
-                            </div>
-                        </div>
-                        <div class="tr">
-                            <div class="note-user td">
-                                <a href="">아이디</a>
-                            </div>
-                            <div class="note-title td">
-                                <a href="">쪽지 제목입니다</a>
-                            </div>
-                            <div class="note-date td">2023.09.16</div>
-                            <div class="del">
-                                <a href="" class="btn-delete">삭제</a>
-                            </div>
-                        </div>
-                        <div class="tr">
-                            <div class="note-user td">
-                                <a href="">아이디</a>
-                            </div>
-                            <div class="note-title td">
-                                <a href="">쪽지 제목입니다</a>
-                            </div>
-                            <div class="note-date td">2023.09.16</div>
-                            <div class="del">
-                                <a href="" class="btn-delete">삭제</a>
-                            </div>
-                        </div>
-                        <div class="tr">
-                            <div class="note-user td">
-                                <a href="">아이디</a>
-                            </div>
-                            <div class="note-title td">
-                                <a href="">쪽지 제목입니다</a>
-                            </div>
-                            <div class="note-date td">2023.09.16</div>
-                            <div class="del">
-                                <a href="" class="btn-delete">삭제</a>
-                            </div>
-                        </div>
-                        <div class="tr">
-                            <div class="note-user td">
-                                <a href="">아이디</a>
-                            </div>
-                            <div class="note-title td">
-                                <a href="">쪽지 제목입니다</a>
-                            </div>
-                            <div class="note-date td">2023.09.16</div>
-                            <div class="del">
-                                <a href="" class="btn-delete">삭제</a>
-                            </div>
-                        </div>
-                        <div class="tr">
-                            <div class="note-user td">
-                                <a href="">아이디</a>
-                            </div>
-                            <div class="note-title td">
-                                <a href="">쪽지 제목입니다</a>
-                            </div>
-                            <div class="note-date td">2023.09.16</div>
-                            <div class="del">
-                                <a href="" class="btn-delete">삭제</a>
-                            </div>
-                        </div>
-                        <div class="tr">
-                            <div class="note-user td">
-                                <a href="">아이디</a>
-                            </div>
-                            <div class="note-title td">
-                                <a href="">쪽지 제목입니다</a>
-                            </div>
-                            <div class="note-date td">2023.09.16</div>
-                            <div class="del">
-                                <a href="" class="btn-delete">삭제</a>
-                            </div>
-                        </div>
-                        <div class="tr">
-                            <div class="note-user td">
-                                <a href="">아이디</a>
-                            </div>
-                            <div class="note-title td">
-                                <a href="">쪽지 제목입니다</a>
-                            </div>
-                            <div class="note-date td">2023.09.16</div>
-                            <div class="del">
-                                <a href="" class="btn-delete">삭제</a>
-                            </div>
-                        </div>
-                        <div class="tr">
-                            <div class="note-user td">
-                                <a href="">아이디</a>
-                            </div>
-                            <div class="note-title td">
-                                <a href="">쪽지 제목입니다</a>
-                            </div>
-                            <div class="note-date td">2023.09.16</div>
-                            <div class="del">
-                                <a href="" class="btn-delete">삭제</a>
-                            </div>
-                        </div>
-                        <div class="tr">
-                            <div class="note-user td">
-                                <a href="">아이디</a>
-                            </div>
-                            <div class="note-title td">
-                                <a href="">쪽지 제목입니다</a>
-                            </div>
-                            <div class="note-date td">2023.09.16</div>
-                            <div class="del">
-                                <a href="" class="btn-delete">삭제</a>
-                            </div>
-                        </div>
                     </div>
+                    <!-- 페이징 처리 -->
                     <div class="page-container">
-                        <button class="prev-btn"><</button>
-                        <button class="page-btn">1</button>
-                        <button class="page-btn">2</button>
-                        <button class="page-btn">3</button>
-                        <button class="page-btn">4</button>
-                        <button class="page-btn">5</button>
-                        <button class="next-btn">></button>
+                        <ul class="page-box">
+                            <a th:href="@{/note/receiveList(page=${pageInfo.startPage-1})}" class="page-a" th:if="${pageInfo.prev}">
+                                <li class="page-num prev">&lt</li>
+                            </a>
+
+                            <!--
+                                페이징 처리는 시작번호~끝번호까지 반복을 돌려야 하므로 빠른 for문으로만 처리할 수 없다.
+                                그렇기 때문에 타임리프에서 제공해주는 객체를 사용하여 처리한다. #을 붙이면 타임리프에서 제공해주는 객체를 사용한다.
+                                numbers라는 객체가 제공하는 sequence(시작값, 끝값)라는 메소드를 이용한다. 1, 5 -> 1,2,3,4,5
+                            -->
+                            <th:block th:each="i : ${#numbers.sequence(pageInfo.startPage, pageInfo.endPage)}">
+                                <a th:href="@{/note/receiveList(page=${i})}" class="page-a">
+                                    <li class="page-num" th:text="${i}" th:if="${i != pageInfo.noteCriteria.page}"></li>
+                                    <li class="page-num active" th:text="${i}" th:unless="${i != pageInfo.noteCriteria.page}"></li>
+                                </a>
+                            </th:block>
+
+                            <a th:href="@{/note/receiveList(page=${pageInfo.endPage+1})}" class="page-a" th:if="${pageInfo.next}">
+                                <li class="page-num next">&gt</li>
+                            </a>
+                        </ul>
                     </div>
+                    <!-- /페이징 처리 -->
                 </div>
             </div>
         </div>
