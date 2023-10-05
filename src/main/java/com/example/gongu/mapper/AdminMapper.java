@@ -32,7 +32,7 @@ public interface AdminMapper {
     public void deleteStudy(Long studyNumber);
 
 
-//    보낸 쪽지상세
+//    스터디 상세
     public AdminStudyVo selectStudyDetail(Long studyNumber);
 
     //    수업게시 조회
@@ -67,17 +67,27 @@ public interface AdminMapper {
 //    쪽지 보내기
     public void insertNote(AdminNoteVo adminNoteVo);
 //    보낸 쪽지함
-    public List<AdminNoteVo> selectSender(AdminCriteria adminCriteria);
+    public List<AdminNoteVo> selectSender(@Param("senderNumber") Long senderNumber,
+                                          @Param("adminCriteria") AdminCriteria adminCriteria);
 //    보낸 쪽지수
-    public int selectSendNoteTotal(AdminCriteria adminCriteria);
+    public int selectSendNoteTotal(@Param("senderNumber") Long senderNumber,
+                                   @Param("adminCriteria") AdminCriteria adminCriteria);
 //    보낸 쪽지상세
     public AdminNoteVo selectSend(Long noteNumber);
+//    보낸 쪽지 레벨 수정
+    public void updateSend(Long noteNumber);
 
 
     //    받은 쪽지함
-    public List<AdminNoteVo> selectReceived(AdminCriteria adminCriteria);
+    public List<AdminNoteVo> selectReceived(@Param("recieverNumber") Long recieverNumber, @Param("adminCriteria") AdminCriteria adminCriteria);
     //    받은 쪽지수
-    public int selectReceivedTotal(AdminCriteria adminCriteria);
-    //    보낸 쪽지상세
+    public int selectReceivedTotal(@Param("recieverNumber") Long recieverNumber, @Param("adminCriteria") AdminCriteria adminCriteria);
+    //    받은 쪽지상세
     public AdminNoteVo selectRece(Long noteNumber);
+//    받은 쪽지 레벨 수정
+    public void updateReceive(Long noteNumber);
+
+
+//    이미지 불러오기
+    public List<AdminFileVo> selectFile(Long applyNumber);
 }

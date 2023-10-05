@@ -64,14 +64,15 @@
             </div>
 
             <div class="btn-box">
-                <button class="approval-btn">승 인</button>
-                <button class="refusal-btn">삭 제</button>
-                <a th:href="@{/admin/classApplication}"><button class="back-btn">뒤로가기</button></a>
+                <button class="approval-detail-btn" th:data-number="${class.classNumber}">승 인</button>
+                <button class="refusal-detail-btn" th:data-number="${class.classNumber}">삭 제</button>
+                <button class="back-btn">뒤로가기</button>
             </div>
 
         </div>
     </div><!--"right-container" 끝-->
 </div><!--"main-container" 끝-->
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script th:src="@{/js/admin/adminClassApplication.js}"></script>
 </body>
 </html>

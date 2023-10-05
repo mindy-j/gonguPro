@@ -16,6 +16,11 @@
         <div class="left-list"><a href="/admin/classApplication">수업계획 신청함</a></div>
     </div>
     <div class="right-container">
+<!--        -->
+        <div class="modal">
+
+        </div>
+<!--        -->
         <div class="right-title">
             <div class="right-title-sub">멘토 신청 상세페이지</div>
         </div>
@@ -36,20 +41,18 @@
             <div>
                 <h2>첨부파일</h2>
                 <div class="file-box">
-                    <div class="file mar"><img src="https://sw.tta.or.kr/assets/img/content/CSTS_certificate_sample.jpg" alt=""></div>
-                    <div class="file mar"><img src="https://sw.tta.or.kr/assets/img/content/CSTS_certificate_sample.jpg" alt=""></div>
-                    <div class="file mar"><img src="https://sw.tta.or.kr/assets/img/content/CSTS_certificate_sample.jpg" alt=""></div>
-                    <div class="file"><img src="https://sw.tta.or.kr/assets/img/content/CSTS_certificate_sample.jpg" alt=""></div>
+
                 </div>
             </div>
             <div class="btn-box">
                 <button class="approval-detail-btn" th:data-number="${mento.applyNumber}">승 인</button>
                 <button class="refusal-detail-btn"  th:data-number="${mento.applyNumber}">거 부</button>
-                <a th:href="@{/admin/application}"><button class="back-btn">뒤로가기</button></a>
+                <button class="back-btn">뒤로가기</button>
             </div>
         </div>
     </div><!--"right-container" 끝-->
 </div><!--"main-container" 끝-->
+<input type="hidden" th:value="${mento.applyNumber}" class="apply-num">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script th:src="@{/js/admin/adminMentoApplication.js}"></script>
 </body>

@@ -317,38 +317,38 @@
                 (SELECT USER_NUMBER FROM TBL_USERS WHERE USER_ID = #{userId}), #{senderNumber})
     </insert>
 <!--    보낸 쪽지함-->
-    <select id="selectSender"  resultType="adminNoteVo">
+    <select id="selectSender" resultType="adminNoteVo">
         SELECT RNUM, NOTE_NUMBER, NOTE_TITLE, NOTE_CONTENT,TO_CHAR(NOTE_REGISTER_DATE, 'YYYY"년 "MM"월 "DD"일"') AS NOTE_REGISTER_DATE, RECIEVER_NUMBER, SENDER_NUMBER, USER_ID
         FROM (SELECT ROWNUM AS RNUM, NOTE_NUMBER, NOTE_TITLE, NOTE_CONTENT, NOTE_REGISTER_DATE, RECIEVER_NUMBER, SENDER_NUMBER, USER_ID
         FROM (SELECT NOTE_NUMBER, NOTE_TITLE, NOTE_CONTENT, NOTE_REGISTER_DATE, RECIEVER_NUMBER, SENDER_NUMBER, U.USER_ID
         FROM TBL_NOTE N JOIN TBL_USERS U ON N.RECIEVER_NUMBER = U.USER_NUMBER
-        WHERE SENDER_NUMBER = 2
+        WHERE SENDER_NUMBER = #{senderNumber, jdbcType=BIGINT} AND SEND_LEVEL = '1'
         <choose>
-            <when test="'id'.equals(cate)">
-                AND USER_ID LIKE '%' || #{keyword} || '%'
+            <when test="'id'.equals(adminCriteria.cate)">
+                AND USER_ID LIKE '%' || #{adminCriteria.keyword} || '%'
             </when>
-            <when test="'title'.equals(cate)">
-                AND NOTE_TITLE LIKE '%' || #{keyword} || '%'
+            <when test="'title'.equals(adminCriteria.cate)">
+                AND NOTE_TITLE LIKE '%' || #{adminCriteria.keyword} || '%'
             </when>
         </choose>
         ORDER BY NOTE_NUMBER DESC ) X
         <![CDATA[
-            WHERE ROWNUM <= #{page} * #{amount}
+            WHERE ROWNUM <= #{adminCriteria.page} * #{adminCriteria.amount}
             ]]>
         ) Y
-        WHERE RNUM > (#{page} - 1) * #{amount}
+        WHERE RNUM > (#{adminCriteria.page} - 1) * #{adminCriteria.amount}
     </select>
 <!--    보낸쪽지 수-->
     <select id="selectSendNoteTotal" resultType="_int">
         SELECT COUNT(NOTE_NUMBER)
         FROM TBL_NOTE N JOIN TBL_USERS U ON N.RECIEVER_NUMBER  = U.USER_NUMBER
-        WHERE SENDER_NUMBER = 2
+        WHERE SENDER_NUMBER = #{senderNumber, jdbcType=BIGINT} AND SEND_LEVEL = '1'
         <choose>
-            <when test="'id'.equals(cate)">
-                AND USER_ID LIKE '%' || #{keyword} || '%'
+            <when test="'id'.equals(adminCriteria.cate)">
+                AND USER_ID LIKE '%' || #{adminCriteria.keyword} || '%'
             </when>
-            <when test="'title'.equals(cate)">
-                AND NOTE_TITLE LIKE '%' || #{keyword} || '%'
+            <when test="'title'.equals(adminCriteria.cate)">
+                AND NOTE_TITLE LIKE '%' || #{adminCriteria.keyword} || '%'
             </when>
         </choose>
     </select>
@@ -358,6 +358,12 @@
         FROM TBL_NOTE N JOIN TBL_USERS U ON N.RECIEVER_NUMBER = U.USER_NUMBER
         WHERE NOTE_NUMBER = #{noteNumber}
     </select>
+<!--    보낸쪽지 레벨 수정-->
+    <update id="updateSend">
+        UPDATE TBL_NOTE
+        SET SEND_LEVEL = '2'
+        WHERE NOTE_NUMBER = #{noteNumber}
+    </update>
 
     <!--    받은 쪽지함-->
     <select id="selectReceived"  resultType="adminNoteVo">
@@ -365,33 +371,33 @@
         FROM (SELECT ROWNUM AS RNUM, NOTE_NUMBER, NOTE_TITLE, NOTE_CONTENT, NOTE_REGISTER_DATE, RECIEVER_NUMBER, SENDER_NUMBER, USER_ID
         FROM (SELECT NOTE_NUMBER, NOTE_TITLE, NOTE_CONTENT, NOTE_REGISTER_DATE, RECIEVER_NUMBER, SENDER_NUMBER, U.USER_ID
         FROM TBL_NOTE N JOIN TBL_USERS U ON N.SENDER_NUMBER = U.USER_NUMBER
-        WHERE RECIEVER_NUMBER = 2
+        WHERE RECIEVER_NUMBER = #{recieverNumber, jdbcType=BIGINT} AND RECEIVE_LEVEL = '1'
         <choose>
-            <when test="'id'.equals(cate)">
-                AND USER_ID LIKE '%' || #{keyword} || '%'
+            <when test="'id'.equals(adminCriteria.cate)">
+                AND USER_ID LIKE '%' || #{adminCriteria.keyword} || '%'
             </when>
-            <when test="'title'.equals(cate)">
-                AND NOTE_TITLE LIKE '%' || #{keyword} || '%'
+            <when test="'title'.equals(adminCriteria.cate)">
+                AND NOTE_TITLE LIKE '%' || #{adminCriteria.keyword} || '%'
             </when>
         </choose>
         ORDER BY NOTE_NUMBER DESC ) X
         <![CDATA[
-            WHERE ROWNUM <= #{page} * #{amount}
+            WHERE ROWNUM <= #{adminCriteria.page} * #{adminCriteria.amount}
             ]]>
         ) Y
-        WHERE RNUM > (#{page} - 1) * #{amount}
+        WHERE RNUM > (#{adminCriteria.page} - 1) * #{adminCriteria.amount}
     </select>
     <!--    받은쪽지 수-->
     <select id="selectReceivedTotal" resultType="_int">
         SELECT COUNT(NOTE_NUMBER)
         FROM TBL_NOTE N JOIN TBL_USERS U ON N.SENDER_NUMBER  = U.USER_NUMBER
-        WHERE RECIEVER_NUMBER = 2
+        WHERE  RECIEVER_NUMBER = #{recieverNumber, jdbcType=BIGINT} AND RECEIVE_LEVEL = '1'
         <choose>
-            <when test="'id'.equals(cate)">
-                AND USER_ID LIKE '%' || #{keyword} || '%'
+            <when test="'id'.equals(adminCriteria.cate)">
+                AND USER_ID LIKE '%' || #{adminCriteria.keyword} || '%'
             </when>
-            <when test="'title'.equals(cate)">
-                AND NOTE_TITLE LIKE '%' || #{keyword} || '%'
+            <when test="'title'.equals(adminCriteria.cate)">
+                AND NOTE_TITLE LIKE '%' || #{adminCriteria.keyword} || '%'
             </when>
         </choose>
     </select>
@@ -401,9 +407,15 @@
         FROM TBL_NOTE N JOIN TBL_USERS U ON N.SENDER_NUMBER = U.USER_NUMBER
         WHERE NOTE_NUMBER = #{noteNumber}
     </select>
+<!--    받은 쪽지 레벨 수정-->
+    <update id="updateReceive">
+        UPDATE TBL_NOTE
+        SET RECEIVE_LEVEL = '2'
+        WHERE NOTE_NUMBER = #{noteNumber}
+    </update>
 
 <!--    이미지 파일 불러오기-->
-    <select id="selectFileList" resultType="adminFileVo">
+    <select id="selectFile" resultType="adminFileVo">
         SELECT FILE_NUMBER, FILE_NAME, FILE_UPLOAD_PATH, FILE_UUID, APPLY_NUMBER
         FROM TBL_FILES
         WHERE APPLY_NUMBER = #{applyNumber}

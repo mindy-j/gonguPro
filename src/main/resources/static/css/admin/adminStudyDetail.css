@@ -26,7 +26,7 @@
 }
 .btn-box{
     float: right;
-    width: 200px;
+    width: 250px;
 }
 .approval-btn{
     width: 80px;
@@ -79,4 +79,24 @@
 .content-title{
     font-weight: bold;
     font-size: 20px;
+}
+
+
+.approval-detail-btn{
+    width: 80px;
+    height: 30px;
+    background-color:lightskyblue;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.refusal-detail-btn{
+    width: 80px;
+    height: 30px;
+    background-color:lightcoral;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
 }

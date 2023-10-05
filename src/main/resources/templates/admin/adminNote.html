@@ -59,5 +59,8 @@
         ]
     });
 </script>
+<script th:if="${param.noteError}">
+    alert("쪽지 보내기 실패하였습니다. \n받는사람 아이디를 다시 확인해주세요.");
+</script>
 </body>
 </html>

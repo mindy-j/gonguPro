@@ -36,21 +36,19 @@
     height: 200px;
     display: flex;
     margin-top: 10px;
-}
-.file{
     border: 1px solid lightgray;
-    width: 220px;
     border-radius: 5px;
-    overflow: hidden;
 }
-.file > img{
-    object-fit:cover;
-    width: 100%;
-    height: 100%;
-}
-.mar{
-    margin-right: 10px;
-}
+/*.file{*/
+/*    width: 220px;*/
+/*    height: 200px;*/
+/*    overflow: hidden;*/
+/*}*/
+/*.file > img{*/
+/*    object-fit:cover;*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*}*/
 
 
 .btn-box{
@@ -107,4 +105,25 @@
     cursor: pointer;
     font-weight: bold;
     margin-right: 5px;
+}
+/*========================*/
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 15%;
+    top: 70px;
+    width: 85%;
+    height: 850px;
+    background-color: rgba(0,0,0,0.7);
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #fff;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
 }

@@ -67,7 +67,7 @@
                 <div class="date" th:text="${received.noteRegisterDate}">2023년 09월 15일</div>
                 <div class="sortation">
                     <a th:href="@{/admin/receivedNoteDetail(noteNumber=${received.noteNumber})}"><button class="show-btn">읽기</button></a>
-                    <button class="remove-btn">삭제</button>
+                    <button class="remove-btn" th:data-number="${received.noteNumber}">삭제</button>
                 </div>
             </div>
             <!-- 데이터가 끝나는 영역-->

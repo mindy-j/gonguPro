@@ -11,22 +11,6 @@
 <body>
 <header th:replace="fragments/adminHeader :: adminHeader"></header>
 <div class="main-container">
-    <!-- 모달로 숨겨져 있는 영역 -->
-    <div class="form-note showNumber">
-        <div class="form-group">
-            <div class="note-text">받은 사람<span class="close-x">&nbsp;X&nbsp;</span></div>
-            <div class="recipient">bbagym</div>
-        </div>
-        <div class="form-group">
-            <div class="note-text">쪽지 제목</div>
-            <div class="recipient">관리자는 보아라!!!!!</div>
-        </div>
-        <div class="form-group">
-            <div class="note-text">쪽지 내용</div>
-            <div id="msg-content">관리자 관리자 관리자</div>
-        </div>
-    </div>
-    <!-- ===================== -->
     <div class="left-container">
         <div class="left-list"><a href="/admin/note">쪽지 보내기</a></div>
         <div class="left-list"><a href="/admin/receivedNote">받은 쪽지함</a></div>
@@ -67,7 +51,7 @@
                 <div class="date" th:text="${send.noteRegisterDate}">2023년 09월 15일</div>
                 <div class="sortation">
                     <a th:href="@{/admin/sendNoteDetail(noteNumber=${send.noteNumber})}"><button class="show-btn" type="button">읽기</button></a>
-                    <button class="remove-btn">삭제</button>
+                    <button class="remove-btn" th:data-number="${send.noteNumber}">삭제</button>
                 </div>
             </div>
             <!-- 데이터가 끝나는 영역-->
@@ -91,6 +75,6 @@
     </div>
 </div>
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<script th:src="@{/js/admin/adminReceivedNote.js}"></script>
+<script th:src="@{/js/admin/adminSendNote.js}"></script>
 </body>
 </html>

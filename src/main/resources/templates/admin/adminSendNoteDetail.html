@@ -41,8 +41,8 @@
                 </div>
 
                 <div class="btn-box">
-                    <button class="refusal-btn">삭 제</button>
-                    <a th:href="@{/admin/sendNote}"><button class="back-btn">뒤로가기</button></a>
+                    <button class="refusal-btn" th:data-number="${send.noteNumber}">삭 제</button>
+                    <button class="back-btn">뒤로가기</button>
                 </div>
             </div>
             <!-- 데이터가 끝나는 영역-->
@@ -50,6 +50,6 @@
     </div>
 </div>
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<script th:src="@{/js/admin/adminReceivedNote.js}"></script>
+<script th:src="@{/js/admin/adminSendNote.js}"></script>
 </body>
 </html>

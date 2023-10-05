@@ -41,8 +41,8 @@
                 </div>
 
                 <div class="btn-box">
-                    <button class="refusal-btn">삭 제</button>
-                    <a th:href="@{/admin/receivedNote}"><button class="back-btn">뒤로가기</button></a>
+                    <button class="refusal-btn" th:data-number="${received.noteNumber}">삭 제</button>
+                    <button class="back-btn">뒤로가기</button>
                 </div>
             </div>
             <!-- 데이터가 끝나는 영역-->

@@ -1,10 +1,10 @@
-//삭제 버튼
+// 거부 refusal-btn
 $('.remove-btn').on('click',function (){
-    let studyNumber = $(this).data('number');
-    // AJAX 요청으로 데이터 삭제
+    let noteNumber = $(this).data('number');
+    // AJAX 요청으로 데이터 수정
     $.ajax({
         type: 'get',
-        url: '/admin/removeStudy?studyNumber=' + studyNumber,
+        url: '/admin/sendNoteModify?noteNumber=' + noteNumber,
         success: function () {
             alert('성공적으로 삭제했습니다.');
             location.reload();
@@ -14,16 +14,16 @@ $('.remove-btn').on('click',function (){
         }
     });
 });
-//삭제 버튼
-$('.rm').on('click',function (){
-    let studyNumber = $(this).data('number');
-    // AJAX 요청으로 데이터 삭제
+// 거부 refusal-btn
+$('.refusal-btn').on('click',function (){
+    let noteNumber = $(this).data('number');
+    // AJAX 요청으로 데이터 수정
     $.ajax({
         type: 'get',
-        url: '/admin/removeStudy?studyNumber=' + studyNumber,
+        url: '/admin/sendNoteModify?noteNumber=' + noteNumber,
         success: function () {
             alert('성공적으로 삭제했습니다.');
-            location.replace('/admin/board');
+            location.replace('/admin/sendNote');
         },
         error: function (a,b,c) {
             console.error(c);
@@ -34,4 +34,3 @@ $('.rm').on('click',function (){
 $('.back-btn').on('click', function (){
     window.history.back();
 });
-

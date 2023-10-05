@@ -9,10 +9,6 @@ import org.springframework.stereotype.Component;
 @NoArgsConstructor
 public class AdminFileVo {
    private Long applyNumber;
-//   private String applyEducation; //학력
-//   private String applyCareer; //경력
-//   private String applyCerti; //자격증
-
    private Long fileNumber;
    private String fileName;
    private String fileUploadPath;

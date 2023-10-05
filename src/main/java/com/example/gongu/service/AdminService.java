@@ -17,10 +17,11 @@ public class AdminService {
 
     //    관리자 로그인
     public Long findLogin(String userId, String userPassword) {
-        return Optional.ofNullable(adminMapper.selectLogin(userId, userPassword))
-                .orElseThrow(() -> {
-                    throw new IllegalArgumentException("회원번호가 일치하지 않습니다");
-                });
+//        return Optional.ofNullable(adminMapper.selectLogin(userId, userPassword))
+//                .orElseThrow(() -> {
+//                    throw new IllegalArgumentException("회원번호가 일치하지 않습니다");
+//                });
+        return adminMapper.selectLogin(userId, userPassword);
     }
 
     //일반 회원 리스트
@@ -130,29 +131,42 @@ public class AdminService {
         adminMapper.insertNote(adminNoteVo);
     }
 //    보낸쪽지
-    public List<AdminNoteVo> findSender(AdminCriteria adminCriteria){
-        return adminMapper.selectSender(adminCriteria);
+    public List<AdminNoteVo> findSender(Long senderNumber, AdminCriteria adminCriteria){
+        return adminMapper.selectSender(senderNumber,adminCriteria);
     }
 //    보낸쪽지수
-    public int getSendNotTotal(AdminCriteria adminCriteria) {
-        return adminMapper.selectSendNoteTotal(adminCriteria);
+    public int getSendNotTotal(Long senderNumber, AdminCriteria adminCriteria) {
+        return adminMapper.selectSendNoteTotal(senderNumber,adminCriteria);
     }
 //   보낸쪽지 상세
     public AdminNoteVo findSend(Long noteNumber){
         return adminMapper.selectSend(noteNumber);
     }
+//    보낸쪽지 레벨 수정
+    public void modifySend(Long noteNumber){adminMapper.updateSend(noteNumber);}
 
 
     //    받은 쪽지
-    public List<AdminNoteVo> findReceived(AdminCriteria adminCriteria){
-        return adminMapper.selectReceived(adminCriteria);
+    public List<AdminNoteVo> findReceived(Long recieverNumber, AdminCriteria adminCriteria){
+        return adminMapper.selectReceived(recieverNumber,adminCriteria);
     }
     //    받은 쪽지수
-    public int getReceivedTotal(AdminCriteria adminCriteria) {
-        return adminMapper.selectReceivedTotal(adminCriteria);
+    public int getReceivedTotal(Long recieverNumber, AdminCriteria adminCriteria) {
+        return adminMapper.selectReceivedTotal(recieverNumber, adminCriteria);
     }
     //   받은 쪽지 상세
     public AdminNoteVo findRece(Long noteNumber){
         return adminMapper.selectRece(noteNumber);
+    }
+//    받은쪽지 레벨 수정
+    public void modifyReceive(Long noteNumber){adminMapper.updateReceive(noteNumber);}
+
+
+//    이미지 불러오기
+    public List<AdminFileVo> findFile(Long applyNumber){
+        if (applyNumber == null) {
+            throw new IllegalArgumentException("멘토 신청 번호 누락!!");
+        }
+        return adminMapper.selectFile(applyNumber);
     }
 }

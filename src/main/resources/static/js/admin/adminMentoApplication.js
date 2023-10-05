@@ -64,3 +64,53 @@ $('.refusal-detail-btn').on('click',function (){
         }
     });
 });
+
+
+
+//이미지 띄우기 처리
+displayAjax();
+
+function displayAjax(){
+    let applyNumber = $('.apply-num').val();
+
+    $.ajax({
+        url : '/files/imgList',
+        type : 'get',
+        data : {applyNumber : applyNumber},
+        success : function (fileList) {
+
+            let text = '';
+
+            fileList.forEach(file => {
+                console.log(file);
+                let fileName = file.fileUploadPath + '/' + file.fileUuid + '_' + file.fileName;
+
+                text += `<div className="file" style="margin: 0 3px; cursor:pointer;" onclick="detailFile()"><img src="/files/display?fileName=${fileName}" data-number=${file.fileNumber}
+                          width="220px" height="200px"/></div>`;
+
+            });
+
+            $('.file-box').html(text);
+        }
+    });
+}
+
+function detailFile(){
+    let clickedImage = $(event.target);
+    let fileName = clickedImage.attr('src');
+    let fileNumber = clickedImage.data('number');
+
+    $('.modal').html(`
+        <span class="close">&times;</span>
+        <img src="${fileName}" data-number="${fileNumber}" width="80%" height="850px" style="margin-left: 180px"/>`);
+    $('.modal').css('display', 'block');
+}
+
+// 모달 닫기
+$('.right-container').on('click', '.close', function() {
+    $('.modal').css('display', 'none');
+});
+
+$('.back-btn').on('click', function (){
+    window.history.back();
+});

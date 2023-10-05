@@ -1,10 +1,9 @@
 package com.example.gongu.controller;
 
 import com.example.gongu.domain.vo.admin.*;
-import com.example.gongu.domain.vo.SearchVo;
 import com.example.gongu.service.AdminService;
 import lombok.RequiredArgsConstructor;
-import org.apache.ibatis.annotations.Param;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +11,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
 
+@Slf4j
 @Controller
 @RequestMapping("/admin/*")
 @RequiredArgsConstructor
@@ -24,9 +24,17 @@ public class AdminController {
     @PostMapping("/login")
     public RedirectView adminLogin(String userId, String userPassword, HttpServletRequest req){
         Long adminNumber = adminService.findLogin(userId, userPassword);
-        req.getSession().setAttribute("adminNumber",  adminNumber);
-        return new RedirectView("/admin/main");
+        if (adminNumber != null) {
+            // 로그인 성공
+            req.getSession().setAttribute("adminNumber", adminNumber);
+            return new RedirectView("/admin/main");
+        } else {
+            // 로그인 실패
+            return new RedirectView("/admin/login?loginError");
+        }
     }
+
+
 // =====헤더 부분 매핑=========
     @GetMapping("/main")
     public String adminMain(Model model, AdminCriteria adminCriteria){
@@ -61,8 +69,7 @@ public class AdminController {
         model.addAttribute("mentoList", adminService.findMentoApply(adminCriteria));
         model.addAttribute("pageInfo", new AdminPageVo(adminService.getMentoApplyTotal(adminCriteria), adminCriteria));
         return "/admin/adminMentoApplication";}
-    @GetMapping("/note")
-    public String adminNote(){return "/admin/adminNote";}
+
     @GetMapping("/logout")
     public String logout(HttpServletRequest req){
         req.getSession().invalidate();
@@ -137,8 +144,10 @@ public class AdminController {
 
 //    =============
 //    쪽지보내기
+@GetMapping("/note")
+public String adminNote(){return "/admin/adminNote";}
     @GetMapping("/noteWrite")
-    public RedirectView noteWrite(AdminNoteVo adminNoteVo, HttpServletRequest req, String userId){
+    public RedirectView noteWrite(AdminNoteVo adminNoteVo, HttpServletRequest req){
         Long adminNumber = (Long)req.getSession().getAttribute("adminNumber");
         adminNoteVo.setSenderNumber(adminNumber);
         adminService.registerNote(adminNoteVo);
@@ -146,9 +155,10 @@ public class AdminController {
     }
 //    보낸쪽지
     @GetMapping("/sendNote")
-    public String senderNote(AdminCriteria adminCriteria, Model model){
-        model.addAttribute("senderList", adminService.findSender(adminCriteria));
-        model.addAttribute("pageInfo", new AdminPageVo(adminService.getSendNotTotal(adminCriteria), adminCriteria));
+    public String senderNote(AdminCriteria adminCriteria, Model model, HttpServletRequest req){
+        Long senderNumber = (Long)req.getSession().getAttribute("adminNumber");
+        model.addAttribute("senderList", adminService.findSender(senderNumber, adminCriteria));
+        model.addAttribute("pageInfo", new AdminPageVo(adminService.getSendNotTotal(senderNumber, adminCriteria), adminCriteria));
         return "admin/adminSendNote";
     }
     @GetMapping("/sendNoteDetail")
@@ -157,10 +167,22 @@ public class AdminController {
         model.addAttribute("send", adminNoteVo);
         return "admin/adminSendNoteDetail";
     }
+    @GetMapping("/sendNoteModify")
+    public RedirectView sendNoteModify(Long noteNumber){
+        adminService.modifySend(noteNumber);
+        return new RedirectView("/admin/sendNote");
+    }
+    @GetMapping("/receiveNoteModify")
+    public RedirectView receiveNoteModify(Long noteNumber){
+        adminService.modifyReceive(noteNumber);
+        return new RedirectView("/admin/receivedNote");
+    }
+
     @GetMapping("/receivedNote")
-    public String receivedNote(AdminCriteria adminCriteria, Model model){
-        model.addAttribute("receivedList", adminService.findReceived(adminCriteria));
-        model.addAttribute("pageInfo", new AdminPageVo(adminService.getReceivedTotal(adminCriteria), adminCriteria));
+    public String receivedNote(AdminCriteria adminCriteria, Model model, HttpServletRequest req){
+        Long recieverNumber = (Long)req.getSession().getAttribute("adminNumber");
+        model.addAttribute("receivedList", adminService.findReceived(recieverNumber, adminCriteria));
+        model.addAttribute("pageInfo", new AdminPageVo(adminService.getReceivedTotal(recieverNumber, adminCriteria), adminCriteria));
         return "admin/adminReceivedNote";}
 
     @GetMapping("/receivedNoteDetail")
