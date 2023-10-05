@@ -12,7 +12,7 @@
         <div class="note-header">
             <div class="note-main-box">
                 <a href="" class="gongu-main">GONGU</a>
-                <a href="receiveNote.html" class="note-main">쪽지</a>
+                <a href="/note/receiveList" class="note-main">쪽지</a>
             </div>
             <div class="logout">
                 <span>로그아웃</span>
@@ -26,10 +26,10 @@
                     <span>쪽지쓰기</span>
                 </a>
                 <div class="receive">
-                    <a href="receiveNote.html">받은쪽지함</a>
+                    <a href="/note/receiveList">받은쪽지함</a>
                 </div>
                 <div class="send">
-                    <a href="sendNote.html">보낸쪽지함</a>
+                    <a href="/note/sendList">보낸쪽지함</a>
                 </div>
             </div>
             <!-- 쪽지함 기능 내용(비동기 처리?) -->
@@ -56,7 +56,7 @@
                             </div>
                             <div class="note-date td" th:text="${note.noteRegisterDate}">2023.09.16</div>
                             <div class="del">
-                                <a href="" class="btn-delete">삭제</a>
+                                <a href="/note/sendRemove" class="btn-delete" th:value="${note.noteNumber}">삭제</a>
                             </div>
                         </div>
                         <!-- 반복출력 끝 -->

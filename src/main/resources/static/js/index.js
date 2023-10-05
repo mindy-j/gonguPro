@@ -12,3 +12,5 @@ function moveSlides() {
 
 // 5초마다 이미지를 왼쪽으로 슬라이드
 setInterval(moveSlides, 5000);
+
+// 로그인 정보에 따라 header 변경

@@ -10,7 +10,17 @@ import java.util.List;
 @Mapper
 public interface NoteMapper {
 
+//    보낸쪽지함
     List<NoteVo> selectSendAll(NoteCriteria noteCriteria);
 
-    int selectSendTotal();
+    int selectSendTotal(Long senderNumber);
+
+    void updateSendLevel(Long senderNumber);
+
+//    받은쪽지함
+    List<NoteVo> selectReceiveAll(NoteCriteria noteCriteria);
+
+    int selectReceiveTotal(Long recieverNumber);
+
+    void updateReceiveLevel(Long recieverNumber);
 }

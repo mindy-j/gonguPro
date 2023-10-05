@@ -8,6 +8,8 @@ import org.springframework.stereotype.Component;
 public class NoteCriteria {
     private int page;
     private int amount;
+    private Long senderNumber;
+    private Long recieverNumber;
 
     public NoteCriteria() {
         this.page = 1;
