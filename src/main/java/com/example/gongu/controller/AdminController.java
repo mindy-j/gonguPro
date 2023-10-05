@@ -151,6 +151,7 @@ public String adminNote(){return "/admin/adminNote";}
         Long adminNumber = (Long)req.getSession().getAttribute("adminNumber");
         adminNoteVo.setSenderNumber(adminNumber);
         adminService.registerNote(adminNoteVo);
+
         return new RedirectView("/admin/note");
     }
 //    보낸쪽지

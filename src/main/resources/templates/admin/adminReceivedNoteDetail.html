@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>받은 쪽지함</title>
+    <title>관리자 받은 쪽지 상세</title>
+    <link rel="icon" href="/image/adminLogo.png">
     <link rel="stylesheet" href="/css/admin/adminMain.css">
     <link rel="stylesheet" href="/css/admin/adminHeader.css">
     <link rel="stylesheet" href="/css/admin/adminReceivedNote.css">
@@ -11,18 +12,15 @@
 <body>
 <header th:replace="fragments/adminHeader :: adminHeader"></header>
 <div class="main-container">
-    <!-- 모달로 숨겨져 있는 영역 -->
-
-    <!-- ===================== -->
     <div class="left-container">
         <div class="left-list"><a href="/admin/note">쪽지 보내기</a></div>
-        <div class="left-list"><a href="/admin/receivedNote">받은 쪽지함</a></div>
-        <div class="left-list check"><a href="/admin/sendNote">보낸 쪽지함</a></div>
+        <div class="left-list check"><a href="/admin/receivedNote">받은 쪽지함</a></div>
+        <div class="left-list"><a href="/admin/sendNote">보낸 쪽지함</a></div>
     </div>
     <div class="right-container">
         <div class="right-title">
             <div class="right-title-sub">
-                <img class="note-img" src="https://cdn.poomang.com/img/welcomemangd1/result/icon_letter.png" alt="">보낸 쪽지함
+                <img class="note-img" src="https://cdn.poomang.com/img/welcomemangd1/result/icon_letter.png" alt="">받은 쪽지함
             </div>
         </div>
         <div class="member-container">
