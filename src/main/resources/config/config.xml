@@ -4,6 +4,12 @@
 <configuration>
     <typeAliases>
 
+
+        <typeAlias type="com.example.gongu.domain.vo.NoteVo" alias="noteVo"/>
+        <typeAlias type="com.example.gongu.domain.vo.NotePageVo" alias="notePageVo"/>
+
+        <typeAlias type="com.example.gongu.domain.vo.NoteCriteria" alias="noteCriteria"/>
+
         <typeAlias type="com.example.gongu.domain.dto.ClassDto" alias="classDto"/>
         <typeAlias type="com.example.gongu.domain.dto.UserDto" alias="userDto"/>
         <typeAlias type="com.example.gongu.domain.dto.ClassReplyDto" alias="classReplyDto"/>
@@ -24,6 +30,7 @@
         <typeAlias type="com.example.gongu.domain.vo.SearchVo" alias="searchVo"/>
         <typeAlias type="com.example.gongu.domain.vo.ClassVo" alias="classVo"/>
         <typeAlias type="com.example.gongu.domain.vo.ApplyVo" alias="applyVo"/>
+
 
     </typeAliases>
 </configuration>
