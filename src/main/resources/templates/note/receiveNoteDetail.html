@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>쪽지내용</title>
+    <link rel="stylesheet" href="/css/receiveNoteDetail.css">
+</head>
+<body>
+    <div class="note-wrap">
+        <!-- 쪽지함 전용 헤더 -->
+        <div class="note-header">
+            <div class="note-main-box">
+                <a href="" class="gongu-main">GONGU</a>
+                <a href="receiveNote.html" class="note-main">쪽지</a>
+            </div>
+            <div class="logout">
+                <span>로그아웃</span>
+            </div>
+        </div>
+        <!-- 쪽지함 바디 -->
+        <div class="note-body">
+            <!-- 쪽지함 기능들 -->
+            <div class="menu-container">
+                <a href="noteWrite.html" class="btn-note-write">
+                    <span>쪽지쓰기</span>
+                </a>
+                <div class="receive">
+                    <a href="receiveNote.html">받은쪽지함</a>
+                </div>
+                <div class="send">
+                    <a href="sendNote.html">보낸쪽지함</a>
+                </div>
+            </div>
+            <!-- 쪽지함 기능 내용(비동기 처리?) -->
+            <div class="note-container">
+                <div class="note-send">
+                    쪽지내용
+                </div>
+                <div class="note-box">
+                    <!-- 쪽지 -->
+                    <div class="note-write-container">
+                        <form action="">
+                            <div class="receiver-box">
+                                <div class="receiver-word">보낸사람</div>
+                                <div class="note-sender">상대방 아이디</div>
+                            </div>
+                            <div class="title-box">
+                                <div class="title-word">제목</div>
+                                <div class="note-title">상대가 보낸 제목</div>
+                            </div>
+                            <div class="content-box">
+                                <div class="content-word">내용</div>
+                                <!-- 내용 받아서 넣기 시작 -->
+<textarea class="note-content">이곳에 내용이 들어갑니다만 좀 많이 쓴다면 어떻게 되는지 실험하려고 일부러 길게 쓰고 있습니다 어떤가요 넘어가나요 아니면 내려가나요
+엔터도 잘 작동합니까?
+크기가 정해져 있습니다</textarea>
+<!-- 내용 받아서 넣기 끝 -->
+                            </div>
+                            <div class="btn-box">
+                                <button class="btn-note-delete">삭제</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

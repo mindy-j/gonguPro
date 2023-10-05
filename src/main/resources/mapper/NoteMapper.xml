@@ -1,5 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.gongu.mapper.NoteMapper">
+    <select id="selectSendAll" resultType="noteVo">
+        select rnum, note_number, note_title, note_register_date , user_id
+        from (
+            select rownum as rnum, note_number, note_title, note_register_date, user_id
+            from (
+                select note_number, note_title, note_register_date, user_id
+                from tbl_note join tbl_users
+                on reciever_number = user_number
+                where sender_number = #{senderNumber} and send_level = '1'
+                order by note_number desc
+            ) X
+            <![CDATA[
+            where rownum <= #{page} * #{amount}
+            ]]>
+        ) Y
+        where rnum > (#{page} - 1) * #{amount}
+    </select>
 
+    <select id="selectSendTotal" resultType="_int">
+        select count(note_number) from tbl_note
+        where sender_number = #{senderNumber}
+        and send_level = '1'
+    </select>
+
+    <update id="updateSendLevel">
+        update tbl_note set send_level = '2'
+        where sender_number = #{senderNumber}
+        and note_number = #{noteNumber}
+    </update>
+
+    <select id="selectReceiveAll" resultType="noteVo">
+        select rnum, note_number, note_title, note_register_date, user_id
+        from (
+            select rownum as rnum, note_number, note_title, note_register_date, user_id
+            from (
+                select note_number, note_title, note_register_date, user_id
+                from tbl_note join tbl_users
+                on sender_number = user_number
+                where reciever_number = #{recieverNumber} and receive_level = '1'
+                order by note_number desc
+            ) X
+            <![CDATA[
+            where rownum <= #{page} * #{amount}
+            ]]>
+        ) Y
+        where rnum > (#{page} - 1) * #{amount}
+    </select>
+
+    <select id="selectReceiveTotal" resultType="_int">
+        select count(note_number) from tbl_note
+        where reciever_number = #{recieverNumber}
+        and receive_level = '1'
+    </select>
+
+    <update id="updateReceiveLevel">
+        update tbl_note set receive_level = '2'
+        where reciever_number = #{recieverNumber}
+        and note_number = #{noteNumber}
+    </update>
 </mapper>

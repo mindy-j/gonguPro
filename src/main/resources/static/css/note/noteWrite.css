@@ -92,15 +92,12 @@ a{
     justify-content: center;
     height: 30px;
     width: 100%;
-    background-color: gainsboro;
+    background-color: white;
     border-top: 1px solid gray;
 }
 .send{
-    border-bottom: 1px solid gray;
-    font-weight: bold;
-}
-.receive{
     background-color: white;
+    border-bottom: 1px solid gray;
 }
 
 /* 쪽지 내용 상자 */
@@ -117,113 +114,80 @@ a{
     margin-left: 50px;
 }
 
-.note-table{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    margin: 20px 0;
-    padding: 0 50px;
-}
-.th{
-    background-color: gainsboro;
-    border-top: 1px solid gray;
-    width: 100%;
-}
-.th, .tr{
-    display: flex;
-    flex-direction: row;
-    border-left: 1px solid gray;
-    min-width: 550px;
-}
-.tr{
-    background-color: ghostwhite;
-}
-.td{
-    font-size: 15px;
-    padding: 5px 10px;
-    border-right: 1px solid gray;
-    border-bottom: 1px solid gray;
-}
-
-.note-user{
-    height: 30px;
-    min-width: 150px;
-    width: 0%;
-}
-
-.note-title{
-    height: 30px;
-    min-width: 250px;
-    width: 100%;
-}
-
-.note-date{
-    height: 30px;
-    min-width: 100px;
-    width: 0%;
-}
-
-.note-delete{
-    height: 30px;
-    min-width: 50px;
-    width: 0%;
-    padding-left: 9px;
-    display: flex;
-    justify-content: center;
-}
-
-.btn-delete{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    width: 100%;
-    background-color: red;
-    color: white;
-    border-radius: 5px;
-}
-
-.del{
-    height: 30px;
-    min-width: 50px;
-    width: 0%;
-    border-right: 1px solid gray;
-    border-bottom: 1px solid gray;
-}
-
 .note-box{
     display: flex;
     flex-direction: column;
-    align-items: center;
+    width: 100%;
 }
 
-/* 페이징 버튼 */
-.page-a {
-    text-decoration: none;
-    color: orange;
+.note-write-container{
+    width: 100%;
 }
 
-.page-box {
-    list-style-type: none;
+/* 공통 */
+.receiver-box, .title-box{
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: row;
+    padding: 0 50px;
+    width: 100%;
+    min-width: 650px;
+    max-width: 100%;
 }
 
-.page-num {
-    border: 1px solid orange;
-    width: 30px;
+.content-box, .btn-box{
+    display: flex;
+    flex-direction: column;
+    padding: 0 50px;
+    width: 100%;
+    min-width: 650px;
+    max-width: 100%;
+}
+
+.receiver-box{
+    padding-top: 20px;
+}
+/* 받는사람 */
+.note-sender, .note-title{
+    height: 30px;
+    width: 100%;
+    font-size: 15px;
+    padding: 0 10px;
+    border-style: none;
+    border-bottom: 1px solid gray;
+}
+/* 제목 */
+
+
+/* 내용 */
+
+/* 보내기 */
+.btn-box{
+    align-items: end;
+    margin-top: 5px;
+}
+
+.btn-note-send{
+    width: 100px;
     height: 40px;
+    background-color: orange;
+    border: 1px solid gray;
+    color: white;
+    font-size: 15px;
     border-radius: 5px;
-    margin: 0 10px;
-    text-align: center;
-    line-height: 40px;
-    background-color: white;
     cursor: pointer;
 }
 
-.active,
-.page-num:hover {
-    background-color: orange;
-    color: white;
+.receiver-word, .title-word{
+    display: flex;
+    align-items: center;
+    height: 30px;
+    width: 70px;
+    min-width: 70px;
+    font-weight: bold;
+}
+.content-word{
+    display: flex;
+    align-items: center;
+    height: 30px;
+    font-weight: bold;
 }
