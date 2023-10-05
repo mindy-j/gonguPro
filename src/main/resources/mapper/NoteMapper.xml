@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.gongu.mapper.NoteMapper">
     <select id="selectSendAll" resultType="noteVo">
-        select rnum, note_number, note_title, note_register_date , user_id
+        select rnum, note_number, note_title, to_char(note_register_date,'YYYY"."MM"."DD') as note_register_date, user_id
         from (
             select rownum as rnum, note_number, note_title, note_register_date, user_id
             from (
@@ -32,7 +32,7 @@
     </update>
 
     <select id="selectReceiveAll" resultType="noteVo">
-        select rnum, note_number, note_title, note_register_date, user_id
+        select rnum, note_number, note_title, to_char(note_register_date,'YYYY"."MM"."DD') as note_register_date, user_id
         from (
             select rownum as rnum, note_number, note_title, note_register_date, user_id
             from (
