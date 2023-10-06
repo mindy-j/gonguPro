@@ -13,6 +13,11 @@ import java.util.List;
 public class NoteService {
     private final NoteMapper noteMapper;
 
+//    쪽지쓰기
+    public void registNote(NoteVo noteVo) {
+        noteMapper.insertNote(noteVo);
+    }
+
 //    보낸쪽지함
     public List<NoteVo> findSendAll(NoteCriteria noteCriteria) {
         return noteMapper.selectSendAll(noteCriteria);
@@ -22,8 +27,13 @@ public class NoteService {
         return noteMapper.selectSendTotal(senderNumber);
     }
 
-    public void modifySendLevel(Long senderNumber) {
-        noteMapper.updateSendLevel(senderNumber);
+    public void modifySendLevel(NoteVo noteVo) {
+        noteMapper.updateSendLevel(noteVo);
+    }
+
+//    보낸쪽지
+    public NoteVo findSendNote(Long noteNumber) {
+        return noteMapper.selectSendNote(noteNumber);
     }
 
 //    받은쪽지함
@@ -35,7 +45,7 @@ public class NoteService {
         return noteMapper.selectReceiveTotal(recieverNumber);
     }
 
-    public void modifyReceiveLevel(Long recieverNumber) {
-        noteMapper.updateReceiveLevel(recieverNumber);
+    public void modifyReceiveLevel(NoteVo noteVo) {
+        noteMapper.updateReceiveLevel(noteVo);
     }
 }

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.gongu.mapper.LikeMapper">
+    <insert id="insert">
+        insert into TBL_LIKE(LIKE_NUMBER,USER_NUMBER,STUDY_NUMBER)
+        VALUES(SEQ_LIKE_NUMBER.NEXTVAL,#{userNumber},#{studyNumber})
+    </insert>
+
+    <delete id="delete">
+        delete from tbl_like where user_number = #{userNumber}
+    </delete>
+
+    <select id="likeTotal">
+        select count(*) from TBL_LIKE where STUDY_NUMBER = #{studyNumber}
+    </select>
+
+    <select id="selectUser" resultType="long">
+        select user_number from tbl_like
+    </select>
+</mapper>

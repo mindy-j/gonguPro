@@ -32,14 +32,30 @@ public class UserController {
     }
 
     //아이디와 비번을 받아서 로그인 처리후 메인으로 화면전환
+//    @PostMapping("login")
+//    public RedirectView login(String userId, String userPassword, HttpServletRequest req){
+//        UserDto userDto = userService.find(userId, userPassword);
+//        req.getSession().setAttribute("userNumber", userDto.getUserNumber());
+//        req.getSession().setAttribute("userLevel", userDto.getUserLevel());
+//        return new RedirectView("index");
+//    }
+//수정-------
     @PostMapping("login")
-    public RedirectView login(String userId, String userPassword, HttpServletRequest req){
+    public RedirectView login(@RequestParam String userId,@RequestParam String userPassword, HttpServletRequest req){
         UserDto userDto = userService.find(userId, userPassword);
-        req.getSession().setAttribute("userNumber", userDto.getUserNumber());
-        req.getSession().setAttribute("userLevel", userDto.getUserLevel());
-        log.info("==============userNumber"+userDto.getUserNumber());
-        return new RedirectView("index");
+        if(userDto != null) {
+            req.getSession().setAttribute("userNumber", userDto.getUserNumber());
+            req.getSession().setAttribute("userLevel", userDto.getUserLevel());
+            log.info("로그인 했짜나....!!!!");
+            return new RedirectView("index");
+        } else{
+           // req.getSession().setAttribute("errorMessage","아이디 또는 비밀번호가 일치하지 않습니다.");
+            log.info("로그인 못했따고....!!!!");
+            return new RedirectView("/user/login");
+        }
     }
+
+
 
     //메인화면으로가는 컨트롤러
     @GetMapping("/index")

@@ -6,7 +6,7 @@
                                      CLASS_ADDRESS, CLASS_MAJOR, CLASS_INTRODUCE, CLASS_PLAN, CLASS_REGISTER_DATE, CLASS_LEVEL,
                                      CLASS_UPDATE_DATE, USER_NUMBER)
         values (SEQ_CLASS_NUMBER.NEXTVAL,#{classTitle},#{classStartDate},#{classEndDate},#{classProcess},#{classPrice},
-                #{classAddress},#{classMajor},#{classIntroduce},#{classPlan},sysdate,0,sysdate,6)
+                #{classAddress},#{classMajor},#{classIntroduce},#{classPlan},sysdate,1,sysdate,#{userNumber})
     </insert>
 
     <select id="selectList" resultType="classVo">

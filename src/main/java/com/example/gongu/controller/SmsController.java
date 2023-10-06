@@ -1,8 +1,10 @@
 package com.example.gongu.controller;
 
+import com.example.gongu.domain.dto.UserDto;
 import com.example.gongu.service.SmsService;
 import com.example.gongu.service.UserService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
@@ -14,6 +16,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/sms/v1")
 @RequiredArgsConstructor
+@Log4j2
 public class SmsController {
     private final SmsService smsService;
     private final UserService userService;
@@ -62,8 +65,11 @@ public class SmsController {
         String userId = body.get("userId");
         String userPhone = body.get("userPhone");
 
+        log.info("checkNum : "+checkNumber);
+        log.info("authNumber : "+authNumber);
+
         if (authNumber != null && authNumber.equals(checkNumber)) {
-        String foundPassword = userService.verifyPhoneNumberPw(userId, userPhone);
+            String foundPassword = userService.verifyPhoneNumberPw(userId, userPhone);
             if(foundPassword !=null){
             //비밀번호를 찾은 경우
                 return foundPassword;

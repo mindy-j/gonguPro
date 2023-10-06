@@ -63,9 +63,15 @@ public class UserService {
     }
 
     //아이디와 번호로 비밀번호 찾기
-    public String verifyPhoneNumberPw(String userPhone, String userId){
-        String userPassword = userMapper.verifyPhoneNumberPw(userPhone, userId);
-        if(userPassword != null && !userPassword.isEmpty()){
+    public String verifyPhoneNumberPw(String userId, String userPhone){
+       // log.info("verify PhoneNumberPw method Phone Number : "+userPhone);
+       // log.info("verify PhoneNumberPw method Phone Number : "+userId);
+
+        String userPassword = userMapper.verifyPhoneNumberPw(userId, userPhone);
+
+        //log.info("verify PhoneNumberPw userPassword"+userPassword);
+
+        if(userPassword != null){
             log.info("=====일치하는 번호와 아이디가 있음=====");
             return userPassword;
         }else{
