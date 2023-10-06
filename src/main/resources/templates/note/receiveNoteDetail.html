@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +12,7 @@
         <div class="note-header">
             <div class="note-main-box">
                 <a href="" class="gongu-main">GONGU</a>
-                <a href="receiveNote.html" class="note-main">쪽지</a>
+                <a href="/note/receiveList" class="note-main">쪽지</a>
             </div>
             <div class="logout">
                 <span>로그아웃</span>
@@ -22,14 +22,14 @@
         <div class="note-body">
             <!-- 쪽지함 기능들 -->
             <div class="menu-container">
-                <a href="noteWrite.html" class="btn-note-write">
+                <a href="/note/writeNote" class="btn-note-write">
                     <span>쪽지쓰기</span>
                 </a>
                 <div class="receive">
-                    <a href="receiveNote.html">받은쪽지함</a>
+                    <a href="/note/receiveList">받은쪽지함</a>
                 </div>
                 <div class="send">
-                    <a href="sendNote.html">보낸쪽지함</a>
+                    <a href="/note/sendList">보낸쪽지함</a>
                 </div>
             </div>
             <!-- 쪽지함 기능 내용(비동기 처리?) -->

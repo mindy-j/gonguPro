@@ -2,12 +2,15 @@ package com.example.gongu.controller;
 
 import com.example.gongu.domain.vo.NoteCriteria;
 import com.example.gongu.domain.vo.NotePageVo;
+import com.example.gongu.domain.vo.NoteVo;
 import com.example.gongu.service.NoteService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -17,6 +20,19 @@ import javax.servlet.http.HttpSession;
 @RequestMapping("/note/*")
 public class NoteController {
     private final NoteService noteService;
+
+    @GetMapping("/writeNote")
+    public String writeNotePage() {
+        return "note/noteWrite";
+    }
+
+    @PostMapping("/writeNoteOk")
+    public RedirectView sendNote(NoteVo noteVo, HttpServletRequest req) {
+        Long senderNumber = (Long)req.getSession().getAttribute("userNumber");
+        noteVo.setSenderNumber(senderNumber);
+        noteService.registNote(noteVo);
+        return new RedirectView("/note/sendList");
+    }
 
     @GetMapping("/sendList")
     public String showSendListPage(NoteCriteria noteCriteria, Model model, HttpServletRequest req) {
@@ -28,12 +44,18 @@ public class NoteController {
         return "note/sendNote";
     }
 
-    @GetMapping("/sendRemove")
-    public void removeSendNote(NoteCriteria noteCriteria, Model model, HttpServletRequest req) {
-        HttpSession session = req.getSession();
-        Long senderNumber = (Long)session.getAttribute("userNumber");
-        noteService.modifySendLevel(senderNumber);
-        showSendListPage(noteCriteria, model, req);
+    @PostMapping("/sendRemove")
+    public RedirectView removeSendNote(NoteVo noteVo, HttpServletRequest req) {
+        Long senderNumber = (Long)req.getSession().getAttribute("userNumber");
+        noteVo.setSenderNumber(senderNumber);
+        noteService.modifySendLevel(noteVo);
+        return new RedirectView("/note/sendList");
+    }
+
+    @GetMapping("/sendNote")
+    public String showSendNote(Long noteNumber, Model model) {
+        
+        return "note/sendNoteDetail";
     }
 
     @GetMapping("/receiveList")
@@ -47,10 +69,10 @@ public class NoteController {
     }
 
     @GetMapping("/receiveRemove")
-    public void removeReceiveNote(NoteCriteria noteCriteria, Model model, HttpServletRequest req) {
-        HttpSession session = req.getSession();
-        Long recieverNumber = (Long)session.getAttribute("userNumber");
-        noteService.modifyReceiveLevel(recieverNumber);
-        showReceiveListPage(noteCriteria, model, req);
+    public RedirectView removeReceiveNote(NoteVo noteVo, HttpServletRequest req) {
+        Long recieverNumber = (Long)req.getSession().getAttribute("userNumber");
+        noteVo.setRecieverNumber(recieverNumber);
+        noteService.modifyReceiveLevel(noteVo);
+        return new RedirectView("/note/receiveList");
     }
 }
