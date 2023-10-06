@@ -22,7 +22,7 @@
         <div class="note-body">
             <!-- 쪽지함 기능들 -->
             <div class="menu-container">
-                <a href="noteWrite.html" class="btn-note-write">
+                <a href="/note/writeNote" class="btn-note-write">
                     <span>쪽지쓰기</span>
                 </a>
                 <div class="receive">
@@ -55,9 +55,12 @@
                                 <a href="receiveNoteDetail.html" th:text="${note.noteTitle}">쪽지 제목입니다</a>
                             </div>
                             <div class="note-date td" th:text="${note.noteRegisterDate}">2023.09.16</div>
-                            <div class="del">
-                                <button type="button" class="btn-delete" th:value="${note.noteNumber}">삭제</button>
-                            </div>
+                            <form method="post" action="/note/receiveRemove">
+                                <div class="del">
+                                    <button class="btn-delete">삭제</button>
+                                </div>
+                                <input type="hidden" th:value="${note.noteNumber}" name="noteNumber">
+                            </form>
                         </div>
                         <!-- 반복출력 끝 -->
                     </div>

@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.gongu.mapper.NoteMapper">
+    <insert id="insertNote">
+        insert into tbl_note (note_number, note_title, note_content, note_register_date, send_level, receive_level, sender_number, reciever_number)
+        values (seq_note_number.nextval, #{noteTitle}, #{noteContent}, sysdate, '1', '1', #{senderNumber}, (select user_number from tbl_users where user_id = #{userId}))
+    </insert>
+
     <select id="selectSendAll" resultType="noteVo">
         select rnum, note_number, note_title, to_char(note_register_date,'YYYY"."MM"."DD') as note_register_date, user_id
         from (
@@ -30,6 +35,12 @@
         where sender_number = #{senderNumber}
         and note_number = #{noteNumber}
     </update>
+
+    <select id="selectSendNote" resultType="noteVo">
+        select reciever_number, note_title, note_content, note_number
+        from tbl_note join tbl_users on reciever_number = user_number
+        where note_number = #{noteNumber}
+    </select>
 
     <select id="selectReceiveAll" resultType="noteVo">
         select rnum, note_number, note_title, to_char(note_register_date,'YYYY"."MM"."DD') as note_register_date, user_id
