@@ -90,4 +90,7 @@ public interface AdminMapper {
 
 //    이미지 불러오기
     public List<AdminFileVo> selectFile(Long applyNumber);
+
+//    아이디 중복 검사
+    public Long selectId(String userId);
 }

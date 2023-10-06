@@ -5,6 +5,7 @@ import com.example.gongu.domain.vo.admin.*;
 import com.example.gongu.domain.vo.SearchVo;
 import com.example.gongu.mapper.AdminMapper;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class AdminService {
     private final AdminMapper adminMapper;
 
@@ -168,5 +170,12 @@ public class AdminService {
             throw new IllegalArgumentException("멘토 신청 번호 누락!!");
         }
         return adminMapper.selectFile(applyNumber);
+    }
+
+//    아이디 중복
+    public Long findId(String userId){
+        Long number = adminMapper.selectId(userId);
+        log.info("!@$!@#!@#!@#"+number);
+        return adminMapper.selectId(userId);
     }
 }

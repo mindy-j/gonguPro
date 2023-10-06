@@ -428,4 +428,11 @@
         WHERE APPLY_NUMBER = #{applyNumber}
     </select>
 
+<!--    아이디 중복-->
+    <select id="selectId" resultType="long">
+        SELECT COUNT(USER_NUMBER)
+        FROM TBL_USERS
+        WHERE USER_ID = #{userId}
+    </select>
+
 </mapper>
