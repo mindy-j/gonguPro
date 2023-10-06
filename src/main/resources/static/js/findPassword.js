@@ -28,12 +28,13 @@ idBtn.addEventListener("click", function () {
             "Content-Type": "application/json",
         },
         body : JSON.stringify({userPhone:userPhone}),
-    }).then(function (response){
+    })
+        .then(function (response){
         if(response.ok){
             alert("인증번호 발송되었습니다.");
             return response.text();
         }else{
-            alert("일치하는 번호 없음");
+            alert("일치하는 정보 없음");
             return new Error("번호 불일치");
         }
     })
@@ -60,8 +61,11 @@ $(verifyBtn).on('click',function (){
         url: '/sms/v1/check-id-phone',
         type: 'post',
         data: JSON.stringify({userId:userId, userPhone: userPhone,checkNumber: code}),
+        contentType : 'application/json; charset=utf-8',
         success: function (result){
-            console.log(reslut);
+            //여기 result에서 오류
+            console.log(result);
+
             if(result == '비밀번호를 찾을 수 없습니다.'){
                 alert(result);
                 return;
@@ -69,17 +73,27 @@ $(verifyBtn).on('click',function (){
                 alert(result);
                 return;
             }
+            $(modal).css("display",'flex');
+            $('#foundPassword').text(result);
 
-
+        },
+        error: function (a,b,c){
+            console.error(c);
         }
+    });
+});
 
+//모달
+const closeModal = document.querySelector(".close-area");
+closeModal.addEventListener("click", function (){
+    modal.style.display="none";
+});
 
-
-    })
-
-
-})
-
+modal.addEventListener("click",function (e){
+    if(e.target.classList.contains("modal-overlay")){
+        modal.style.display="none";
+    }
+});
 
 
 
@@ -113,25 +127,3 @@ $('.certificationIssue').on("click",function(){
     $.time(179);
 });
 
-//모달창 스크립트
-const modal = document.getElementById("modal");
-const btnModal = document.getElementById("btn-modal")
-const cerNumber = document.getElementById("cerNumber");
-btnModal.addEventListener("click", e => {
-    if(cerNumber.value=='1234'){
-        modal.style.display = "flex";
-    }
-
-});
-
-const closeBtn = modal.querySelector(".close-area")
-closeBtn.addEventListener("click", e => {
-    modal.style.display = "none";
-});
-
-modal.addEventListener("click", e => {
-    const evTarget = e.target
-    if(evTarget.classList.contains("modal-overlay")) {
-        modal.style.display = "none";
-    }
-});

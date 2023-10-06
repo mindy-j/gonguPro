@@ -27,7 +27,7 @@ public interface UserMapper {
     public String verifyPhoneNumber(String userPhone);
 
     //아이디와 번호로 비밀번호 찾기
-    public String verifyPhoneNumberPw(String userPhone, String userId);
+    public String verifyPhoneNumberPw(String userId, String userPhone);
 
 
     //아이디로 회원 삭제
