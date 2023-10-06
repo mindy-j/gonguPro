@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
@@ -22,6 +21,10 @@
       <span class="id_input_re_2">이미 존재하는 아이디 입니다.</span>
     </div>
     <div class="int-area">
+      <input type="text" name="userName" id="userName" autocomplete="off" required>
+      <label for="userName">이름</label>
+    </div>
+    <div class="int-area">
       <input type="password" name="userPassword" id="userPassword" autocomplete="off" required>
       <label for="userPassword">비밀번호</label>
     </div>
@@ -31,16 +34,16 @@
     </div>
     <div class="int-area">
 
-      <input type="text" name="userNickname" id="pw" autocomplete="off" required>
-      <label for="pw">닉네임</label>
+      <input type="text" name="userNickname" id="userNickname" autocomplete="off" required>
+      <label for="userNickname">닉네임</label>
     </div>
     <div class="int-area">
-      <input type="email" name="userEmail" id="email" autocomplete="off" required>
-      <label for="pw">이메일</label>
+      <input type="email" name="userEmail" id="userEmail" autocomplete="off" required>
+      <label for="userEmail">이메일</label>
     </div>
     <div class="int-area">
-      <input type="text" name="userPhone" id="phone" autocomplete="off" pattern="^[0-9]+$" required>
-      <label for="pw">전화번호 : 번호만 입렫하세요</label>
+      <input type="text" name="userPhone" id="userPhone" autocomplete="off" pattern="^[0-9]+$" required>
+      <label for="userPhone">전화번호 : 번호만 입력하세요</label>
     </div>
 
 
@@ -103,7 +106,6 @@
   </form>
 </section>
 <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
-
 <script src="/js/join.js">
 
 </script>
