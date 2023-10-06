@@ -13,7 +13,7 @@ public class NoteVo {
     private Long noteNumber;
     private String noteTitle;
     private String noteContent;
-    private Date noteRegisterDate;
+    private String noteRegisterDate;
     private Long recieverNumber;
     private Long senderNumber;
     private String sendLevel;
