@@ -10,6 +10,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -36,6 +37,7 @@ public class UserController {
         UserDto userDto = userService.find(userId, userPassword);
         req.getSession().setAttribute("userNumber", userDto.getUserNumber());
         req.getSession().setAttribute("userLevel", userDto.getUserLevel());
+        log.info("==============userNumber"+userDto.getUserNumber());
         return new RedirectView("index");
     }
 
@@ -101,6 +103,35 @@ public class UserController {
         req.getSession().invalidate();
         return "user/login";
     }
+
+
+
+
+
+    //내정보 페이지
+    @GetMapping("/myPage")
+    public String myPage(Model model, HttpServletRequest req){
+        log.info("=======================userNumber"+req.getSession().getAttribute("userName"));
+        Long userNumber = (Long)req.getSession().getAttribute("userNumber");
+        log.info("=======================userNumber"+userNumber);
+        model.addAttribute("user", userService.findMyPage(userNumber));
+        log.info("=======================userNumber"+userNumber);
+        return "user/myPage";
+    }
+
+//    유저 삭제
+    @GetMapping("/removeUser")
+    public RedirectView removeUser(Long userNumber){
+        userService.remove(userNumber);
+        return new RedirectView("/user/index");
+    }
+    //    유저 정보수정
+    @GetMapping("/modifyUser")
+    public RedirectView modifyUser(String userNickname, String userPhone, String userEmail, Long userNumber){
+        userService.modifyUser(userNickname, userPhone, userEmail, userNumber);
+        return new RedirectView("/user/myPage");
+    }
+
 
 }
 

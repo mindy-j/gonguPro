@@ -8,10 +8,6 @@
     <link rel="stylesheet" href="/css/admin/adminMain.css">
     <link rel="stylesheet" href="/css/admin/adminHeader.css">
     <link rel="stylesheet" href="/css/admin/adminNote.css">
-    <!-- 서머노트 -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 </head>
 <body>
 <header th:replace="fragments/adminHeader :: adminHeader"></header>
@@ -31,7 +27,9 @@
             <form action="/admin/noteWrite" class="form-note">
                 <div class="form-group">
                     <label for="recipient">받는 사람</label>
-                    <input type="text" class="recipient" placeholder="아이디로 입력하세요" id="recipient" name="userId">
+                    <input type="text" class="recipient inputId" placeholder="아이디로 입력하세요" id="recipient" name="userId">
+                    <span class="idYes">&lt;존재하는 아이디입니다&gt;</span>
+                    <span class="idNo">&lt;존재하지 않는 아이디입니다&gt;</span>
                 </div>
                 <div class="form-group">
                     <label for="recipients">쪽지 제목</label>
@@ -41,27 +39,15 @@
                     <label for="summernote">쪽지 내용</label>
                     <textarea name="noteContent" id="summernote" cols="30" rows="10" placeholder="내용을 입력하세요"></textarea>
                 </div>
-                <button>보내기</button>
+                    <button class="send-btn">보내기</button>
             </form>
         </div>
     </div>
 </div>
-<script>
-    $('#summernote').summernote({
-        placeholder: '쪽지 내용을 입력해주세요',
-        tabsize: 2,
-        height: 400,
-        toolbar: [
-            ['style', ['style']],
-            ['font', ['bold', 'underline', 'clear']],
-            ['color', ['color']],
-            ['para', ['ul', 'ol', 'paragraph']],
-            ['view', ['help']]
-        ]
-    });
-</script>
-<script th:if="${param.noteError}">
-    alert("쪽지 보내기 실패하였습니다. \n받는사람 아이디를 다시 확인해주세요.");
-</script>
+<!-- 서머노트 -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+<script th:src="@{/js/admin/adminNote.js}"></script>
 </body>
 </html>

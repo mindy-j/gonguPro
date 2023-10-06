@@ -1,0 +1,89 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px !important;
+}
+.img-box{
+    width: 200px;
+    height: 200px;
+    margin-bottom: 10px;
+}
+.img-box > img{
+    width: 100%;
+    height: 100%;
+}
+.id{
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.sub-container{
+    font-size: 20px;
+}
+.sub-title{
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+.sub-content{
+    width: 600px;
+    height: 50px;
+    border: 1px solid black;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    padding-left: 5px;
+    margin-bottom: 20px;
+}
+.sub-content > input{
+    width: 100%;
+    height: 100%;
+    border:none;
+    font-size: 20px;
+    outline: none;
+}
+
+.btn-box{
+    width: 600px;
+    height: 50px;
+}
+.update-btn{
+    color: white;
+    background-color: lightskyblue;
+    width: 100%;
+    height: 100%;
+    border-radius: 25px;
+    border: 1px solid lightgray;
+    cursor: pointer;
+    margin-bottom: 5px;
+    font-size: 18px;
+}
+.delete-btn{
+    color: white;
+    background-color: lightcoral;
+    width: 100%;
+    height: 100%;
+    border-radius: 25px;
+    border: 1px solid lightgray;
+    cursor: pointer;
+    margin-bottom: 50px;
+    font-size: 18px;
+}
+.check-phone{
+    display: none;
+    color: lightcoral;
+    font-size: 18px;
+}
+.check-email{
+    display: none;
+    color: lightcoral;
+    font-size: 18px;
+}

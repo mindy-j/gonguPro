@@ -24,10 +24,10 @@
 
 
 
-    <update id="update" parameterType="userDto">
+    <update id="updateUser">
         UPDATE TBL_USERS
-        SET USER_PASSWORD = #{userPassword}, USER_NICKNAME = #{userNickname}, USER_EMAIL = #{userEmail}, USER_PHONE = #{userPhone}, USER_MAJOR = #{userMajor}
-        WHERE  USER_ID = #{userId}
+        SET USER_NICKNAME = #{userNickname}, USER_PHONE = #{userPhone}, USER_EMAIL = #{userEmail}
+        WHERE  USER_NUMBER = #{userNumber}
     </update>
 
     <select id="verifyPhoneNumber" resultType="string">
@@ -42,11 +42,29 @@
         WHERE USER_PHONE = #{userPhone} AND USER_ID =#{userId}
     </select>
 
-    <delete id="deleteId" parameterType="string">
+    <delete id="deleteUser">
         DELETE FROM TBL_USERS
-        WHERE USER_ID = #{userId}
+        WHERE USER_NUMBER = #{userNumber}
     </delete>
 
-
+<!--    내정보 페이지-->
+    <select id="selectMyPage" resultType="userDto">
+        SELECT USER_NUMBER, USER_ID, USER_NAME, USER_NICKNAME, USER_EMAIL, USER_PHONE, USER_MAJOR,
+            TO_CHAR(USER_BIRTH, 'YYYY"년 "MM"월 "DD"일"') AS USER_BIRTH, USER_LEVEL
+        FROM TBL_USERS
+        WHERE USER_NUMBER = #{userNumber, jdbcType=BIGINT}
+    </select>
+<!--    전화번호 중복-->
+    <select id="selectPhone" resultType="long">
+        SELECT COUNT(USER_NUMBER)
+        FROM TBL_USERS
+        WHERE USER_PHONE = #{userPhone}
+    </select>
+<!--    이메일 중복-->
+    <select id="selectEmail" resultType="long">
+        SELECT COUNT(USER_NUMBER)
+        FROM TBL_USERS
+        WHERE USER_EMAIL = #{userEmail}
+    </select>
 
 </mapper>

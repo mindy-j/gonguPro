@@ -44,14 +44,10 @@ public class UserService {
                 });
     }
 
-    //회원정보수정
-    public void modify(UserDto userDto) {
-        userMapper.update(userDto);
-    }
 
-    //아이디로 회원 삭제
-    public void remove(String userId) {
-        userMapper.deleteId(userId);
+    //회원 삭제
+    public void remove(Long userNumber) {
+        userMapper.deleteUser(userNumber);
     }
 
     //번호로 아이디 찾기
@@ -77,6 +73,20 @@ public class UserService {
             return null;
         }
     }
+
+    // 회원정보 수정
+    public void modifyUser(String userNickname, String userPhone, String userEmail, Long userNumber){
+        userMapper.updateUser(userNickname, userPhone, userEmail, userNumber);}
+
+
+    // 내정보 페이지
+    public UserDto findMyPage(Long userNumber){
+        return userMapper.selectMyPage(userNumber);
+    }
+    // 전화번호 중복
+    public Long findPhone(String userPhone){return userMapper.selectPhone(userPhone);}
+    // 이메일 중복
+    public Long findEmail(String userEmail){return userMapper.selectEmail(userEmail);}
 
 
 
