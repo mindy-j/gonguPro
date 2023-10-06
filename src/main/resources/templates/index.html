@@ -6,13 +6,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>메인 페이지</title>
   <link rel="stylesheet" href="/css/index.css"/>
+  <script src="https://kit.fontawesome.com/acf4f592bf.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/css/header.css">
   <style>
 
   </style>
 </head>
 <body>
 <div class="container"> <!--전체를 감싸는 컨테이너-->
-  <header class="header-container"> <!--헤더 컨테이너-->
+  <header th:replace="fragments/header :: header"></header>
+<!--  <header class="header-container"> &lt;!&ndash;헤더 컨테이너&ndash;&gt;-->
     <nav class="nav-bar">
       <div class="nav-left">
         <a href="/study/list">
