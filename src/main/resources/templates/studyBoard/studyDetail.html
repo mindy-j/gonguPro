@@ -137,8 +137,18 @@
 
                 <div class="checkDiv"><!--조회수랑 하이? 담는 총 상자-->
                     <div>
-                        <img src="https://www.holaworld.io/images/info/bookmark.svg" width="20px" height="18px">
-                        <span>0</span><!--찜하기인가?-->
+                        <th:block th:if="${!(selectUser.contains(loginUser))}">
+                            <a th:href="@{/study/up(studyNumber=${study.studyNumber})}" id="test">
+                                <img src="https://www.holaworld.io/images/info/bookmark.svg" width="20px" height="18px">
+                            </a>
+                        </th:block>
+                        <th:block th:if="${selectUser.contains(loginUser)}">
+                            <a th:href="@{/study/down(studyNumber=${study.studyNumber})}" id="test">
+                                <img src="https://www.holaworld.io/images/info/bookmark_filled.svg" width="20px" height="18px">
+                            </a>
+                        </th:block>
+
+                        <span th:text="${likeCount}"></span><!--찜하기인가?-->
                     </div>
                 </div>
             </div>
@@ -156,7 +166,7 @@
         <div class="reply-wrap">
             <div class="reply-wrap__box">
                 <div class="reply-content__box">
-                    <div class="reply-writer" th:text="${study.userId}"></div>
+                    <div class="reply-writer" th:text="${study.userId}"></div> <!--아이디 변경해야함-->
                     <textarea name="replyContent" id="reply-content" cols="30" rows="10"></textarea>
                 </div>
                 <div class="reply-btn-wrap">
@@ -183,11 +193,13 @@
     </div> <!--fulldiv 끝나는 지점 길이100%-->
 
 
-    <input type="hidden" th:value="${study.studyNumber}" class="study-num"/>
+    <input type="hidden" name="studyNumber" th:value="${study.studyNumber}" class="study-num"/>
     <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
 
     <script th:inline="javascript"> // 타임리프 문법을 자바스크립트에서 사용하기 위한 설정
     let loginNumber = [[${session.userNumber}]]; // 타임리프 문법은 [] 2개로 감싸줘야 한다.
+
+
     </script>
 
     <script type="module" src="/js/study/studyReply.js"></script>
