@@ -32,7 +32,7 @@
     border: 1px solid black;
     height: 39px;
     display: flex;
-    width: 825px;
+    width: 725px;
     border-radius: 15px;
     justify-content: center;
 }
@@ -46,10 +46,11 @@
     text-align: center;
     border: none;
     border-right: 1px solid black !important;
+    outline: none;
 }
 .search-input{
     height: 35px;
-    width: 600px;
+    width: 500px;
     border: none;
     outline: none;
     font-size: 18px;
@@ -75,10 +76,41 @@
     text-decoration: none;
     color: black;
 }
+.drop-menu{
+    margin: 0 20px;
+
+}
+.menu:hover{
+    color: #00A8F3;
+    cursor: pointer;
+}
+.menu-box{
+    position: absolute;
+    margin-top: 10px;
+    background: white;
+    border-top: 2px solid lightgrey;
+    z-index: 1;
+    width: 80px;
+    display: none;
+}
+.menu-nav{
+    line-height: 35px;
+    font-size: 18px;
+}
+.menu-nav>ul{
+    list-style: none;
+}
+.menu-li>a:hover{
+    color: #00A8F3;
+}
 
 .header-nav>a{
     margin: 0 20px;
     cursor: pointer;
+}
+.menu-li>a{
+    text-decoration: none;
+    color: black;
 }
 
 .header-nav>a:hover{

@@ -13,99 +13,99 @@
   </style>
 </head>
 <body>
+<header th:replace="fragments/header :: header"></header>
 <div class="container"> <!--전체를 감싸는 컨테이너-->
-  <header th:replace="fragments/header :: header"></header>
 <!--  <header class="header-container"> &lt;!&ndash;헤더 컨테이너&ndash;&gt;-->
-    <nav class="nav-bar">
-      <div class="nav-left">
-        <a href="/study/list">
-          <img src="./logo.png" alt="logo" class="logo-img">
-        </a>
-      </div>
-      <div class="nav-right">
-        <ul>
-          <li>
-            <input type="text" name="search" value="" class="search-bar" placeholder="제목을 입력해주세요"/>
-          </li>
-          <li class="study">
-            <a href="#"><p class="header-text">스터디 모집</p></a> <!--스터디 목록으로 이동-->
-          </li>
-          <li class="menti">
-            <a href="#"><p class="header-text">멘티 모집</p></a> <!--멘티 모집 목록으로 이동-->
-          </li>
-          <li class="login">
-            <a href="login.html"><p class="header-text">로그인</p></a> <!--로그인 창으로 이동-->
-          </li>
-          <li class="login">
-            <a href="/user/logout"><p class="header-text">로그아웃</p></a> <!--로그인 창으로 이동-->
-          </li>
-        </ul>
-      </div>
-    </nav>
-  </header>
-  <!--로그인 후 헤더-->
-  <header class="header-container none"> <!--헤더 컨테이너-->
-    <nav class="nav-bar">
-      <div class="nav-left-login">
-        <a href="#">
-          <img src="logo.jpg" alt="logo" class="logo-img">
-        </a>
-      </div>
-      <div class="nav-right">
-        <ul>
-          <li>
-            <input type="text" name="search" value="" class="search-bar" placeholder="제목을 입력해주세요"/>
-          </li>
-          <li class="study">
-            <a href="#"><p class="header-text">스터디 모집</p></a> <!--스터디 목록으로 이동-->
-          </li>
-          <li class="menti">
-            <a href="#"><p class="header-text">멘티 모집</p></a> <!--멘티 모집 목록으로 이동-->
-          </li>
-          <li class="login">
-            <a href="#"><p class="header-text">쪽지함</p></a> <!--로그인 창으로 이동-->
-          </li>
+<!--    <nav class="nav-bar">-->
+<!--      <div class="nav-left">-->
+<!--        <a href="/study/list">-->
+<!--          <img src="./logo.png" alt="logo" class="logo-img">-->
+<!--        </a>-->
+<!--      </div>-->
+<!--      <div class="nav-right">-->
+<!--        <ul>-->
+<!--          <li>-->
+<!--            <input type="text" name="search" value="" class="search-bar" placeholder="제목을 입력해주세요"/>-->
+<!--          </li>-->
+<!--          <li class="study">-->
+<!--            <a href="#"><p class="header-text">스터디 모집</p></a> &lt;!&ndash;스터디 목록으로 이동&ndash;&gt;-->
+<!--          </li>-->
+<!--          <li class="menti">-->
+<!--            <a href="#"><p class="header-text">멘티 모집</p></a> &lt;!&ndash;멘티 모집 목록으로 이동&ndash;&gt;-->
+<!--          </li>-->
+<!--          <li class="login">-->
+<!--            <a href="login.html"><p class="header-text">로그인</p></a> &lt;!&ndash;로그인 창으로 이동&ndash;&gt;-->
+<!--          </li>-->
+<!--          <li class="login">-->
+<!--            <a href="/user/logout"><p class="header-text">로그아웃</p></a> &lt;!&ndash;로그인 창으로 이동&ndash;&gt;-->
+<!--          </li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </nav>-->
+<!--  </header>-->
+<!--  &lt;!&ndash;로그인 후 헤더&ndash;&gt;-->
+<!--  <header class="header-container none"> &lt;!&ndash;헤더 컨테이너&ndash;&gt;-->
+<!--    <nav class="nav-bar">-->
+<!--      <div class="nav-left-login">-->
+<!--        <a href="#">-->
+<!--          <img src="logo.jpg" alt="logo" class="logo-img">-->
+<!--        </a>-->
+<!--      </div>-->
+<!--      <div class="nav-right">-->
+<!--        <ul>-->
+<!--          <li>-->
+<!--            <input type="text" name="search" value="" class="search-bar" placeholder="제목을 입력해주세요"/>-->
+<!--          </li>-->
+<!--          <li class="study">-->
+<!--            <a href="#"><p class="header-text">스터디 모집</p></a> &lt;!&ndash;스터디 목록으로 이동&ndash;&gt;-->
+<!--          </li>-->
+<!--          <li class="menti">-->
+<!--            <a href="#"><p class="header-text">멘티 모집</p></a> &lt;!&ndash;멘티 모집 목록으로 이동&ndash;&gt;-->
+<!--          </li>-->
+<!--          <li class="login">-->
+<!--            <a href="#"><p class="header-text">쪽지함</p></a> &lt;!&ndash;로그인 창으로 이동&ndash;&gt;-->
+<!--          </li>-->
 
-          <li class="myPage">
-            <a href="#"><p class="header-text">마이페이지</p></a> <!--로그인 창으로 이동-->
-          </li>
-        </ul>
-      </div>
-    </nav>
-  </header>
+<!--          <li class="myPage">-->
+<!--            <a href="#"><p class="header-text">마이페이지</p></a> &lt;!&ndash;로그인 창으로 이동&ndash;&gt;-->
+<!--          </li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </nav>-->
+<!--  </header>-->
   <!--멘토로 로그인 헤더-->
-  <header class="header-container none"> <!--헤더 컨테이너-->
-    <nav class="nav-bar">
-      <div class="nav-left-login-mentor">
-        <a href="#">
-          <img src="logo.jpg" alt="logo" class="logo-img">
-        </a>
-      </div>
-      <div class="nav-right">
-        <ul>
-          <li>
-            <input type="text" name="search" value="" class="search-bar" placeholder="제목을 입력해주세요"/>
-          </li>
-          <li class="study">
-            <a href="#"><p class="header-text">스터디 모집</p></a> <!--스터디 목록으로 이동-->
-          </li>
-          <li class="menti">
-            <a href="#"><p class="header-text">멘티 모집</p></a> <!--멘티 모집 목록으로 이동-->
-          </li>
-          <li class="menti">
-            <a href="#"><p class="header-text">멘토 신청</p></a> <!--멘티 모집 목록으로 이동-->
-          </li>
-          <li class="login">
-            <a href="#"><p class="header-text">쪽지함</p></a> <!--로그인 창으로 이동-->
-          </li>
+<!--  <header class="header-container none"> &lt;!&ndash;헤더 컨테이너&ndash;&gt;-->
+<!--    <nav class="nav-bar">-->
+<!--      <div class="nav-left-login-mentor">-->
+<!--        <a href="#">-->
+<!--          <img src="logo.jpg" alt="logo" class="logo-img">-->
+<!--        </a>-->
+<!--      </div>-->
+<!--      <div class="nav-right">-->
+<!--        <ul>-->
+<!--          <li>-->
+<!--            <input type="text" name="search" value="" class="search-bar" placeholder="제목을 입력해주세요"/>-->
+<!--          </li>-->
+<!--          <li class="study">-->
+<!--            <a href="#"><p class="header-text">스터디 모집</p></a> &lt;!&ndash;스터디 목록으로 이동&ndash;&gt;-->
+<!--          </li>-->
+<!--          <li class="menti">-->
+<!--            <a href="#"><p class="header-text">멘티 모집</p></a> &lt;!&ndash;멘티 모집 목록으로 이동&ndash;&gt;-->
+<!--          </li>-->
+<!--          <li class="menti">-->
+<!--            <a href="#"><p class="header-text">멘토 신청</p></a> &lt;!&ndash;멘티 모집 목록으로 이동&ndash;&gt;-->
+<!--          </li>-->
+<!--          <li class="login">-->
+<!--            <a href="#"><p class="header-text">쪽지함</p></a> &lt;!&ndash;로그인 창으로 이동&ndash;&gt;-->
+<!--          </li>-->
 
-          <li class="myPage">
-            <a href="#"><p class="header-text">마이페이지</p></a> <!--로그인 창으로 이동-->
-          </li>
-        </ul>
-      </div>
-    </nav>
-  </header>
+<!--          <li class="myPage">-->
+<!--            <a href="#"><p class="header-text">마이페이지</p></a> &lt;!&ndash;로그인 창으로 이동&ndash;&gt;-->
+<!--          </li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </nav>-->
+<!--  </header>-->
   <section class="section-banner">
     <div class="slides">
       <img src="/image/banner1.png" class="banner" />

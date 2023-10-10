@@ -17,7 +17,7 @@
     </insert>
 
     <select id="select" resultType="userDto">
-        SELECT USER_NUMBER, USER_ID, USER_NAME
+        SELECT USER_NUMBER, USER_ID, USER_NAME, USER_LEVEL
         FROM TBL_USERS
         WHERE USER_ID = #{userId} AND USER_PASSWORD = #{userPassword}
     </select>
