@@ -128,9 +128,11 @@ $('.id_input').on("propertychange change keyup paste input", function (){
         success : function (result){
             // console.log("성공여부 : " + result);
             if(result != 'fail'){
+                //중복된 아이디 없음 - 사용가능
                 $('.id_input_re_1').css("display","inline-block");
                 $('.id_input_re_2').css("display","none");
             } else {
+                //중복된 아이디 - 사용불가능
                 $('.id_input_re_2').css("display","inline-block");
                 $('.id_input_re_1').css("display","none");
             }

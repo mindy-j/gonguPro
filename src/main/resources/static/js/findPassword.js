@@ -3,6 +3,7 @@ const phoneInput = document.getElementById("userPhone");
 const cerNumberInput = document.getElementById("cerNumber");
 
 const idBtn = document.querySelector(".id-btn");
+const btn = document.getElementById("btn");
 const intArea = document.querySelector(".int-area.none");
 const verifyBtn = document.getElementById("verifyBtn");
 const modal = document.getElementById("modal");
@@ -43,9 +44,6 @@ idBtn.addEventListener("click", function () {
         });
         intArea.style.display = "block";
 
-    // // 인증번호 입력란을 보이도록 설정하고 none 클래스 제거
-    // cerNumberInput.style.display = "block";
-    // intArea.classList.remove("none");
 });
 //인증번호 확인 버튼 클립 이벤트 처리
 $(verifyBtn).on('click',function (){
@@ -126,4 +124,20 @@ function alertFunc() {
 $('.certificationIssue').on("click",function(){
     $.time(179);
 });
+
+// //배경화면을 누르면 화면 이동인데 다른것도 누르면 이동이 됨 - 수정해야해
+// document.body.addEventListener("click", function (event){
+//
+//     if(event.target.tagName==="input"){
+//         return;
+//     }
+//     window.location.href="/user/index";
+// });
+
+
+//비밀번호 확인후 로그인 하러 가기버튼
+btn.addEventListener("click",function (){
+    window.location.href="/user/login";
+});
+
 

@@ -12,7 +12,7 @@ public interface UserMapper {
 
 
     // 회원가입 아이디 중복검사
-    public int idCheck(String userId) throws Exception;
+    public int idCheck(String userId);
 
     //회원 삽입 : 회원가입할때 쓰임
     public void insert(UserDto userDto);
