@@ -21,6 +21,7 @@
         <typeAlias type="com.example.gongu.domain.dto.StudyDto" alias="studyDto"/>
         <typeAlias type="com.example.gongu.domain.dto.StudyReplyDto" alias="studyReplyDto"/>
         <typeAlias type="com.example.gongu.domain.dto.FileDto" alias="fileDto"/>
+        <typeAlias type="com.example.gongu.domain.dto.PaymentDto" alias="paymentDto"/>
 
         <typeAlias type="com.example.gongu.domain.vo.StudyVo" alias="studyVo"/>
         <typeAlias type="com.example.gongu.domain.vo.PageVo" alias="pageVo"/>
