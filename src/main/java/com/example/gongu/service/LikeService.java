@@ -1,6 +1,7 @@
 package com.example.gongu.service;
 
 import com.example.gongu.domain.dto.LikeDto;
+import com.example.gongu.domain.vo.StudyVo;
 import com.example.gongu.mapper.LikeMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -30,5 +31,10 @@ private final LikeMapper likeMapper;
 
     public void likeDown(Long userNumber){
         likeMapper.delete(userNumber);
+    }
+
+    public StudyVo findList(Long userNumber){
+        StudyVo vo = likeMapper.selectList(userNumber);
+        return vo;
     }
 }
