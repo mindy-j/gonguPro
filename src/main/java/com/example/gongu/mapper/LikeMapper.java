@@ -1,6 +1,7 @@
 package com.example.gongu.mapper;
 
 import com.example.gongu.domain.dto.LikeDto;
+import com.example.gongu.domain.vo.StudyVo;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -14,6 +15,8 @@ public interface LikeMapper {
     public List selectUser();
 
     public void delete(Long userNumber);
+
+    public StudyVo selectList(Long userNumber);
 }
 
 

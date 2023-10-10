@@ -69,140 +69,52 @@
 <body>
 
 <header th:replace="fragments/header :: header"></header>
-  <nav class="nav-bar">
-    <div class="nav-left">
-      <a href="#">
-        <img src="./logo.png" alt="logo" class="logo-img">
-      </a>
-    </div>
-    <div class="nav-right">
-      <ul>
-        <li>
-          <input type="text" name="search" value="" class="search-bar" placeholder="제목을 입력해주세요"/>
-        </li>
-        <li class="study">
-          <a href="#"><p class="header-text">스터디 모집</p></a> <!--스터디 목록으로 이동-->
-        </li>
-        <li class="menti">
-          <a href="#"><p class="header-text">멘티 모집</p></a> <!--멘티 모집 목록으로 이동-->
-        </li>
-        <li class="login">
-          <a href="#"><p class="header-text">로그인</p></a> <!--로그인 창으로 이동-->
-        </li>
-      </ul>
-  </nav>
 
-</header>
-<!--로그인 후 헤더-->
-<header class="header-container none"> <!--헤더 컨테이너-->
-  <nav class="nav-bar">
-    <div class="nav-left-login">
-      <a href="#">
-        <img src="logo.jpg" alt="logo" class="logo-img">
-      </a>
-    </div>
-    <div class="nav-right">
-      <ul>
-        <li>
-          <input type="text" name="search" value="" class="search-bar" placeholder="제목을 입력해주세요"/>
-        </li>
-        <li class="study">
-          <a href="#"><p class="header-text">스터디 모집</p></a> <!--스터디 목록으로 이동-->
-        </li>
-        <li class="menti">
-          <a href="#"><p class="header-text">멘티 모집</p></a> <!--멘티 모집 목록으로 이동-->
-        </li>
-        <li class="login">
-          <a href="#"><p class="header-text">쪽지함</p></a> <!--로그인 창으로 이동-->
-        </li>
-
-        <li class="myPage">
-          <a href="#"><p class="header-text">마이페이지</p></a> <!--로그인 창으로 이동-->
-        </li>
-      </ul>
-    </div>
-  </nav>
-
-</header>
-<!--멘토로 로그인 헤더-->
-<header class="header-container "> <!--헤더 컨테이너-->
-  <nav class="nav-bar">
-    <div class="nav-left-login-mentor">
-      <a href="#">
-        <img src="logo.jpg" alt="logo" class="logo-img">
-      </a>
-    </div>
-    <div class="nav-right">
-      <ul>
-        <li>
-          <input type="text" name="search" value="" class="search-bar" placeholder="제목을 입력해주세요"/>
-        </li>
-        <li class="study">
-          <a href="#"><p class="header-text">스터디 모집</p></a> <!--스터디 목록으로 이동-->
-        </li>
-        <li class="menti">
-          <a href="#"><p class="header-text">멘티 모집</p></a> <!--멘티 모집 목록으로 이동-->
-        </li>
-        <li class="menti">
-          <a href="#"><p class="header-text">멘토 신청</p></a> <!--멘티 모집 목록으로 이동-->
-        </li>
-        <li class="login">
-          <a href="#"><p class="header-text">쪽지함</p></a> <!--로그인 창으로 이동-->
-        </li>
-
-        <li class="myPage">
-          <a href="#"><p class="header-text">마이페이지</p></a> <!--로그인 창으로 이동-->
-        </li>
-      </ul>
-    </div>
-  </nav>
-
-</header>
 <div class="container">
 
 
   <h2>멘티 모집</h2>
   <div class="grid-container">
     <!-- 그리드 아이템 -->
-  <th:block  th:each="class : ${classList}">
-    <div class="mento-box" th:if="${class.classLevel.equals('2')}">
-      <div class="mento-name-container">
-        <div class="mento-name"><h2  th:text="${class.userName}+' 멘토'"></h2>
-        </div>
-        <a th:href="@{/class/detail(classNumber=${class.classNumber})}">
-          <div class="mento-apply">
-            상세보기
+    <th:block  th:each="class : ${classList}">
+      <div class="mento-box">
+        <div class="mento-name-container">
+          <div class="mento-name"><h2  th:text="${class.userName}+' 멘토'"></h2>
           </div>
-        </a>
+          <a th:href="@{/class/detail(classNumber=${class.classNumber})}">
+            <div class="mento-apply">
+              상세보기
+            </div>
+          </a>
+        </div>
+        <ul class="mento-info-list">
+          <li>
+            <span class="mento-info">멘토 학력</span> <span class="mento-career" th:text="${class.applyEducation}"></span>
+          </li>
+          <li>
+            <span class="mento-info">수업 비용</span>  <span class="mento-price" th:text="${class.classPrice}"></span>
+          </li>
+          <li>
+            <span class="mento-info">지역</span>  <span class="mento-price" th:text="${class.classAddress}"></span>
+          </li>
+
+
+          <br>
+          <li>
+            <span class="mento-info">기간</span>  <span class="mento-career" th:text="${class.classStartDate}+' ~ '+${class.classEndDate}"></span>
+          </li>
+        </ul>
+
       </div>
-      <ul class="mento-info-list">
-        <li>
-          <span class="mento-info">멘토 학력</span> <span class="mento-career" th:text="${class.applyEducation}"></span>
-        </li>
-        <li>
-          <span class="mento-info">수업 비용</span>  <span class="mento-price" th:text="${class.classPrice}"></span>
-        </li>
-        <li>
-          <span class="mento-info">지역</span>  <span class="mento-price" th:text="${class.classAddress}"></span>
-        </li>
-
-
-        <br>
-        <li>
-          <span class="mento-info">기간</span>  <span class="mento-career" th:text="${class.classStartDate}+' ~ '+${class.classEndDate}"></span>
-        </li>
-      </ul>
-
-    </div>
-  </th:block>
+    </th:block>
 
 
 
 
 
-</div>
+  </div>
   <!-- th:if="${session.userLevel.equals('2')}" -->
-  <div class="write-btn-container">
+  <div class="write-btn-container" style="margin-top: 100px;">
     <a href="/class/write">
       <div class="write-btn">
         글작성
@@ -210,7 +122,7 @@
     </a>
   </div>
 
-  <div class="page-container">
+  <div class="page-container" style="margin-top:100px;">
     <ul class="page-box"><!--study? board?-->
       <a th:href="@{/class/list(page=${pageInfo.startPage-1})}" class="page-a" th:if="${pageInfo.prev}">
         <li class="page-num prev">&lt</li>
