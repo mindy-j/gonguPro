@@ -202,4 +202,5 @@ a{
     font-size: 15px;
     pointer-events: none;
     padding: 10px;
+    border: 1px solid gray;
 }

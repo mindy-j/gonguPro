@@ -37,7 +37,7 @@
     </update>
 
     <select id="selectSendNote" resultType="noteVo">
-        select reciever_number, note_title, note_content, note_number
+        select user_id, note_title, note_content, note_number
         from tbl_note join tbl_users on reciever_number = user_number
         where note_number = #{noteNumber}
     </select>
@@ -71,4 +71,10 @@
         where reciever_number = #{recieverNumber}
         and note_number = #{noteNumber}
     </update>
+
+    <select id="selectReceiveNote" resultType="noteVo">
+        select user_id, note_title, note_content, note_number
+        from tbl_note join tbl_users on sender_number = user_number
+        where note_number = #{noteNumber}
+    </select>
 </mapper>
