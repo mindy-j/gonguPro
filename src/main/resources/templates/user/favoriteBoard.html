@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="../../static/css/index.css"/>
+  <script src="https://kit.fontawesome.com/acf4f592bf.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/css/header.css">
   <style>
     .container{
       width:1320px;
@@ -31,7 +33,7 @@
 </head>
 <body>
 
-<header class="header-container none"> <!--헤더 컨테이너-->
+<header th:replace="fragments/header :: header"></header>
   <nav class="nav-bar">
     <div class="nav-left">
       <a href="#">
@@ -115,276 +117,48 @@
           <a href="#"><p class="header-text">마이페이지</p></a> <!--로그인 창으로 이동-->
         </li>
       </ul>
+    </div>
   </nav>
 </header>
 <div class="container">
   <h2>내 관심글</h2>
   <div class="grid-container">
     <!-- 그리드 아이템 -->
-    <div class="good-board">
-      <div class="category-img-box" >
-        <img src="asd" name="카테고리이미지"/>
-      </div>
-      <div class="deadline-box" >
-        <p class="deadline" name="마감일">마감일 | 2023.09.20 </p>
-      </div>
-      <div class="content-box" name="내용">
-        <p class="content">투자자산 운용사 자격증 스터디 모집 합니다</p>
-      </div>
-      <div class="category-box" name="category">
-        <p class="category" name="카테고리">경영,회계</p>
-      </div>
-      <div class="address-box">
-        <p class="address" name="주소">서울시 노원구 중계동</p>
-      </div>
-      <div class="user-box">
-        <span class="user-nickname">영차~</span>
-        <span class="read-count">121</span>
-        <span class="commend-count">0</span>
-      </div>
+
+    <div th:each="study : ${studyList}">
+      <a th:href="@{/study/detail(studyNumber=${study.studyNumber})}" >
+        <div class="good-board">
+          <div class="category-img-box" >
+            <div class="study-logo">
+              ✏️스터디
+            </div>
+          </div>
+          <div class="deadline-box" >
+            <p class="deadline" name="시작일" th:text="'시작일  |  '+${study.studyStartDate}"> </p>
+          </div>
+          <div class="content-box" name="제목">
+            <p class="content" th:text="${study.studyTitle}"></p>
+          </div>
+          <div class="category-box" name="category">
+            <p class="category" name="카테고리" th:text="${study.studyMajor}"></p>
+          </div>
+          <div class="address-box">
+            <p class="address" name="주소" th:text="${study.studyAddress}"></p>
+          </div>
+          <div class="user-box">
+            <span class="user-nickname" th:text="${study.userNickname}"></span>
+            <span class="commend-count" th:text="${likeCount}"></span>
+          </div>
+        </div>
+      </a>
     </div>
-    <div class="good-board">
-      <div class="category-img-box" >
-        <img src="asd" name="카테고리이미지"/>
-      </div>
-      <div class="deadline-box" >
-        <p class="deadline" name="마감일">마감일 | 2023.09.20 </p>
-      </div>
-      <div class="content-box" name="내용">
-        <p class="content">투자자산 운용사 자격증 스터디 모집 합니다</p>
-      </div>
-      <div class="category-box" name="category">
-        <p class="category" name="카테고리">경영,회계</p>
-      </div>
-      <div class="address-box">
-        <p class="address" name="주소">서울시 노원구 중계동</p>
-      </div>
-      <div class="user-box">
-        <span class="user-nickname">영차~</span>
-        <span class="read-count">121</span>
-        <span class="commend-count">0</span>
-      </div>
-    </div>
-    <div class="good-board">
-      <div class="category-img-box" >
-        <img src="asd" name="카테고리이미지"/>
-      </div>
-      <div class="deadline-box" >
-        <p class="deadline" name="마감일">마감일 | 2023.09.20 </p>
-      </div>
-      <div class="content-box" name="내용">
-        <p class="content">투자자산 운용사 자격증 스터디 모집 합니다</p>
-      </div>
-      <div class="category-box" name="category">
-        <p class="category" name="카테고리">경영,회계</p>
-      </div>
-      <div class="address-box">
-        <p class="address" name="주소">서울시 노원구 중계동</p>
-      </div>
-      <div class="user-box">
-        <span class="user-nickname">영차~</span>
-        <span class="read-count">121</span>
-        <span class="commend-count">0</span>
-      </div>
-    </div>
-    <div class="good-board">
-      <div class="category-img-box" >
-        <img src="asd" name="카테고리이미지"/>
-      </div>
-      <div class="deadline-box" >
-        <p class="deadline" name="마감일">마감일 | 2023.09.20 </p>
-      </div>
-      <div class="content-box" name="내용">
-        <p class="content">투자자산 운용사 자격증 스터디 모집 합니다</p>
-      </div>
-      <div class="category-box" name="category">
-        <p class="category" name="카테고리">경영,회계</p>
-      </div>
-      <div class="address-box">
-        <p class="address" name="주소">서울시 노원구 중계동</p>
-      </div>
-      <div class="user-box">
-        <span class="user-nickname">영차~</span>
-        <span class="read-count">121</span>
-        <span class="commend-count">0</span>
-      </div>
-    </div>
-    <div class="good-board">
-      <div class="category-img-box" >
-        <img src="asd" name="카테고리이미지"/>
-      </div>
-      <div class="deadline-box" >
-        <p class="deadline" name="마감일">마감일 | 2023.09.20 </p>
-      </div>
-      <div class="content-box" name="내용">
-        <p class="content">투자자산 운용사 자격증 스터디 모집 합니다</p>
-      </div>
-      <div class="category-box" name="category">
-        <p class="category" name="카테고리">경영,회계</p>
-      </div>
-      <div class="address-box">
-        <p class="address" name="주소">서울시 노원구 중계동</p>
-      </div>
-      <div class="user-box">
-        <span class="user-nickname">영차~</span>
-        <span class="read-count">121</span>
-        <span class="commend-count">0</span>
-      </div>
-    </div>
-    <div class="good-board">
-      <div class="category-img-box" >
-        <img src="asd" name="카테고리이미지"/>
-      </div>
-      <div class="deadline-box" >
-        <p class="deadline" name="마감일">마감일 | 2023.09.20 </p>
-      </div>
-      <div class="content-box" name="내용">
-        <p class="content">투자자산 운용사 자격증 스터디 모집 합니다</p>
-      </div>
-      <div class="category-box" name="category">
-        <p class="category" name="카테고리">경영,회계</p>
-      </div>
-      <div class="address-box">
-        <p class="address" name="주소">서울시 노원구 중계동</p>
-      </div>
-      <div class="user-box">
-        <span class="user-nickname">영차~</span>
-        <span class="read-count">121</span>
-        <span class="commend-count">0</span>
-      </div>
-    </div>
-    <div class="good-board">
-      <div class="category-img-box" >
-        <img src="asd" name="카테고리이미지"/>
-      </div>
-      <div class="deadline-box" >
-        <p class="deadline" name="마감일">마감일 | 2023.09.20 </p>
-      </div>
-      <div class="content-box" name="내용">
-        <p class="content">투자자산 운용사 자격증 스터디 모집 합니다</p>
-      </div>
-      <div class="category-box" name="category">
-        <p class="category" name="카테고리">경영,회계</p>
-      </div>
-      <div class="address-box">
-        <p class="address" name="주소">서울시 노원구 중계동</p>
-      </div>
-      <div class="user-box">
-        <span class="user-nickname">영차~</span>
-        <span class="read-count">121</span>
-        <span class="commend-count">0</span>
-      </div>
-    </div>
-    <div class="good-board">
-      <div class="category-img-box" >
-        <img src="asd" name="카테고리이미지"/>
-      </div>
-      <div class="deadline-box" >
-        <p class="deadline" name="마감일">마감일 | 2023.09.20 </p>
-      </div>
-      <div class="content-box" name="내용">
-        <p class="content">투자자산 운용사 자격증 스터디 모집 합니다</p>
-      </div>
-      <div class="category-box" name="category">
-        <p class="category" name="카테고리">경영,회계</p>
-      </div>
-      <div class="address-box">
-        <p class="address" name="주소">서울시 노원구 중계동</p>
-      </div>
-      <div class="user-box">
-        <span class="user-nickname">영차~</span>
-        <span class="read-count">121</span>
-        <span class="commend-count">0</span>
-      </div>
-    </div>
-    <div class="good-board">
-      <div class="category-img-box" >
-        <img src="asd" name="카테고리이미지"/>
-      </div>
-      <div class="deadline-box" >
-        <p class="deadline" name="마감일">마감일 | 2023.09.20 </p>
-      </div>
-      <div class="content-box" name="내용">
-        <p class="content">투자자산 운용사 자격증 스터디 모집 합니다</p>
-      </div>
-      <div class="category-box" name="category">
-        <p class="category" name="카테고리">경영,회계</p>
-      </div>
-      <div class="address-box">
-        <p class="address" name="주소">서울시 노원구 중계동</p>
-      </div>
-      <div class="user-box">
-        <span class="user-nickname">영차~</span>
-        <span class="read-count">121</span>
-        <span class="commend-count">0</span>
-      </div>
-    </div>
-    <div class="good-board">
-      <div class="category-img-box" >
-        <img src="asd" name="카테고리이미지"/>
-      </div>
-      <div class="deadline-box" >
-        <p class="deadline" name="마감일">마감일 | 2023.09.20 </p>
-      </div>
-      <div class="content-box" name="내용">
-        <p class="content">투자자산 운용사 자격증 스터디 모집 합니다</p>
-      </div>
-      <div class="category-box" name="category">
-        <p class="category" name="카테고리">경영,회계</p>
-      </div>
-      <div class="address-box">
-        <p class="address" name="주소">서울시 노원구 중계동</p>
-      </div>
-      <div class="user-box">
-        <span class="user-nickname">영차~</span>
-        <span class="read-count">121</span>
-        <span class="commend-count">0</span>
-      </div>
-    </div>
-    <div class="good-board">
-      <div class="category-img-box" >
-        <img src="asd" name="카테고리이미지"/>
-      </div>
-      <div class="deadline-box" >
-        <p class="deadline" name="마감일">마감일 | 2023.09.20 </p>
-      </div>
-      <div class="content-box" name="내용">
-        <p class="content">투자자산 운용사 자격증 스터디 모집 합니다</p>
-      </div>
-      <div class="category-box" name="category">
-        <p class="category" name="카테고리">경영,회계</p>
-      </div>
-      <div class="address-box">
-        <p class="address" name="주소">서울시 노원구 중계동</p>
-      </div>
-      <div class="user-box">
-        <span class="user-nickname">영차~</span>
-        <span class="read-count">121</span>
-        <span class="commend-count">0</span>
-      </div>
-    </div>
-    <div class="good-board">
-      <div class="category-img-box" >
-        <img src="asd" name="카테고리이미지"/>
-      </div>
-      <div class="deadline-box" >
-        <p class="deadline" name="마감일">마감일 | 2023.09.20 </p>
-      </div>
-      <div class="content-box" name="내용">
-        <p class="content">투자자산 운용사 자격증 스터디 모집 합니다</p>
-      </div>
-      <div class="category-box" name="category">
-        <p class="category" name="카테고리">경영,회계</p>
-      </div>
-      <div class="address-box">
-        <p class="address" name="주소">서울시 노원구 중계동</p>
-      </div>
-      <div class="user-box">
-        <span class="user-nickname">영차~</span>
-        <span class="read-count">121</span>
-        <span class="commend-count">0</span>
-      </div>
-    </div>
+
+
+
+
+  </div>
+
+
 
 
   </div>

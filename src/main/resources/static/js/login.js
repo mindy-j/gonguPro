@@ -3,6 +3,7 @@ let pw = $('#pw');
 let btn = $('#btn');
 
 $(btn).on('click',function() {
+
     if($(id).val() ==""){
         $(id).next('label').addClass('warning');
         setTimeout(function(){
@@ -16,3 +17,6 @@ $(btn).on('click',function() {
         },150);
     }
 });
+
+
+

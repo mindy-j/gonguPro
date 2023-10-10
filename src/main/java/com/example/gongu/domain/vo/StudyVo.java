@@ -23,4 +23,5 @@ public class StudyVo {
     private Date  studyRegisterDate;
     private Date  studyUpdateDate;
     private String userId;
+    private String userNickname;
 }

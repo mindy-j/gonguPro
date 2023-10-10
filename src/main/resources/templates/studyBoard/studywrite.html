@@ -6,19 +6,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="/css/study/studywrite.css">
+    <script src="https://kit.fontawesome.com/acf4f592bf.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/header.css">
 
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   
   <!-- 서머노트를 위해 추가해야할 부분 -->
-  <script src="summerNote/summernote-lite.js"></script>
-  <script src="summerNote/summernote-ko-KR.js"></script>
-  <link rel="stylesheet" href="summerNote/summernote-lite.css">
+<!--  <script src="summerNote/summernote-lite.js"></script>-->
+<!--  <script src="summerNote/summernote-ko-KR.js"></script>-->
+<!--  <link rel="stylesheet" href="/css/summerNote/summernote-lite.css">-->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
   <!--  -->
 </head>
 <body>
+<header th:replace="fragments/header :: header"></header>
 <div class="full-box">
     <div class="formfull-box">
     <div class="getherInfo">
@@ -31,8 +37,8 @@
             <div class="howTo-div">
                 <span>진행 방식</span><br>
                 <select name="studyProcess" placeholder="온라인/오프라인">
-                    <option value="online" >온라인</option>
-                    <option value="offline" >오프라인</option>
+                    <option value="온라인" >온라인</option>
+                    <option value="오프라인" >오프라인</option>
                 </select>
             </div>
 
@@ -84,23 +90,12 @@
             </div>
 
             <div class="deadline-div">
-                <span>모집 마감일</span><br>
+                <span>스터디 시작일</span><br>
                 <input type="date" name="studyStartDate"><!--얘 DB 마감일로 바꿔야함-->
             </div>
         </div>
 
-        <div class="conntect-div">
-            <div>
-                <span>연락 방법</span><br>
-                    <select name="howToConnect" >
-                        <option value="connect-email">이메일</option>
-                        <option value="connect-kakao">카카오톡 오픈채팅</option>
-                    </select>
-            </div>
-            <div class="kakaoChat-div">
-                <input type="text" name="kakaoChat-url" placeholder="오픈 카카오톡 링크" >
-            </div>
-        </div>
+
     </div>
 
     <div class="section-2">
@@ -116,8 +111,8 @@
     </div>
 
 
-        <div class="container" style="width: 850px;">   <!--editordata-->
-            <textarea class="summernote" name="studyContent"></textarea>
+        <div class="container" style="margin-right:30px">   <!--editordata-->
+            <textarea class="summernote" id="summernote" name="studyContent"></textarea>
         </div>
 
         <div class="button-div">
@@ -129,10 +124,18 @@
 </div>
 
 </body>
-<script>
-    $('.summernote').summernote({
-          height: 450,
-          lang: "ko-KR"
-        });
-    </script>
+    <script>
+        $('#summernote').summernote({
+        placeholder: '쪽지 내용을 입력해주세요',
+        tabsize: 2,
+        height: 400,
+        toolbar: [
+        ['style', ['style']],
+        ['font', ['bold', 'underline', 'clear']],
+        ['color', ['color']],
+        ['para', ['ul', 'ol', 'paragraph']],
+        ['view', ['help']]
+        ]
+    });
+</script>
 </html>

@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>로그인</title>
+  <title>관리자 로그인</title>
+  <link rel="icon" href="/image/adminLogo.png">
   <link rel="stylesheet" href="/css/admin/adminLogin.css" />
 </head>
 <body>
@@ -24,5 +25,8 @@
     <span>GongU 관리자 페이지</span>
   </div>
 </div>
+<script th:if="${param.loginError}">
+  alert("로그인에 실패하였습니다. \n사용자 아이디와 비밀번호를 다시 확인해주세요.");
+</script>
 </body>
 </html>

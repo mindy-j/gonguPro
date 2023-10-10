@@ -5,6 +5,7 @@
     <typeAliases>
 
 
+
         <typeAlias type="com.example.gongu.domain.vo.NoteVo" alias="noteVo"/>
         <typeAlias type="com.example.gongu.domain.vo.NotePageVo" alias="notePageVo"/>
 
@@ -20,6 +21,7 @@
         <typeAlias type="com.example.gongu.domain.dto.StudyDto" alias="studyDto"/>
         <typeAlias type="com.example.gongu.domain.dto.StudyReplyDto" alias="studyReplyDto"/>
         <typeAlias type="com.example.gongu.domain.dto.FileDto" alias="fileDto"/>
+        <typeAlias type="com.example.gongu.domain.dto.PaymentDto" alias="paymentDto"/>
 
         <typeAlias type="com.example.gongu.domain.vo.StudyVo" alias="studyVo"/>
         <typeAlias type="com.example.gongu.domain.vo.PageVo" alias="pageVo"/>
@@ -30,6 +32,15 @@
         <typeAlias type="com.example.gongu.domain.vo.SearchVo" alias="searchVo"/>
         <typeAlias type="com.example.gongu.domain.vo.ClassVo" alias="classVo"/>
         <typeAlias type="com.example.gongu.domain.vo.ApplyVo" alias="applyVo"/>
+
+
+        <typeAlias type="com.example.gongu.domain.vo.admin.AdminCriteria" alias="adminCriteria"/>
+        <typeAlias type="com.example.gongu.domain.vo.admin.AminUserVo" alias="adminUserVo"/>
+        <typeAlias type="com.example.gongu.domain.vo.admin.AdminStudyVo" alias="adminStudyVo"/>
+        <typeAlias type="com.example.gongu.domain.vo.admin.AdminClassVo" alias="adminClassVo"/>
+        <typeAlias type="com.example.gongu.domain.vo.admin.AdminMentoApplyVo" alias="adminMentoVo"/>
+        <typeAlias type="com.example.gongu.domain.vo.admin.AdminNoteVo" alias="adminNoteVo"/>
+        <typeAlias type="com.example.gongu.domain.vo.admin.AdminFileVo" alias="adminFileVo"/>
 
 
     </typeAliases>

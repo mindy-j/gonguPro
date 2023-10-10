@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>멘토 신청함 상세</title>
+    <title>관리자 멘토 신청 상세</title>
+    <link rel="icon" href="/image/adminLogo.png">
     <link rel="stylesheet" href="/css/admin/adminMain.css">
     <link rel="stylesheet" href="/css/admin/adminHeader.css">
     <link rel="stylesheet" href="/css/admin/adminMentoApplicationDetail.css">
@@ -16,75 +17,44 @@
         <div class="left-list"><a href="/admin/classApplication">수업계획 신청함</a></div>
     </div>
     <div class="right-container">
+<!--        -->
+        <div class="modal">
+
+        </div>
+<!--        -->
         <div class="right-title">
-            <div class="right-title-sub">멘토 상세페이지</div>
+            <div class="right-title-sub">멘토 신청 상세페이지</div>
         </div>
 
-        <div class="category-box">
-            <div class="category-container">
-                <div class="category">
-                    <div class="category-title">아이디</div>
-                    <div class="category-content">test</div>
-                </div>
-                <div>
-                    <div class="category-title">전화번호</div>
-                    <div class="category-content">010-1234-5678</div>
-                </div>
-            </div>
-            <div class="category-container">
-                <div class="category">
-                    <div class="category-title">이름</div>
-                    <div class="category-content">이종민</div>
-                </div>
-                <div>
-                    <div class="category-title">생년월일</div>
-                    <div class="category-content">1900년 09월 17일</div>
-                </div>
-            </div>
-
-            <div class="category-container">
-                <div class="category">
-                    <div class="category-title">전공 분야</div>
-                    <div class="category-content">고등수학</div>
-                </div>
-                <div>
-                    <div class="category-title">학력</div>
-                    <div class="category-content">
-                        <div>서울대학교</div>&nbsp;
-                        <div>(졸업)</div>
-                    </div>
-                </div>
-
-            </div>
-
+        <div class="content-box">
             <div>
-                <div class="category-title">경력</div>
-                <div class="category-content-long">서울 코리아아카데이미 노원점 2023.05.26 ~ 2023.09.15</div>
+                <h2>학력</h2>
+                <div class="education" th:text="${mento.applyEducation}">서울대학교 졸업</div>
             </div>
-
             <div>
-                <div class="category-title">자격증</div>
-                <div class="category-content-long">맛집탐방 한식 자격증1급, 맛집탐방 중식 자격증 1급, 맛집탐방 일식 자격증 1급</div>
+                <h2>경력</h2>
+                <div class="career" th:text="${mento.applyCareer}">경력사항 입력 결과</div>
             </div>
-
             <div>
-                <div class="category-title file">첨부 파일</div>
-                <div class="category-container">
-                    <div class="img-box"><img src="https://sw.tta.or.kr/assets/img/content/CSTS_certificate_sample.jpg" alt="" class="img"></div>
-                    <div class="img-box"><img src="https://sw.tta.or.kr/assets/img/content/CSTS_certificate_sample.jpg" alt="" class="img"></div>
-                    <div class="img-box"><img src="https://sw.tta.or.kr/assets/img/content/CSTS_certificate_sample.jpg" alt="" class="img"></div>
-                    <div class="img-box"><img src="https://sw.tta.or.kr/assets/img/content/CSTS_certificate_sample.jpg" alt="" class="img"></div>
-                    <div class="img-box"><img src="https://sw.tta.or.kr/assets/img/content/CSTS_certificate_sample.jpg" alt="" class="img"></div>
+                <h2>자격증</h2>
+                <div class="certi" th:text="${mento.applyCerti}">자격증 입력사항</div>
+            </div>
+            <div>
+                <h2>첨부파일</h2>
+                <div class="file-box">
+
                 </div>
             </div>
             <div class="btn-box">
-                <button class="approval-btn">승 인</button>
-                <button class="refusal-btn">거 부</button>
-                <a href="adminMentoApplication.html"><button class="back-btn">뒤로가기</button></a>
+                <button class="approval-detail-btn" th:data-number="${mento.applyNumber}">승 인</button>
+                <button class="refusal-detail-btn"  th:data-number="${mento.applyNumber}">거 부</button>
+                <button class="back-btn">뒤로가기</button>
             </div>
         </div>
     </div><!--"right-container" 끝-->
 </div><!--"main-container" 끝-->
-
+<input type="hidden" th:value="${mento.applyNumber}" class="apply-num">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script th:src="@{/js/admin/adminMentoApplication.js}"></script>
 </body>
 </html>

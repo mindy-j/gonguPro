@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.gongu.mapper.LikeMapper">
+    <insert id="insert">
+        insert into TBL_LIKE(LIKE_NUMBER,USER_NUMBER,STUDY_NUMBER)
+        VALUES(SEQ_LIKE_NUMBER.NEXTVAL,#{userNumber},#{studyNumber})
+    </insert>
+
+    <delete id="delete">
+        delete from tbl_like where user_number = #{userNumber}
+    </delete>
+
+    <select id="likeTotal">
+        select count(*) from TBL_LIKE where STUDY_NUMBER = #{studyNumber}
+    </select>
+
+    <select id="selectUser" resultType="long">
+        select user_number from tbl_like
+    </select>
+
+    <select id="selectList" resultType="studyVo">
+        SELECT RNUM,
+               STUDY_NUMBER,
+               STUDY_TITLE,
+               STUDY_PROCESS,
+               TO_CHAR(STUDY_START_DATE, 'YYYY". "MM". "DD') AS STUDY_START_DATE,
+               STUDY_DATE,
+               STUDY_STUDENT_COUNT,
+               STUDY_MAJOR,
+               STUDY_ADDRESS,
+               STUDY_CONTENT,
+               USER_NUMBER,
+               STUDY_REGISTER_DATE,
+               STUDY_UPDATE_DATE,
+               USER_ID,
+               USER_NICKNAME,
+               LIKE_NUMBER  -- TBL_LIKE에서 추가한 컬럼
+        FROM (
+                 SELECT
+                     ROWNUM AS RNUM,
+                     S.STUDY_NUMBER,
+                     S.STUDY_TITLE,
+                     S.STUDY_PROCESS,
+                     S.STUDY_START_DATE,
+                     S.STUDY_DATE,
+                     S.STUDY_STUDENT_COUNT,
+                     S.STUDY_MAJOR,
+                     S.STUDY_ADDRESS,
+                     S.STUDY_CONTENT,
+                     S.USER_NUMBER,
+                     S.STUDY_REGISTER_DATE,
+                     S.STUDY_UPDATE_DATE,
+                     U.USER_ID,
+                     U.USER_NICKNAME,
+                     L.LIKE_NUMBER  -- TBL_LIKE 테이블 조인
+                 FROM TBL_STUDY_BOARD S
+                          JOIN TBL_USERS U ON S.USER_NUMBER = U.USER_NUMBER
+                          LEFT JOIN TBL_LIKE L ON S.STUDY_NUMBER = L.STUDY_NUMBER
+        <![CDATA[WHERE ROWNUM <= #{page} * #{amount}]]>
+             )
+        WHERE RNUM > (#{page} - 1) * #{amount} and user_number=#{userNumber} and LIKE_NUMBER is not null
+    </select>
+</mapper>

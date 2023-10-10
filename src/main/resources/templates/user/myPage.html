@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>내정보 페이지</title>
+    <link rel="stylesheet" href="/css/user/myPage.css">
+    <link rel="stylesheet" href="/css/header.css">
+</head>
+<body>
+<header th:replace="fragments/header :: header"></header>
+<form action="/user/modifyUser">
+  <div class="container">
+    <div class="img-box"><img th:src="@{/image/mainLogo.png}" alt=""></div>
+    <div class="id" th:text="${user.userId}+'님 환영합니다!'">아이디님 환영합니다!</div>
+    <div class="sub-container">
+      <div class="sub-title">회원등급</div>
+      <div th:if="${user.userLevel eq '1'}" class="sub-content">일반</div>
+        <div th:if="${user.userLevel eq '2'}" class="sub-content">멘토</div>
+    </div>
+    <div class="sub-container">
+      <div class="sub-title">닉네임(수정가능)</div>
+      <div class="sub-content"><input type="text" th:value="${user.userNickname}" name="userNickname"></div>
+    </div>
+    <div class="sub-container">
+      <div class="sub-title">이름</div>
+      <div class="sub-content" th:text="${user.userName}">이종민</div>
+    </div>
+    <div class="sub-container">
+      <div class="sub-title">전화번호(수정가능)&nbsp; <span class="check-phone">중복된 전화번호입니다.</span></div>
+      <div class="sub-content">
+        <input type="text" th:value="${user.userPhone}" name="userPhone" class="userPhone"
+                                      onKeyup="this.value=this.value.replace(/[^0-9]/g,'');">
+      </div>
+    </div>
+    <div class="sub-container">
+      <div class="sub-title">이메일(수정가능)&nbsp; <span class="check-email">중복된 이메일입니다.</span></div>
+      <div class="sub-content">
+        <input type="text" th:value="${user.userEmail}" name="userEmail" class="userEmail">
+      </div>
+
+    </div>
+    <div class="sub-container">
+      <div class="sub-title">생년월일</div>
+      <div class="sub-content" th:text="${user.userBirth}">1990년 01월 01일</div>
+    </div>
+    <div class="sub-container">
+      <div class="sub-title">전공분야</div>
+      <div class="sub-content" th:text="${user.userMajor}">생명과학</div>
+    </div>
+    <input type="hidden" th:value="${user.userNumber}" name="userNumber">
+    <div class="btn-box">
+      <button class="update-btn">프로필 저장</button>
+      <button class="delete-btn" type="button" th:data-number="${user.userNumber}">회원 탈퇴</button>
+    </div>
+  </div>
+</form>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script th:src="@{/js/user/myPage.js}"></script>
+<script src="https://kit.fontawesome.com/acf4f592bf.js" crossorigin="anonymous"></script>
+</body>
+</html>

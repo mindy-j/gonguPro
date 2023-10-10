@@ -84,12 +84,7 @@ select{
     display: flex;
     justify-content: center;
 }
-button{
-    border-radius: 10px;
-    width: 200px;
-    height: 50px;
-   
-}
+
 .btn1{
     margin-right: 10px;
     background-color: #166cea;

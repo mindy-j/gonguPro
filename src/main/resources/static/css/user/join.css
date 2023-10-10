@@ -213,11 +213,13 @@ label {
 }
 
 
+
 /*아이디 중복이 아닌 경우*/
 .id_input_re_1{
     color: green;
     display: none;
 }
+
 /*아이디 중복일 경우*/
 .id_input_re_2{
     color: red;

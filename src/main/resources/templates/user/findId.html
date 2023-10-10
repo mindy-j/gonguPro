@@ -13,14 +13,15 @@
     <div class="int-area">
       <input type="text" name="userPhone" id="userPhone" autocomplete="off" pattern="^[0-9]+$" required>
       <label for="userPhone">전화번호 : 번호만 입력하세요</label>
-      <button id="sendSmsAuth" class="id-btn certificationIssue sendSmsAuth btnStroke" type="button">인증번호 발송</button></label>
+      <button id="sendSmsAuth" class="id-btn certificationIssue sendSmsAuth btnStroke" type="button">인증번호 발송</button>
     </div>
-    <div class="int-area none">
+    <div class="int-area none" id="int-area">
       <input type="text" name="cerNumber" id="cerNumber" autocomplete="off" required>
       <label for="cerNumber">인증번호 입력 <span class="certificationTime">03:00</span></label>
+
     </div>
     <div class="btn-area">
-      <button type="button" id="btn-modal">아이디 찾기</button>
+      <button type="button" id="verifyBtn">아이디 찾기</button>
     </div>
   </form>
 
@@ -33,7 +34,10 @@
     </div>
     <div class="close-area">X</div>
     <div class="content">
-      <h1>회원님의 아이디는 "asdasd" 입니다.</h1>
+      <h1>회원님의 아이디는 <span id="userIdSpan"></span>입니다.</h1>
+    </div>
+    <div class="btn-area">
+      <button type="submit" id="btn">로그인하러 가기</button>
     </div>
   </div>
 </div>

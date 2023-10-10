@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.gongu.mapper.PaymentMapper">
+    <insert id="insertPay">
+        INSERT INTO TBL_PAYMENT(PAYMENT_NUMBER, PAYMENT_AMOUNT, PAYMENT_MERCHANT_UID, USER_NUMBER, CLASS_NUMBER)
+        VALUES (SEQ_PAYMENT_NUMBER.NEXTVAL, #{paymentAmount}, #{paymentMerchantUid}, #{userNumber}, #{classNumber})
+    </insert>
+</mapper>

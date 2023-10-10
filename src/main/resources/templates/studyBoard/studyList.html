@@ -6,6 +6,8 @@
     <title>Document</title>
     <link rel="stylesheet" href="/css/index.css"/>
     <link rel="stylesheet" href="/css/paging.css"/>
+    <script src="https://kit.fontawesome.com/acf4f592bf.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/header.css">
     <style>
         .container{
             width:1320px;
@@ -28,10 +30,45 @@
 
         /* 그리드 아이템 스타일 설정 (예: 배경색, 테두리 등) */
 
+        .write-btn-container{
+            width:85%;
+            display: flex;
+            justify-content: end;
+
+        }
+
+        .write-btn{
+            width:100px;
+            height:30px;
+            background-color: #d9edf7;
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color:white;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .study-logo{
+            width:100px;
+            height:25px;
+            background-color: #d9edf7;
+            color:white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 15px;
+            font-weight: bold;
+        }
+
+        .content-title{
+            margin-left: 20px;
+
+        }
     </style>
 </head>
 <body>
-
+<header th:replace="fragments/header :: header"></header>
 <header class="header-container none"> <!--헤더 컨테이너-->
     <nav class="nav-bar">
         <div class="nav-left">
@@ -122,7 +159,9 @@
     </nav>
 </header>
 <div class="container">
-    <h2>스터디 모집</h2>
+    <div class="content-title">
+        <h2>🔥스터디 모집</h2>
+    </div>
     <div class="grid-container">
         <!-- 그리드 아이템 -->
 
@@ -130,10 +169,12 @@
         <a th:href="@{/study/detail(studyNumber=${study.studyNumber})}" >
             <div class="good-board">
                 <div class="category-img-box" >
-                    <img src="asd" name="카테고리이미지"/>
+                    <div class="study-logo">
+                         ✏️스터디
+                    </div>
                 </div>
                 <div class="deadline-box" >
-                    <p class="deadline" name="마감일" th:text="'마감일  |  '+${study.studyStartDate}"> </p>
+                    <p class="deadline" name="시작일" th:text="'시작일  |  '+${study.studyStartDate}"> </p>
                 </div>
                 <div class="content-box" name="제목">
                     <p class="content" th:text="${study.studyTitle}"></p>
@@ -145,8 +186,8 @@
                     <p class="address" name="주소" th:text="${study.studyAddress}"></p>
                 </div>
                 <div class="user-box">
-                    <span class="user-nickname" th:text="${study.userId}"></span>
-                    <span class="commend-count">0</span>
+                    <span class="user-nickname" th:text="${study.userNickname}"></span>
+                    <span class="commend-count" th:text="${likeCount}"></span>
                 </div>
             </div>
         </a>
@@ -154,12 +195,21 @@
 
 
 
-        <a href="/study/write">글작성버튼</a>
+
     </div>
     <!--페이징처리-->
 
     <!--페이징처리 끝-->
 </div>
+<div class="write-btn-container">
+
+    <a href="/study/write" class="write-btn">
+        <div class="write-btn">
+        글작성
+        </div>
+    </a>
+</div>
+
 
 <div class="page-container">
     <ul class="page-box"><!--study? board?-->

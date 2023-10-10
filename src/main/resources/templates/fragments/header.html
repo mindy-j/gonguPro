@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <link rel="stylesheet" href="/css/header.css">
+</head>
+<body>
+  <header class="header" th:fragment="header">
+    <a href="/user/index" class="logo-a">
+      <div class="logo-box">
+        <img src="/image/mainLogo.png" alt="" class="header-logo">
+        <span class="span-logo">ongU</span>
+      </div>
+    </a>
+    <div class="search-box">
+      <form action="" method="" class="search-form">
+        <select name="" class="select-option">
+          <option value="name">스터티 모집</option>
+          <option value="email">멘티 모집</option>
+        </select>
+        <input type="text" name="" class="search-input" placeholder="제목을 검색해주세요.">
+        <button class="search-btn"><i class="fa-solid fa-magnifying-glass fa-xl" style="color: #000000;"></i></button>
+      </form>
+    </div>
+    <div class="nav-box">
+      <nav class="header-nav">
+        <a href="/study/list"><li>스터디 모집</li></a>
+        <a href="/class/list"><li>멘티 모집</li></a>
+        <a th:if="${session.userLevel == '1'}" href="/apply/write"><li>멘토 신청</li></a>
+        <a th:if = "${session.userNumber == null}" href="/user/login"><li>로그인</li></a>
+        <th:block  th:unless= "${session.userNumber == null}">
+          <a href="/note/receiveList"><li>쪽지함</li></a>
+          <li class="drop-menu">
+            <span class="menu">내정보
+              <i class="fa-solid fa-caret-down down" style="color: #000000;"></i>
+              <i class="fa-solid fa-caret-up up" style="color: #000000; display: none"></i>
+            </span>
+            <div class="menu-box">
+              <nav class="menu-nav">
+                <ul>
+                  <li class="menu-li"><a href="/user/myPage">내 프로필</a></li>
+                  <li class="menu-li"><a href="">내 작성글</a></li>
+                  <li class="menu-li"><a href="">내 관심글</a></li>
+                  <li class="menu-li"><a href="">결제 내역</a></li>
+                </ul>
+              </nav>
+            </div>
+          </li>
+        <a href="/user/logout"><li>로그아웃</li></a>
+        </th:block>
+      </nav>
+    </div>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script>
+      $('.menu').on('click', function () {
+        var menuBox = $('.menu-box');
+        if (menuBox.css('display') === 'block') {
+          menuBox.animate({
+            opacity: 0,
+            height: 0
+          }, 300, function () {
+            menuBox.css('display', 'none');
+            $('.up').css('display', 'none');
+            $('.down').css('display', 'inline');
+          });
+        } else {
+          menuBox.css({
+            display: 'block',
+            opacity: 0,
+            height: 'auto'
+          }).animate({
+            opacity: 1,
+            height: 'auto',
+          }, 300, function (){
+            $('.down').css('display', 'none');
+            $('.up').css('display', 'inline');
+          });
+        }
+      });
+    </script>
+  </header>
+<script src="https://kit.fontawesome.com/acf4f592bf.js" crossorigin="anonymous"></script>
+</body>
+</html>
