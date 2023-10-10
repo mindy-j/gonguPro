@@ -31,31 +31,22 @@ public class UserController {
         return "user/login";
     }
 
-    //아이디와 비번을 받아서 로그인 처리후 메인으로 화면전환
-//    @PostMapping("login")
-//    public RedirectView login(String userId, String userPassword, HttpServletRequest req){
-//        UserDto userDto = userService.find(userId, userPassword);
-//        req.getSession().setAttribute("userNumber", userDto.getUserNumber());
-//        req.getSession().setAttribute("userLevel", userDto.getUserLevel());
-//        return new RedirectView("index");
-//    }
-//수정-------
+    //아이디와 비밀번호를 입력받아서 로그인
     @PostMapping("login")
-    public RedirectView login(@RequestParam String userId,@RequestParam String userPassword, HttpServletRequest req){
+    public RedirectView login(String userId, String userPassword, HttpServletRequest req){
         UserDto userDto = userService.find(userId, userPassword);
         if(userDto != null) {
+            //로그인이 성공하면 사용자번호, 레벨을 세션에 저장한다.
             req.getSession().setAttribute("userNumber", userDto.getUserNumber());
+            //req.getSession() : 현재 http요청에 대한 세션을 얻기 위한 부분
+            //setAttribute : 세션객체에 속성 설정 - userNumber라는 이름의 세션속성에
+            // userDto.getUserNumber() 메서드에서 반환한 사용자 번호를 저장
             req.getSession().setAttribute("userLevel", userDto.getUserLevel());
-            log.info("로그인 했짜나....!!!!");
             return new RedirectView("index");
-        } else{
-           // req.getSession().setAttribute("errorMessage","아이디 또는 비밀번호가 일치하지 않습니다.");
-            log.info("로그인 못했따고....!!!!");
-            return new RedirectView("/user/login");
+        } else{//로그인 실패시 로그인페이지로 리다이렉트하며, 로그인 에러 파라미터를 추가한다.
+            return new RedirectView("/user/login?loginError");
         }
     }
-
-
 
     //메인화면으로가는 컨트롤러
     @GetMapping("/index")
@@ -63,11 +54,9 @@ public class UserController {
         return "index";
     }
 
-
-    //회원가입 부분 화면전달
+    //회원가입 화면전달
     @GetMapping("/join")
     public String join(){ return "user/join"; }
-
 
     @PostMapping("/join")
     public String join(UserDto userDto){
@@ -78,7 +67,7 @@ public class UserController {
     //아이디 중복체크
     @PostMapping("/userIdChk")
     @ResponseBody
-    public String userIdChkPOST(String userId) throws Exception{
+    public String userIdChkPOST(String userId){
         // log.info("userIdChk 진입!!!!!");
         int result = userService.idCheck(userId);
         log.info("결과 : " + result);
@@ -96,7 +85,6 @@ public class UserController {
         return "user/login";
     }
 
-
     //단순 페이지 이동-아이디찾기
     @GetMapping("/findId")
     public String findId(){
@@ -108,8 +96,6 @@ public class UserController {
     public String findPassword(){
         return "user/findPassword";
     }
-
-
 
 
 
