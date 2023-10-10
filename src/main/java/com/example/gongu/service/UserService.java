@@ -19,9 +19,8 @@ import java.util.Optional;
 public class UserService {
     private final UserMapper userMapper;
 
-
-    //아이디 중복검사 : 성공
-    public int idCheck(String userId) throws Exception{
+    //아이디 중복검사
+    public int idCheck(String userId){
         return userMapper.idCheck(userId);
     }
 
@@ -31,17 +30,17 @@ public class UserService {
         if (userDto == null) {
             throw new IllegalArgumentException("회원정보가 누락되었습니다");
         }
-
         userMapper.insert(userDto);
         //log.info("가입완료오오오오오오오******************");
 
     }
 
-    //아이디 비밀번호 로그인 : 성공
+    //아이디 비밀번호를 입력받아서 로그인
     public UserDto find(String userId, String userPassword){
-        return Optional.ofNullable(userMapper.select(userId, userPassword))
-                .orElseThrow(()->{throw new IllegalArgumentException("조회결과 없음");
-                });
+//        return Optional.ofNullable(userMapper.select(userId, userPassword))
+//                .orElseThrow(()->{throw new IllegalArgumentException("조회결과 없음");
+//                });
+        return userMapper.select(userId,userPassword);
     }
 
 
@@ -53,6 +52,7 @@ public class UserService {
     //번호로 아이디 찾기
     public String verifyPhoneNumber(String userPhone){
         String userId = userMapper.verifyPhoneNumber(userPhone);
+        //userId를 select
         if(userId != null && !userId.isEmpty()){
             log.info("******일치하는 번호가 있음*******");
             return userId;

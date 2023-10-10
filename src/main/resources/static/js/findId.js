@@ -4,6 +4,7 @@ const idBtn = document.querySelector(".id-btn");
 const intArea = document.querySelector(".int-area.none");
 const verifyBtn = document.getElementById("verifyBtn");
 const modal = document.getElementById("modal");
+const btn = document.getElementById("btn");
 
 // 인증번호 발송 버튼 클릭 이벤트 처리
 idBtn.addEventListener("click", function () {
@@ -33,6 +34,7 @@ idBtn.addEventListener("click", function () {
                 //없는경우
                 alert("일치하는 번호 없음");
                 throw  new Error("번호 불일치");
+                intArea.style.display = "none";
             }
         })
         .catch(function (error){
@@ -146,3 +148,8 @@ modal.addEventListener("click", function (e) {
         modal.style.display = "none";
     }
 });
+
+//아이디 확인후 로그인 하러 가기버튼
+btn.addEventListener("click",function (){
+    window.location.href="/user/login";
+}); //비밀번호에서는 되는데 아이디에서는 화면이동 안돼....왜/??
