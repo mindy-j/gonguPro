@@ -58,7 +58,7 @@
                  TBL_MEMTO_APPLY MA
                  ON
                      U.USER_NUMBER = MA.USER_NUMBER
-            <![CDATA[WHERE ROWNUM <= #{page} * #{amount}]]>
+            <![CDATA[WHERE ROWNUM <= #{page} * #{amount} and class_level = 2 and CLASS_NUMBER NOT IN (SELECT CLASS_NUMBER FROM TBL_PAYMENT)]]>
             )
         WHERE RNUM > (#{page} - 1) * #{amount}
     </select>
@@ -92,7 +92,7 @@
             TBL_MEMTO_APPLY MA
             ON
                 U.USER_NUMBER = MA.USER_NUMBER
-            where CLASS_NUMBER = #{classNumber}
+            where CLASS_NUMBER = #{classNumber} and class_level = 2 and class_number NOT IN (SELECT CLASS_NUMBER FROM TBL_PAYMENT)
     </select>
 
     <update id="update">
@@ -107,6 +107,6 @@
     </delete>
 
     <select id="selectTotal" resultType="_int">
-        SELECT COUNT(CLASS_NUMBER) FROM TBL_CLASS_BOARD
+        SELECT COUNT(CLASS_NUMBER) FROM TBL_CLASS_BOARD where class_level = 2
     </select>
 </mapper>
