@@ -31,10 +31,9 @@ idBtn.addEventListener("click", function () {
 
                 return response.text();
             } else{
-                //없는경우
-                alert("일치하는 번호 없음");
-                throw  new Error("번호 불일치");
-                intArea.style.display = "none";
+                //서버에서 오류난 경우
+                alert("서버오류");
+                throw new Error("서버오류");
             }
         })
         .catch(function (error){
@@ -81,17 +80,17 @@ $(verifyBtn).on('click', function (){
     });
 });
 
-//모달
-const closeModal = document.querySelector(".close-area");
-closeModal.addEventListener("click", function (){
-    modal.style.display="none";
-});
-
-modal.addEventListener("click",function (e){
-    if(e.target.classList.contains("modal-overlay")){
-        modal.style.display="none";
-    }
-});
+// //모달
+// const closeModal = document.querySelector(".close-area");
+// closeModal.addEventListener("click", function (){
+//     modal.style.display="none";
+// });
+//
+// modal.addEventListener("click",function (e){
+//     if(e.target.classList.contains("modal-overlay")){
+//         modal.style.display="none";
+//     }
+// });
 
 
 
@@ -128,28 +127,10 @@ $('.certificationIssue').on("click",function(){
     $.time(179);
 });
 
-//모달창 스크립트
-const btnModal = document.getElementById("btn-modal");
-const cerNumber = document.getElementById("cerNumber");
-btnModal.addEventListener("click", function (e) {
-    if (cerNumber.value == "1234") {
-        modal.style.display = "flex";
-    }
+
+//모달확인후 로그인가기
+$("#goToLogin").click(function (){
+        window.location.href = "/user/login";
 });
 
-const closeBtn = modal.querySelector(".close-area");
-closeBtn.addEventListener("click", function (e) {
-    modal.style.display = "none";
-});
 
-modal.addEventListener("click", function (e) {
-    const evTarget = e.target;
-    if (evTarget.classList.contains("modal-overlay")) {
-        modal.style.display = "none";
-    }
-});
-
-//아이디 확인후 로그인 하러 가기버튼
-btn.addEventListener("click",function (){
-    window.location.href="/user/login";
-}); //비밀번호에서는 되는데 아이디에서는 화면이동 안돼....왜/??

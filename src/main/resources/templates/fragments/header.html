@@ -28,7 +28,8 @@
         <a href="/study/list"><li>스터디 모집</li></a>
         <a href="/class/list"><li>멘티 모집</li></a>
         <a th:if="${session.userLevel == '1'}" href="/apply/write"><li>멘토 신청</li></a>
-        <a th:if = "${session.userNumber == null}" href="/user/login"><li>로그인</li></a>
+        <!--<a th:if = "${session.userNumber == null}" href="/user/login"><li>로그인</li></a>-->
+        <a th:if = "${session.userNumber == null}" onclick="login();"><li id="loginModalGo">로그인</li></a>
         <th:block  th:unless= "${session.userNumber == null}">
           <a href="/note/receiveList"><li>쪽지함</li></a>
           <li class="drop-menu">
@@ -51,6 +52,47 @@
         </th:block>
       </nav>
     </div>
+
+    <!--로그인 모달-->
+    <div class="modal-container">
+      <div class="modal-window">
+        <section class="login-form">
+          <div class="logoimg"></div>
+          <div class="loginTitleModal">로그인</div>
+          <form action="/user/login" method="post">
+            <div class="int-areaDiv">
+              <div class="int-area">
+                <input type="text" name="userId" id="id" autocomplete="off" required>
+                <label for="id">아이디</label>
+              </div>
+              <div class="int-area">
+                <input type="password" name="userPassword" id="pw" autocomplete="off" required>
+                <label for="pw">비밀번호</label>
+              </div>
+            </div>
+            <div class="btn-area">
+              <button type="submit" id="btn">로그인</button>
+            </div>
+          </form>
+          <div class="caption">
+            <a th:href="@{/user/findId}">아이디 잊으셨나요?</a>
+          </div>
+          <div class="caption">
+            <a th:href="@{/user/findPassword}">비밀번호를 잊으셨나요?</a>
+          </div>
+
+          <div class="caption">
+            <a th:href="@{/user/join}">계정이 없으신가요??</a>
+          </div>
+        </section>
+      </div>
+
+
+    </div>
+    <!--로그인 모달창-->
+
+
+
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script>
       $('.menu').on('click', function () {
@@ -78,6 +120,36 @@
           });
         }
       });
+
+      //----추가 부분 -----
+      //로그인 누르면 모달창 열림
+      function login() {
+        var modalContainer = document.querySelector(".modal-container");
+        modalContainer.classList.add("fade-in");
+        modalContainer.style.display = "block";
+      };
+
+
+      //closeModal 함수 코드
+      function closeModal() {
+        var modalContainer = document.querySelector(".modal-container");
+        modalContainer.classList.remove("fade-in");
+        setTimeout(function () {
+          modalContainer.style.display = "none";
+        }, 300);
+      };
+
+      //모달 밖을 누르면 모달 창 없어짐
+      var modalContainer = document.querySelector(".modal-container");
+      modalContainer.addEventListener("click", function (event) {
+        if (event.target === modalContainer) {
+          closeModal();
+        }
+      });
+      //----추가 부분 -----
+
+
+
     </script>
   </header>
 <script src="https://kit.fontawesome.com/acf4f592bf.js" crossorigin="anonymous"></script>
