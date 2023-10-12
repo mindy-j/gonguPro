@@ -43,19 +43,21 @@ public class StudyController {
     }
 
     @PostMapping("/writeOk")
-    public RedirectView writeOk(StudyDto studyDto){
+    public RedirectView writeOk(StudyDto studyDto,HttpServletRequest req){
+        studyDto.setUserNumber((Long)req.getSession().getAttribute("userNumber"));
         studyService.register(studyDto);
         return new RedirectView("/study/list");
     }
 
     @GetMapping("/detail")
-    public String detailPage(Long studyNumber,Model model,HttpServletRequest req){
+    public String detailPage(Long studyNumber,Model model){
 //        likeStudyNum = studyNumber;
         StudyVo studyVo =studyService.find(studyNumber);
-        Long likeCount = likeService.likeTotal(studyNumber);
-        model.addAttribute("loginUser",(Long)req.getSession().getAttribute("userNumber"));
+
+//        model.addAttribute("loginUser",(Long)req.getSession().getAttribute("userNumber"));
+//        Long likeCount = likeService.likeTotal(studyNumber,(Long)req.getSession().getAttribute("userNumber"));
         model.addAttribute("selectUser",likeService.selectUser());
-        model.addAttribute("likeCount",likeCount);
+//        model.addAttribute("likeCount",likeCount);
         model.addAttribute("study",studyVo);
         return "studyBoard/studyDetail";
     }
@@ -68,14 +70,14 @@ public class StudyController {
         likeDto.setUserNumber(userNumber);
 
         StudyVo studyVo =studyService.find(Long.parseLong(studyNumber));
-        Long likeCount = likeService.likeTotal(Long.parseLong(studyNumber));
+        Long likeCount = likeService.likeTotal(Long.parseLong(studyNumber),userNumber);
         model.addAttribute("loginUser",(Long)req.getSession().getAttribute("userNumber"));
         model.addAttribute("selectUser",likeService.selectUser());
         model.addAttribute("likeCount",likeCount);
         model.addAttribute("study",studyVo);
 
         likeService.register(likeDto);
-        return "studyBoard/studyDetail";
+        return "index";
     }
 
     @GetMapping("/down")
@@ -84,7 +86,7 @@ public class StudyController {
         likeDto.setUserNumber(userNumber);
 
         StudyVo studyVo =studyService.find(Long.parseLong(studyNumber));
-        Long likeCount = likeService.likeTotal(Long.parseLong(studyNumber));
+        Long likeCount = likeService.likeTotal(Long.parseLong(studyNumber),userNumber);
         model.addAttribute("loginUser",(Long)req.getSession().getAttribute("userNumber"));
         model.addAttribute("selectUser",likeService.selectUser());
         model.addAttribute("likeCount",likeCount);

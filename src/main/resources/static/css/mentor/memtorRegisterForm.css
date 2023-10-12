@@ -44,7 +44,7 @@ option{
     text-align: center;
 }
 .file-small-div{
-    height: 50px; 
+    height: 50px;
     width: 600px;
     border: 1px solid gray;
 }
@@ -68,7 +68,7 @@ option{
     margin: -1px;
     overflow: hidden;
     clip: rect(0,0,0,0);
- 
+
 }
 
 .btn-div{
@@ -81,7 +81,7 @@ button{
     border-radius: 10px;
     width: 200px;
     height: 50px;
-   
+
 }
 .btn1{
     margin-right: 10px;
@@ -89,7 +89,7 @@ button{
     color: white;
 }
 .btn2{
-   
+
     background-color: red;
     color: white;
 }
