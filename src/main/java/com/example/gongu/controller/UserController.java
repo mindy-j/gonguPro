@@ -1,6 +1,11 @@
 package com.example.gongu.controller;
 
 import com.example.gongu.domain.dto.UserDto;
+import com.example.gongu.domain.vo.PaymentCriteria;
+import com.example.gongu.domain.vo.PaymentPageVo;
+import com.example.gongu.domain.vo.admin.AdminCriteria;
+import com.example.gongu.domain.vo.admin.AdminPageVo;
+import com.example.gongu.service.PaymentService;
 import com.example.gongu.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -24,6 +29,7 @@ import java.util.Map;
 @Slf4j
 public class UserController {
     private final UserService userService;
+    private final PaymentService paymentService;
 
     //로그인 화면전환
     @GetMapping("/login")
@@ -132,6 +138,21 @@ public class UserController {
     public RedirectView modifyUser(String userNickname, String userPhone, String userEmail, Long userNumber){
         userService.modifyUser(userNickname, userPhone, userEmail, userNumber);
         return new RedirectView("/user/myPage");
+    }
+
+    @GetMapping("/paymentBoard")
+    public String paymentBoard(HttpServletRequest req, Model model, PaymentCriteria paymentCriteria){
+        Long userNumber = (Long)req.getSession().getAttribute("userNumber");
+        paymentCriteria.setUserNumber(userNumber);
+        model.addAttribute("payList",  paymentService.findPay(paymentCriteria));
+        model.addAttribute("pageInfo", new PaymentPageVo(paymentService.findPayTotal(userNumber),paymentCriteria));
+        return "user/paymentBoard";
+    }
+
+    @GetMapping("modifyLevel")
+    public void modifyLevel(@RequestParam("buyer_name") String buyer_name){
+        Long classNumber = Long.parseLong(buyer_name);
+        paymentService.modifyClass(classNumber);
     }
 
 

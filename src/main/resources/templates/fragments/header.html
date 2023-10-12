@@ -32,17 +32,17 @@
         <th:block  th:unless= "${session.userNumber == null}">
           <a href="/note/receiveList"><li>쪽지함</li></a>
           <li class="drop-menu">
-            <span class="menu">내정보
+            <span class="menu" id="menu">내정보
               <i class="fa-solid fa-caret-down down" style="color: #000000;"></i>
               <i class="fa-solid fa-caret-up up" style="color: #000000; display: none"></i>
             </span>
-            <div class="menu-box">
+            <div class="menu-box" id="menu-box">
               <nav class="menu-nav">
                 <ul>
                   <li class="menu-li"><a href="/user/myPage">내 프로필</a></li>
                   <li class="menu-li"><a href="">내 작성글</a></li>
                   <li class="menu-li"><a href="">내 관심글</a></li>
-                  <li class="menu-li"><a href="">결제 내역</a></li>
+                  <li class="menu-li"><a href="/user/paymentBoard">결제 내역</a></li>
                 </ul>
               </nav>
             </div>
@@ -51,31 +51,44 @@
         </th:block>
       </nav>
     </div>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<!--    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>-->
     <script>
-      $('.menu').on('click', function () {
-        var menuBox = $('.menu-box');
-        if (menuBox.css('display') === 'block') {
-          menuBox.animate({
-            opacity: 0,
-            height: 0
-          }, 300, function () {
-            menuBox.css('display', 'none');
-            $('.up').css('display', 'none');
-            $('.down').css('display', 'inline');
-          });
+      // $('.menu').on('click', function () {
+      //   var menuBox = $('.menu-box');
+      //   if (menuBox.css('display') === 'block') {
+      //     menuBox.animate({
+      //       opacity: 0,
+      //       height: 0
+      //     }, 300, function () {
+      //       menuBox.css('display', 'none');
+      //       $('.up').css('display', 'none');
+      //       $('.down').css('display', 'inline');
+      //     });
+      //   } else {
+      //     menuBox.css({
+      //       display: 'block',
+      //       opacity: 0,
+      //       height: 'auto'
+      //     }).animate({
+      //       opacity: 1,
+      //       height: 'auto',
+      //     }, 300, function (){
+      //       $('.down').css('display', 'none');
+      //       $('.up').css('display', 'inline');
+      //     });
+      //   }
+      // });
+      var menu = document.getElementById('menu');
+      menu.addEventListener('click', function () {
+        var menuBox = document.getElementById('menu-box');
+        if (menuBox.style.display === 'block') {
+          menuBox.style.display = 'none';
+          document.querySelector('.up').style.display = 'none';
+          document.querySelector('.down').style.display = 'inline';
         } else {
-          menuBox.css({
-            display: 'block',
-            opacity: 0,
-            height: 'auto'
-          }).animate({
-            opacity: 1,
-            height: 'auto',
-          }, 300, function (){
-            $('.down').css('display', 'none');
-            $('.up').css('display', 'inline');
-          });
+          menuBox.style.display = 'block';
+          document.querySelector('.down').style.display = 'none';
+          document.querySelector('.up').style.display = 'inline';
         }
       });
     </script>

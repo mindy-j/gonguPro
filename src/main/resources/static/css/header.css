@@ -86,12 +86,19 @@
 }
 .menu-box{
     position: absolute;
-    margin-top: 10px;
+    margin-top: 20px;
     background: white;
-    border-top: 2px solid lightgrey;
+    border-bottom: 2px solid lightgrey;
+    border-right: 2px solid lightgrey;
+    border-left: 2px solid lightgrey;
     z-index: 1;
     width: 80px;
     display: none;
+    width: 150px;
+    margin-left: -35px;
+    text-align: center;
+
+    transition: all 1s;
 }
 .menu-nav{
     line-height: 35px;
@@ -116,3 +123,4 @@
 .header-nav>a:hover{
     color: #00A8F3;
 }
+

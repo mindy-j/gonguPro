@@ -20,9 +20,9 @@ public class ClassVo {
     private String classMajor;
     private String classIntroduce;
     private String classPlan;
-    private Date classRegisterDate;
+    private String classRegisterDate;
     private String classLevel;
-    private Date classUpdateDate;
+    private String classUpdateDate;
     private Long userNumber;
     private String applyEducation; //학력
     private String userName; //유저 아이디

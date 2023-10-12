@@ -5,4 +5,61 @@
         INSERT INTO TBL_PAYMENT(PAYMENT_NUMBER, PAYMENT_AMOUNT, PAYMENT_MERCHANT_UID, USER_NUMBER, CLASS_NUMBER)
         VALUES (SEQ_PAYMENT_NUMBER.NEXTVAL, #{paymentAmount}, #{paymentMerchantUid}, #{userNumber}, #{classNumber})
     </insert>
+
+<!--    결제 내역 목록-->
+    <select id="selectPay" resultType="adminClassVo">
+        SELECT
+        RNUM,
+        CLASS_NUMBER,
+        TO_CHAR(CLASS_START_DATE, 'YYYY"."MM"."DD') AS CLASS_START_DATE,
+        TO_CHAR(CLASS_END_DATE, 'YYYY"."MM"."DD') AS CLASS_END_DATE,
+        CLASS_PRICE,
+        CLASS_ADDRESS,
+        USER_NAME,
+        APPLY_EDUCATION
+        FROM(
+        SELECT
+        ROWNUM AS RNUM,
+        F.CLASS_NUMBER,
+        F.CLASS_START_DATE,
+        F.CLASS_END_DATE,
+        F.CLASS_PRICE,
+        F.CLASS_ADDRESS,
+        F.USER_NAME,
+        F.APPLY_EDUCATION
+        FROM
+        (SELECT
+        CB.CLASS_NUMBER,
+        CB.CLASS_START_DATE,
+        CB.CLASS_END_DATE,
+        CB.CLASS_PRICE,
+        CB.CLASS_ADDRESS,
+        U.USER_NAME,
+        MA.APPLY_EDUCATION
+        FROM
+        TBL_CLASS_BOARD CB
+        JOIN
+        TBL_USERS U ON CB.USER_NUMBER = U.USER_NUMBER
+        LEFT JOIN
+        TBL_MEMTO_APPLY MA ON CB.USER_NUMBER = MA.USER_NUMBER
+        WHERE CLASS_NUMBER IN (SELECT CLASS_NUMBER  FROM TBL_PAYMENT tp WHERE USER_NUMBER = #{userNumber})
+        ORDER BY CLASS_NUMBER DESC)F
+        <![CDATA[
+            WHERE ROWNUM <= #{page} * #{amount}
+        ]]>
+        ) WHERE RNUM > (#{page} - 1) * #{amount}
+
+    </select>
+
+    <select id="selectPayTotal" resultType="_int">
+        SELECT COUNT(CLASS_NUMBER)
+        FROM TBL_CLASS_BOARD
+        WHERE CLASS_NUMBER IN (SELECT CLASS_NUMBER  FROM TBL_PAYMENT tp WHERE USER_NUMBER = #{userNumber})
+    </select>
+
+    <update id="updateClass">
+        UPDATE TBL_CLASS_BOARD
+        SET CLASS_LEVEL = '3'
+        WHERE CLASS_NUMBER = #{classNumber}
+    </update>
 </mapper>
