@@ -1,108 +1,99 @@
 *{
-    margin: 0;
-    padding: 0;
+    margin:0;
+
 }
-p{
-margin-top: 10px;
-font-weight: bold;
-}
-body{
-    width:100%;
-    height:100%;
-    background-color: antiquewhite;
-    display: flex;
-    margin-top: 20px;
-}
-.full-box{
-   
-    width: 900px;
-    height: 100%;
-    margin: 0 auto;
+.body{
     background-color: white;
-   
-  
-}
-.form-full{
-    margin-left: 100px;
-    margin-top: 50px;
-}
-.plan{
-    margin-bottom: 50px;
 }
 
-.edu-plan,.class-schedule,.memtor-introduction, .class-howto,.class-howto2, .class-loction, .class-price ,.edu-title{
-    font-size: 20px;
-    font-weight: bold;
-}
-.edu-plan-div{
-    margin-top: 30px;
-}
-.memo{
-    color: red;
-    font-weight: bold;
-}
-.edu{
-    height: 30px;
-}
-
-.plan_data{
+.item-ul{
     display: flex;
-    font-weight: bold;
-}
-.plan_data_div1{
-    margin-right: 40px;
-    text-align: center;
-}
-.plan_data_div2{
-    text-align: center;
+    list-style-type: none;
+    justify-content: space-around;
+    width:100%;
+
+    border-bottom: 1.5px solid rgb(185, 184, 184);
 }
 
-input[type='text']{
-    border-radius: 5px;
-    text-align: center;
-   
-    height: 50px; 
-    width: 280px;
+.item-ul-2{
+    display: flex;
+    list-style-type: none;
+    justify-content: center;
+    width:100%;
+    border-bottom: 1.5px solid rgb(185, 184, 184);
 }
+.item-ul li{
+    width:33%;
+}
+.item-ul-2 li{
+    width:50%;
+}
+li input{
+    width:100%;
+    border:none;
+    text-align: center;
+    height:60px;
+    font-size:larger;
+}
+li select{
+    width:100%;
+    border:none;
+    text-align: center;
+    height:60px;
+    font-size:larger;
 
-input[type='date']{
-    text-align: center;
-    color: gray;
-    border-radius: 5px;
-    height: 50px; 
-    width: 280px;
 }
-select{
-    height: 50px; 
-    width: 280px;
-    text-align: center;
-}
-
-.btn-div{
-    margin-top: 50px;
-    margin-bottom: 50px;
+.start_date_li{
     display: flex;
     justify-content: center;
+    align-items: center;
+}
+.section-1{
+
+}
+.container{
+    width:100%;
+    height:1500px;
+
+}
+.start_date_text{
+    width:120px;
+    margin-left: 20px;
+    font-size:larger;
+}
+.study-title{
+    margin-bottom: 10px;
+    width:100%;
+}
+.study-title > input{
+    width:100%;
 }
 
-.btn1{
-    margin-right: 10px;
-    background-color: #166cea;
-    color: white;
-}
-.btn2{
-   
-    background-color: red;
-    color: white;
-}
-.planFrom-div,.plan_data,.aboutMentor-div,.location-second, .price-second, .howto-second,.howto-second2 , .edu-title-div{
-    margin-top: 5px;
-}
-.howTo1, .location1{
-   
-    margin-right: 40px;
-}
-
-.howtoFulldiv, .locationfulldiv{
+.button-div{
+    width:100%;
     display: flex;
+    justify-content: end;
+    margin-top:20px;
+}
+.rest-btn{
+    background-color:lightcoral;
+    width:100px;
+    border: none;
+    border-radius: 20px;
+    font-size: larger;
+    color:white;
+    font-weight: bold;
+}
+.registerBtn{
+    background-color:#00A8F3;
+    width:100px;
+    border: none;
+    border-radius: 20px;
+    font-size: larger;
+    color:white;
+    font-weight: bold;
+    margin-left: 10px;
+}
+.class-plan-box{
+    margin-top:20px;
 }
