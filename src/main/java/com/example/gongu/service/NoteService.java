@@ -48,4 +48,9 @@ public class NoteService {
     public void modifyReceiveLevel(NoteVo noteVo) {
         noteMapper.updateReceiveLevel(noteVo);
     }
+
+//    받은쪽지
+    public NoteVo findReceiveNote(Long noteNumber) {
+        return noteMapper.selectReceiveNote(noteNumber);
+    }
 }

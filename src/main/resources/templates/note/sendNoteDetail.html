@@ -9,18 +9,8 @@
     <link rel="stylesheet" href="/css/header.css">
 </head>
 <body>
-<header th:replace="fragments/header :: header"></header>
+<header th:replace="fragments/header :: header" class="header"></header>
     <div class="note-wrap">
-        <!-- 쪽지함 전용 헤더 -->
-        <div class="note-header">
-            <div class="note-main-box">
-                <a href="" class="gongu-main">GONGU</a>
-                <a href="/note/receiveList" class="note-main">쪽지</a>
-            </div>
-            <div class="logout">
-                <span>로그아웃</span>
-            </div>
-        </div>
         <!-- 쪽지함 바디 -->
         <div class="note-body">
             <!-- 쪽지함 기능들 -->
@@ -43,26 +33,25 @@
                 <div class="note-box">
                     <!-- 쪽지 -->
                     <div class="note-write-container">
-                        <form action="">
-                            <div class="receiver-box">
-                                <div class="receiver-word">받은사람</div>
-                                <div class="note-sender">상대방 아이디</div>
-                            </div>
-                            <div class="title-box">
-                                <div class="title-word">제목</div>
-                                <div class="note-title">내가 보낸 제목</div>
-                            </div>
-                            <div class="content-box">
-                                <div class="content-word">내용</div>
-                                <!-- 내용 받아서 넣기 시작 -->
-<textarea class="note-content">이곳에 내용이 들어갑니다만 좀 많이 쓴다면 어떻게 되는지 실험하려고 일부러 길게 쓰고 있습니다 어떤가요 넘어가나요 아니면 내려가나요
-엔터도 잘 작동합니까?
-크기가 정해져 있습니다</textarea>
-<!-- 내용 받아서 넣기 끝 -->
-                            </div>
+                        <div class="receiver-box">
+                            <div class="receiver-word">받은사람</div>
+                            <div class="note-sender" th:text="${sendNoteDetail.userId}">상대방 아이디</div>
+                        </div>
+                        <div class="title-box">
+                            <div class="title-word">제목</div>
+                            <div class="note-title" th:text="${sendNoteDetail.noteTitle}">내가 보낸 제목</div>
+                        </div>
+                        <div class="content-box">
+                            <div class="content-word">내용</div>
+                            <!-- 내용 받아서 넣기 시작 -->
+                        <div class="note-content" th:utext="${sendNoteDetail.noteContent}"></div>
+                            <!-- 내용 받아서 넣기 끝 -->
+                        </div>
+                        <form method="post" action="/note/sendRemove">
                             <div class="btn-box">
                                 <button class="btn-note-delete">삭제</button>
                             </div>
+                            <input type="hidden" th:value="${sendNoteDetail.noteNumber}" name="noteNumber">
                         </form>
                     </div>
                 </div>
