@@ -54,7 +54,7 @@ a{
 .main-container{
     display: flex;
     width: 100%;
-    min-height: 850px;
+    min-height: 892px;
 }
 .check{
     border-bottom: 3px solid lightgray !important;
@@ -96,7 +96,7 @@ a{
 }
 .right-title{
     width: 1000px;
-    height: 70px;
+    height: 100px;
     display: flex;
     align-items: center;
     font-weight: bold;

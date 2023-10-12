@@ -83,7 +83,7 @@
 
 #reply-content {
     margin: 10px 0;
-    width: 100%;
+    width: 97%;
     resize: none;
     border: none;
     background-color: #f7f7f7;
@@ -105,15 +105,16 @@
     color: white;
     text-decoration: none;
     margin-left: 20px;
-    border: 1px solid #00c7ae;
+    border: 1px solid #00A8F3;
     padding: 7px;
     cursor: pointer;
     height: 40px;
-    background-color: #00c7ae;
+    background-color: #00A8F3;
+    font-weight: bold;
 }
 
 .btn-reply:hover {
-    background-color: #00a792;
+    background-color: #0286c1;
 }
 
 /* 댓글 목록 스타일 */

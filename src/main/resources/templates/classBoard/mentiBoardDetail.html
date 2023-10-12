@@ -12,13 +12,14 @@
     .btn-container{
       width:100%;
       display: flex;
-      justify-content: end;
-      margin-top:50px;
+      justify-content: space-between;
+      align-content: center;
+      margin-top:20px;
     }
     .update-btn{
       width:100px;
       height:30px;
-      background-color: #00c7ae;
+      background-color: #00A8F3;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -30,7 +31,7 @@
     .delete-btn{
       width:100px;
       height:30px;
-      background-color: #00bfff;
+      background-color: lightcoral;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -48,119 +49,89 @@
 <body>
 <header th:replace="fragments/header :: header"></header>
 <div class="fulldiv">
-  <img class="goback" src="https://www.holaworld.io/images/info/arrowLeft.png" alt="뒤로가기사진">
+<!--  <img class="goback" src="https://www.holaworld.io/images/info/arrowLeft.png" alt="뒤로가기사진">-->
   <div class="studyTitle">
     <h1 name="studyTitle" th:text="${class.classTitle}">최욱진 멘토와 함께 갈 학생 모집합니다</h1><!--스터디 구분들어갈 자리-->
   </div>
   <div class="userAndUpload">
-            <span class="writerUser" name="userId" th:text="${class.userName}"><!--스터디 모집 작성자-->
-              <!--작성자앞에 로고 사진-->
-                <img class="logoimg" src="https://hola-post-image.s3.ap-northeast-2.amazonaws.com/default.PNG" width="30px" height="25px">작성자 |</span>
-    <span name="registerDate"></span><!--스터디모집글등록날짜-->
+    <div class="logoimg">
+      <img src="https://hola-post-image.s3.ap-northeast-2.amazonaws.com/default.PNG" width="30px" height="30px">
+    </div>
+    <div class="log-container">
+    <span class="writerUser" name="userId" th:text="${class.userName+' | '}"><!--스터디 모집 작성자-->
+      <!--작성자앞에 로고 사진-->이종민&nbsp;|</span>
+      <span name="registerDate" class="registerDate" th:text="${class.classRegisterDate}">2023.10.11</span><!--스터디모집글등록날짜-->
+    </div>
+    <div class="updelte" th:if="${class.userNumber == session.userNumber}">
+      <a  th:href="@{/class/update(classNumber=${class.classNumber})}"><div class="update-btn">수정</div></a>
+      <a  th:href="@{/class/update(classNumber=${class.classNumber})}"><div class="delete-btn">삭제</div></a>
+      </th:block>
+    </div>
   </div>
 
 
   <div class="secdiv"><!--두번째 박스 진행방식, 시작예정등등 담아있는 박스 -->
-    <div class="tablediv1">
-      <table>
-        <tr>
-          <td class="one" name="howToProceed">진행 방식</td>
-          <td class="se" name="??" th:text="${class.classProcess}">온/오프라인</td>
-          <!--
-              온라인이면 value :online
-              오프라인이면 value : offline
-              이러게 처리했음(studyWrite.html참조)
-           -->
-        </tr>
-        <tr>
-          <td class="one" name="people">가격</td>
-          <td class="se" name="??" th:text="${class.classPrice}">120,000</td>
-          <!--
-                 <option value="unsettled-person">인원 미정
-                  <option value="one">1명
-                  <option value="two">2명
-                  <option value="three">3명
-                  <option value="four">4명
-                  <option value="five">5명
-                  <option value="six">6명
-                  <option value="seven">7명
-                  <option value="eight">8명
-                  <option value="nine">9명
-                  <option value="overten">10명 이상
-
-                  이러게 처리했음(studyWrite.html참조)
-           -->
-        </tr>
-
-        <tr>
-          <td class="one" >지역</td>
-          <td class="se" name="location" th:text="${class.classAddress}">서울시 노원구</td>
-        </tr>
-      </table>
+    <div class="left-container">
+      <div class="sub">
+        <div class="sub-title sone">학 력</div>
+        <div class="sub-content" th:text="${class.applyEducation}">서울대학교 졸업</div>
+      </div>
+      <div class="sub">
+        <div class="sub-title sone">금 액</div>
+        <div class="sub-content"th:text="${class.classPrice}+'원'">20000원</div>
+      </div>
+      <div class="sub">
+        <div class="sub-title sone">지 역</div>
+        <div class="sub-content" th:text="${class.classAddress}">서울시 노원구</div>
+      </div>
     </div>
-
-
-    <div class="tablediv2">
-      <table>
-        <tr>
-          <td class="one" name="">수업일정</td>
-          <td class="se" name="" th:text="${class.classStartDate+' ~ '+class.classEndDate}"></td>
-        </tr>
-
-        <tr>
-          <td class="one" name="">수업 구분</td>
-          <td class="se" name="studyfor" th:text="${class.classMajor}">Java 프로그래밍 언어</td>
-        </tr>
-        <tr>
-          <td class="one" name="">멘토 학력</td> <!--경력?-->
-          <td class="se" name="studyfor" th:text="${class.applyEducation}">서울대학교 OO과</td>
-        </tr>
-      </table>
+    <div class="right-container">
+      <div class="sub">
+        <div class="sub-title">수업 일정</div>
+        <div class="sub-content" th:text="${class.classStartDate+' ~ '+class.classEndDate}">2023.10.11 ~ 2023.10.28</div>
+      </div>
+      <div class="sub">
+        <div class="sub-title">수업 구분</div>
+        <div class="sub-content" th:text="${class.classMajor}">고전 문학</div>
+      </div>
+      <div class="sub">
+        <div class="sub-title">진행 방식</div>
+        <div class="sub-content" th:text="${class.classProcess}">온라인</div>
+      </div>
     </div>
   </div><!--두번째 박스 끝나는 지점-->
 
-  <div class="thHoleDiv"><!--세번쨰 박스 스터디 소개부분 시작-->
-    <div class="ourStudtTitle">
-      <h2>강사 소개</h2>
-    </div>
-    <div>
-      <div class="ourStudtIs" th:utext="${class.classIntroduce}">  <!--pre태그로 변경예정-->
-
-
-      </div>
-
+    <div class="thHoleDiv"><!--세번쨰 박스 스터디 소개부분 시작-->
       <div class="ourStudtTitle">
-        <h2>수업 커리큘럼</h2>
+        <h2>강사 소개</h2>
       </div>
       <div>
-        <div class="ourStudtIs" th:utext="${class.classPlan}"> <!--pre태그로 변경예정-->
-
+        <div class="ourStudtIs" th:utext="${class.classIntroduce}">  <!--pre태그로 변경예정-->
+        </div>
+        <div class="ourStudtTitle">
+          <h2>수업 커리큘럼</h2>
+        </div>
+        <div>
+          <div class="ourStudtIs" th:utext="${class.classPlan}"> <!--pre태그로 변경예정-->
+          </div>
         </div>
 
+      </div><!--세번쨰 박스 스터디 소개부분 끝 -->
 
-
-
+      <div class="btn-container">
         <div class="checkDiv"><!--조회수랑 하이? 담는 총 상자-->
           <div>
             <img src="https://www.holaworld.io/images/info/bookmark.svg" width="20px" height="18px">
             <span>0</span><!--찜하기인가?-->
           </div>
         </div>
+        <button th:if="${class.classLevel == '2'}" class="payment">
+          결제
+        </button>
+        <button th:if="${class.classLevel == '3'}" class="payment-end" type="button">
+          결제완료
+        </button>
       </div>
-
-    </div><!--세번쨰 박스 스터디 소개부분 끝 -->
-
-  <div class="btn-container">
-
-      <button class="payment" id="check_module">
-        결제
-      </button>
-    <th:block th:if="${class.userNumber == session.userNumber}">
-      <a th:href="@{/class/update(classNumber=${class.classNumber})}"><div class="update-btn">수정</div></a>
-      <a th:href="@{/class/delete(classNumber=${class.classNumber})}"><div class="delete-btn">삭제</div></a>
-    </th:block>
-
-  </div>
 
     <!--댓글 상자 -->
     <div class="reply-wrap">
@@ -181,19 +152,11 @@
         <!-- /리플 예시 -->
       </div>
     </div>
-
-
-
-
-
-
-
-
   </div> <!--fulldiv 끝나는 지점 길이100%-->
 
 
 </div>
-<input type="hidden" th:value="${class.classNumber}" class="class-num"/>
+<input type="hidden" th:value="${class.classNumber}" class="class-num" name="classNumber"/>
 <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
 
 <script th:inline="javascript"> // 타임리프 문법을 자바스크립트에서 사용하기 위한 설정
@@ -206,7 +169,7 @@ let loginNumber = [[${session.userNumber}]]; // 타임리프 문법은 [] 2개�
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <script>
-  $("#check_module").click(function () {
+  $(".payment").click(function () {
     var IMP = window.IMP; // 생략가능
     IMP.init('imp22267731');
     // i'mport 관리자 페이지 -> 내정보 -> 가맹점식별코드
@@ -252,7 +215,14 @@ let loginNumber = [[${session.userNumber}]]; // 타임리프 문법은 [] 2개�
             paid_amount: rsp.paid_amount, //결제금액
           },
           success: function () {
-            location.replace('/user/index');
+            $.ajax({
+              type:"get",
+              url:"/user/modifyLevel",
+              data:{
+                buyer_name: rsp.buyer_name
+              }
+            })
+            location.replace('/user/paymentBoard');
           },
           error: function () {
             alert('서버 요청 중 오류가 발생했습니다.');
