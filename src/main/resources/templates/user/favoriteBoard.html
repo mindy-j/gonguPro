@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="../../static/css/index.css"/>
+  <link rel="stylesheet" href="/css/index.css"/>
   <script src="https://kit.fontawesome.com/acf4f592bf.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="/css/header.css">
   <style>
@@ -28,105 +28,45 @@
     }
 
     /* 그리드 아이템 스타일 설정 (예: 배경색, 테두리 등) */
+    .page-container{
+      width: 500px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 70px;
+      margin: 0 auto;
+    }
+    .page-ul{
+      list-style: none;
+    }
+    .page-ul > a{
+      color: black;
+    }
+    .page-btn{
+      float: left;
+      margin: 0 10px;
+      border: 2px solid lightgray;
+      border-radius: 5px;
+      width: 20px;
+      text-align: center;
+    }
+    .active{
+      background: lightsteelblue;
+    }
 
   </style>
 </head>
 <body>
 
 <header th:replace="fragments/header :: header"></header>
-  <nav class="nav-bar">
-    <div class="nav-left">
-      <a href="#">
-        <img src="./logo.png" alt="logo" class="logo-img">
-      </a>
-    </div>
-    <div class="nav-right">
-      <ul>
-        <li>
-          <input type="text" name="search" value="" class="search-bar" placeholder="제목을 입력해주세요"/>
-        </li>
-        <li class="study">
-          <a href="#"><p class="header-text">스터디 모집</p></a> <!--스터디 목록으로 이동-->
-        </li>
-        <li class="menti">
-          <a href="#"><p class="header-text">멘티 모집</p></a> <!--멘티 모집 목록으로 이동-->
-        </li>
-        <li class="login">
-          <a href="#"><p class="header-text">로그인</p></a> <!--로그인 창으로 이동-->
-        </li>
-      </ul>
-  </nav>
 
-</header>
-<!--로그인 후 헤더-->
-<header class="header-container none"> <!--헤더 컨테이너-->
-  <nav class="nav-bar">
-    <div class="nav-left-login">
-      <a href="#">
-        <img src="logo.jpg" alt="logo" class="logo-img">
-      </a>
-    </div>
-    <div class="nav-right">
-      <ul>
-        <li>
-          <input type="text" name="search" value="" class="search-bar" placeholder="제목을 입력해주세요"/>
-        </li>
-        <li class="study">
-          <a href="#"><p class="header-text">스터디 모집</p></a> <!--스터디 목록으로 이동-->
-        </li>
-        <li class="menti">
-          <a href="#"><p class="header-text">멘티 모집</p></a> <!--멘티 모집 목록으로 이동-->
-        </li>
-        <li class="login">
-          <a href="#"><p class="header-text">쪽지함</p></a> <!--로그인 창으로 이동-->
-        </li>
-
-        <li class="myPage">
-          <a href="#"><p class="header-text">마이페이지</p></a> <!--로그인 창으로 이동-->
-        </li>
-      </ul>
-  </nav>
-</header>
-<!--멘토로 로그인 헤더-->
-<header class="header-container "> <!--헤더 컨테이너-->
-  <nav class="nav-bar">
-    <div class="nav-left-login-mentor">
-      <a href="#">
-        <img src="logo.jpg" alt="logo" class="logo-img">
-      </a>
-    </div>
-    <div class="nav-right">
-      <ul>
-        <li>
-          <input type="text" name="search" value="" class="search-bar" placeholder="제목을 입력해주세요"/>
-        </li>
-        <li class="study">
-          <a href="#"><p class="header-text">스터디 모집</p></a> <!--스터디 목록으로 이동-->
-        </li>
-        <li class="menti">
-          <a href="#"><p class="header-text">멘티 모집</p></a> <!--멘티 모집 목록으로 이동-->
-        </li>
-        <li class="menti">
-          <a href="#"><p class="header-text">멘토 신청</p></a> <!--멘티 모집 목록으로 이동-->
-        </li>
-        <li class="login">
-          <a href="#"><p class="header-text">쪽지함</p></a> <!--로그인 창으로 이동-->
-        </li>
-
-        <li class="myPage">
-          <a href="#"><p class="header-text">마이페이지</p></a> <!--로그인 창으로 이동-->
-        </li>
-      </ul>
-    </div>
-  </nav>
-</header>
 <div class="container">
   <h2>내 관심글</h2>
   <div class="grid-container">
     <!-- 그리드 아이템 -->
 
-    <div th:each="study : ${studyList}">
-      <a th:href="@{/study/detail(studyNumber=${study.studyNumber})}" >
+    <div th:each="likeList : ${likeList}">
+      <a th:href="@{/study/detail(studyNumber=${likeList.studyNumber})}" >
         <div class="good-board">
           <div class="category-img-box" >
             <div class="study-logo">
@@ -134,20 +74,19 @@
             </div>
           </div>
           <div class="deadline-box" >
-            <p class="deadline" name="시작일" th:text="'시작일  |  '+${study.studyStartDate}"> </p>
+            <p class="deadline" name="시작일" th:text="'시작일  |  '+${likeList.studyStartDate}"> </p>
           </div>
           <div class="content-box" name="제목">
-            <p class="content" th:text="${study.studyTitle}"></p>
+            <p class="content" th:text="${likeList.studyTitle}"></p>
           </div>
           <div class="category-box" name="category">
-            <p class="category" name="카테고리" th:text="${study.studyMajor}"></p>
+            <p class="category" name="카테고리" th:text="${likeList.studyMajor}"></p>
           </div>
           <div class="address-box">
-            <p class="address" name="주소" th:text="${study.studyAddress}"></p>
+            <p class="address" name="주소" th:text="${likeList.studyAddress}"></p>
           </div>
           <div class="user-box">
-            <span class="user-nickname" th:text="${study.userNickname}"></span>
-            <span class="commend-count" th:text="${likeCount}"></span>
+            <span class="user-nickname" th:text="${likeList.userNickname}"></span>
           </div>
         </div>
       </a>
@@ -163,6 +102,23 @@
 
   </div>
 </div>
-
+<!-- 페이징 처리 -->
+<div class="page-container">
+  <ul class="page-ul">
+    <a th:href="@{/like/list(page=${pageInfo.startPage-1})}" th:if="${pageInfo.prev}">
+      <li class="page-btn">&lt</li>
+    </a>
+    <th:block th:each="i : ${#numbers.sequence(pageInfo.startPage, pageInfo.endPage)}">
+      <a th:href="@{/like/list(page=${i})}">
+        <li class="page-btn" th:text="${i}" th:if="${i != pageInfo.Criteria.page}"></li>
+        <li class="page-btn active" th:text="${i}" th:unless="${i != pageInfo.Criteria.page}"></li>
+      </a>
+    </th:block>
+    <a th:href="@{/like/list(page=${pageInfo.endPage+1})}" class="page-a" th:if="${pageInfo.next}">
+      <li class="page-btn">&gt</li>
+    </a>
+  </ul>
+</div>
+<!-- /페이징 처리 -->
 </body>
 </html>

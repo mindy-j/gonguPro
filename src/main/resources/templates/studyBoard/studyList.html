@@ -69,95 +69,7 @@
 </head>
 <body>
 <header th:replace="fragments/header :: header"></header>
-<header class="header-container none"> <!--헤더 컨테이너-->
-    <nav class="nav-bar">
-        <div class="nav-left">
-            <a href="#">
-                <img src="./logo.png" alt="logo" class="logo-img">
-            </a>
-        </div>
-        <div class="nav-right">
-            <ul>
-                <li>
-                    <input type="text" name="search" value="" class="search-bar" placeholder="제목을 입력해주세요"/>
-                </li>
-                <li class="study">
-                    <a href="#"><p class="header-text">스터디 모집</p></a> <!--스터디 목록으로 이동-->
-                </li>
-                <li class="menti">
-                    <a href="#"><p class="header-text">멘티 모집</p></a> <!--멘티 모집 목록으로 이동-->
-                </li>
-                <li class="login">
-                    <a href="#"><p class="header-text">로그인</p></a> <!--로그인 창으로 이동-->
-                </li>
-            </ul>
-        </div>
-    </nav>
 
-</header>
-<!--로그인 후 헤더-->
-<header class="header-container none"> <!--헤더 컨테이너-->
-    <nav class="nav-bar">
-        <div class="nav-left-login">
-            <a href="#">
-                <img src="logo.jpg" alt="logo" class="logo-img">
-            </a>
-        </div>
-        <div class="nav-right">
-            <ul>
-                <li>
-                    <input type="text" name="search" value="" class="search-bar" placeholder="제목을 입력해주세요"/>
-                </li>
-                <li class="study">
-                    <a href="#"><p class="header-text">스터디 모집</p></a> <!--스터디 목록으로 이동-->
-                </li>
-                <li class="menti">
-                    <a href="#"><p class="header-text">멘티 모집</p></a> <!--멘티 모집 목록으로 이동-->
-                </li>
-                <li class="login">
-                    <a href="#"><p class="header-text">쪽지함</p></a> <!--로그인 창으로 이동-->
-                </li>
-
-                <li class="myPage">
-                    <a href="#"><p class="header-text">마이페이지</p></a> <!--로그인 창으로 이동-->
-                </li>
-            </ul>
-        </div>
-    </nav>
-</header>
-<!--멘토로 로그인 헤더-->
-<header class="header-container "> <!--헤더 컨테이너-->
-    <nav class="nav-bar">
-        <div class="nav-left-login-mentor">
-            <a href="#">
-                <img src="logo.jpg" alt="logo" class="logo-img">
-            </a>
-        </div>
-        <div class="nav-right">
-            <ul>
-                <li>
-                    <input type="text" name="search" value="" class="search-bar" placeholder="제목을 입력해주세요"/>
-                </li>
-                <li class="study">
-                    <a href="#"><p class="header-text">스터디 모집</p></a> <!--스터디 목록으로 이동-->
-                </li>
-                <li class="menti">
-                    <a href="#"><p class="header-text">멘티 모집</p></a> <!--멘티 모집 목록으로 이동-->
-                </li>
-                <li class="menti">
-                    <a href="#"><p class="header-text">멘토 신청</p></a> <!--멘티 모집 목록으로 이동-->
-                </li>
-                <li class="login">
-                    <a href="#"><p class="header-text">쪽지함</p></a> <!--로그인 창으로 이동-->
-                </li>
-
-                <li class="myPage">
-                    <a href="#"><p class="header-text">마이페이지</p></a> <!--로그인 창으로 이동-->
-                </li>
-            </ul>
-        </div>
-    </nav>
-</header>
 <div class="container">
     <div class="content-title">
         <h2>🔥스터디 모집</h2>
@@ -210,7 +122,6 @@
     </a>
 </div>
 
-
 <div class="page-container">
     <ul class="page-box"><!--study? board?-->
         <a th:href="@{/study/list(page=${pageInfo.startPage-1})}" class="page-a" th:if="${pageInfo.prev}">
@@ -234,5 +145,6 @@
         </a>
     </ul>
 </div>
+
 </body>
 </html>

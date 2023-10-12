@@ -1,135 +1,97 @@
+
 *{
-    margin: 0;
-    padding: 0;
-}
-span{
-    font-weight: bold;
-}
-body{
-    width:100%;
-    height:100%;
-    background-color: antiquewhite;
-    display: flex;
+    margin:0;
 
 }
-.full-box{
-
-    width: 900px;
-    height: 100%;
-    margin: 0 auto;
+.body{
     background-color: white;
 }
 
-
-.formfull-box{
-    
-    margin-left: 50px;
-    margin-top: 50px;
-}
-.getherPeople-div{
-    display: flex;  
-
-}
-
-.getherInfo{
-    height: 100px;
-
-}
-
-.howTo-div{
-    margin-right: 20px;
-}
-
-.study-div{
+.item-ul{
     display: flex;
-    margin-top: 20px;
-}
-.period-div{
-    margin-left: 20px;
-    
-}
-.section-1 > div{
-    margin-left:30px;
-}
-input[type='text']{
-    height: 33px; 
-    width: 300px;
-    border-radius: 5px;
-    border: 1px solid #d3d3d3;
-   
+    list-style-type: none;
+    justify-content: space-around;
+    width:100%;
+
+    border-bottom: 1.5px solid rgb(185, 184, 184);
 }
 
-input[type='date']{
-    height: 33px; 
-    width: 300px;
-    border-radius: 5px;
-    border: 1px solid #d3d3d3;
-}
-select{
-    height: 33px; 
-    width: 300px;
-    border-radius: 5px;
-    border: 1px solid #d3d3d3;
-}
-
-.location-div{
+.item-ul-2{
     display: flex;
-    margin-top: 20px;
+    list-style-type: none;
+    justify-content: center;
+    width:100%;
+    border-bottom: 1.5px solid rgb(185, 184, 184);
+}
+.item-ul li{
+    width:33%;
+}
+.item-ul-2 li{
+    width:50%;
+}
+li input{
+    width:100%;
+    border:none;
+    text-align: center;
+    height:60px;
+    font-size:larger;
+}
+li select{
+    width:100%;
+    border:none;
+    text-align: center;
+    height:60px;
+    font-size:larger;
 
 }
-.conntect-div{
-    margin-top: 20px;
-}
-.deadline-div{
-    margin-left: 20px;
-}
-.kakaoChat-div{
-    margin-top: 10px;
-}
-.section-2{
-
-    margin-top: 40px;
-    margin-bottom: 20px;
-}
-.aboutStudy{
-  
-    height: 100px;
-}
-.button-div{
-    margin-top: 20px;
-    margin-right: 40px;
-    display: flex;
-    justify-content: end;
-}
-.rest-btn{
-    margin-right: 10px;
-    width: 50px;
-    background-color: wheat;
-    border-radius: 5px;
-}
-.registerBtn{
-    width: 60px;
-    background-color: black;
-    color : white;
-    border-radius: 5px;
-}
-
-h1, h2{
-    display: flex;
-    
-}
-.number1{
-    margin-right: 8px;
-    width: 30px;
-    height: 30px;
+.start_date_li{
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 50%;
-    background: #ffcd00;
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 30px;
-    color: #fff;
-    margin-top: 8px;
-    }
+}
+.section-1{
+
+}
+.container{
+    width:100%;
+    height:1000px;
+
+}
+.start_date_text{
+    width:120px;
+    margin-left: 20px;
+    font-size:larger;
+}
+.study-title{
+    margin-bottom: 10px;
+    width:100%;
+}
+.study-title > input{
+    width:100%;
+}
+
+.button-div{
+    width:100%;
+    display: flex;
+    justify-content: end;
+    margin-top:20px;
+}
+.rest-btn{
+    background-color:lightcoral; /*색상 수정해야함*/
+    width:100px;
+    border: none;
+    border-radius: 20px;
+    font-size: larger;
+    color:white;
+    font-weight: bold;
+}
+.registerBtn{
+    background-color:#00A8F3; /*색상 수정해야함*/
+    width:100px;
+    border: none;
+    border-radius: 20px;
+    font-size: larger;
+    color:white;
+    font-weight: bold;
+    margin-left: 10px;
+}
