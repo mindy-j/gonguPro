@@ -139,24 +139,23 @@
 
                 <div class="checkDiv"><!--조회수랑 하이? 담는 총 상자-->
                     <div>
-                        <th:block th:if="${!(selectUser.contains(loginUser))}">
+                        <th:block th:if="${likeCount == 0}">
                             <a th:href="@{/study/up(studyNumber=${study.studyNumber})}" id="test">
                                 <img src="https://www.holaworld.io/images/info/bookmark.svg" width="20px" height="18px">
                             </a>
                         </th:block>
-                        <th:block th:if="${selectUser.contains(loginUser)}">
+                        <th:block th:unless="${likeCount == 0}">
                             <a th:href="@{/study/down(studyNumber=${study.studyNumber})}" id="test">
                                 <img src="https://www.holaworld.io/images/info/bookmark_filled.svg" width="20px" height="18px">
                             </a>
                         </th:block>
 
-                        <span th:text="${likeCount}"></span><!--찜하기인가?-->
                     </div>
                 </div>
             </div>
 
         </div><!--세번쨰 박스 스터디 소개부분 끝 -->
-        <th:block th:if="${study.studyNumber == session.userNumber}">
+        <th:block ><!--th:if="${study.userNumber == session.userNumber}"-->
             <div class="btn-container">
                 <a th:href="@{/study/update(studyNumber=${study.studyNumber})}"><div class="update-btn">수정</div></a>
                 <a th:href="@{/study/remove(studyNumber=${study.studyNumber})}"><div class="delete-btn">삭제</div></a>

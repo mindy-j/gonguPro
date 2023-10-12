@@ -1,6 +1,8 @@
 package com.example.gongu.controller;
 
 import com.example.gongu.domain.dto.LikeDto;
+import com.example.gongu.domain.vo.Criteria;
+import com.example.gongu.domain.vo.PageVo;
 import com.example.gongu.service.LikeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -18,19 +20,13 @@ import javax.servlet.http.HttpServletRequest;
 public class LikeController {
     private final LikeService likeService;
 
-    @GetMapping("/up")
-    public RedirectView likeUp(HttpServletRequest req, LikeDto likeDto){
-        Long userNumber = (Long)req.getSession().getAttribute("userNumber");
-
-        likeDto.setUserNumber(userNumber);
-
-        likeService.register(likeDto);
-        return new RedirectView("/study/list");
-    }
 
     @GetMapping("/list")
-    public String likeList(Long userNumber, Model model){
-        model.addAttribute("likeList",likeService.findList(userNumber));
+    public String likeList(HttpServletRequest req,Long userNumber, Model model,Criteria criteria){
+        model.addAttribute("likeList",likeService.findList((Long)req.getSession().getAttribute("userNumber"),criteria));
+        model.addAttribute("pageInfo", new PageVo(likeService.getTotal((Long)req.getSession().getAttribute("userNumber")),criteria));
         return "user/favoriteBoard";
     }
+
+
 }

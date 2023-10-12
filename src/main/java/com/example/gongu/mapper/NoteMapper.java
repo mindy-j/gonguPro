@@ -28,4 +28,7 @@ public interface NoteMapper {
     int selectReceiveTotal(Long recieverNumber);
 
     void updateReceiveLevel(NoteVo noteVo);
+
+//    받은쪽지
+    NoteVo selectReceiveNote(Long noteNumber);
 }

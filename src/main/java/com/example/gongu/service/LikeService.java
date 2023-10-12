@@ -1,6 +1,7 @@
 package com.example.gongu.service;
 
 import com.example.gongu.domain.dto.LikeDto;
+import com.example.gongu.domain.vo.Criteria;
 import com.example.gongu.domain.vo.StudyVo;
 import com.example.gongu.mapper.LikeMapper;
 import lombok.RequiredArgsConstructor;
@@ -19,8 +20,8 @@ private final LikeMapper likeMapper;
         likeMapper.insert(likeDto);
     }
 
-    public Long likeTotal(Long studyNumber){
-        Long total = likeMapper.likeTotal(studyNumber);
+    public Long likeTotal(Long studyNumber, Long userNumber){
+        Long total = likeMapper.likeTotal(studyNumber,userNumber);
         return total;
     }
 
@@ -33,8 +34,12 @@ private final LikeMapper likeMapper;
         likeMapper.delete(userNumber);
     }
 
-    public StudyVo findList(Long userNumber){
-        StudyVo vo = likeMapper.selectList(userNumber);
+    public List<StudyVo> findList(Long userNumber, Criteria criteria){
+        List<StudyVo> vo = likeMapper.selectList(userNumber,criteria);
         return vo;
+    }
+
+    public int getTotal(Long userNumber){
+        return likeMapper.selectTotal(userNumber);
     }
 }

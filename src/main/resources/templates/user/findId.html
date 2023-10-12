@@ -11,14 +11,13 @@
 <section class="login-form">
   <form action="/user/findId" method="post">
     <div class="int-area">
-      <input type="text" name="userPhone" id="userPhone" autocomplete="off" pattern="^[0-9]+$" required>
+      <input type="text" name="userPhone" id="userPhone" autocomplete="off"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required>
       <label for="userPhone">전화번호 : 번호만 입력하세요</label>
       <button id="sendSmsAuth" class="id-btn certificationIssue sendSmsAuth btnStroke" type="button">인증번호 발송</button>
     </div>
     <div class="int-area none" id="int-area">
       <input type="text" name="cerNumber" id="cerNumber" autocomplete="off" required>
       <label for="cerNumber">인증번호 입력 <span class="certificationTime">03:00</span></label>
-
     </div>
     <div class="btn-area">
       <button type="button" id="verifyBtn">아이디 찾기</button>
@@ -30,17 +29,26 @@
 <div id="modal" class="modal-overlay">
   <div class="modal-window">
     <div class="title">
+      <span class="head-title">GongU</span>
+    </div>
+
+    <div class="close-area"></div>
+
+    <div class="content">
+      <div class="body-content">
+        <h1>회원님의 아이디는<br>
+          <span id="userIdSpan"></span>입니다.</h1>
+      </div>
+
 
     </div>
-    <div class="close-area">X</div>
-    <div class="content">
-      <h1>회원님의 아이디는 <span id="userIdSpan"></span>입니다.</h1>
-    </div>
-    <div class="btn-area">
-      <button type="submit" id="btn">로그인하러 가기</button>
+    <div class="popup-foot">
+      <span class="pop-btn goToLogin" id="goToLogin">로그인가기</span>
     </div>
   </div>
 </div>
+
+
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
 <script src="/js/findId.js">

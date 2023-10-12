@@ -4,7 +4,7 @@
     <insert id="insert">
         insert into TBL_STUDY_BOARD (STUDY_NUMBER, STUDY_TITLE, STUDY_PROCESS, STUDY_START_DATE, STUDY_DATE,
                                      STUDY_STUDENT_COUNT, STUDY_MAJOR, STUDY_ADDRESS, STUDY_CONTENT, USER_NUMBER,STUDY_REGISTER_DATE,STUDY_UPDATE_DATE)
-        values (SEQ_STUDY_NUMBER.nextval,#{studyTitle},#{studyProcess},#{studyStartDate},#{studyDate},#{studyStudentCount},#{studyMajor},#{studyAddress},#{studyContent},5,sysdate,sysdate)
+        values (SEQ_STUDY_NUMBER.nextval,#{studyTitle},#{studyProcess},#{studyStartDate},#{studyDate},#{studyStudentCount},#{studyMajor},#{studyAddress},#{studyContent},#{userNumber},sysdate,sysdate)
     </insert>
 
     <select id="selectList" resultType="studyVo">

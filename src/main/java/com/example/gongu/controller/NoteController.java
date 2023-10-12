@@ -52,9 +52,9 @@ public class NoteController {
         return new RedirectView("/note/sendList");
     }
 
-    @GetMapping("/sendNote")
+    @PostMapping("/sendNote")
     public String showSendNote(Long noteNumber, Model model) {
-        
+        model.addAttribute("sendNoteDetail", noteService.findSendNote(noteNumber));
         return "note/sendNoteDetail";
     }
 
@@ -68,11 +68,17 @@ public class NoteController {
         return "note/receiveNote";
     }
 
-    @GetMapping("/receiveRemove")
+    @PostMapping("/receiveRemove")
     public RedirectView removeReceiveNote(NoteVo noteVo, HttpServletRequest req) {
         Long recieverNumber = (Long)req.getSession().getAttribute("userNumber");
         noteVo.setRecieverNumber(recieverNumber);
         noteService.modifyReceiveLevel(noteVo);
         return new RedirectView("/note/receiveList");
+    }
+
+    @PostMapping("/receiveNote")
+    public String showReceiveNote(Long noteNumber, Model model) {
+        model.addAttribute("receiveNoteDetail", noteService.findReceiveNote(noteNumber));
+        return "note/receiveNoteDetail";
     }
 }
