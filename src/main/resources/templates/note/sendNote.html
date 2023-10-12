@@ -9,18 +9,8 @@
     <link rel="stylesheet" href="/css/header.css">
 </head>
 <body>
-<header th:replace="fragments/header :: header"></header>
+<header th:replace="fragments/header :: header" class="header"></header>
     <div class="note-wrap">
-        <!-- 쪽지함 전용 헤더 -->
-        <div class="note-header">
-            <div class="note-main-box">
-                <a href="" class="gongu-main">GONGU</a>
-                <a href="/note/receiveList" class="note-main">쪽지</a>
-            </div>
-            <div class="logout">
-                <span>로그아웃</span>
-            </div>
-        </div>
         <!-- 쪽지함 바디 -->
         <div class="note-body">
             <!-- 쪽지함 기능들 -->
@@ -59,7 +49,7 @@
                                 <span th:text="${note.noteTitle}">쪽지 제목입니다</span>
                             </div>
                             <div class="note-date td" th:text="${note.noteRegisterDate}">2023.09.16</div>
-                            <form method="get" action="/note/sendNote">
+                            <form method="post" action="/note/sendNote">
                                 <div class="del">
                                     <button class="btn-content">내용</button>
                                 </div>

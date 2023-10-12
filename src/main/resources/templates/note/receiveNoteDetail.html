@@ -10,18 +10,8 @@
     <link rel="stylesheet" href="/css/header.css">
 </head>
 <body>
-<header th:replace="fragments/header :: header"></header>
+<header th:replace="fragments/header :: header" class="header"></header>
     <div class="note-wrap">
-        <!-- 쪽지함 전용 헤더 -->
-        <div class="note-header">
-            <div class="note-main-box">
-                <a href="" class="gongu-main">GONGU</a>
-                <a href="/note/receiveList" class="note-main">쪽지</a>
-            </div>
-            <div class="logout">
-                <span>로그아웃</span>
-            </div>
-        </div>
         <!-- 쪽지함 바디 -->
         <div class="note-body">
             <!-- 쪽지함 기능들 -->

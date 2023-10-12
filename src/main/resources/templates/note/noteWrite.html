@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,18 +12,8 @@
     <link rel="stylesheet" href="/css/header.css">
 </head>
 <body>
-<header th:replace="fragments/header :: header"></header>
+<header th:replace="fragments/header :: header" class="header"></header>
     <div class="note-wrap">
-        <!-- 쪽지함 전용 헤더 -->
-        <div class="note-header">
-            <div class="note-main-box">
-                <a href="" class="gongu-main">GONGU</a>
-                <a href="receiveNote.html" class="note-main">쪽지</a>
-            </div>
-            <div class="logout">
-                <span>로그아웃</span>
-            </div>
-        </div>
         <!-- 쪽지함 바디 -->
         <div class="note-body">
             <!-- 쪽지함 기능들 -->
@@ -68,22 +58,22 @@
             </div>
         </div>
     </div>
-    <script>
-        $('#summernote').summernote({
-            placeholder: '쪽지 내용을 입력해주세요',
-            tabsize: 2,
-            height: 400,                 // set editor height
-            minHeight: 400,             // set minimum height of editor
-            maxHeight: 400,             // set maximum height of editor
-            focus: true,
-            toolbar: [
-                ['style', ['style']],
-                ['font', ['bold', 'underline', 'clear']],
-                ['color', ['color']],
-                ['para', ['ul', 'ol', 'paragraph']],
-                ['view', ['help']]
-            ]
-        });
-    </script>
+<script>
+    $('#summernote').summernote({
+        placeholder: '쪽지 내용을 입력해주세요',
+        tabsize: 2,
+        height: 400,                 // set editor height
+        minHeight: 400,             // set minimum height of editor
+        maxHeight: 400,             // set maximum height of editor
+        focus: true,
+        toolbar: [
+            ['style', ['style']],
+            ['font', ['bold', 'underline', 'clear']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['view', ['help']]
+        ]
+    });
+</script>
 </body>
 </html>

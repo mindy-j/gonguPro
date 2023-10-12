@@ -52,7 +52,7 @@ public class NoteController {
         return new RedirectView("/note/sendList");
     }
 
-    @GetMapping("/sendNote")
+    @PostMapping("/sendNote")
     public String showSendNote(Long noteNumber, Model model) {
         model.addAttribute("sendNoteDetail", noteService.findSendNote(noteNumber));
         return "note/sendNoteDetail";
@@ -76,7 +76,7 @@ public class NoteController {
         return new RedirectView("/note/receiveList");
     }
 
-    @GetMapping("/receiveNote")
+    @PostMapping("/receiveNote")
     public String showReceiveNote(Long noteNumber, Model model) {
         model.addAttribute("receiveNoteDetail", noteService.findReceiveNote(noteNumber));
         return "note/receiveNoteDetail";
