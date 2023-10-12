@@ -67,15 +67,15 @@
         SELECT
             CB.CLASS_NUMBER,
             CB.CLASS_TITLE,
-            TO_CHAR(CB.CLASS_START_DATE, 'YYYY". "MM". "DD') AS CLASS_START_DATE,
-            TO_CHAR(CB.CLASS_END_DATE, 'YYYY". "MM". "DD') AS CLASS_END_DATE ,
+            TO_CHAR(CB.CLASS_START_DATE, 'YYYY"."MM"."DD') AS CLASS_START_DATE,
+            TO_CHAR(CB.CLASS_END_DATE, 'YYYY"."MM"."DD') AS CLASS_END_DATE ,
             CB.CLASS_PROCESS,
             CB.CLASS_PRICE,
             CB.CLASS_ADDRESS,
             CB.CLASS_MAJOR,
             CB.CLASS_INTRODUCE,
             CB.CLASS_PLAN,
-            CB.CLASS_REGISTER_DATE,
+            TO_CHAR(CB.CLASS_REGISTER_DATE, 'YYYY"."MM"."DD') AS CLASS_REGISTER_DATE ,
             CB.CLASS_LEVEL,
             CB.CLASS_UPDATE_DATE,
             CB.USER_NUMBER,
@@ -92,7 +92,7 @@
             TBL_MEMTO_APPLY MA
             ON
                 U.USER_NUMBER = MA.USER_NUMBER
-            where CLASS_NUMBER = #{classNumber} and class_level = 2 and class_number NOT IN (SELECT CLASS_NUMBER FROM TBL_PAYMENT)
+            where CLASS_NUMBER = #{classNumber} and (class_level = 2 or class_level = 3)
     </select>
 
     <update id="update">

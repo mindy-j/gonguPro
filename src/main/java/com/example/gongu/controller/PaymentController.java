@@ -37,6 +37,6 @@ public class PaymentController {
 
         // 결제 정보를 서비스로 전달하여 데이터베이스에 저장
         paymentService.registerPay(paymentDto);
-        return new RedirectView("/user/index");
+        return new RedirectView("/user/paymentBoard");
     }
 }
