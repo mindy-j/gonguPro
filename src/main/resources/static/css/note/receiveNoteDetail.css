@@ -1,4 +1,4 @@
-*{
+*:not(:where([class~="header"] *)){
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -7,6 +7,11 @@
 a{
     text-decoration: none;
     color: black;
+}
+
+header{
+    position: relative;
+    z-index: 100;
 }
 
 .note-wrap{
@@ -21,7 +26,7 @@ a{
     flex-direction: row;
     align-items: center;
     height: 50px;
-    background-color: orange;
+    background-color: #00A8F3;
     color: white;
     border-bottom: 1px solid gray;
     padding: 15px;
@@ -55,8 +60,8 @@ a{
 .note-body{
     height: 100vh;
     width: 100vw;
-    margin-top: -50px;
-    padding-top: 50px;
+    margin-top: -80px;
+    padding-top: 80px;
     display: flex;
     flex-direction: row;
 }
@@ -82,7 +87,7 @@ a{
     margin: 15px;
     border-radius: 5px;
     border: 1px solid gray;
-    background-color: orange;
+    background-color: #00A8F3;
     color: white;
 }
 
@@ -202,4 +207,5 @@ a{
     font-size: 15px;
     pointer-events: none;
     padding: 10px;
+    border: 1px solid gray;
 }

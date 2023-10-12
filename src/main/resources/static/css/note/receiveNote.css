@@ -1,4 +1,4 @@
-*{
+*:not(:where([class~="header"] *)){
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -7,6 +7,11 @@
 a{
     text-decoration: none;
     color: black;
+}
+
+header{
+    position: relative;
+    z-index: 100;
 }
 
 .note-wrap{
@@ -21,7 +26,7 @@ a{
     flex-direction: row;
     align-items: center;
     height: 50px;
-    background-color: orange;
+    background-color: #00A8F3;
     color: white;
     border-bottom: 1px solid gray;
     padding: 15px;
@@ -55,8 +60,8 @@ a{
 .note-body{
     height: 100vh;
     width: 100vw;
-    margin-top: -50px;
-    padding-top: 50px;
+    margin-top: -80px;
+    padding-top: 80px;
     display: flex;
     flex-direction: row;
 }
@@ -82,7 +87,7 @@ a{
     margin: 15px;
     border-radius: 5px;
     border: 1px solid gray;
-    background-color: orange;
+    background-color: #00A8F3;
     color: white;
 }
 
@@ -153,7 +158,7 @@ a{
 
 .note-title{
     height: 30px;
-    min-width: 250px;
+    min-width: 200px;
     width: 100%;
 }
 
@@ -163,7 +168,7 @@ a{
     width: 0%;
 }
 
-.note-delete{
+.note-content, .note-delete{
     height: 30px;
     min-width: 50px;
     width: 0%;
@@ -172,6 +177,19 @@ a{
     justify-content: center;
 }
 
+.btn-content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    background-color: blue;
+    border: none;
+    outline: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
 .btn-delete{
     display: flex;
     align-items: center;
@@ -203,7 +221,7 @@ a{
 /* 페이징 버튼 */
 .page-a {
     text-decoration: none;
-    color: orange;
+    color: #00A8F3;
 }
 
 .page-box {
@@ -214,7 +232,7 @@ a{
 }
 
 .page-num {
-    border: 1px solid orange;
+    border: 1px solid #00A8F3;
     width: 30px;
     height: 40px;
     border-radius: 5px;
@@ -227,6 +245,6 @@ a{
 
 .active,
 .page-num:hover {
-    background-color: orange;
+    background-color: #00A8F3;
     color: white;
 }
