@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="/css/index.css"/>
   <link rel="stylesheet" href="/css/user/join.css"/>
 </head>
+
 <body>
 
 
@@ -42,7 +43,7 @@
       <label for="userEmail">이메일</label>
     </div>
     <div class="int-area">
-      <input type="text" name="userPhone" id="userPhone" autocomplete="off" pattern="^[0-9]+$" required>
+      <input type="text" name="userPhone" id="userPhone" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required>
       <label for="userPhone">전화번호 : 번호만 입력하세요</label>
     </div>
 

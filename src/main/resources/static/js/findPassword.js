@@ -34,9 +34,9 @@ idBtn.addEventListener("click", function () {
         if(response.ok){
             alert("인증번호 발송되었습니다.");
             return response.text();
-        }else{
-            alert("일치하는 정보 없음");
-            return new Error("번호 불일치");
+        }else{ //서버에서 오류난 경우
+            alert("서버오류");
+            return new Error("서버오류");
         }
     })
         .catch(function (error){
@@ -81,17 +81,6 @@ $(verifyBtn).on('click',function (){
     });
 });
 
-//모달
-const closeModal = document.querySelector(".close-area");
-closeModal.addEventListener("click", function (){
-    modal.style.display="none";
-});
-
-modal.addEventListener("click",function (e){
-    if(e.target.classList.contains("modal-overlay")){
-        modal.style.display="none";
-    }
-});
 
 
 
@@ -125,19 +114,11 @@ $('.certificationIssue').on("click",function(){
     $.time(179);
 });
 
-// //배경화면을 누르면 화면 이동인데 다른것도 누르면 이동이 됨 - 수정해야해
-// document.body.addEventListener("click", function (event){
-//
-//     if(event.target.tagName==="input"){
-//         return;
-//     }
-//     window.location.href="/user/index";
-// });
 
 
-//비밀번호 확인후 로그인 하러 가기버튼
-btn.addEventListener("click",function (){
-    window.location.href="/user/login";
+//모달확인후 로그인가기
+$("#goToLogin").click(function (){
+    window.location.href = "/user/login";
 });
 
 
