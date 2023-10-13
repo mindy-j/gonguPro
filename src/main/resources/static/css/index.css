@@ -16,7 +16,7 @@
     left:25%;
     background-color: white;
     display: flex;
-    align-items: centers;
+    align-items: center;
 }
 .nav-bar{
     width:65%;
@@ -145,21 +145,21 @@ a{
 }
 .good-board{
     width:250px;
-    height:315px;
+    height:260px;
 
     border-radius: 20px;
     margin-top:30px;
-    padding:17px;
+    padding:13px;
     border: 2px solid rgb(186, 185, 185);
+    overflow: hidden;
 }
 
 .good-board:hover{
     width:250px;
-    height:315px;
-
+    height:260px;
     border-radius: 20px;
     margin-top:30px;
-    padding:17px;
+    padding:13px;
     box-shadow: 5px 5px 5px 5px rgb(172, 170, 170);
 }
 
@@ -194,10 +194,12 @@ a{
 
 .content-box{
     width:100%;
-    height:140px;
+    height:90px;
     font-size: 19px;
     font-weight:bold;
     margin-top:10px;
+    display:flex;
+    align-items: center;
 
 }
 .category{

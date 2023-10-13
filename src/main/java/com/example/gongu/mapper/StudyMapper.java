@@ -4,6 +4,8 @@ import com.example.gongu.domain.dto.StudyDto;
 import com.example.gongu.domain.vo.Criteria;
 import com.example.gongu.domain.vo.StudyVo;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+
 import java.util.List;
 @Mapper
 public interface StudyMapper {
@@ -18,6 +20,8 @@ public interface StudyMapper {
     public void delete(Long studyNumber);
 
     public int selectTotal();
+
+    public List<StudyVo> myWriteList(@Param("userNumber") Long userNumber, @Param("criteria") Criteria criteria);
 
 
 

@@ -76,65 +76,52 @@
     <div class="grid-container">
         <!-- 그리드 아이템 -->
 
-        <div th:each="study : ${studyList}">
-        <a th:href="@{/study/detail(studyNumber=${study.studyNumber})}" >
-            <div class="good-board">
-                <div class="category-img-box" >
-                    <div class="study-logo">
-                         ✏️스터디
+        <div th:each="write : ${writeList}">
+            <a th:href="@{/study/detail(studyNumber=${write.studyNumber})}" >
+                <div class="good-board">
+                    <div class="category-img-box" >
+                        <div class="study-logo">
+                            ✏️내 작성글
+                        </div>
+                    </div>
+                    <div class="deadline-box" >
+                        <p class="deadline" name="시작일" th:text="'시작일  |  '+${write.studyStartDate}"> </p>
+                    </div>
+                    <div class="content-box" name="제목">
+                        <p class="content" th:text="${write.studyTitle}"></p>
+                    </div>
+                    <div class="category-box" name="category">
+                        <p class="category" name="카테고리" th:text="${write.studyMajor}"></p>
+                    </div>
+                    <div class="address-box">
+                        <p class="address" name="주소" th:text="${write.studyAddress}"></p>
+                    </div>
+                    <div class="user-box">
+                        <span class="user-nickname" th:text="${write.userNickname}"></span>
                     </div>
                 </div>
-                <div class="deadline-box" >
-                    <p class="deadline" name="시작일" th:text="'시작일  |  '+${study.studyStartDate}"> </p>
-                </div>
-                <div class="content-box" name="제목">
-                    <p class="content" th:text="${study.studyTitle}"></p>
-                </div>
-                <div class="category-box" name="category">
-                    <p class="category" name="카테고리" th:text="${study.studyMajor}"></p>
-                </div>
-                <div class="address-box">
-                    <p class="address" name="주소" th:text="${study.studyAddress}"></p>
-                </div>
-                <div class="user-box">
-                    <span class="user-nickname" th:text="${study.userNickname}"></span>
-                    <span class="commend-count" th:text="${likeCount}"></span>
-                </div>
-            </div>
-        </a>
+            </a>
         </div>
 
 
 
 
     </div>
-    <!--페이징처리-->
 
-    <!--페이징처리 끝-->
 </div>
-<th:block th:if="${session.userNumber != null}"> <!--  th:if="${}" 강사님께 세션 null 어떻게 비교하는지 여쭤보고 넣기-->
-    <div class="write-btn-container">
-        <a href="/study/write" class="write-btn">
-            <div class="write-btn">
-                글작성
-            </div>
-        </a>
-    </div>
-</th:block>
-
 
 <div class="page-container">
     <ul class="page-ul">
-        <a th:href="@{/study/list(page=${pageInfo.startPage-1})}" th:if="${pageInfo.prev}">
+        <a th:href="@{/study/myWriteList(page=${pageInfo.startPage-1})}" th:if="${pageInfo.prev}">
             <li class="page-btn">&lt</li>
         </a>
         <th:block th:each="i : ${#numbers.sequence(pageInfo.startPage, pageInfo.endPage)}">
-            <a th:href="@{/study/list(page=${i})}">
+            <a th:href="@{/study/myWriteList(page=${i})}">
                 <li class="page-btn" th:text="${i}" th:if="${i != pageInfo.Criteria.page}"></li>
                 <li class="page-btn active" th:text="${i}" th:unless="${i != pageInfo.Criteria.page}"></li>
             </a>
         </th:block>
-        <a th:href="@{/study/list(page=${pageInfo.endPage+1})}" class="page-a" th:if="${pageInfo.next}">
+        <a th:href="@{/study/myWriteList(page=${pageInfo.endPage+1})}" class="page-a" th:if="${pageInfo.next}">
             <li class="page-btn">&gt</li>
         </a>
     </ul>
