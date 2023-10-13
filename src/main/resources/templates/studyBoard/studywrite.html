@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="/css/header.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>-->
+<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">-->
     <!-- 서머노트를 위해 추가해야할 부분 -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
@@ -23,7 +23,7 @@
             <ul class="item-ul">
                 <li>
                     <select name="studyProcess" placeholder="모집방식을 선택해주세요.">
-                        <option value="">모집방식을 선택해주세요.</option>
+                        <option value="">스터디 방식을 선택해주세요.</option>
                         <option value="온라인" >온라인</option>
                         <option value="오프라인" >오프라인</option>
                     </select>
@@ -44,6 +44,11 @@
                         <option value="10명 이상">10명 이상</option>
                     </select>
                 </li>
+            </ul>
+        </div>
+        <div class="section-1">
+            <ul class="item-ul">
+
                 <li>
                     <select name="studyDate">
                         <option value="">스터디 기간을 지정해주세요</option>
@@ -70,7 +75,7 @@
                     <input type="text" name="studyAddress" placeholder="스터디를 진행할 지역을 입력해주세요">
                 </li>
                 <li>
-                    <input type="text" name="studyMajor" placeholder="스터디 주제를 입력해주세요 ex) OO시험 대비 스터디">
+                    <input type="text" name="studyMajor" placeholder="주제를 입력해주세요 ex) OO시험 대비 스터디">
                 </li>
             </ul>
         </div>
@@ -94,6 +99,7 @@
         placeholder: '내용을 입력해주세요',
         tabsize: 1,
         height: 400,
+        disableResizeEditor: true,
         toolbar: [
         ['style', ['style']],
         ['font', ['bold', 'underline', 'clear']],
@@ -101,6 +107,7 @@
         ['para', ['ul', 'ol', 'paragraph']],
         ['view', ['help']]
         ]
+
     });
 </script>
 </html>
