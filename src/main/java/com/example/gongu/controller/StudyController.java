@@ -31,10 +31,20 @@ public class StudyController {
 
     private Long likeStudyNum;
     @GetMapping("/list")
-    public String showListPage(Criteria criteria,Model model){
+    public String showListPage(Criteria criteria,Model model, HttpServletRequest req){
+        model.addAttribute("session",req.getSession().getAttribute("userNumber"));
         model.addAttribute("studyList",studyService.findList(criteria));
         model.addAttribute("pageInfo", new PageVo(studyService.getTotal(),criteria));
         return "studyBoard/studyList";
+    }
+
+    @GetMapping("/myWriteList")
+    public String showMyWriteList(HttpServletRequest req,Criteria criteria,Model model){
+        Long userNumber = (Long)req.getSession().getAttribute("userNumber");
+
+        model.addAttribute("writeList", studyService.myWriteList(userNumber,criteria));
+        model.addAttribute("pageInfo", new PageVo(studyService.getTotal(),criteria));
+        return "user/writeList";
     }
 
     @GetMapping("/write")
@@ -54,30 +64,9 @@ public class StudyController {
 //        likeStudyNum = studyNumber;
         StudyVo studyVo =studyService.find(studyNumber);
 
-//        model.addAttribute("loginUser",(Long)req.getSession().getAttribute("userNumber"));
-//        Long likeCount = likeService.likeTotal(studyNumber,(Long)req.getSession().getAttribute("userNumber"));
         model.addAttribute("selectUser",likeService.selectUser());
-//        model.addAttribute("likeCount",likeCount);
         model.addAttribute("study",studyVo);
         return "studyBoard/studyDetail";
-    }
-
-    @GetMapping("/up")
-    public String likeUp(HttpServletRequest req, LikeDto likeDto,@RequestParam("studyNumber") String studyNumber, Model model){
-        Long userNumber = (Long)req.getSession().getAttribute("userNumber");
-        likeDto.setStudyNumber(Long.parseLong(studyNumber));
-
-        likeDto.setUserNumber(userNumber);
-
-        StudyVo studyVo =studyService.find(Long.parseLong(studyNumber));
-        Long likeCount = likeService.likeTotal(Long.parseLong(studyNumber),userNumber);
-        model.addAttribute("loginUser",(Long)req.getSession().getAttribute("userNumber"));
-        model.addAttribute("selectUser",likeService.selectUser());
-        model.addAttribute("likeCount",likeCount);
-        model.addAttribute("study",studyVo);
-
-        likeService.register(likeDto);
-        return "index";
     }
 
     @GetMapping("/down")

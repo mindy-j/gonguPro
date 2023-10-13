@@ -40,5 +40,10 @@ public class StudyService {
         studyMapper.delete(studyNumber);
     }
 
+    public List<StudyVo> myWriteList(Long userNumber,Criteria criteria){
+        List<StudyVo> writeList = studyMapper.myWriteList(userNumber,criteria);
+        return writeList;
+    }
+
 }
 

@@ -53,21 +53,26 @@ li select{
 
 }
 .container{
-    width:100%;
+    width:60%;
     height:1000px;
+    margin:auto;
 
 }
 .start_date_text{
     width:120px;
-    margin-left: 20px;
     font-size:larger;
 }
 .study-title{
     margin-bottom: 10px;
     width:100%;
+    margin-top:7px;
 }
 .study-title > input{
-    width:100%;
+    width:97.7%;
+    height:43px;
+    padding-left:20px;
+    font-size:18px
+
 }
 
 .button-div{
@@ -95,3 +100,5 @@ li select{
     font-weight: bold;
     margin-left: 10px;
 }
+
+

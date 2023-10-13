@@ -10,7 +10,7 @@
         delete from tbl_like where user_number = #{userNumber}
     </delete>
 
-    <select id="likeTotal">
+    <select id="likeTotal" resultType="long">
         select count(like_number) from TBL_LIKE where STUDY_NUMBER = #{studyNumber} and user_number = #{userNumber}
     </select>
 
