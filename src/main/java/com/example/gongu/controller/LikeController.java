@@ -37,17 +37,17 @@ public class LikeController {
         model.addAttribute("pageInfo", new PageVo(likeService.getLikeTotal(userNumber), criteria));
         return "user/favoriteBoard";
     }
-    @GetMapping("/up")
-    public String likeUp(HttpServletRequest req, LikeDto likeDto, @RequestParam("studyNumber") String studyNumber, Model model){
-        Long userNumber = (Long)req.getSession().getAttribute("userNumber");
-        likeDto.setStudyNumber(Long.parseLong(studyNumber));
-        Long likeCount = likeService.likeTotal(Long.parseLong(studyNumber),userNumber);
-        model.addAttribute("likeCount",likeCount);
-        log.info("====================="+likeCount.toString());
-        likeDto.setUserNumber(userNumber);
-        likeService.register(likeDto);
-        return "index";
-    }
+//    @GetMapping("/up")
+//    public String likeUp(HttpServletRequest req, LikeDto likeDto, @RequestParam("studyNumber") String studyNumber, Model model){
+//        Long userNumber = (Long)req.getSession().getAttribute("userNumber");
+//        likeDto.setStudyNumber(Long.parseLong(studyNumber));
+//        Long likeCount = likeService.likeTotal(Long.parseLong(studyNumber),userNumber);
+//        model.addAttribute("likeCount",likeCount);
+//        log.info("====================="+likeCount.toString());
+//        likeDto.setUserNumber(userNumber);
+//        likeService.register(likeDto);
+//        return "index";
+//    }
 
 
 }
