@@ -8,7 +8,12 @@
   <link rel="stylesheet" href="/css/user/findId.css"/>
 </head>
 <body>
+
 <section class="login-form">
+  <a th:href="@{/user/index}">
+    <div class="login-img-goto"></div>
+  </a>
+  <div class="login-page-info">아이디 찾기</div>
   <form action="/user/findId" method="post">
     <div class="int-area">
       <input type="text" name="userPhone" id="userPhone" autocomplete="off"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required>
@@ -23,6 +28,15 @@
       <button type="button" id="verifyBtn">아이디 찾기</button>
     </div>
   </form>
+  <div class="caption">
+    <a th:href="@{/user/findPassword}">비밀번호를 잊으셨나요?</a>
+  </div>
+  <div class="caption">
+    <a th:href="@{/user/join}">계정이 없으신가요??</a>
+  </div>
+  <div class="caption">
+    <a th:href="@{/user/index}">메인으로 갈까요?</a>
+  </div>
 
 </section>
 <!--모달창-->
