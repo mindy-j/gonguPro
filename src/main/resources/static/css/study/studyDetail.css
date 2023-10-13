@@ -1,107 +1,337 @@
+/**{*/
+/*    margin: 0;*/
+/*    padding: 0;*/
+/*}*/
+/*.fulldiv{*/
+/*    width: 900px;*/
+/*    height: 100%;*/
+/*    margin: 0 auto;*/
+/*}*/
+/*.goback{*/
+/*    width : 30px; */
+/*    height: 30;*/
+/*    cursor: pointer;*/
+/*}*/
+/*.studyTitle{*/
+/*   */
+/*    height: 100px;*/
+/*    line-height: 100px;*/
+/*}*/
+
+/*.userAndUpload *{*/
+/*    vertical-align: bottom;*/
+/*}*/
+
+/*.writerUser{*/
+/*    font-weight: bold;*/
+/*}*/
+
+/*th, td{*/
+/*   */
+/*    width: 100px;*/
+/*    height: 40px;*/
+/* */
+/* }*/
+/* .secdiv{*/
+/*  */
+/*    border-radius: 5px;  */
+/*    margin-top: 50px;*/
+/*    display: flex;*/
+/* }*/
+
+/* .tablediv1{*/
+/*    margin-right: 50px;*/
+/* }*/
+/* .one{*/
+/*    color: #717171;*/
+/* }*/
+/* .se{*/
+/*    width: 150px;*/
+/*    font-weight: bold;*/
+/* }*/
+
+
+/*.ourStudtTitle{*/
+/*height: 110px;*/
+/*line-height: 150px;*/
+/*}*/
+/*.ourStudtIs{*/
+/*font-weight: bold;*/
+/*    height:400px;*/
+/*    border:1px solid lightgrey;*/
+/*    padding:10px;*/
+/*}*/
+
+/*.checkDiv{*/
+/*display: flex;*/
+/*justify-content: end;*/
+/*width: 800px;*/
+/*}*/
+
+/*.replyFulldiv{*/
+/*height: 100px;*/
+/*margin-top: 70px;*/
+
+/*}*/
+/*.replyContent{*/
+/*font-family: inherit;*/
+/*border: 2px solid rgb(225, 225, 225);*/
+/*border-radius: 16px;*/
+/*width: 800px;*/
+/*}*/
+
+/*.replyinnerfull{*/
+/*display: flex;*/
+/*vertical-align: middle;*/
+/*}*/
+/*input{*/
+/*height: 50px;*/
+/*}*/
+/*.replyRegiter, .replyRegiterUp, .replyRegiterDel{*/
+/*color: #fff;*/
+/*font-size: 12px;*/
+/*background-color: #333;*/
+/*padding: 7px 10px;*/
+/*border-radius: 20px;*/
+/*cursor: pointer;*/
+/*width: 90px;*/
+/*height: 30px;*/
+/*margin-top: 10px;*/
+
+/*}*/
+/*.buttonDiv{*/
+/*display: flex;*/
+/*justify-content: end;*/
+/*}*/
+
 *{
     margin: 0;
     padding: 0;
 }
 .fulldiv{
-    width: 900px;
+    width: 850px;
     height: 100%;
     margin: 0 auto;
 }
 .goback{
-    width : 30px; 
-    height: 30;
+    width : 30px;
+    height: 30px;
     cursor: pointer;
 }
+/*.studyTitle{*/
+/*    height: 100px;*/
+/*    line-height: 100px;*/
+/*}*/
 .studyTitle{
-   
-    height: 100px;
-    line-height: 100px;
+    width: 100%;
+    height: 60px;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
 }
 
-.userAndUpload *{
-    vertical-align: bottom;
+/*.userAndUpload *{*/
+/*    vertical-align: bottom;*/
+/*}*/
+.userAndUpload{
+    width: 850px;
+    margin: 15px 0;
+    height: 50px;
+    line-height: 50px;
+    display: flex;
+    align-items: center;
 }
-
+.logoimg{
+    padding-top: 15px;
+    margin-right: 10px;
+}
 .writerUser{
     font-weight: bold;
 }
 
 th, td{
-   
+
     width: 100px;
     height: 40px;
- 
- }
- .secdiv{
-  
-    border-radius: 5px;  
-    margin-top: 50px;
-    display: flex;
- }
 
- .tablediv1{
-    margin-right: 50px;
- }
- .one{
-    color: #717171;
- }
- .se{
-    width: 150px;
+}
+/*.secdiv{*/
+/*    border-radius: 5px;*/
+/*    margin-top: 50px;*/
+/*    display: flex;*/
+/*}*/
+.secdiv{
+    display: flex;
+    border: 1px solid lightgrey;
+    border-radius: 15px;
+    width: 100%;
+    font-size: 18px;
     font-weight: bold;
- }
+}
+
+.tablediv1{
+    margin-right: 50px;
+}
+.one{
+    color: #717171;
+}
+.se{
+    width: 250px;
+    font-weight: bold;
+}
 
 
 .ourStudtTitle{
-height: 110px;
-line-height: 150px;
+    margin-top: 50px;
+    margin-bottom: 20px;
 }
 .ourStudtIs{
-font-weight: bold;
-    height:400px;
+    font-weight: bold;
+    min-height:300px;
     border:1px solid lightgrey;
     padding:10px;
+    border-radius: 15px;
 }
 
 .checkDiv{
-display: flex;
-justify-content: end;
-width: 800px;
+    display: flex;
+    width: 850px;
+    align-content: center;
+    justify-items: end;
+    margin: 10px 0;
 }
 
 .replyFulldiv{
-height: 100px;
-margin-top: 70px;
+    height: 100px;
+    margin-top: 70px;
 
 }
 .replyContent{
-font-family: inherit;
-border: 2px solid rgb(225, 225, 225);
-border-radius: 16px;
-width: 800px;
+    font-family: inherit;
+    border: 2px solid rgb(225, 225, 225);
+    border-radius: 16px;
+    width: 800px;
 }
 
 .replyinnerfull{
-display: flex;
-vertical-align: middle;
+    display: flex;
+    vertical-align: middle;
 }
 input{
-height: 50px;
+    height: 50px;
 }
 .replyRegiter, .replyRegiterUp, .replyRegiterDel{
-color: #fff;
-font-size: 12px;
-background-color: #333;
-padding: 7px 10px;
-border-radius: 20px;
-cursor: pointer;
-width: 90px;
-height: 30px;
-margin-top: 10px;
+    color: #fff;
+    font-size: 12px;
+    background-color: #333;
+    padding: 7px 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    width: 90px;
+    height: 30px;
+    margin-top: 10px;
 
 }
 .buttonDiv{
-display: flex;
-justify-content: end;
+    display: flex;
+    justify-content: end;
 }
 
+.payment-button{
+    width:100%;
+    display: flex;
+    justify-content: end;
+    margin-top:30px;
+}
 
+.payment{
+    width:120px;
+    height:35px;
+    border-radius: 20px;
+    border:none;
+    background-color: #00A8F3;;
+    font-size: 16px;
+    font-weight: bold;
+    color:white;
+    cursor: pointer;
+}
+.payment-end{
+    width:120px;
+    height:35px;
+    border-radius: 20px;
+    border:none;
+    background-color: #00A8F3;;
+    font-size: 16px;
+    font-weight: bold;
+    color:white;
+    cursor: pointer;
+}
+
+/* 수정 추가 */
+
+.left-container{
+    width: 50%;
+}
+.right-container{
+    width: 50%;
+}
+.sub{
+    display: flex;
+
+}
+.sub-title{
+    width: 120px;
+    margin: 12px 0 12px 15px;
+    color: gray;
+}
+.sone{
+    width: 80px !important;
+}
+.sub-content{
+    margin: 12px 0;
+
+}
+.updelte{
+    display: flex;
+    float: right;
+}
+.log-container{
+    width: 580px;
+}
+.registerDate{
+    color: gray;
+}
+
+#yellow{
+    width:30px;
+    height:30px ;
+    cursor: pointer;
+    margin-right: 5px;
+    display: block;
+
+}
+#white{
+    width:30px;
+    height:30px ;
+    cursor: pointer;
+    margin-right: 5px;
+    display: block;
+}
+.yellow{
+    display: none;
+    flex-direction: column;
+    width: 850px;
+    align-items: end;
+    margin-right: 1.5%;
+}
+.white{
+    display: flex;
+    flex-direction: column;
+    width: 850px;
+    align-items: end;
+    margin-right: 1.5%;
+}
+.like-text{
+    line-height: 20px;
+    font-weight: bold;
+}

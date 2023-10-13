@@ -114,3 +114,8 @@ $('.right-container').on('click', '.close', function() {
 $('.back-btn').on('click', function (){
     window.history.back();
 });
+
+
+$('.write-btn-container').on('click', function (){
+    let userNumber = [[${session.userNumber}]];
+})

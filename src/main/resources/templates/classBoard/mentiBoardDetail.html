@@ -10,9 +10,9 @@
   <link rel="stylesheet" href="/css/header.css">
   <style>
     .btn-container{
-      width:100%;
+      width:850px;
       display: flex;
-      justify-content: space-between;
+      justify-content: end;
       align-content: center;
       margin-top:20px;
     }
@@ -119,12 +119,6 @@
       </div><!--세번쨰 박스 스터디 소개부분 끝 -->
 
       <div class="btn-container">
-        <div class="checkDiv"><!--조회수랑 하이? 담는 총 상자-->
-          <div>
-            <img src="https://www.holaworld.io/images/info/bookmark.svg" width="20px" height="18px">
-            <span>0</span><!--찜하기인가?-->
-          </div>
-        </div>
         <button th:if="${class.classLevel == '2'}" class="payment">
           결제
         </button>

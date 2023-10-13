@@ -59,6 +59,7 @@ $('.inputId').on('change', function() {
 $('#summernote').summernote({
     placeholder: '쪽지 내용을 입력해주세요',
     tabsize: 2,
+    disableResizeEditor: true,
     height: 400,
     toolbar: [
         ['style', ['style']],
