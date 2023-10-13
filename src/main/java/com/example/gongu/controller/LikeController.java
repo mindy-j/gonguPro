@@ -21,10 +21,17 @@ public class LikeController {
     private final LikeService likeService;
 
 
+//    @GetMapping("/list")
+//    public String likeList(HttpServletRequest req,Long userNumber, Model model,Criteria criteria){
+//        model.addAttribute("likeList",likeService.findList((Long)req.getSession().getAttribute("userNumber"),criteria));
+//        model.addAttribute("pageInfo", new PageVo(likeService.getTotal((Long)req.getSession().getAttribute("userNumber")),criteria));
+//        return "user/favoriteBoard";
+//    }
     @GetMapping("/list")
-    public String likeList(HttpServletRequest req,Long userNumber, Model model,Criteria criteria){
-        model.addAttribute("likeList",likeService.findList((Long)req.getSession().getAttribute("userNumber"),criteria));
-        model.addAttribute("pageInfo", new PageVo(likeService.getTotal((Long)req.getSession().getAttribute("userNumber")),criteria));
+    public String likeList(HttpServletRequest req, Model model, Criteria criteria){
+        Long userNumber = (Long)req.getSession().getAttribute("userNumber");
+        model.addAttribute("likeList",likeService.findLikeList(userNumber, criteria));
+        model.addAttribute("pageInfo", new PageVo(likeService.getLikeTotal(userNumber), criteria));
         return "user/favoriteBoard";
     }
 

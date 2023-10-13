@@ -19,6 +19,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -53,47 +54,49 @@ public class StudyController {
     public String detailPage(Long studyNumber,Model model){
 //        likeStudyNum = studyNumber;
         StudyVo studyVo =studyService.find(studyNumber);
+        List<LikeDto> likes = likeService.findLike(studyNumber);
 
 //        model.addAttribute("loginUser",(Long)req.getSession().getAttribute("userNumber"));
 //        Long likeCount = likeService.likeTotal(studyNumber,(Long)req.getSession().getAttribute("userNumber"));
-        model.addAttribute("selectUser",likeService.selectUser());
+//        model.addAttribute("selectUser",likeService.selectUser());
 //        model.addAttribute("likeCount",likeCount);
         model.addAttribute("study",studyVo);
+        model.addAttribute("like",likes);
         return "studyBoard/studyDetail";
     }
 
-    @GetMapping("/up")
-    public String likeUp(HttpServletRequest req, LikeDto likeDto,@RequestParam("studyNumber") String studyNumber, Model model){
-        Long userNumber = (Long)req.getSession().getAttribute("userNumber");
-        likeDto.setStudyNumber(Long.parseLong(studyNumber));
+//    @GetMapping("/up")
+//    public String likeUp(HttpServletRequest req, LikeDto likeDto,@RequestParam("studyNumber") String studyNumber, Model model){
+//        Long userNumber = (Long)req.getSession().getAttribute("userNumber");
+//        likeDto.setStudyNumber(Long.parseLong(studyNumber));
+//
+//        likeDto.setUserNumber(userNumber);
+//
+//        StudyVo studyVo =studyService.find(Long.parseLong(studyNumber));
+//        Long likeCount = likeService.likeTotal(Long.parseLong(studyNumber),userNumber);
+//        model.addAttribute("loginUser",(Long)req.getSession().getAttribute("userNumber"));
+//        model.addAttribute("selectUser",likeService.selectUser());
+//        model.addAttribute("likeCount",likeCount);
+//        model.addAttribute("study",studyVo);
+//
+//        likeService.register(likeDto);
+//        return "index";
+//    }
 
-        likeDto.setUserNumber(userNumber);
-
-        StudyVo studyVo =studyService.find(Long.parseLong(studyNumber));
-        Long likeCount = likeService.likeTotal(Long.parseLong(studyNumber),userNumber);
-        model.addAttribute("loginUser",(Long)req.getSession().getAttribute("userNumber"));
-        model.addAttribute("selectUser",likeService.selectUser());
-        model.addAttribute("likeCount",likeCount);
-        model.addAttribute("study",studyVo);
-
-        likeService.register(likeDto);
-        return "index";
-    }
-
-    @GetMapping("/down")
-    public String likeDown(HttpServletRequest req,LikeDto likeDto,@RequestParam("studyNumber") String studyNumber, Model model){
-        Long userNumber = (Long) req.getSession().getAttribute("userNumber");
-        likeDto.setUserNumber(userNumber);
-
-        StudyVo studyVo =studyService.find(Long.parseLong(studyNumber));
-        Long likeCount = likeService.likeTotal(Long.parseLong(studyNumber),userNumber);
-        model.addAttribute("loginUser",(Long)req.getSession().getAttribute("userNumber"));
-        model.addAttribute("selectUser",likeService.selectUser());
-        model.addAttribute("likeCount",likeCount);
-        model.addAttribute("study",studyVo);
-        likeService.likeDown(userNumber);
-        return "studyBoard/studyDetail";
-    }
+//    @GetMapping("/down")
+//    public String likeDown(HttpServletRequest req,LikeDto likeDto,@RequestParam("studyNumber") String studyNumber, Model model){
+//        Long userNumber = (Long) req.getSession().getAttribute("userNumber");
+//        likeDto.setUserNumber(userNumber);
+//
+//        StudyVo studyVo =studyService.find(Long.parseLong(studyNumber));
+//        Long likeCount = likeService.likeTotal(Long.parseLong(studyNumber),userNumber);
+//        model.addAttribute("loginUser",(Long)req.getSession().getAttribute("userNumber"));
+//        model.addAttribute("selectUser",likeService.selectUser());
+//        model.addAttribute("likeCount",likeCount);
+//        model.addAttribute("study",studyVo);
+//        likeService.likeDown(userNumber);
+//        return "studyBoard/studyDetail";
+//    }
 
 
     @GetMapping("/update")

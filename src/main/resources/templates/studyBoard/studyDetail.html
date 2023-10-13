@@ -9,16 +9,50 @@
     <script src="https://kit.fontawesome.com/acf4f592bf.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/css/header.css">
     <style>
+        /*.btn-container{*/
+        /*    width:100%;*/
+        /*    display: flex;*/
+        /*    justify-content: end;*/
+        /*    margin-top:50px;*/
+        /*}*/
+        /*.update-btn{*/
+        /*    width:100px;*/
+        /*    height:30px;*/
+        /*    background-color: #00c7ae;*/
+        /*    display: flex;*/
+        /*    justify-content: center;*/
+        /*    align-items: center;*/
+        /*    font-size: 18px;*/
+        /*    font-weight: bold;*/
+        /*    border-radius: 20px;*/
+        /*    margin-right:20px;*/
+        /*}*/
+        /*.delete-btn{*/
+        /*    width:100px;*/
+        /*    height:30px;*/
+        /*    background-color: #00bfff;*/
+        /*    display: flex;*/
+        /*    justify-content: center;*/
+        /*    align-items: center;*/
+        /*    font-size: 18px;*/
+        /*    font-weight: bold;*/
+        /*    border-radius: 20px;*/
+        /*}*/
+        /*a{*/
+        /*    text-decoration: none;*/
+        /*    color:white;*/
+        /*}*/
         .btn-container{
-            width:100%;
+            width:850px;
             display: flex;
             justify-content: end;
-            margin-top:50px;
+            align-content: center;
+            margin-top:20px;
         }
         .update-btn{
             width:100px;
             height:30px;
-            background-color: #00c7ae;
+            background-color: #00A8F3;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -30,7 +64,7 @@
         .delete-btn{
             width:100px;
             height:30px;
-            background-color: #00bfff;
+            background-color: lightcoral;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -47,120 +81,159 @@
 <body>
 <header th:replace="fragments/header :: header"></header>
     <div class="fulldiv">
-        <img class="goback" src="https://www.holaworld.io/images/info/arrowLeft.png" alt="뒤로가기사진">
         <div class="studyTitle">
             <h1 name="studyTitle" th:text="${study.studyTitle}"></h1><!--스터디 구분들어갈 자리-->
         </div>
+<!--        <div class="userAndUpload">-->
+<!--            <span class="writerUser" name="userId" th:text="${study.userId}">&lt;!&ndash;스터디 모집 작성자&ndash;&gt;-->
+<!--                &lt;!&ndash;작성자앞에 로고 사진&ndash;&gt;-->
+<!--                <img class="logoimg" src="https://hola-post-image.s3.ap-northeast-2.amazonaws.com/default.PNG" width="30px" height="25px">작성자 |</span>-->
+<!--                <span name="registerDate"></span>&lt;!&ndash;스터디모집글등록날짜&ndash;&gt;-->
+<!--        </div>-->
         <div class="userAndUpload">
-            <span class="writerUser" name="userId" th:text="${study.userId}"><!--스터디 모집 작성자-->
-                <!--작성자앞에 로고 사진-->
-                <img class="logoimg" src="https://hola-post-image.s3.ap-northeast-2.amazonaws.com/default.PNG" width="30px" height="25px">작성자 |</span>
-                <span name="registerDate"></span><!--스터디모집글등록날짜-->
-        </div>
-
-
-        <div class="secdiv"><!--두번째 박스 진행방식, 시작예정등등 담아있는 박스 -->
-            <div class="tablediv1">
-                <table>
-                    <tr>
-                        <td class="one" name="howToProceed">진행 방식</td>
-                        <td class="se" name="??" th:text="${study.studyProcess}"></td>
-                        <!--
-                            온라인이면 value :online
-                            오프라인이면 value : offline
-                            이러게 처리했음(studyWrite.html참조)
-                         -->
-                    </tr>
-                    <tr>
-                        <td class="one" name="people">모집 인원</td>
-                        <td class="se" name="??" th:text="${study.studyStudentCount}"></td>
-                        <!--
-                               <option value="unsettled-person">인원 미정
-                                <option value="one">1명
-                                <option value="two">2명
-                                <option value="three">3명
-                                <option value="four">4명
-                                <option value="five">5명
-                                <option value="six">6명
-                                <option value="seven">7명
-                                <option value="eight">8명
-                                <option value="nine">9명
-                                <option value="overten">10명 이상
-
-                                이러게 처리했음(studyWrite.html참조)
-                         -->
-                    </tr>
-
-                    <tr>
-                        <td class="one" >지역</td>
-                        <td class="se" name="location" th:text="${study.studyAddress}"></td>
-                    </tr>
-                </table>
+            <div class="logoimg">
+                <img src="https://hola-post-image.s3.ap-northeast-2.amazonaws.com/default.PNG" width="30px" height="30px">
             </div>
-
-
-            <div class="tablediv2">
-                <table>
-                    <tr>
-                        <td class="one" name="" >시작 예정</td>
-                        <td class="se" name="" th:text="${study.studyStartDate}"></td>
-                    </tr>
-                    <tr>
-                        <td class="one" name="period-time">예상 기간</td>
-                        <td class="se" name="" th:text="${study.studyDate}"></td>
-
-                        <!--
-                    <option value="unsettled-period">기간미정
-                    <option value="oneMonth">1개월
-                    <option value="twoMonths">2개월
-                    <option value="threeMonths">3개월
-                    <option value="fourMonths">4개월
-                    <option value="fiveMonths">5개월
-                    <option value="sixMonths">6개월
-                    <option value="oversixMonths">장기
-
-                        -->
-                    </tr>
-                    <tr>
-                        <td class="one" name="">스터디 구분</td>
-                        <td class="se" name="studyfor" th:text="${study.studyMajor}">영어 문법</td>
-                    </tr>
-                </table>
+            <div class="log-container">
+                <span class="writerUser" name="userId" th:text="${study.userId+' | '}"><!--스터디 모집 작성자-->
+                <!--작성자앞에 로고 사진-->이종민&nbsp;|</span>
+                <span name="registerDate" class="registerDate" th:text="${study.studyRegisterDate}">2023.10.11</span><!--스터디모집글등록날짜-->
+            </div>
+            <div class="updelte" th:if="${study.userNumber == session.userNumber}">
+                <a th:href="@{/study/update(studyNumber=${study.studyNumber})}"><div class="update-btn">수정</div></a>
+                <a th:href="@{/study/remove(studyNumber=${study.studyNumber})}"><div class="delete-btn">삭제</div></a>
+                </th:block>
+            </div>
+        </div>
+        <div class="secdiv"><!--두번째 박스 진행방식, 시작예정등등 담아있는 박스 -->
+            <div class="left-container">
+                <div class="sub">
+                    <div class="sub-title sone">진 행</div>
+                    <div class="sub-content" th:text="${study.studyProcess}"></div>
+                </div>
+                <div class="sub">
+                    <div class="sub-title sone">모 집</div>
+                    <div class="sub-content"th:text="${study.studyStudentCount}"></div>
+                </div>
+                <div class="sub">
+                    <div class="sub-title sone">지 역</div>
+                    <div class="sub-content" th:text="${study.studyAddress}">서울시 노원구</div>
+                </div>
+            </div>
+            <div class="right-container">
+                <div class="sub">
+                    <div class="sub-title">시작 예정</div>
+                    <div class="sub-content" th:text="${study.studyStartDate}"></div>
+                </div>
+                <div class="sub">
+                    <div class="sub-title">예상 기간</div>
+                    <div class="sub-content" th:text="${study.studyDate}"></div>
+                </div>
+                <div class="sub">
+                    <div class="sub-title">스터디 구분</div>
+                    <div class="sub-content" th:text="${study.studyMajor}"></div>
+                </div>
             </div>
         </div><!--두번째 박스 끝나는 지점-->
+
+
+<!--        <div class="secdiv">&lt;!&ndash;두번째 박스 진행방식, 시작예정등등 담아있는 박스 &ndash;&gt;-->
+<!--            <div class="tablediv1">-->
+<!--                <table>-->
+<!--                    <tr>-->
+<!--                        <td class="one" name="howToProceed">진행 방식</td>-->
+<!--                        <td class="se" name="??" th:text="${study.studyProcess}"></td>-->
+<!--                        &lt;!&ndash;-->
+<!--                            온라인이면 value :online-->
+<!--                            오프라인이면 value : offline-->
+<!--                            이러게 처리했음(studyWrite.html참조)-->
+<!--                         &ndash;&gt;-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                        <td class="one" name="people">모집 인원</td>-->
+<!--                        <td class="se" name="??" th:text="${study.studyStudentCount}"></td>-->
+<!--                        &lt;!&ndash;-->
+<!--                               <option value="unsettled-person">인원 미정-->
+<!--                                <option value="one">1명-->
+<!--                                <option value="two">2명-->
+<!--                                <option value="three">3명-->
+<!--                                <option value="four">4명-->
+<!--                                <option value="five">5명-->
+<!--                                <option value="six">6명-->
+<!--                                <option value="seven">7명-->
+<!--                                <option value="eight">8명-->
+<!--                                <option value="nine">9명-->
+<!--                                <option value="overten">10명 이상-->
+
+<!--                                이러게 처리했음(studyWrite.html참조)-->
+<!--                         &ndash;&gt;-->
+<!--                    </tr>-->
+
+<!--                    <tr>-->
+<!--                        <td class="one" >지역</td>-->
+<!--                        <td class="se" name="location" th:text="${study.studyAddress}"></td>-->
+<!--                    </tr>-->
+<!--                </table>-->
+<!--            </div>-->
+
+
+<!--            <div class="tablediv2">-->
+<!--                <table>-->
+<!--                    <tr>-->
+<!--                        <td class="one" name="" >시작 예정</td>-->
+<!--                        <td class="se" name="" th:text="${study.studyStartDate}"></td>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                        <td class="one" name="period-time">예상 기간</td>-->
+<!--                        <td class="se" name="" th:text="${study.studyDate}"></td>-->
+
+<!--                        &lt;!&ndash;-->
+<!--                    <option value="unsettled-period">기간미정-->
+<!--                    <option value="oneMonth">1개월-->
+<!--                    <option value="twoMonths">2개월-->
+<!--                    <option value="threeMonths">3개월-->
+<!--                    <option value="fourMonths">4개월-->
+<!--                    <option value="fiveMonths">5개월-->
+<!--                    <option value="sixMonths">6개월-->
+<!--                    <option value="oversixMonths">장기-->
+
+<!--                        &ndash;&gt;-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                        <td class="one" name="">스터디 구분</td>-->
+<!--                        <td class="se" name="studyfor" th:text="${study.studyMajor}">영어 문법</td>-->
+<!--                    </tr>-->
+<!--                </table>-->
+<!--            </div>-->
+<!--        </div>&lt;!&ndash;두번째 박스 끝나는 지점&ndash;&gt;-->
 
         <div class="thHoleDiv"><!--세번쨰 박스 스터디 소개부분 시작-->
                 <div class="ourStudtTitle">
                     <h2>스터디 소개</h2>
                 </div>
-            <div>
                 <div class="ourStudtIs" th:utext="${study.studyContent}">
                 </div>
 
-                <div class="checkDiv"><!--조회수랑 하이? 담는 총 상자-->
-                    <div>
-                        <th:block th:if="${likeCount == 0}">
-                            <a th:href="@{/study/up(studyNumber=${study.studyNumber})}" id="test">
-                                <img src="https://www.holaworld.io/images/info/bookmark.svg" width="20px" height="18px">
-                            </a>
+                <div class="checkDiv" th:if="${session.userNumber != null}"><!--조회수랑 하이? 담는 총 상자-->
+                        <th:block th:each="likes : ${like}">
+                            <input type="hidden" th:value="${likes.userNumber}" class="hidden-like">
                         </th:block>
-                        <th:block th:unless="${likeCount == 0}">
-                            <a th:href="@{/study/down(studyNumber=${study.studyNumber})}" id="test">
-                                <img src="https://www.holaworld.io/images/info/bookmark_filled.svg" width="20px" height="18px">
-                            </a>
-                        </th:block>
-
-                    </div>
+                        <div class="yellow">
+                            <img src="https://www.holaworld.io/images/info/bookmark_filled.svg"  id="yellow">
+                            <div class="like-text">찜 삭제</div>
+                        </div>
+                        <div class="white">
+                            <img src="https://www.holaworld.io/images/info/bookmark.svg" id="white">
+                            <div class="like-text">찜 하기</div>
+                        </div>
                 </div>
-            </div>
-
         </div><!--세번쨰 박스 스터디 소개부분 끝 -->
-        <th:block ><!--th:if="${study.userNumber == session.userNumber}"-->
-            <div class="btn-container">
-                <a th:href="@{/study/update(studyNumber=${study.studyNumber})}"><div class="update-btn">수정</div></a>
-                <a th:href="@{/study/remove(studyNumber=${study.studyNumber})}"><div class="delete-btn">삭제</div></a>
-            </div>
-        </th:block>
+<!--        <th:block >&lt;!&ndash;th:if="${study.userNumber == session.userNumber}"&ndash;&gt;-->
+<!--            <div class="btn-container">-->
+<!--                <a th:href="@{/study/update(studyNumber=${study.studyNumber})}"><div class="update-btn">수정</div></a>-->
+<!--                <a th:href="@{/study/remove(studyNumber=${study.studyNumber})}"><div class="delete-btn">삭제</div></a>-->
+<!--            </div>-->
+<!--        </th:block>-->
 
 
         <!--댓글 상자 -->
@@ -183,27 +256,63 @@
             </div>
         </div>
 
-
-
-
-
-
-
-
-
     </div> <!--fulldiv 끝나는 지점 길이100%-->
 
 
-    <input type="hidden" name="studyNumber" th:value="${study.studyNumber}" class="study-num"/>
-    <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+<input type="hidden" name="studyNumber" th:value="${study.studyNumber}" class="study-num"/>
+<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+<script type="module" src="/js/study/studyReply.js"></script>
 
-    <script th:inline="javascript"> // 타임리프 문법을 자바스크립트에서 사용하기 위한 설정
+<script th:inline="javascript">
     let loginNumber = [[${session.userNumber}]]; // 타임리프 문법은 [] 2개로 감싸줘야 한다.
+    $(document).ready(function() {
+        let userNumber = [[${session.userNumber}]];
+        $('.hidden-like').each(function() {
+            let inputValue = $(this).val();
+            if (inputValue == userNumber ) {
+                $('.yellow').css("display", "flex");
+                $('.white').css("display", "none");
+            }
+        });
+    });
 
+    $('#white').on('click', function (){
+        let userNumber = [[${session.userNumber}]];
+        let studyNumber = $('.study-num').val();
+        console.log(studyNumber);
+        console.log(userNumber);
+        $.ajax({
+            url: "/files/likeOk",
+            type: "get",
+            data: {
+                "userNumber" : userNumber,
+                "studyNumber": studyNumber},
+            success: function () {
+                location.reload();
+            },
+            error: function (a,b,c) {
+                console.error(c);
+            }
+        })});
 
-    </script>
-
-    <script type="module" src="/js/study/studyReply.js"></script>
+    $('#yellow').on('click', function (){
+        let userNumber = [[${session.userNumber}]];
+        let studyNumber = $('.study-num').val();
+            $.ajax({
+                url: "/files/likeNo",
+                type: "get",
+                data: {
+                    "userNumber" : userNumber,
+                    "studyNumber": studyNumber},
+                success: function () {
+                    location.reload();
+                },
+                error: function (a,b,c) {
+                    console.error(c);
+                }
+            })
+        });
+</script>
 </body>
 
 

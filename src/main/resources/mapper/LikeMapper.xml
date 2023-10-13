@@ -9,62 +9,119 @@
     <delete id="delete">
         delete from tbl_like where user_number = #{userNumber}
     </delete>
-
-    <select id="likeTotal">
-        select count(like_number) from TBL_LIKE where STUDY_NUMBER = #{studyNumber} and user_number = #{userNumber}
+<!--    추가 부분-->
+    <delete id="del">
+        delete from tbl_like where user_number = #{userNumber} and STUDY_NUMBER = #{studyNumber}
+    </delete>
+    <select id="seletLike">
+        SELECT LIKE_NUMBER, USER_NUMBER, STUDY_NUMBER FROM TBL_LIKE WHERE STUDY_NUMBER = #{studyNumber}
     </select>
-
-    <select id="selectUser" resultType="long">
-        select user_number from tbl_like
-    </select>
-
-    <select id="selectList" resultType="studyVo">
+    <select id="selectLikeList">
         SELECT RNUM,
         STUDY_NUMBER,
         STUDY_TITLE,
-        STUDY_PROCESS,
         TO_CHAR(STUDY_START_DATE, 'YYYY". "MM". "DD') AS STUDY_START_DATE,
-        STUDY_DATE,
-        STUDY_STUDENT_COUNT,
         STUDY_MAJOR,
         STUDY_ADDRESS,
-        STUDY_CONTENT,
         USER_NUMBER,
-        STUDY_REGISTER_DATE,
-        STUDY_UPDATE_DATE,
         USER_ID,
         USER_NICKNAME,
-        LIKE_NUMBER  -- TBL_LIKE에서 추가한 컬럼
+        LIKE_NUMBER
         FROM (
         SELECT
         ROWNUM AS RNUM,
+        STUDY_NUMBER,
+        STUDY_TITLE,
+        STUDY_START_DATE,
+        STUDY_MAJOR,
+        STUDY_ADDRESS,
+        USER_NUMBER,
+        USER_ID,
+        USER_NICKNAME,
+        LIKE_NUMBER
+        FROM(
+        SELECT
         L.STUDY_NUMBER,
         S.STUDY_TITLE,
-        S.STUDY_PROCESS,
         S.STUDY_START_DATE,
-        S.STUDY_DATE,
-        S.STUDY_STUDENT_COUNT,
         S.STUDY_MAJOR,
         S.STUDY_ADDRESS,
-        S.STUDY_CONTENT,
         L.USER_NUMBER,
-        S.STUDY_REGISTER_DATE,
-        S.STUDY_UPDATE_DATE,
         U.USER_ID,
         U.USER_NICKNAME,
-        L.LIKE_NUMBER  -- TBL_LIKE 테이블 조인
+        L.LIKE_NUMBER
         FROM TBL_STUDY_BOARD S
         JOIN TBL_USERS U ON S.USER_NUMBER = U.USER_NUMBER
         right JOIN TBL_LIKE L ON S.STUDY_NUMBER = L.STUDY_NUMBER
-            <![CDATA[WHERE ROWNUM <= #{criteria.page} * #{criteria.amount}]]>
-        )where user_number=#{userNumber,jdbcType=BIGINT} and LIKE_NUMBER is not null and  RNUM > (#{criteria.page} - 1) * #{criteria.amount}
+        WHERE S.STUDY_NUMBER IN (SELECT STUDY_NUMBER FROM TBL_LIKE WHERE user_number=#{userNumber,jdbcType=BIGINT})
+          and user_number=#{userNumber,jdbcType=BIGINT}
+        ORDER BY L.LIKE_NUMBER DESC
+        )
+        <![CDATA[WHERE ROWNUM <= #{criteria.page} * #{criteria.amount}]]>
+        )where  RNUM > (#{criteria.page} - 1) * #{criteria.amount}
     </select>
-
-
-
-    <select id="selectTotal" resultType="_int">
-        SELECT COUNT(like_number)
-        FROM TBL_LIKE WHERE user_number = #{userNumber}
+    <select id="selectLikeTotal" resultType="int">
+        SELECT COUNT(STUDY_NUMBER)
+        FROM TBL_LIKE
+        WHERE USER_NUMBER = #{userNumber}
     </select>
+<!--    여기 까지-->
+
+<!--    <select id="likeTotal">-->
+<!--        select count(like_number) from TBL_LIKE where STUDY_NUMBER = #{studyNumber} and user_number = #{userNumber}-->
+<!--    </select>-->
+
+<!--    <select id="selectUser" resultType="long">-->
+<!--        select user_number from tbl_like-->
+<!--    </select>-->
+
+<!--    <select id="selectList" resultType="studyVo">-->
+<!--        SELECT RNUM,-->
+<!--        STUDY_NUMBER,-->
+<!--        STUDY_TITLE,-->
+<!--        STUDY_PROCESS,-->
+<!--        TO_CHAR(STUDY_START_DATE, 'YYYY". "MM". "DD') AS STUDY_START_DATE,-->
+<!--        STUDY_DATE,-->
+<!--        STUDY_STUDENT_COUNT,-->
+<!--        STUDY_MAJOR,-->
+<!--        STUDY_ADDRESS,-->
+<!--        STUDY_CONTENT,-->
+<!--        USER_NUMBER,-->
+<!--        STUDY_REGISTER_DATE,-->
+<!--        STUDY_UPDATE_DATE,-->
+<!--        USER_ID,-->
+<!--        USER_NICKNAME,-->
+<!--        LIKE_NUMBER  &#45;&#45; TBL_LIKE에서 추가한 컬럼-->
+<!--        FROM (-->
+<!--        SELECT-->
+<!--        ROWNUM AS RNUM,-->
+<!--        L.STUDY_NUMBER,-->
+<!--        S.STUDY_TITLE,-->
+<!--        S.STUDY_PROCESS,-->
+<!--        S.STUDY_START_DATE,-->
+<!--        S.STUDY_DATE,-->
+<!--        S.STUDY_STUDENT_COUNT,-->
+<!--        S.STUDY_MAJOR,-->
+<!--        S.STUDY_ADDRESS,-->
+<!--        S.STUDY_CONTENT,-->
+<!--        L.USER_NUMBER,-->
+<!--        S.STUDY_REGISTER_DATE,-->
+<!--        S.STUDY_UPDATE_DATE,-->
+<!--        U.USER_ID,-->
+<!--        U.USER_NICKNAME,-->
+<!--        L.LIKE_NUMBER  &#45;&#45; TBL_LIKE 테이블 조인-->
+<!--        FROM TBL_STUDY_BOARD S-->
+<!--        JOIN TBL_USERS U ON S.USER_NUMBER = U.USER_NUMBER-->
+<!--        right JOIN TBL_LIKE L ON S.STUDY_NUMBER = L.STUDY_NUMBER-->
+<!--            <![CDATA[WHERE ROWNUM <= #{criteria.page} * #{criteria.amount}]]>-->
+<!--        )where user_number=#{userNumber,jdbcType=BIGINT} and LIKE_NUMBER is not null and  RNUM > (#{criteria.page} - 1) * #{criteria.amount}-->
+<!--    </select>-->
+
+
+
+<!--    <select id="selectTotal" resultType="_int">-->
+<!--        SELECT COUNT(like_number)-->
+<!--        FROM TBL_LIKE WHERE user_number = #{userNumber}-->
+<!--    </select>-->
 </mapper>
 

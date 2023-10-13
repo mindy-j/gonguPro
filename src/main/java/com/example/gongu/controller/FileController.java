@@ -1,15 +1,19 @@
 package com.example.gongu.controller;
 
 
+import com.example.gongu.domain.dto.LikeDto;
 import com.example.gongu.domain.vo.admin.AdminFileVo;
 import com.example.gongu.service.AdminService;
+import com.example.gongu.service.LikeService;
 import com.example.gongu.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 
+import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -20,6 +24,7 @@ import java.util.List;
 public class FileController {
     private final AdminService adminService;
     private final UserService userService;
+    private final LikeService likeService;
 
     @Value("${file.dir}")
     private String fileDir;
@@ -51,6 +56,19 @@ public class FileController {
     @ResponseBody
     public Long checkEmail(String userEmail){
         return userService.findEmail(userEmail);
+    }
+
+    //찜하기
+    @GetMapping("likeOk")
+    public void likeOk(@RequestParam("studyNumber") Long studyNumber, @RequestParam("userNumber")String userNumber){
+        Long userNum = Long.parseLong(userNumber);
+            likeService.regist(userNum, studyNumber);
+    }
+    //찜하기 취소
+    @GetMapping("likeNo")
+    public void likeNo(@RequestParam("studyNumber") Long studyNumber, @RequestParam("userNumber")String userNumber){
+        Long userNum = Long.parseLong(userNumber);
+        likeService.rmove(userNum, studyNumber);
     }
 
 }
