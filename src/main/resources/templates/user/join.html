@@ -13,7 +13,9 @@
 
 
 <section class="login-form">
-
+  <a th:href="@{/user/index}">
+    <div class="login-img-goto"></div>
+  </a>
   <form action="/user/join" method="post">
     <div class="int-area">
       <input  type="text" class="id_input" name="userId" id="userId" autocomplete="off" required>

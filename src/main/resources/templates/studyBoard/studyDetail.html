@@ -214,9 +214,11 @@
                 <div class="ourStudtIs" th:utext="${study.studyContent}">
                 </div>
 
+
                 <div class="checkDiv" th:if="${session.userNumber != null}"><!--조회수랑 하이? 담는 총 상자-->
                         <th:block th:each="likes : ${like}">
                             <input type="hidden" th:value="${likes.userNumber}" class="hidden-like">
+
                         </th:block>
                         <div class="yellow">
                             <img src="https://www.holaworld.io/images/info/bookmark_filled.svg"  id="yellow">

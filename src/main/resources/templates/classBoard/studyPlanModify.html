@@ -10,180 +10,112 @@
   <script src="https://kit.fontawesome.com/acf4f592bf.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="/css/header.css">
   <!-- 서머노트를 위해 추가해야할 부분 -->
-  <script src="/summerNote/summernote-lite.js"></script>
-  <script src="/summerNote/summernote-ko-KR.js"></script>
-  <link rel="stylesheet" href="/summerNote/summernote-lite.css">
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 </head>
 <body>
 <header th:replace="fragments/header :: header"></header>
-<div class="full-box"><!--전체 총 박스-->
+<div class="container">
+  <form action="/class/update" method="post">
+    <input type="hidden" th:value="${class.classNumber}" name="classNumber"/>
+    <div class="section-1">
+      <ul class="item-ul">
+        <li>
+          <select id="classMajor" name="classMajor">
+            <option value="">과목을 선택해주세요</option>
+            <optgroup label="수학">
+              <option value="산술학">산술학</option>
+              <option value="대수학">대수학</option>
+              <option value="기하학">기하학</option>
+              <option value="위상수학">위상수학</option>
+              <option value="해석학">해석학</option>
+            </optgroup>
+            <optgroup label="과학">
+              <option value="생명과학">생명과학</option>
+              <option value="기초과학">기초과학</option>
+              <option value="자연과학">자연과학</option>
+              <option value="과학기술">과학기술</option>
+            </optgroup>
+            <optgroup label="국어">
+              <option value="국어학">국어학</option>
+              <option value="고전문학">고전문학</option>
+              <option value="현대문학">현대문학</option>
+              <option value="국어국문">국어국문</option>
+            </optgroup>
+            <optgroup label="언어">
+              <option value="영어">영어</option>
+              <option value="중국어">중국어</option>
+              <option value="프랑스어">프랑스어</option>
+              <option value="일본어">일본어</option>
+              <option value="독일어">독일어</option>
+            </optgroup>
+            <optgroup label="기타">
+              <option value="etc">기타</option>
+            </optgroup>
+          </select>
+        </li>
+        <li>
+          <select class="classProcess" name="classProcess">
+            <option value="">수업방식을 선택해주세요</option>
+            <option value="온라인">온라인</option>
+            <option value="오프라인">오프라인</option>
+          </select>
+        </li>
+        <li>
+          <input type="date" name="classStartDate" class="start-date" data-placeholder="수업 시작 날짜" th:value="${class.classStartDate}">
 
-  <div class="form-full">
-    <div class="plan">
-      <h1>수업계획서</h1>
-      <p>나의 수업계획을 공유해주세요!</p>
+        </li>
+        <li>
+          <input type="date" name="classEndDate" class="end-date" data-placeholder="스터디 종료 날짜" th:value="${class.classEndDate}">
+        </li>
+
+
+
+
+      </ul>
     </div>
-
-    <form action="/class/update" method="post"> <!--백단은 위한 폼 부분-->
-      <input type="hidden" th:value="${class.classNumber}" name="classNumber"/>
-      <div>
-        <div>
-          <span class="edu-title">글 제목</span>
-        </div>
-        <div class="edu-title-div">
-          <input type="text" name="classTitle" th:value="${class.classTitle}" placeholder="제목을 입력해주세요">
-        </div>
+    <div class="section-1">
+      <ul class="item-ul-2">
+        <li>
+          <input type="text" name="classAddress" placeholder="수업을 진행할 지역을 입력해주세요" th:value="${class.classAddress}">
+        </li>
+        <li>
+          <input type="text" name="classPrice"  placeholder="가격을 입력해주세요" th:value="${class.classPrice}">
+        </li>
+      </ul>
+    </div>
+    <div class="section-3">
+      <div class="study-title">
+        <input type="text" name="classTitle" placeholder="제목을 입력해주세요" th:value="${class.classTitle}">
       </div>
-
-
-
-      <div class="edu-plan-div"><!--수업계획 부분시작 -->
-        <span class="edu-plan">수업계획</span>
-        <div class="planFrom-div">
-          <div class="container" style="width: 850px;">   <!--editordata-->
-            <textarea class="summernote" name="classPlan" th:text="${class.classPlan}"></textarea>
-          </div>
-        </div>
-      </div><!--수업계획 부분 끝 -->
-      <br><br>
-
-      <div class="class-schedule-div"><!--수업일정을 위한 부분 시작 날짜 선택 폼 있음-->
-        <span class="class-schedule">수업 일정</span>
-        <div class="plan_data">
-          <div class="plan_data_div1">
-            <!--수업시작일 input-->
-            <input type="date" name="classStartDate" th:value="${class.classStartDate}">
-            <br>
-            시작일
-          </div>
-          <div class="plan_data_div2">
-            <!--수업종료일 input-->
-            <input type="date" name="classEndDate" th:value="${class.classEndDate}">
-            <br>
-            종료일
-          </div>
-        </div>
-      </div><!--수업일정을 위한 부분 끝-->
-      <br><br>
-
-
-      <!--변경해야하는 부분-->
-      <div class="howtoFulldiv">
-        <div class="howTo1">
-          <div>
-            <span class="class-howto">진행 방식</span>
-          </div>
-          <div>
-            <select class="classProcess" name="classProcess">
-              <option value="온라인">온라인</option>
-              <option value="오프라인">오프라인</option>
-            </select>
-          </div>
-        </div>
-        <div class="howTo2">
-          <div>
-            <span class="class-howto2">수업 구분</span>
-          </div>
-          <div class="howto-second2">
-            <select id="classMajor" name="classMajor">
-              <option value="">-- 선택하세요 --</option>
-              <optgroup label="수학">
-                <option value="산술학">산술학</option>
-                <option value="대수학">대수학</option>
-                <option value="기하학">기하학</option>
-                <option value="위상수학">위상수학</option>
-                <option value="해석학">해석학</option>
-              </optgroup>
-              <optgroup label="과학">
-                <option value="생명과학">생명과학</option>
-                <option value="기초과학">기초과학</option>
-                <option value="자연과학">자연과학</option>
-                <option value="과학기술">과학기술</option>
-              </optgroup>
-              <optgroup label="국어">
-                <option value="국어학">국어학</option>
-                <option value="고전문학">고전문학</option>
-                <option value="현대문학">현대문학</option>
-                <option value="국어국문">국어국문</option>
-              </optgroup>
-              <optgroup label="언어">
-                <option value="영어">영어</option>
-                <option value="중국어">중국어</option>
-                <option value="프랑스어">프랑스어</option>
-                <option value="일본어">일본어</option>
-                <option value="독일어">독일어</option>
-              </optgroup>
-              <optgroup label="기타">
-                <option value="etc">기타</option>
-              </optgroup>
-            </select>
-
-          </div>
-          <div>
-          </div>
-        </div>
-      </div>  <!--변경해야하는 부분-->
-      <br><br>
-
-
-
-
-      <!--지역&가격 부분-->
-      <div class="locationfulldiv">
-        <div class="location1">
-          <div>
-            <span class="class-loction">지역</span>
-          </div>
-          <div>
-            <div class="location-second">
-              <input type="text" name="classAddress"  placeholder="지역을 입력해주세요" th:value="${class.classAddress}">
-            </div>
-          </div>
-        </div>
-        <div class="pricediv">
-          <div>
-            <span class="class-price">가격</span>
-          </div>
-          <div class="price-second">
-            <input type="text" name="classPrice"  placeholder="가격을 입력해주세요" th:value="${class.classPrice}">
-          </div>
-          <div>
-          </div>
-        </div>
-      </div> <!--지역&가격 부분-->
-      <br><br>
-
-
-
-
-
-
-
-      <!--멘토 소개부분 시작-->
-      <div class="introduction-div">
-        <span class="memtor-introduction">멘토 소개</span>
-        <div class="aboutMentor-div">
-          <!--멘소 소개 input-->
-          <div class="container" style="width: 850px;">   <!--editordata-->
-            <textarea class="summernote" name="classIntroduce" th:text="${class.classIntroduce}"></textarea>
-          </div>
-        </div>
-      </div><!--멘토 소개부분 끝-->
-      <br>
-      <span class="memo">※신청한 계획서는 관리자 승인 후 게시가 됩니다</span>
-
-
-      <div class="btn-div">
-        <button class="btn1" type="submit">신청 하기</button>
-        <button class="btn2" type="reset">신청 취소</button>
-      </div>
-
-    </form>
-  </div>
+      <textarea class="summernote" id="summernote2" name="classPlan" th:text="${class.classPlan}"></textarea>
+    </div>
+    <div class="class-plan-box">
+      <textarea class="summernote" id="summernote" name="classIntroduce" th:text="${class.classIntroduce}"></textarea>
+    </div>
+    <div class="button-div">
+      <button type="reset" class="rest-btn" name="cancelBtn">취소</button>
+      <button type="submit" class="registerBtn" name="registerBtn" >글등록</button>
+    </div>
+  </form>
 </div>
 </body>
 <script>
   $('#summernote').summernote({
+    placeholder: '내용을 입력해주세요',
+    tabsize: 1,
+    height: 400,
+    toolbar: [
+      ['style', ['style']],
+      ['font', ['bold', 'underline', 'clear']],
+      ['color', ['color']],
+      ['para', ['ul', 'ol', 'paragraph']],
+      ['view', ['help']]
+    ]
+  });
+
+  $('#summernote2').summernote({
     placeholder: '내용을 입력해주세요',
     tabsize: 1,
     height: 400,
