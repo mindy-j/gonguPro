@@ -7,10 +7,10 @@ let classNumber = $('.class-num').val();
 $('.btn-reply').on('click', function () {
     let content = $('#reply-content').val();
 
-    // if(!(content && loginNumber)){
-    //     alert('로그인을 하세요!');
-    //     return;
-    // }
+     if(!(content && loginNumber)){
+         alert('로그인을 하세요!');
+         return;
+     }
     let replyObj = {
         classReplyContent : content,
         classNumber : classNumber,
@@ -18,7 +18,7 @@ $('.btn-reply').on('click', function () {
     };
 
     reply.add(replyObj, function(){
-        reply.getListPage({classNumber:classNumber, page : page}, appendReply);
+        reply.getListPage({classNumber:classNumber, page : page}, showReply);
     });
 
     $('#reply-content').val('');
@@ -100,11 +100,11 @@ function showReply(result){
 
     let text = '';
 
-    result.forEach( r => {
+    result.replyList.forEach( r => {
         text += `
             <div class="reply" data-num="${r.classReplyNumber}">
               <div class="reply-box">
-                <div class="reply-box__writer">${r.userId}</div>
+                <div class="reply-box__writer">${r.userNickname}</div>
                 <div class="reply-box__content">${r.classReplyContent}</div>
               </div>
               
@@ -173,6 +173,7 @@ $('.btn-remove').on('click', function (){
 
     document.body.appendChild(f);
     f.submit();
+
 });
 
 // 수정 버튼
@@ -193,7 +194,7 @@ $('.reply-list-wrap').on('click', '.reply-remove-btn', function () {
     let classReplyNumber = $(this).closest('.reply').data('num');
 
     reply.remove(classReplyNumber, function (){
-        reply.getListPage({classNumber:classNumber, page : page}, appendReply);
+        reply.getListPage({classNumber:classNumber, page : page}, showReply);
     });
 });
 /////////여기까지
@@ -219,7 +220,7 @@ $('.reply-list-wrap').on('click', '.modify-content-btn', function () {
     console.log('modify!!!2');
 
     reply.modify(classReplyNumber, classReplyObj, function (){
-        reply.getListPage({classNumber:classNumber, page : page}, appendReply);
+        reply.getListPage({classNumber:classNumber, page : page}, showReply);
     });
     console.log('modify!!!3');
 });
