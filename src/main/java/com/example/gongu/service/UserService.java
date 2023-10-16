@@ -24,6 +24,21 @@ public class UserService {
         return userMapper.idCheck(userId);
     }
 
+    // 닉네임 중복검사
+    public int nickNameCheck(String userNickname){
+        return userMapper.nickNameCheck(userNickname);
+    }
+
+    // 이메일 중복검사
+    public int emailCheck(String userEmail){
+        return userMapper.emailCheck(userEmail);
+    }
+
+    // 번호 중복검사
+    public int phoneCheck(String userPhone){
+        return userMapper.phoneCheck(userPhone);
+    }
+
 
     //등록
     public void register(UserDto userDto) {

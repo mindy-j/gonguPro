@@ -61,13 +61,12 @@ $(verifyBtn).on('click',function (){
         data: JSON.stringify({userId:userId, userPhone: userPhone,checkNumber: code}),
         contentType : 'application/json; charset=utf-8',
         success: function (result){
-            //여기 result에서 오류
             console.log(result);
 
             if(result == '비밀번호를 찾을 수 없습니다.'){
                 alert(result);
                 return;
-            }else if(result =='인증번호가 일지하지 않습니다.'){
+            }else if(result == '인증번호가 일치하지 않습니다.'){
                 alert(result);
                 return;
             }

@@ -70,6 +70,7 @@ public class UserController {
         return "user/joinOk";
     }
 
+
     //아이디 중복체크
     @PostMapping("/userIdChk")
     @ResponseBody
@@ -85,6 +86,50 @@ public class UserController {
         }
 
     }
+
+    //닉네임 중복체크
+    @PostMapping("/userNicknameChk")
+    @ResponseBody
+    public String userNicknameChkPost(String userNickname){
+        int result = userService.nickNameCheck(userNickname);
+        log.info("결과 : " + result);
+        if(result !=0){
+            return "fail"; //중복 닉네임
+        }else{
+            return "success"; //중복 닉네임 없음
+        }
+    }
+
+    //이메일 중복체크
+    @PostMapping("/userEmailChk")
+    @ResponseBody
+    public String userEmailChkPost(String userEmail){
+        int result = userService.emailCheck(userEmail);
+        log.info("결과 : " + result);
+        if(result !=0){
+            return "fail"; //중복 닉네임
+        }else{
+            return "success"; //중복 닉네임 없음
+        }
+    }
+
+    //번호 중복체크
+    @PostMapping("/userPhoneChk")
+    @ResponseBody
+    public String userPhoneChkPost(String userPhone){
+        int result = userService.phoneCheck(userPhone);
+        log.info("결과 : " + result);
+        if(result !=0){
+            return "fail"; //중복 닉네임
+        }else{
+            return "success"; //중복 닉네임 없음
+        }
+    }
+
+
+
+
+
 
     @GetMapping("/joinOk")
     public String joinOk(){

@@ -219,19 +219,19 @@ label {
 }
 
 
-
-/*아이디 중복이 아닌 경우*/
-.id_input_re_1{
+/*중복이 아닌 경우*/
+.id_input_re_1, .ni_input_nick_1, .em_input_email_1, .ph_input_phone_1{
     color: green;
     display: none;
+    font-size: 13px;
 }
 
-/*아이디 중복일 경우*/
-.id_input_re_2{
+/*중복일 경우*/
+.id_input_re_2,.ni_input_nick_2,.em_input_email_2,.ph_input_phone_2 {
     color: red;
     display: none;
+    font-size: 13px;
 }
-
 
 
 
