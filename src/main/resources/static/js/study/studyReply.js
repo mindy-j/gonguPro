@@ -7,10 +7,10 @@ let studyNumber = $('.study-num').val();
 $('.btn-reply').on('click', function () {
     let content = $('#reply-content').val();
 
-    // if(!(content && loginNumber)){
-    //     alert('로그인을 하세요!');
-    //     return;
-    // }
+     if(!(content && loginNumber)){
+        alert('로그인을 하세요!');
+         return;
+     }
     let replyObj = {
         studyReplyContent : content,
         studyNumber : studyNumber,
@@ -18,7 +18,7 @@ $('.btn-reply').on('click', function () {
     };
 
     reply.add(replyObj, function(){
-        reply.getListPage({studyNumber:studyNumber, page : page}, appendReply);
+        reply.getListPage({studyNumber:studyNumber, page : page}, showReply);
     });
 
     $('#reply-content').val('');
@@ -100,11 +100,11 @@ function showReply(result){
 
     let text = '';
 
-    result.forEach( r => {
+    result.replyList.forEach( r => {
         text += `
             <div class="reply" data-num="${r.studyReplyNumber}">
               <div class="reply-box">
-                <div class="reply-box__writer">${r.userId}</div>
+                <div class="reply-box__writer">${r.userNickname}</div>
                 <div class="reply-box__content">${r.studyReplyContent}</div>
               </div>
               
@@ -152,7 +152,7 @@ $('body').click(function (e) {
 
 // 뒤로가기 버튼
 $('.btn-back').on('click', function (){
-    window.location.href = '/board/list';
+    window.location.href = '/study/list';
 })
 
 //삭제 버튼
@@ -162,11 +162,11 @@ $('.btn-remove').on('click', function (){
 
     let f = document.createElement('form');
     f.setAttribute("method", 'post');
-    f.setAttribute('action', '/board/remove');
+    f.setAttribute('action', '/study/delete');//asd
 
     let input = document.createElement('input');
-    input.setAttribute('name', 'boardNumber');
-    input.setAttribute('value', boardNumber);
+    input.setAttribute('name', 'studyNumber');
+    input.setAttribute('value', studyNumber);
     input.setAttribute('type', 'hidden');
 
     f.appendChild(input);
@@ -193,7 +193,7 @@ $('.reply-list-wrap').on('click', '.reply-remove-btn', function () {
     let studyReplyNumber = $(this).closest('.reply').data('num');
 
     reply.remove(studyReplyNumber, function (){
-        reply.getListPage({studyNumber:studyNumber, page : page}, appendReply);
+        reply.getListPage({studyNumber:studyNumber, page : page}, showReply);
     });
 });
 
@@ -219,7 +219,7 @@ $('.reply-list-wrap').on('click', '.modify-content-btn', function () {
     console.log('modify!!!2');
 
     reply.modify(studyReplyNumber, studyReplyObj, function (){
-        reply.getListPage({studyNumber:studyNumber, page : page}, appendReply);
+        reply.getListPage({studyNumber:studyNumber, page : page}, showReply);
     });
     console.log('modify!!!3');
 });

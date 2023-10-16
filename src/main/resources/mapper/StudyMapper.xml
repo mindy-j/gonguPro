@@ -13,7 +13,7 @@
               FROM TBL_STUDY_BOARD S JOIN TBL_USERS U
                                           ON S.USER_NUMBER = U.USER_NUMBER
         <![CDATA[WHERE ROWNUM <= #{page} * #{amount}]]>
-             )
+        )
         WHERE RNUM > (#{page} - 1) * #{amount}
     </select>
 
