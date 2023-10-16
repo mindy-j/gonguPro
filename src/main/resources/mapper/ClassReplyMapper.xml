@@ -5,8 +5,8 @@
         <selectKey keyProperty="classReplyNumber" resultType="long" order="BEFORE">
             SELECT SEQ_CLASS_REPLY_NUMBER.NEXTVAL FROM DUAL
         </selectKey>
-        insert into TBL_CLASS_REPLY (CLASS_REPLY_NUMBER, CLASS_REPLY_CONTENT, CLASS_NUMBER, USER_NUMBER)
-        values (#{classReplyNumber}, #{classReplyContent}, #{classNumber}, #{userNumber})
+        insert into TBL_CLASS_REPLY (CLASS_REPLY_NUMBER, CLASS_REPLY_CONTENT,CLASS_REPLY_REGISTER_DATE,CLASS_REPLY_UPDATE_DATE, CLASS_NUMBER, USER_NUMBER)
+        values (#{classReplyNumber}, #{classReplyContent},sysdate,sysdate, #{classNumber}, #{userNumber})
     </insert>
 
     <select id="selectList" resultType="classReplyVo">
