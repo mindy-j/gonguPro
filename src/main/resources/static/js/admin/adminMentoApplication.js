@@ -104,7 +104,7 @@ function detailFile(){
         <span class="close">&times;</span>
         <img src="${fileName}" data-number="${fileNumber}" width="80%" height="850px" style="margin-left: 180px"/>`);
     $('.modal').css('display', 'block');
-}
+};
 
 // 모달 닫기
 $('.right-container').on('click', '.close', function() {
@@ -114,8 +114,3 @@ $('.right-container').on('click', '.close', function() {
 $('.back-btn').on('click', function (){
     window.history.back();
 });
-
-
-$('.write-btn-container').on('click', function (){
-    let userNumber = [[${session.userNumber}]];
-})

@@ -11,7 +11,7 @@
     <style>
         .container{
             width:1320px;
-            height:1300px;
+            height:1100px;
             margin:auto;
 
         }
@@ -48,6 +48,7 @@
             color:white;
             font-size: 18px;
             font-weight: bold;
+
         }
         .study-logo{
             width:100px;
@@ -112,7 +113,7 @@
 
     <!--페이징처리 끝-->
 </div>
-<th:block th:if="${session.userNumber != null}"> <!--  th:if="${}" 강사님께 세션 null 어떻게 비교하는지 여쭤보고 넣기-->
+<th:block th:if="${session.userNumber != null}">
     <div class="write-btn-container">
         <a href="/study/write" class="write-btn">
             <div class="write-btn">
