@@ -24,4 +24,5 @@ public class StudyVo {
     private Date  studyUpdateDate;
     private String userId;
     private String userNickname;
+    private int likeCount;
 }
