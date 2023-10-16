@@ -140,4 +140,72 @@ $('.id_input').on("propertychange change keyup paste input", function (){
     });
 });
 
+// 닉네임 중복검사
+$('.nick_input').on("propertychange change keyup paste input", function (){
+    //console.log("*****테스트*****");
+    var userNickname = $('.nick_input').val();
+    var data = {userNickname : userNickname}
+
+    $.ajax({
+        type : "post",
+        url :"/user/userNicknameChk",
+        data : data,
+        success : function (result){
+            // console.log("성공여부 : " + result);
+            if(result != 'fail'){
+                $('.ni_input_nick_1').css("display","inline-block");
+                $('.ni_input_nick_2').css("display","none");
+            } else {
+                $('.ni_input_nick_2').css("display","inline-block");
+                $('.ni_input_nick_1').css("display","none");
+            }
+        }
+    });
+});
+
+//이메일 중복검사
+$('.email_input').on("propertychange change keyup paste input", function (){
+    //console.log("*****테스트*****");
+    var userEmail = $('.email_input').val();
+    var data = {userEmail : userEmail}
+
+    $.ajax({
+        type : "post",
+        url :"/user/userEmailChk",
+        data : data,
+        success : function (result){
+            // console.log("성공여부 : " + result);
+            if(result != 'fail'){
+                $('.em_input_email_1').css("display","inline-block");
+                $('.em_input_email_2').css("display","none");
+            } else {
+                $('.em_input_email_2').css("display","inline-block");
+                $('.em_input_email_1').css("display","none");
+            }
+        }
+    });
+});
+
+//번호 중복검사
+$('.phone_input').on("propertychange change keyup paste input", function (){
+    var userPhone = $('.phone_input').val();
+    var data = {userPhone : userPhone}
+
+    $.ajax({
+        type: "post",
+        url : "/user/userPhoneChk",
+        data : data,
+        success : function (result){
+            if(result != 'fail'){
+                $('.ph_input_phone_1').css("display","inline-block");
+                $('.ph_input_phone_2').css("display","none");
+            } else {
+                $('.ph_input_phone_2').css("display","inline-block");
+                $('.ph_input_phone_1').css("display","none");
+            }
+        }
+    });
+
+
+});
 
