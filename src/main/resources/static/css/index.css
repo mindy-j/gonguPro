@@ -146,12 +146,11 @@ a{
 .good-board{
     width:250px;
     height:260px;
-
     border-radius: 20px;
     margin-top:30px;
     padding:13px;
     border: 2px solid rgb(186, 185, 185);
-    overflow: hidden;
+    overflow: hidden; /*이거 속성 어캐주는지 물어보깅*/
 }
 
 .good-board:hover{
@@ -190,16 +189,17 @@ a{
 .deadline-box{
     border-bottom: 1px solid rgb(180, 177, 177);
     padding-bottom: 5px;
+    margin-top:7px;
 }
 
-.content-box{
+.study-content-box{ /*study-content-box*/
     width:100%;
-    height:90px;
-    font-size: 19px;
+    height:80px;
+    font-size: 18px;
     font-weight:bold;
     margin-top:10px;
     display:flex;
-    align-items: center;
+    align-items: start;
 
 }
 .category{
