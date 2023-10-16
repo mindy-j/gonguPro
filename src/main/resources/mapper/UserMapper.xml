@@ -8,7 +8,21 @@
         FROM TBL_USERS
         WHERE USER_ID = #{userId}
     </select>
-
+    <select id="nickNameCheck"  resultType="int">
+        SELECT count(*)
+        FROM TBL_USERS
+        WHERE USER_NICKNAME = #{userNickname}
+    </select>
+    <select id="emailCheck"  resultType="int">
+        SELECT count(*)
+        FROM TBL_USERS
+        WHERE USER_EMAIL = #{userEmail}
+    </select>
+    <select id="phoneCheck"  resultType="int">
+        SELECT count(*)
+        FROM TBL_USERS
+        WHERE USER_PHONE = #{userPhone}
+    </select>
 
     <insert id="insert">
         INSERT INTO TBL_USERS (USER_NUMBER, USER_ID, USER_NAME, USER_PASSWORD,  USER_NICKNAME, USER_EMAIL, USER_PHONE,
