@@ -1,14 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.gongu.mapper.SearchMapper">
-    <select id="selectSearch" resultType="searchVo">
-        <choose>
-            <when test="">
-                select
-            </when>
-            <when test="">
-                select
-            </when>
-        </choose>
+    <select id="selectStudy" resultType="studyVo">
+        SELECT RNUM, STUDY_NUMBER, STUDY_TITLE, STUDY_PROCESS, TO_CHAR(STUDY_START_DATE, 'YYYY". "MM". "DD') AS STUDY_START_DATE , STUDY_DATE, STUDY_STUDENT_COUNT, STUDY_MAJOR, STUDY_ADDRESS, STUDY_CONTENT, USER_NUMBER, STUDY_REGISTER_DATE, STUDY_UPDATE_DATE, USER_ID, USER_NICKNAME
+        FROM (SELECT ROWNUM AS RNUM,STUDY_NUMBER, STUDY_TITLE, STUDY_PROCESS, STUDY_START_DATE, STUDY_DATE,STUDY_STUDENT_COUNT, STUDY_MAJOR, STUDY_ADDRESS, STUDY_CONTENT, S.USER_NUMBER, STUDY_REGISTER_DATE, STUDY_UPDATE_DATE, U.USER_ID, U.USER_NICKNAME
+            FROM TBL_STUDY_BOARD S
+                JOIN TBL_USERS U
+                    ON S.USER_NUMBER = U.USER_NUMBER
+            WHERE STUDY_TITLE LIKE '%' || #{searchValue} || '%'
+            <![CDATA[AND ROWNUM <= #{page} * #{amount}]]>
+            )
+        WHERE RNUM > (#{page} - 1) * #{amount}
+    </select>
+
+    <select id="selectStudyTotal" resultType="_int">
+        SELECT COUNT(STUDY_NUMBER)
+        FROM TBL_STUDY_BOARD
+        WHERE STUDY_TITLE LIKE '%' || #{searchValue} || '%'
+    </select>
+
+    <select id="selectClass" resultType="classVo">
+        SELECT
+            RNUM,
+            CLASS_NUMBER,
+            CLASS_TITLE,
+            TO_CHAR(CLASS_START_DATE, 'YYYY". "MM". "DD') AS CLASS_START_DATE,
+            TO_CHAR(CLASS_END_DATE, 'YYYY". "MM". "DD') AS CLASS_END_DATE,
+            CLASS_PROCESS,
+            CLASS_PRICE,
+            CLASS_ADDRESS,
+            CLASS_LEVEL,
+            USER_NUMBER,
+            USER_NAME,
+            USER_LEVEL,
+            APPLY_EDUCATION
+        FROM
+            (SELECT
+                ROWNUM AS RNUM,
+                CB.CLASS_NUMBER,
+                CB.CLASS_TITLE,
+                CB.CLASS_START_DATE,
+                CB.CLASS_END_DATE,
+                CB.CLASS_PROCESS,
+                CB.CLASS_PRICE,
+                CB.CLASS_ADDRESS,
+                CB.CLASS_LEVEL,
+                CB.USER_NUMBER,
+                U.USER_NAME,
+                U.USER_LEVEL,
+                MA.APPLY_EDUCATION
+            FROM TBL_CLASS_BOARD CB
+                JOIN TBL_USERS U
+                    ON CB.USER_NUMBER = U.USER_NUMBER
+                LEFT JOIN TBL_MEMTO_APPLY MA
+                    ON U.USER_NUMBER = MA.USER_NUMBER
+            WHERE CLASS_TITLE LIKE '%' || #{searchValue} || '%'
+            <![CDATA[AND ROWNUM <= #{page} * #{amount} and class_level = '2']]>
+            )
+        WHERE RNUM > (#{page} - 1) * #{amount}
+    </select>
+
+    <select id="selectClassTotal" resultType="_int">
+        SELECT COUNT(CLASS_NUMBER)
+        FROM TBL_CLASS_BOARD
+        WHERE CLASS_TITLE LIKE '%' || #{searchValue} || '%'
     </select>
 </mapper>

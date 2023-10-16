@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 public class Criteria {
     private int page;   // 현재 페이지
     private int amount; // 한 페이지 당 게시물 수
+    private String searchValue;
 
     public Criteria() {
         this.page = 1;
