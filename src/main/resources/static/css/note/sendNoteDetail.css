@@ -68,7 +68,7 @@ header{
 
 /* 메뉴 상자 */
 .menu-container{
-    width: 150px;
+    width: 180px;
     height: 100%;
     border-right: 1px solid gray;
     display: flex;
@@ -80,13 +80,13 @@ header{
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 40px;
-    width: 120px;
-    font-size: 15px;
+    height: 60px;
+    width: 170px;
+    font-size: 20px;
     font-weight: bold;
-    margin: 15px;
+    margin: 20px;
     border-radius: 5px;
-    border: 1px solid gray;
+    border: 1px solid #00A8F3;
     background-color: #00A8F3;
     color: white;
 }
@@ -95,7 +95,7 @@ header{
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 30px;
+    height: 40px;
     width: 100%;
     background-color: white;
     border-top: 1px solid gray;
@@ -103,6 +103,9 @@ header{
 .send{
     background-color: white;
     border-bottom: 1px solid gray;
+}
+.a-receive, .a-send{
+    font-size: 20px;
 }
 
 /* 쪽지 내용 상자 */
@@ -115,7 +118,8 @@ header{
 .note-send{
     font-size: 20px;
     font-weight: bold;
-    margin-top: 23px;
+    margin-top: 38px;
+    margin-bottom: 15px;
     margin-left: 50px;
 }
 
@@ -135,7 +139,7 @@ header{
     flex-direction: row;
     padding: 0 50px;
     width: 100%;
-    min-width: 650px;
+    min-width: 850px;
     max-width: 100%;
 }
 
@@ -144,18 +148,22 @@ header{
     flex-direction: column;
     padding: 0 50px;
     width: 100%;
-    min-width: 650px;
+    min-width: 850px;
     max-width: 100%;
 }
 
 .receiver-box{
     padding-top: 20px;
 }
+
+.receiver-word, .title-word, .content-word{
+    font-size: 20px;
+}
 /* 받는사람 */
 .note-sender, .note-title{
-    height: 30px;
+    height: 40px;
     width: 100%;
-    font-size: 15px;
+    font-size: 20px;
     padding: 4px 10px;
     border-style: none;
     border-bottom: 1px solid gray;
@@ -177,9 +185,9 @@ header{
     width: 100px;
     height: 40px;
     background-color: red;
-    border: 1px solid gray;
+    border: 1px solid red;
     color: white;
-    font-size: 15px;
+    font-size: 20px;
     border-radius: 5px;
     cursor: pointer;
 }
@@ -187,24 +195,23 @@ header{
 .receiver-word, .title-word{
     display: flex;
     align-items: center;
-    height: 30px;
-    width: 70px;
-    min-width: 70px;
+    height: 40px;
+    width: 100px;
+    min-width: 100px;
     font-weight: bold;
 }
 .content-word{
     display: flex;
     align-items: center;
-    height: 30px;
+    height: 40px;
     font-weight: bold;
 }
 
 .note-content{
     width: 100%;
-    min-width: 550px;
+    min-width: 850px;
     height: 100%;
     min-height: 400px;
-    font-size: 15px;
     pointer-events: none;
     padding: 10px;
     border: 1px solid gray;
