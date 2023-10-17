@@ -15,7 +15,6 @@ body{
 
 .login-form{
     position:relative; z-index:2;
-    border-bottom: 1px solid gray;
     padding-bottom: 20px;
     margin-top: 30px;
 }
