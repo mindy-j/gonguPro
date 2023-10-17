@@ -7,19 +7,19 @@
 </head>
 <body>
   <header class="header" th:fragment="header">
-    <a href="/user/index" class="logo-a">
+    <a href="/index/main" class="logo-a">
       <div class="logo-box">
         <img src="/image/mainLogo.png" alt="" class="header-logo">
         <span class="span-logo">ongU</span>
       </div>
     </a>
     <div class="search-box">
-      <form action="" method="" class="search-form">
-        <select name="" class="select-option">
-          <option value="name">스터티 모집</option>
-          <option value="email">멘티 모집</option>
+      <form action="/search/study" method="get" class="search-form" name="searching">
+        <select id="search" class="select-option" onchange="changeOption()">
+          <option id="search-study" name="search" value="study">스터티 모집</option>
+          <option id="search-class" name="search" value="class">멘티 모집</option>
         </select>
-        <input type="text" name="" class="search-input" placeholder="제목을 검색해주세요.">
+        <input type="text" name="searchValue" class="search-input" placeholder="제목을 검색해주세요.">
         <button class="search-btn"><i class="fa-solid fa-magnifying-glass fa-xl" style="color: #000000;"></i></button>
       </form>
     </div>
@@ -92,6 +92,20 @@
           document.querySelector('.up').style.display = 'inline';
         }
       });
+
+      // searching
+      function changeOption() {
+        var search = document.getElementById('search');
+        var value = search.options[search.selectedIndex].value;
+        var theForm = document.searching;
+
+        if (value == 'study') {
+          theForm.action = '/search/study';
+        }
+        if (value == 'class') {
+          theForm.action = '/search/class';
+        }
+      }
 
     </script>
   </header>
