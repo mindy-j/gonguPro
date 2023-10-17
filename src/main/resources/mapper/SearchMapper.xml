@@ -2,11 +2,58 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.gongu.mapper.SearchMapper">
     <select id="selectStudy" resultType="studyVo">
-        SELECT RNUM, STUDY_NUMBER, STUDY_TITLE, STUDY_PROCESS, TO_CHAR(STUDY_START_DATE, 'YYYY". "MM". "DD') AS STUDY_START_DATE , STUDY_DATE, STUDY_STUDENT_COUNT, STUDY_MAJOR, STUDY_ADDRESS, STUDY_CONTENT, USER_NUMBER, STUDY_REGISTER_DATE, STUDY_UPDATE_DATE, USER_ID, USER_NICKNAME
-        FROM (SELECT ROWNUM AS RNUM,STUDY_NUMBER, STUDY_TITLE, STUDY_PROCESS, STUDY_START_DATE, STUDY_DATE,STUDY_STUDENT_COUNT, STUDY_MAJOR, STUDY_ADDRESS, STUDY_CONTENT, S.USER_NUMBER, STUDY_REGISTER_DATE, STUDY_UPDATE_DATE, U.USER_ID, U.USER_NICKNAME
-            FROM TBL_STUDY_BOARD S
-                JOIN TBL_USERS U
-                    ON S.USER_NUMBER = U.USER_NUMBER
+        SELECT
+            RNUM,
+            STUDY_NUMBER,
+            STUDY_TITLE,
+            STUDY_PROCESS,
+            TO_CHAR(STUDY_START_DATE, 'YYYY". "MM". "DD') AS STUDY_START_DATE,
+            STUDY_DATE,
+            STUDY_STUDENT_COUNT,
+            STUDY_MAJOR,
+            STUDY_ADDRESS,
+            STUDY_CONTENT,
+            USER_NUMBER,
+            STUDY_REGISTER_DATE,
+            STUDY_UPDATE_DATE,
+            USER_ID,
+            USER_NICKNAME
+        FROM
+            (SELECT
+                ROWNUM AS RNUM,
+                STUDY_NUMBER,
+                STUDY_TITLE,
+                STUDY_PROCESS,
+                STUDY_START_DATE,
+                STUDY_DATE,
+                STUDY_STUDENT_COUNT,
+                STUDY_MAJOR,
+                STUDY_ADDRESS,
+                STUDY_CONTENT,
+                STUDY_USER_NUMBER AS USER_NUMBER,
+                STUDY_REGISTER_DATE,
+                STUDY_UPDATE_DATE,
+                USER_ID,
+                USER_NICKNAME
+            FROM
+                (SELECT
+                    STUDY_NUMBER,
+                    STUDY_TITLE,
+                    STUDY_PROCESS,
+                    STUDY_START_DATE,
+                    STUDY_DATE,
+                    STUDY_STUDENT_COUNT,
+                    STUDY_MAJOR,
+                    STUDY_ADDRESS,
+                    STUDY_CONTENT,
+                    USER_NUMBER AS STUDY_USER_NUMBER,
+                    STUDY_REGISTER_DATE,
+                    STUDY_UPDATE_DATE
+                FROM TBL_STUDY_BOARD
+                ORDER BY STUDY_NUMBER DESC
+                )
+                JOIN TBL_USERS
+                    ON STUDY_USER_NUMBER = USER_NUMBER
             WHERE STUDY_TITLE LIKE '%' || #{searchValue} || '%'
             <![CDATA[AND ROWNUM <= #{page} * #{amount}]]>
             )
@@ -37,21 +84,35 @@
         FROM
             (SELECT
                 ROWNUM AS RNUM,
-                CB.CLASS_NUMBER,
-                CB.CLASS_TITLE,
-                CB.CLASS_START_DATE,
-                CB.CLASS_END_DATE,
-                CB.CLASS_PROCESS,
-                CB.CLASS_PRICE,
-                CB.CLASS_ADDRESS,
-                CB.CLASS_LEVEL,
-                CB.USER_NUMBER,
+                CLASS_NUMBER,
+                CLASS_TITLE,
+                CLASS_START_DATE,
+                CLASS_END_DATE,
+                CLASS_PROCESS,
+                CLASS_PRICE,
+                CLASS_ADDRESS,
+                CLASS_LEVEL,
+                CLASS_USER_NUMBER AS USER_NUMBER,
                 U.USER_NAME,
                 U.USER_LEVEL,
                 MA.APPLY_EDUCATION
-            FROM TBL_CLASS_BOARD CB
+            FROM
+                (SELECT
+                    CLASS_NUMBER,
+                    CLASS_TITLE,
+                    CLASS_START_DATE,
+                    CLASS_END_DATE,
+                    CLASS_PROCESS,
+                    CLASS_PRICE,
+                    CLASS_ADDRESS,
+                    CLASS_LEVEL,
+                    USER_NUMBER AS CLASS_USER_NUMBER
+                FROM
+                    TBL_CLASS_BOARD
+                ORDER BY CLASS_NUMBER DESC
+                )
                 JOIN TBL_USERS U
-                    ON CB.USER_NUMBER = U.USER_NUMBER
+                    ON CLASS_USER_NUMBER = U.USER_NUMBER
                 LEFT JOIN TBL_MEMTO_APPLY MA
                     ON U.USER_NUMBER = MA.USER_NUMBER
             WHERE CLASS_TITLE LIKE '%' || #{searchValue} || '%'
