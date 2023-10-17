@@ -45,21 +45,43 @@
                  CB.CLASS_LEVEL,
                  CB.CLASS_UPDATE_DATE,
                  CB.USER_NUMBER,
-                 U.USER_NAME,
-                 U.USER_LEVEL,
-                 MA.APPLY_EDUCATION
-             FROM
-                 TBL_CLASS_BOARD CB
-                     JOIN
-                 TBL_USERS U
-                 ON
-                     CB.USER_NUMBER = U.USER_NUMBER
-                     LEFT JOIN
-                 TBL_MEMTO_APPLY MA
-                 ON
-                     U.USER_NUMBER = MA.USER_NUMBER
+                 CB.USER_NAME,
+                 CB.USER_LEVEL,
+                 CB.APPLY_EDUCATION
+             FROM(
+                     SELECT
+                         ROWNUM AS RNUM,
+                         CB2.CLASS_NUMBER,
+                         CB2.CLASS_TITLE,
+                         CB2.CLASS_START_DATE,
+                         CB2.CLASS_END_DATE,
+                         CB2.CLASS_PROCESS,
+                         CB2.CLASS_PRICE,
+                         CB2.CLASS_ADDRESS,
+                         CB2.CLASS_MAJOR,
+                         CB2.CLASS_INTRODUCE,
+                         CB2.CLASS_PLAN,
+                         CB2.CLASS_REGISTER_DATE,
+                         CB2.CLASS_LEVEL,
+                         CB2.CLASS_UPDATE_DATE,
+                         CB2.USER_NUMBER,
+                         U2.USER_NAME,
+                         U2.USER_LEVEL,
+                         MA2.APPLY_EDUCATION
+                     FROM
+                         TBL_CLASS_BOARD CB2
+                             JOIN
+                         TBL_USERS U2
+                         ON
+                             CB2.USER_NUMBER = U2.USER_NUMBER
+                             LEFT JOIN
+                         TBL_MEMTO_APPLY MA2
+                         ON
+                             U2.USER_NUMBER = MA2.USER_NUMBER
+                            order by class_number desc
+                     ) CB
             <![CDATA[WHERE ROWNUM <= #{page} * #{amount} and class_level = 2 and CLASS_NUMBER NOT IN (SELECT CLASS_NUMBER FROM TBL_PAYMENT)]]>
-            )
+                )
         WHERE RNUM > (#{page} - 1) * #{amount}
     </select>
 

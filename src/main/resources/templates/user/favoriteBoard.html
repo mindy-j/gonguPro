@@ -53,6 +53,17 @@
     .active{
       background: lightsteelblue;
     }
+    .study-logo{
+      width:100px;
+      height:25px;
+      background-color: #d9edf7;
+      color:white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 15px;
+      font-weight: bold;
+    }
 
   </style>
 </head>
@@ -76,7 +87,7 @@
           <div class="deadline-box" >
             <p class="deadline" name="시작일" th:text="'시작일  |  '+${likes.studyStartDate}"> </p>
           </div>
-          <div class="content-box" name="제목">
+          <div class="study-content-box" name="제목">
             <p class="content" th:text="${likes.studyTitle}"></p>
           </div>
           <div class="category-box" name="category">
