@@ -48,7 +48,7 @@ public class UserController {
             //setAttribute : 세션객체에 속성 설정 - userNumber라는 이름의 세션속성에
             // userDto.getUserNumber() 메서드에서 반환한 사용자 번호를 저장
             req.getSession().setAttribute("userLevel", userDto.getUserLevel());
-            return new RedirectView("index");
+            return new RedirectView("/index/main");
         } else{//로그인 실패시 로그인페이지로 리다이렉트하며, 로그인 에러 파라미터를 추가한다.
             return new RedirectView("/user/login?loginError");
         }
