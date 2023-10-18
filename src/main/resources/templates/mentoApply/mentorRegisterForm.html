@@ -38,11 +38,11 @@
         </div>
 
         <div class="section-3">
-            <textarea type="text" name="applyCareer">경력사항을 자세히 적어주세요!</textarea>
+            <textarea type="text" name="applyCareer" placeholder="경력사항을 자세히 적어주세요!" id="applyCareer"></textarea>
 
         </div>
         <div class="class-plan-box">
-            <textarea type="text" name="applyCerti">보유 자격증을 입력해주세요!</textarea>
+            <textarea type="text" name="applyCerti" placeholder="보유 자격증을 입력해주세요!" id="applyCerti"></textarea>
         </div>
         <div class="form-group">
             <div class="certi-title">
@@ -135,6 +135,19 @@
             }
         }
     }
+
+    //textarea의 값중 엔터를 <br>로 변경
+    $('.registerBtn').on('click', function () {
+        let inputValue = $('#applyCareer').val();
+        inputValue = inputValue.replace(/\n/g, "<br>"); // 엔터를 <br> 태그로 변환
+        $('#applyCareer').val(inputValue); // 변경된 값을 다시 textarea에 설정
+        console.log(inputValue);
+
+        let inputValues = $('#applyCerti').val();
+        inputValues = inputValues.replace(/\n/g, "<br>"); // 엔터를 <br> 태그로 변환
+        $('#applyCerti').val(inputValues); // 변경된 값을 다시 textarea에 설정
+        console.log(inputValues);
+    })
 </script>
 </body>
 </html>
