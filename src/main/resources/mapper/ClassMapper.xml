@@ -102,6 +102,7 @@
             CB.CLASS_UPDATE_DATE,
             CB.USER_NUMBER,
             U.USER_NAME,
+            U.USER_NICKNAME,
             U.USER_LEVEL,
             MA.APPLY_EDUCATION
         FROM

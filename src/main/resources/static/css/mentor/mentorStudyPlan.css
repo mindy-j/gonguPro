@@ -98,7 +98,4 @@ li select{
     margin-top:20px;
 }
 
-input[type='date']::before {
-    content: attr(data-placeholder);
-    width: 100%;
-}
+
