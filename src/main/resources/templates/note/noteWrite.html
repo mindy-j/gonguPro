@@ -36,7 +36,7 @@
                 <div class="note-box">
                     <!-- 쪽지 -->
                     <div class="note-write-container">
-                        <form method="post" action="/note/writeNoteOk">
+                        <form method="post" action="/note/writeNoteOk" onsubmit="return doAction();">
                             <div class="receiver-box">
                                 <div class="receiver-word">받는사람</div>
                                 <input type="text" class="note-sender" name="userNickname">
@@ -95,38 +95,25 @@
         });
     });
 
-    $('.btn-note-send').on('click', function(){
-        if ($('.note-sender').val() == null) {
+    function doAction(){
+        if ($('.note-sender').val() == '') {
             alert("받는사람을 입력해주세요.");
             return false;
         }
-        if ($('.note-title').val() == null) {
+        else if ($('.note-title').val() == '') {
             alert("제목을 입력해주세요.");
             return false;
         }
-        if ($('.note-content').val() == null) {
+        else if ($('.note-content').val() == '') {
             alert("내용을 입력해주세요.");
             return false;
+        } else if ($('.nickname-exist').css.display == 'inline-block') {
+            alert("존재하지 않는 닉네임입니다.");
+            return false;
+        } else {
+            alert("쪽지를 보냈습니다.");
         }
-
-        var userNickname = $('.note-sender').val();
-        var data = {userNickname : userNickname}
-
-        $.ajax({
-            type : "post",
-            url :"/user/userNicknameChk",
-            data : data,
-            success : function (result){
-                if(result != 'fail'){
-                    alert("존재하지 않는 닉네임입니다.");
-                    return false;
-                } else {
-                    alert("쪽지를 보냈습니다.");
-                    return true;
-                }
-            }
-        });
-    });
+    }
 </script>
 </body>
 </html>
