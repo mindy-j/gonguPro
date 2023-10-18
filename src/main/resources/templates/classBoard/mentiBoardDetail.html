@@ -58,13 +58,13 @@
       <img src="https://hola-post-image.s3.ap-northeast-2.amazonaws.com/default.PNG" width="30px" height="30px">
     </div>
     <div class="log-container">
-    <span class="writerUser" name="userId" th:text="${class.userName+' | '}"><!--스터디 모집 작성자-->
+    <span class="writerUser" name="userId" th:text="${class.userNickname+' | '}"><!--스터디 모집 작성자-->
       <!--작성자앞에 로고 사진-->이종민&nbsp;|</span>
       <span name="registerDate" class="registerDate" th:text="${class.classRegisterDate}">2023.10.11</span><!--스터디모집글등록날짜-->
     </div>
     <div class="updelte" th:if="${class.userNumber == session.userNumber}">
       <a  th:href="@{/class/update(classNumber=${class.classNumber})}"><div class="update-btn">수정</div></a>
-      <a  th:href="@{/class/update(classNumber=${class.classNumber})}"><div class="delete-btn">삭제</div></a>
+      <a  th:href="@{/class/delete(classNumber=${class.classNumber})}"><div class="delete-btn">삭제</div></a>
       </th:block>
     </div>
   </div>
@@ -131,7 +131,7 @@
     <div class="reply-wrap">
       <div class="reply-wrap__box">
         <div class="reply-content__box">
-          <div class="reply-writer" th:text="${class.userName}"></div>
+          <div class="reply-writer"></div>
           <textarea name="replyContent" id="reply-content" cols="30" rows="10"></textarea>
         </div>
         <div class="reply-btn-wrap">
