@@ -24,6 +24,7 @@ public class ClassVo {
     private String classLevel;
     private String classUpdateDate;
     private Long userNumber;
+    private String userNickname;
     private String applyEducation; //학력
     private String userName; //유저 아이디
     private String userLevel; //유저 등급

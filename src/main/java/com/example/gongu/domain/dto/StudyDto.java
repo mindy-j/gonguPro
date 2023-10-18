@@ -20,6 +20,6 @@ public class StudyDto {
    private String studyAddress;
    private String studyContent;
    private Long userNumber;
-   private Date  studyRegisterDate;
+   private String  studyRegisterDate;
    private Date  studyUpdateDate;
 }
