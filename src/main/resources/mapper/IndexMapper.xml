@@ -14,7 +14,6 @@
             	        SELECT STUDY_NUMBER AS STUDY_LIKE, COUNT(STUDY_NUMBER) AS LIKE_COUNT
             	        FROM TBL_LIKE
             	        GROUP BY STUDY_NUMBER
-            	        HAVING COUNT(STUDY_NUMBER) > 1
             	    )
             	    ON S.STUDY_NUMBER = STUDY_LIKE
                 ORDER BY LIKE_COUNT DESC
@@ -64,7 +63,7 @@
             LEFT JOIN TBL_MEMTO_APPLY MA
                 ON U.USER_NUMBER = MA.USER_NUMBER
             WHERE class_level = '2'
-            ORDER BY ROWNUM DESC
+            ORDER BY CLASS_NUMBER DESC
             )
         <![CDATA[WHERE ROWNUM <= 3]]>
     </select>

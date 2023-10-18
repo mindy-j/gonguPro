@@ -153,6 +153,7 @@ header{
 }
 
 .receiver-box{
+    position: relative;
     padding-top: 20px;
 }
 /* 받는사람 */
@@ -193,6 +194,17 @@ header{
     width: 100px;
     min-width: 100px;
     font-weight: bold;
+}
+.nickname-exist{
+    width: 250px;
+    height: 40px;
+    position: absolute;
+    color: red;
+    font-size: 15px;
+    display: none;
+    top: 50%;
+    left: 100%;
+    transform: translate(-100%, 0%);
 }
 .content-word{
     display: flex;

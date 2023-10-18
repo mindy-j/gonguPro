@@ -43,7 +43,7 @@
                         <!-- 반복출력 시작 -->
                         <div class="tr" th:each="note : ${receiveNote}">
                             <div class="note-user td">
-                                <span th:text="${note.userId}">아이디</span>
+                                <span th:text="${note.userNickname}">아이디</span>
                             </div>
                             <div class="note-title td">
                                 <span th:text="${note.noteTitle}">쪽지 제목입니다</span>
