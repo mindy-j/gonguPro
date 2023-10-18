@@ -68,7 +68,7 @@ header{
 
 /* 메뉴 상자 */
 .menu-container{
-    width: 150px;
+    width: 180px;
     height: 100%;
     border-right: 1px solid gray;
     display: flex;
@@ -80,13 +80,13 @@ header{
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 40px;
-    width: 120px;
-    font-size: 15px;
+    height: 60px;
+    width: 170px;
+    font-size: 20px;
     font-weight: bold;
-    margin: 15px;
+    margin: 20px;
     border-radius: 5px;
-    border: 1px solid gray;
+    border: 1px solid #00A8F3;
     background-color: #00A8F3;
     color: white;
 }
@@ -95,7 +95,7 @@ header{
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 30px;
+    height: 40px;
     width: 100%;
     background-color: gainsboro;
     border-top: 1px solid gray;
@@ -106,6 +106,9 @@ header{
 }
 .receive{
     background-color: white;
+}
+.a-receive, .a-send{
+    font-size: 20px;
 }
 
 /* 쪽지 내용 상자 */
@@ -118,7 +121,8 @@ header{
 .note-send{
     font-size: 20px;
     font-weight: bold;
-    margin-top: 23px;
+    margin-top: 38px;
+    margin-bottom: 15px;
     margin-left: 50px;
 }
 
@@ -138,39 +142,39 @@ header{
     display: flex;
     flex-direction: row;
     border-left: 1px solid gray;
-    min-width: 550px;
+    min-width: 850px;
 }
 .tr{
     background-color: ghostwhite;
 }
 .td{
-    font-size: 15px;
+    font-size: 20px;
     padding: 5px 10px;
     border-right: 1px solid gray;
     border-bottom: 1px solid gray;
 }
 
 .note-user{
-    height: 30px;
-    min-width: 150px;
+    height: 40px;
+    min-width: 170px;
     width: 0%;
 }
 
 .note-title{
-    height: 30px;
-    min-width: 200px;
+    height: 40px;
+    min-width: 420px;
     width: 100%;
 }
 
 .note-date{
-    height: 30px;
-    min-width: 100px;
+    height: 40px;
+    min-width: 120px;
     width: 0%;
 }
 
 .note-content, .note-delete{
-    height: 30px;
-    min-width: 50px;
+    height: 40px;
+    min-width: 70px;
     width: 0%;
     padding-left: 9px;
     display: flex;
@@ -189,6 +193,7 @@ header{
     color: white;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 20px;
 }
 .btn-delete{
     display: flex;
@@ -202,11 +207,12 @@ header{
     color: white;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 20px;
 }
 
 .del{
-    height: 30px;
-    min-width: 50px;
+    height: 40px;
+    min-width: 70px;
     width: 0%;
     border-right: 1px solid gray;
     border-bottom: 1px solid gray;
