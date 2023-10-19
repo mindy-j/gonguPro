@@ -70,7 +70,7 @@ header{
 .menu-container{
     width: 180px;
     height: 100%;
-    border-right: 1px solid gray;
+    border-right: 1px solid lightgray;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -81,7 +81,7 @@ header{
     align-items: center;
     justify-content: center;
     height: 60px;
-    width: 170px;
+    width: 140px;
     font-size: 20px;
     font-weight: bold;
     margin: 20px;
@@ -97,15 +97,15 @@ header{
     justify-content: center;
     height: 40px;
     width: 100%;
-    background-color: gainsboro;
-    border-top: 1px solid gray;
+    background-color: rgba(0, 168, 243, 0.5);
+    border-top: 1px solid lightgray;
 }
 .receive{
     font-weight: bold;
 }
 .send{
     background-color: white;
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid lightgray;
 }
 .a-receive, .a-send{
     font-size: 20px;
@@ -134,24 +134,24 @@ header{
     padding: 0 50px;
 }
 .th{
-    background-color: gainsboro;
-    border-top: 1px solid gray;
+    background-color: rgba(0, 168, 243, 0.5);
+    border-top: 1px solid lightgray;
     width: 100%;
 }
 .th, .tr{
     display: flex;
     flex-direction: row;
-    border-left: 1px solid gray;
+    border-left: 1px solid lightgray;
     min-width: 850px;
 }
 .tr{
-    background-color: ghostwhite;
+    background-color: white;
 }
 .td{
     font-size: 20px;
     padding: 5px 10px;
-    border-right: 1px solid gray;
-    border-bottom: 1px solid gray;
+    border-right: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
 }
 
 .note-user{
@@ -214,8 +214,8 @@ header{
     height: 40px;
     min-width: 70px;
     width: 0%;
-    border-right: 1px solid gray;
-    border-bottom: 1px solid gray;
+    border-right: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
 }
 
 .note-box{
