@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>쪽지쓰기</title>
     <link rel="stylesheet" href="/css/note/noteWrite.css">
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
     <script src="https://kit.fontawesome.com/acf4f592bf.js" crossorigin="anonymous"></script>
@@ -36,10 +36,11 @@
                 <div class="note-box">
                     <!-- 쪽지 -->
                     <div class="note-write-container">
-                        <form method="post" action="/note/writeNoteOk">
+                        <form method="post" action="/note/writeNoteOk" onsubmit="return doAction();">
                             <div class="receiver-box">
                                 <div class="receiver-word">받는사람</div>
-                                <input type="text" class="note-sender" name="userId">
+                                <input type="text" class="note-sender" name="userNickname">
+                                <div class="nickname-exist">존재하지 않는 닉네임입니다.</div>
                             </div>
                             <div class="title-box">
                                 <div class="title-word">제목</div>
@@ -47,7 +48,7 @@
                             </div>
                             <div class="content-box">
                                 <div class="content-word">내용</div>
-                                <textarea id="summernote" name="noteContent"></textarea>
+                                <textarea id="summernote" name="noteContent" class="note-content"></textarea>
                             </div>
                             <div class="btn-box">
                                 <button class="btn-note-send" name="sendBtn">보내기</button>
@@ -74,6 +75,45 @@
             ['view', ['help']]
         ]
     });
+
+    // 받는사람 닉네임 존재 여부 검사
+    $('.note-sender').on("propertychange change keyup paste input", function (){
+        var userNickname = $('.note-sender').val();
+        var data = {userNickname : userNickname}
+
+        $.ajax({
+            type : "post",
+            url :"/user/userNicknameChk",
+            data : data,
+            success : function (result){
+                if(result == 'fail'){
+                    $('.nickname-exist').css("display","none");
+                } else {
+                    $('.nickname-exist').css("display","inline-block");
+                }
+            }
+        });
+    });
+
+    function doAction(){
+        if ($('.note-sender').val() == '') {
+            alert("받는사람을 입력해주세요.");
+            return false;
+        }
+        else if ($('.note-title').val() == '') {
+            alert("제목을 입력해주세요.");
+            return false;
+        }
+        else if ($('.note-content').val() == '') {
+            alert("내용을 입력해주세요.");
+            return false;
+        } else if ($('.nickname-exist').css.display == 'inline-block') {
+            alert("존재하지 않는 닉네임입니다.");
+            return false;
+        } else {
+            alert("쪽지를 보냈습니다.");
+        }
+    }
 </script>
 </body>
 </html>

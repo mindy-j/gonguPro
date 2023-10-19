@@ -28,7 +28,7 @@ header{
     height: 50px;
     background-color: #00A8F3;
     color: white;
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid lightgray;
     padding: 15px;
     justify-content: space-between;
     position: relative;
@@ -70,7 +70,7 @@ header{
 .menu-container{
     width: 180px;
     height: 100%;
-    border-right: 1px solid gray;
+    border-right: 1px solid lightgray;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -81,7 +81,7 @@ header{
     align-items: center;
     justify-content: center;
     height: 60px;
-    width: 170px;
+    width: 140px;
     font-size: 20px;
     font-weight: bold;
     margin: 20px;
@@ -98,11 +98,11 @@ header{
     height: 40px;
     width: 100%;
     background-color: white;
-    border-top: 1px solid gray;
+    border-top: 1px solid lightgray;
 }
 .send{
     background-color: white;
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid lightgray;
 }
 .a-receive, .a-send{
     font-size: 20px;
@@ -153,6 +153,7 @@ header{
 }
 
 .receiver-box{
+    position: relative;
     padding-top: 20px;
 }
 /* 받는사람 */
@@ -162,7 +163,7 @@ header{
     font-size: 20px;
     padding: 0 10px;
     border-style: none;
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid lightgray;
 }
 /* 제목 */
 
@@ -193,6 +194,17 @@ header{
     width: 100px;
     min-width: 100px;
     font-weight: bold;
+}
+.nickname-exist{
+    width: 250px;
+    height: 40px;
+    position: absolute;
+    color: red;
+    font-size: 15px;
+    display: none;
+    top: 50%;
+    left: 100%;
+    transform: translate(-100%, 0%);
 }
 .content-word{
     display: flex;

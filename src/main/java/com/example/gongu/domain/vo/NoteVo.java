@@ -18,5 +18,5 @@ public class NoteVo {
     private Long senderNumber;
     private String sendLevel;
     private String receiveLevel;
-    private String userId;
+    private String userNickname;
 }
