@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -41,5 +42,22 @@ public class ClassService {
 
     public int getTotal(){
         return classMapper.selectTotal();
+    }
+
+    public List<String> testImg(){
+        List<String> list = new ArrayList<>();
+        list.add("http://코리아정보보안it.com/renewal2021/img/tch/teacher025.png");
+        list.add("http://코리아정보보안it.com/renewal2021/img/tch/teacher026.png");
+        list.add("http://코리아정보보안it.com/renewal2021/img/tch/teacher075.png");
+        list.add("http://코리아정보보안it.com/renewal2021/img/tch/teacher009.png");
+        list.add("http://코리아정보보안it.com/renewal2021/img/tch/teacher010.png");
+        list.add("http://코리아정보보안it.com/renewal2021/img/tch/teacher011.png");
+        list.add("http://코리아정보보안it.com/renewal2021/img/tch/teacher012.png");
+        list.add("http://코리아정보보안it.com/renewal2021/img/tch/teacher013.png");
+        list.add("http://코리아정보보안it.com/renewal2021/img/tch/teacher014.png");
+        list.add("http://코리아정보보안it.com/renewal2021/img/tch/teacher015.png");
+        list.add("http://코리아정보보안it.com/renewal2021/img/tch/teacher016.png");
+        list.add("http://코리아정보보안it.com/renewal2021/img/tch/teacher017.png");
+        return list;
     }
 }
