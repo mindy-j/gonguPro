@@ -5,6 +5,7 @@ import com.example.gongu.domain.vo.PaymentCriteria;
 import com.example.gongu.domain.vo.PaymentPageVo;
 import com.example.gongu.domain.vo.admin.AdminCriteria;
 import com.example.gongu.domain.vo.admin.AdminPageVo;
+import com.example.gongu.service.ClassService;
 import com.example.gongu.service.PaymentService;
 import com.example.gongu.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -30,6 +31,7 @@ import java.util.Map;
 public class UserController {
     private final UserService userService;
     private final PaymentService paymentService;
+    private final ClassService classService;
 
     //로그인 화면전환
     @GetMapping("/login")
@@ -190,6 +192,7 @@ public class UserController {
     public String paymentBoard(HttpServletRequest req, Model model, PaymentCriteria paymentCriteria){
         Long userNumber = (Long)req.getSession().getAttribute("userNumber");
         paymentCriteria.setUserNumber(userNumber);
+        model.addAttribute("imgList",classService.testImg());
         model.addAttribute("payList",  paymentService.findPay(paymentCriteria));
         model.addAttribute("pageInfo", new PaymentPageVo(paymentService.findPayTotal(userNumber),paymentCriteria));
         return "user/paymentBoard";
