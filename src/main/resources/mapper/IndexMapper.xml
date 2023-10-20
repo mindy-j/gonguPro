@@ -16,6 +16,7 @@
             	        GROUP BY STUDY_NUMBER
             	    )
             	    ON S.STUDY_NUMBER = STUDY_LIKE
+                WHERE LIKE_COUNT IS NOT NULL
                 ORDER BY LIKE_COUNT DESC
             )
         <![CDATA[WHERE ROWNUM <= 4]]>
