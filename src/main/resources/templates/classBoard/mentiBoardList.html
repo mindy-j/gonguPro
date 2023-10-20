@@ -159,7 +159,14 @@
       <a th:href="@{/class/detail(classNumber=${class.classNumber})}" class="name-a">
         <div class="payment-content">
           <div class="sub-content">
-            <div class="kko-box"><img src="/image/kko.png" alt=""><span class="name-span" th:text="${class.userName}+' 멘토'">이종민 멘토</span></div>
+            <div class="kko-box">
+              <th:block th:if="${classStat.index < imgList.size} ">
+                <img th:src="${imgList.get(classStat.index)}" alt="">
+              </th:block>
+              <th:block th:unless="${classStat.index < imgList.size} ">
+                <img src="/image/kko.png" alt="">
+              </th:block>
+              <span class="name-span" th:text="${class.userName}+' 멘토'">이종민 멘토</span></div>
             <div class="content-box">
               <div><span class="sub-title">학 력 : </span><span th:text="${class.applyEducation}">서울대학교 졸업</span></div>
               <div><span class="sub-title">금 액 : </span><span th:text="${class.classPrice}+' 원'">200000원</span></div>

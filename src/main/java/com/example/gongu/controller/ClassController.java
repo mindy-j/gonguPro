@@ -26,6 +26,7 @@ public class ClassController {
 
     @GetMapping("/list")
     public String listPage(Criteria criteria,Model model){
+        model.addAttribute("imgList", classService.testImg());
         model.addAttribute("classList",classService.findAll(criteria));
         model.addAttribute("pageInfo",new PageVo(classService.getTotal(),criteria));
         return "classBoard/mentiBoardList";
@@ -70,7 +71,6 @@ public class ClassController {
         classService.remove(classNumber);
         return new RedirectView("/class/list");
     }
-
 
 
 }
