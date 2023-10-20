@@ -1,5 +1,6 @@
 package com.example.gongu.controller;
 
+import com.example.gongu.service.ClassService;
 import com.example.gongu.service.IndexService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -12,12 +13,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/index/*")
 public class IndexController {
     private final IndexService indexService;
+    private final ClassService classService;
 
     @GetMapping("/main")
     public String indexList(Model model) {
         model.addAttribute("indexLikeList", indexService.findLikeList());
         model.addAttribute("indexStudyList", indexService.findStudyList());
         model.addAttribute("indexClassList", indexService.findClassList());
+        model.addAttribute("imgList",classService.testImg());
         return "index";
     }
 }
