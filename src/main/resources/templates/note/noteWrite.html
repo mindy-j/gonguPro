@@ -40,7 +40,7 @@
                             <div class="receiver-box">
                                 <div class="receiver-word">받는사람</div>
                                 <input type="text" class="note-sender" name="userNickname">
-                                <div class="nickname-exist">존재하지 않는 닉네임입니다.</div>
+                                <div class="nickname-exist" id="exist">존재하지 않는 닉네임입니다.</div>
                             </div>
                             <div class="title-box">
                                 <div class="title-word">제목</div>
@@ -100,14 +100,18 @@
             alert("받는사람을 입력해주세요.");
             return false;
         }
-        else if ($('.note-title').val() == '') {
+        if ($('.note-title').val() == '') {
             alert("제목을 입력해주세요.");
             return false;
         }
-        else if ($('.note-content').val() == '') {
+        if ($('.note-content').val() == '') {
             alert("내용을 입력해주세요.");
             return false;
-        } else if ($('.nickname-exist').style.display != 'none') {
+        }
+
+        var exist = document.getElementById('exist');
+
+        if (exist.style.display != 'none') {
             alert("존재하지 않는 닉네임입니다.");
             return false;
         } else {
